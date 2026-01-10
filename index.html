@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IPORDISE PARFUM</title>
+  <meta name="description" content="IPORDISE PARFUM – Discover premium fragrances for women, men, unisex and more. Shop best sellers, new arrivals, and deals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Top notice -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span class="topbar__text" data-i18n="topbar_text">Free delivery in Morocco from 299 MAD • Pay on delivery available</span>
+      <a class="topbar__link" href="#deals" data-i18n="topbar_link">See deals</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <button class="icon-btn" id="btnMenu" aria-label="Open menu">
+        <span class="icon icon--menu" aria-hidden="true"></span>
+      </button>
+
+      <a class="brand" href="#">
+        <img class="brand__mark" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/logo.jpeg" alt="IPORDISE PARFUM Logo">
+        <div class="brand__text">
+          <span class="brand__name">IPORDISE PARFUM</span>
+          <span class="brand__tag" data-i18n="brand_tag">Fragrance Boutique</span>
+        </div>
+      </a>
+
+      <div class="search" role="search">
+        <span class="icon icon--search" aria-hidden="true"></span>
+        <input id="searchInput" type="search" placeholder="Search perfumes, brands, notes..." data-i18n-placeholder="search_ph" autocomplete="off" />
+        <button class="search__clear" id="clearSearch" aria-label="Clear search" title="Clear">×</button>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <div class="nav-dropdown">
+          <button class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">
+            Categories
+            <span class="nav-dropdown__arrow">▼</span>
+          </button>
+          <div class="nav-dropdown__menu" aria-hidden="true">
+            <a href="#categories" class="nav-dropdown__item" data-i18n="cat_all">Shop All</a>
+            <a href="#categories" class="nav-dropdown__item" data-filter="women" data-i18n="cat_women">Women's Fragrances</a>
+            <a href="#categories" class="nav-dropdown__item" data-filter="men" data-i18n="cat_men">Men's Fragrances</a>
+            <a href="#categories" class="nav-dropdown__item" data-filter="unisex" data-i18n="cat_unisex">Unisex Fragrances</a>
+            <a href="#categories" class="nav-dropdown__item" data-filter="gift" data-i18n="cat_gift">Gift Sets</a>
+            <a href="#categories" class="nav-dropdown__item" data-filter="home" data-i18n="cat_home">Home Fragrance</a>
+            <a href="#categories" class="nav-dropdown__item" data-filter="travel" data-i18n="cat_travel">Travel Size</a>
+          </div>
+        </div>
+        <a href="#best" data-i18n="nav_best">Best Sellers</a>
+        <a href="#new" data-i18n="nav_new">New Arrivals</a>
+        <a href="#deals" data-i18n="nav_deals">Deals</a>
+        <a href="#brands" data-i18n="nav_brands">Brands</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <nav class="header__actions" aria-label="Quick actions">
+
+        <div class="lang">
+          <button class="btn btn--small btn--ghost" id="btnLang" aria-haspopup="true" aria-expanded="false" aria-label="Language">
+            <span id="langLabel">EN</span> ▾
+          </button>
+          <div class="langMenu" id="langMenu" role="menu" aria-label="Language menu">
+            <button class="langOption" type="button" data-set-lang="en" role="menuitemradio" aria-checked="true">English</button>
+            <button class="langOption" type="button" data-set-lang="fr" role="menuitemradio" aria-checked="false">Français</button>
+            <button class="langOption" type="button" data-set-lang="ar" role="menuitemradio" aria-checked="false">العربية</button>
+          </div>
+        </div>
+
+        <a class="icon-btn" href="#account" aria-label="Account">
+          <span class="icon icon--user" aria-hidden="true"></span>
+        </a>
+        <button class="icon-btn cart-btn" id="btnCart" aria-label="Open cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Mobile menu drawer -->
+    <aside class="drawer" id="menuDrawer" aria-hidden="true">
+      <div class="drawer__overlay" data-close-drawer></div>
+      <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
+        <div class="drawer__header">
+          <div class="drawer__title" data-i18n="drawer_menu">Menu</div>
+          <button class="icon-btn" data-close-drawer aria-label="Close menu">
+            <span class="icon icon--close" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div class="drawer__content">
+          <div class="drawer__section">
+            <div class="drawer__section-title" data-i18n="nav_categories">Categories</div>
+            <a class="drawer__link" href="#categories" data-filter="all" data-i18n="cat_all">Shop All</a>
+            <a class="drawer__link" href="#categories" data-filter="women" data-i18n="cat_women">Women's Fragrances</a>
+            <a class="drawer__link" href="#categories" data-filter="men" data-i18n="cat_men">Men's Fragrances</a>
+            <a class="drawer__link" href="#categories" data-filter="unisex" data-i18n="cat_unisex">Unisex Fragrances</a>
+            <a class="drawer__link" href="#categories" data-filter="gift" data-i18n="cat_gift">Gift Sets</a>
+            <a class="drawer__link" href="#categories" data-filter="home" data-i18n="cat_home">Home Fragrance</a>
+            <a class="drawer__link" href="#categories" data-filter="travel" data-i18n="cat_travel">Travel Size</a>
+          </div>
+
+          <a class="drawer__link" href="#best" data-close-drawer data-i18n="nav_best">Best Sellers</a>
+          <a class="drawer__link" href="#new" data-close-drawer data-i18n="nav_new">New Arrivals</a>
+          <a class="drawer__link" href="#deals" data-close-drawer data-i18n="nav_deals">Deals</a>
+          <a class="drawer__link" href="#brands" data-close-drawer data-i18n="nav_brands">Brands</a>
+          <a class="drawer__link" href="#contact" data-close-drawer data-i18n="nav_contact">Contact</a>
+
+          <div class="drawer__box">
+            <div class="drawer__boxTitle">WhatsApp</div>
+            <a class="drawer__boxBtn" href="https://wa.me/212663750210" target="_blank" rel="noopener">Chat on WhatsApp: 0663750210</a>
+            <div class="drawer__muted">Email: <a href="mailto:Ipordise@gmail.com">Ipordise@gmail.com</a></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <div class="pill">✨ <span data-i18n="hero_pill">✨ Premium Moroccan Fragrances</span></div>
+          <h1 data-i18n="hero_title">Discover Your Signature Scent</h1>
+          <p data-i18n="hero_desc">Curated perfumes inspired by Morocco's rich heritage. Authentic scents for women, men, and unisex — with express delivery across Morocco and 24/7 personalized support.</p>
+
+          <!-- Trust Signals -->
+          <div class="trust-badges">
+            <div class="trust-badge">
+              <span class="trust-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span data-i18n="trust_auth">100% Authentic</span>
+            </div>
+            <div class="trust-badge">
+              <span class="trust-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              </span>
+              <span data-i18n="trust_delivery">Free Delivery 299 MAD+</span>
+            </div>
+            <div class="trust-badge">
+              <span class="trust-icon trust-icon--wa">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" /></svg>
+              </span>
+              <span data-i18n="trust_support">24/7 WhatsApp Support</span>
+            </div>
+          </div>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary btn--urgent" href="#categories">
+              Shop Now
+              <span class="btn-arrow">→</span>
+            </a>
+            <a class="btn btn--ghost" href="#best" data-i18n="cta_best">View Best Sellers</a>
+          </div>
+
+          <div class="hero__stats">
+            <div class="stat animate-on-scroll">
+              <div class="stat__num">5000+</div>
+              <div class="stat__label" data-i18n="stat_customers">Happy Customers</div>
+            </div>
+            <div class="stat animate-on-scroll">
+              <div class="stat__num">4.8★</div>
+              <div class="stat__label" data-i18n="stat_rating">Average Rating</div>
+            </div>
+            <div class="stat animate-on-scroll">
+              <div class="stat__num">48h</div>
+              <div class="stat__label" data-i18n="stat_delivery">Express Delivery</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="heroCard">
+            <div class="heroCard__top">
+              <span class="heroCard__badge">🌟 Editor's Choice</span>
+              <span class="heroCard__chip">Vanilla • Musk • Amber</span>
+            </div>
+            <div class="heroCard__grid">
+              <div class="bottle bottle--1" aria-hidden="true"></div>
+              <div class="bottle bottle--2" aria-hidden="true"></div>
+              <div class="bottle bottle--3" aria-hidden="true"></div>
+            </div>
+            <div class="heroCard__bottom">
+              <div>
+                <div class="heroCard__title">Season Favorites</div>
+                <div class="heroCard__sub">Warm, sweet & elegant scents</div>
+              </div>
+              <a class="btn btn--small btn--premium" href="#best">
+                Shop Collection
+                <span class="btn-arrow">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Moroccan Cultural Element -->
+          <div class="moroccan-pattern" aria-hidden="true">
+            <div class="pattern-element pattern-1"></div>
+            <div class="pattern-element pattern-2"></div>
+            <div class="pattern-element pattern-3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section__head animate-on-scroll">
+          <h2 data-i18n="sec_categories_title">Fragrance</h2>
+          <p class="muted" data-i18n="sec_categories_desc">Browse by category like on a big store — clean and easy.</p>
+        </div>
+
+        <div class="cats">
+          <button class="cat animate-on-scroll" data-filter="all">
+            <div class="cat__icon cat__icon--all"></div>
+            <div class="cat__label" data-i18n="cat_all">Shop All</div>
+          </button>
+          <button class="cat animate-on-scroll" data-filter="women">
+            <div class="cat__icon cat__icon--women"></div>
+            <div class="cat__label" data-i18n="tile_women">Women’s</div>
+          </button>
+          <button class="cat animate-on-scroll" data-filter="men">
+            <div class="cat__icon cat__icon--men"></div>
+            <div class="cat__label" data-i18n="tile_men">Men’s</div>
+          </button>
+          <button class="cat animate-on-scroll" data-filter="unisex">
+            <div class="cat__icon cat__icon--unisex"></div>
+            <div class="cat__label" data-i18n="tile_unisex">Unisex</div>
+          </button>
+          <button class="cat animate-on-scroll" data-filter="gift">
+            <div class="cat__icon cat__icon--gift"></div>
+            <div class="cat__label" data-i18n="cat_gift">Gift Sets</div>
+          </button>
+          <button class="cat animate-on-scroll" data-filter="home">
+            <div class="cat__icon cat__icon--home"></div>
+            <div class="cat__label" data-i18n="cat_home">Home Fragrance</div>
+          </button>
+          <button class="cat animate-on-scroll" data-filter="travel">
+            <div class="cat__icon cat__icon--travel"></div>
+            <div class="cat__label" data-i18n="cat_travel">Travel Size</div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products: Best Sellers -->
+    <section class="section" id="best">
+      <div class="container">
+        <div class="section__head section__headRow animate-on-scroll">
+          <div>
+            <h2 data-i18n="sec_best_title">Best sellers</h2>
+            <p class="muted" data-i18n="sec_best_desc">Top-rated picks customers love.</p>
+          </div>
+          <div class="tools">
+            <select id="sortSelect" class="select" aria-label="Sort products">
+              <option value="featured">Sort: Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating-desc">Rating: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid" id="productGrid">
+          <!-- JS renders cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Products: New Arrivals -->
+    <section class="section" id="new">
+      <div class="container">
+        <div class="section__head animate-on-scroll">
+          <h2 data-i18n="nav_new">New Arrivals</h2>
+          <p class="muted" data-i18n="sec_new_desc">Freshly curated scents, just for you.</p>
+        </div>
+        <div class="grid">
+          <!-- Placeholder for new products. This is a temporary visual. -->
+          <article class="card animate-on-scroll">
+            <a href="#" class="card__link">
+              <div class="card__img">
+                <span class="card__tag">New</span>
+                <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/logo.jpeg" alt="Coming Soon" loading="lazy" width="200" height="200">
+              </div>
+              <div class="card__body">
+                <div class="card__brand">IPORDISE</div>
+                <h3 class="card__name">Coming Soon...</h3>
+                <div class="card__meta">
+                  <span class="stars" aria-label="Not rated yet">☆☆☆☆☆</span>
+                  <span class="muted small">(0)</span>
+                </div>
+              </div>
+            </a>
+            <div class="card__actions">
+              <div class="card__price">-- MAD</div>
+              <button class="btn btn--small btn--primary" disabled>+ Add</button>
+            </div>
+          </article>
+          <article class="card animate-on-scroll">
+            <a href="#" class="card__link">
+              <div class="card__img">
+                <span class="card__tag">New</span>
+                <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/logo.jpeg" alt="Coming Soon" loading="lazy" width="200" height="200">
+              </div>
+              <div class="card__body">
+                <div class="card__brand">IPORDISE</div>
+                <h3 class="card__name">Coming Soon...</h3>
+                <div class="card__meta">
+                  <span class="stars" aria-label="Not rated yet">☆☆☆☆☆</span>
+                  <span class="muted small">(0)</span>
+                </div>
+              </div>
+            </a>
+            <div class="card__actions">
+              <div class="card__price">-- MAD</div>
+              <button class="btn btn--small btn--primary" disabled>+ Add</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promo / Discover -->
+    <section class="section section--soft" id="deals">
+      <div class="container">
+        <div class="split">
+          <div class="split__box animate-on-scroll">
+            <div class="kicker" data-i18n="sec_deals_kicker">More to discover</div>
+            <h3 data-i18n="sec_deals_title">Fragrance deals for you</h3>
+            <p class="muted">
+              Save on selected fragrances. Limited offers updated weekly.
+            </p>
+            <a class="btn btn--primary" href="#best" data-i18n="sec_deals_cta">Shop deals</a>
+          </div>
+
+          <div class="split__box split__box--img animate-on-scroll" aria-hidden="true">
+            <div class="promoBottles">
+              <div class="promoBottle p1"></div>
+              <div class="promoBottle p2"></div>
+              <div class="promoBottle p3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brands -->
+    <section class="section" id="brands">
+      <div class="container">
+        <div class="section__head animate-on-scroll">
+          <h2 data-i18n="sec_brands_title">Featured Brands</h2>
+          <p class="muted" data-i18n="sec_brands_desc">A clean brand row that looks premium on mobile.</p>
+        </div>
+
+        <div class="brands">
+          <div class="brandChip animate-on-scroll">ARIANA GRANDE</div>
+          <div class="brandChip animate-on-scroll">ARMANI</div>
+          <div class="brandChip animate-on-scroll">BILLIE EILISH</div>
+          <div class="brandChip animate-on-scroll">BURBERRY</div>
+          <div class="brandChip animate-on-scroll">DIOR</div>
+          <div class="brandChip animate-on-scroll">VALENTINO</div>
+          <div class="brandChip animate-on-scroll">YSL</div>
+          <div class="brandChip animate-on-scroll">TOM FORD</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Fragrance Finder -->
+    <section class="section section--soft" id="finder">
+      <div class="container">
+        <div class="section__head animate-on-scroll">
+          <h2 data-i18n="sec_finder_title">Fragrance Finder</h2>
+          <p class="muted"><span data-i18n="sec_finder_desc">Answer 3 quick questions and we’ll suggest scents that match your vibe.</span></p>
+        </div>
+
+        <div class="finder animate-on-scroll">
+          <div class="finder__q">
+            <div class="finder__label" data-i18n="finder_q1">Who are you shopping for?</div>
+            <div class="finder__choices" role="group" aria-label="Audience">
+              <button class="chip" type="button" data-finder="audience" data-value="women" data-i18n="cat_women" data-i18n="cat_women">Women's Fragrances</button>
+              <button class="chip" type="button" data-finder="audience" data-value="men" data-i18n="cat_men" data-i18n="cat_men">Men's Fragrances</button>
+              <button class="chip" type="button" data-finder="audience" data-value="unisex" data-i18n="cat_unisex" data-i18n="cat_unisex">Unisex Fragrances</button>
+            </div>
+          </div>
+
+          <div class="finder__q">
+            <div class="finder__label" data-i18n="finder_q2">Pick your mood</div>
+            <div class="finder__choices" role="group" aria-label="Mood">
+              <button class="chip" type="button" data-finder="mood" data-value="fresh" data-i18n="finder_mood_fresh">Fresh</button>
+              <button class="chip" type="button" data-finder="mood" data-value="sweet" data-i18n="finder_mood_sweet">Sweet</button>
+              <button class="chip" type="button" data-finder="mood" data-value="woody" data-i18n="finder_mood_woody">Woody</button>
+              <button class="chip" type="button" data-finder="mood" data-value="oriental" data-i18n="finder_mood_oriental">Oriental</button>
+            </div>
+          </div>
+
+          <div class="finder__q">
+            <div class="finder__label" data-i18n="finder_q3">How strong do you want it?</div>
+            <div class="finder__choices" role="group" aria-label="Intensity">
+              <button class="chip" type="button" data-finder="intensity" data-value="light" data-i18n="finder_int_light">Light</button>
+              <button class="chip" type="button" data-finder="intensity" data-value="medium" data-i18n="finder_int_medium">Medium</button>
+              <button class="chip" type="button" data-finder="intensity" data-value="strong" data-i18n="finder_int_strong">Strong</button>
+            </div>
+          </div>
+
+          <div class="finder__result" id="finderResult" aria-live="polite">
+            <div class="finder__hint" data-i18n="finder_hint">Choose options above to see suggestions.</div>
+          </div>
+
+          <div class="finder__cta">
+            <a class="btn btn--primary" href="#best" data-i18n="finder_cta">Browse best sellers</a>
+            <a class="btn btn--ghost" id="finderWhatsApp" href="https://wa.me/212663750210" target="_blank" rel="noopener" data-i18n="finder_wa">Ask on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section__head animate-on-scroll">
+          <h2 data-i18n="sec_reviews_title">Customer Reviews</h2>
+          <p class="muted"><span data-i18n="sec_reviews_desc">Sample reviews for layout preview — replace with real customer feedback when you have it.</span></p>
+        </div>
+
+        <div class="reviews">
+          <article class="review animate-on-scroll">
+            <div class="review__stars" aria-label="5 stars">★★★★★</div>
+            <div class="review__text" data-i18n="review_1">Fast delivery and the scent lasts all day. I’ll order again!</div>
+            <div class="review__meta"><span class="review__name">Sara</span> • Casablanca</div>
+            <span class="review__badge" data-i18n="review_sample">Sample</span>
+          </article>
+
+          <article class="review animate-on-scroll">
+            <div class="review__stars" aria-label="5 stars">★★★★★</div>
+            <div class="review__text" data-i18n="review_2">Great packaging and helpful WhatsApp support. Very professional.</div>
+            <div class="review__meta"><span class="review__name">Youssef</span> • Rabat</div>
+            <span class="review__badge" data-i18n="review_sample">Sample</span>
+          </article>
+
+          <article class="review animate-on-scroll">
+            <div class="review__stars" aria-label="5 stars">★★★★★</div>
+            <div class="review__text" data-i18n="review_3">Loved the recommendations — the perfume matches my style perfectly.</div>
+            <div class="review__meta"><span class="review__name">Khadija</span> • Marrakech</div>
+            <span class="review__badge" data-i18n="review_sample">Sample</span>
+          </article>
+        </div>
+      </div>
+    </section>
+<section class="section section--soft" id="contact">
+      <div class="container">
+        <div class="contact animate-on-scroll">
+          <div class="contact__left">
+            <h2 data-i18n="sec_contact_title">Contact IPORDISE PARFUM</h2>
+            <p class="muted" data-i18n="sec_contact_desc">
+              Need help choosing a fragrance? Tell us your favorite notes (vanilla, musk, fresh, floral…)
+              and we’ll recommend the perfect match.
+            </p>
+            <div class="contact__methods">
+              <a href="tel:+212663750210" class="glass-contact-card">
+                <div class="glass-contact-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div class="glass-contact-card__text">
+                  <span class="glass-contact-card__label" data-i18n="contact_phone_label">Phone / WhatsApp</span>
+                  <span class="glass-contact-card__value">0663-750210</span>
+                </div>
+              </a>
+              <a href="mailto:Ipordise@gmail.com" class="glass-contact-card">
+                <div class="glass-contact-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="glass-contact-card__text">
+                  <span class="glass-contact-card__label" data-i18n="contact_email_label">Email</span>
+                  <span class="glass-contact-card__value">Ipordise@gmail.com</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact__form" id="contactForm">
+            <label>
+              Name
+              <input type="text" name="name" placeholder="Your name" data-i18n-placeholder="form_name_ph" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="4" placeholder="What kind of fragrance are you looking for?" data-i18n-placeholder="form_message_ph" required></textarea>
+            </label>
+            <button class="btn btn--primary" type="submit" data-i18n="form_send">Send message</button>
+            <div class="formNote muted" id="formNote"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <a href="#" class="footer-logo">
+            <img class="footer-logo__img" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/logo.jpeg" alt="IPORDISE PARFUM Logo" width="40" height="40">
+            <span class="footer-logo__name">IPORDISE PARFUM</span>
+          </a>
+        </div>
+
+        <div class="footer__cols">
+          <div class="footer__col">
+            <div class="footer__title" data-i18n="footer_shop">Shop</div>
+            <a href="#categories">Categories</a>
+            <a href="#best" data-i18n="sec_best_title">Best sellers</a>
+            <a href="#deals" data-i18n="nav_deals">Deals</a>
+          </div>
+          <div class="footer__col">
+            <div class="footer__title" data-i18n="footer_support">Support</div>
+            <a href="https://wa.me/212663750210" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="mailto:Ipordise@gmail.com">Email</a>
+          </div>
+          
+          <div class="footer__col">
+            <div class="footer__title" data-i18n="footer_legal">Legal</div>
+            <a href="#" class="footer__link" data-open-policy="terms" data-i18n="pol_terms">Terms of Use</a>
+            <a href="#" class="footer__link" data-open-policy="privacy" data-i18n="pol_privacy">Privacy Policy</a>
+            <a href="#" class="footer__link" data-open-policy="shipping" data-i18n="pol_shipping">Shipping & Delivery</a>
+            <a href="#" class="footer__link" data-open-policy="returns" data-i18n="pol_returns">Returns & Refunds</a>
+            <a href="#" class="footer__link" data-open-policy="cookies" data-i18n="pol_cookies">Cookies</a>
+            <span class="muted small">© <span id="year"></span> IPORDISE PARFUM</span>
+            <span class="muted small" data-i18n="footer_rights">All rights reserved.</span>
+          </div>
+</div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Cart Drawer -->
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer__overlay" data-close-drawer></div>
+    <div class="drawer__panel drawer__panel--cart" role="dialog" aria-modal="true" aria-label="Cart">
+      <div class="drawer__header">
+        <div class="drawer__title">Your bag</div>
+        <button class="icon-btn" data-close-drawer aria-label="Close cart">
+          <span class="icon icon--close" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="drawer__content cart">
+        <div class="cart__items" id="cartItems"></div>
+
+        <div class="cart__summary">
+          <div class="row">
+            <span class="muted" data-i18n="cart_subtotal">Subtotal</span>
+            <strong id="cartSubtotal">0 MAD</strong>
+          </div>
+          <div class="row">
+            <span class="muted" data-i18n="cart_delivery">Delivery</span>
+            <span class="muted" data-i18n="cart_delivery_info">Calculated on WhatsApp</span>
+          </div>
+
+          <button class="btn btn--primary btn--full" id="btnCheckout">
+            Checkout on WhatsApp
+          </button>
+          <button class="btn btn--ghost btn--full" id="btnClearCart">
+            Clear cart
+          </button>
+          <p class="muted small">Checkout opens WhatsApp with your order details.</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Checkout Modal -->
+  <div class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <div class="modal__head">
+        <div class="modal__title" id="checkoutTitle" data-i18n="checkout_title">Shipping Information</div>
+        <button class="icon-btn" data-close-modal aria-label="Close">
+          <span class="icon icon--close" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal__body">
+        <form id="checkoutForm">
+          <p class="muted" style="margin-bottom: 14px;" data-i18n="checkout_desc">Please fill in your details. Your order will be confirmed on WhatsApp.</p>
+          <div class="checkout-form__fields">
+            <label>
+              <span data-i18n="form_name">Name</span>
+              <input type="text" name="name" data-i18n-placeholder="checkout_name_ph" placeholder="Your full name" required />
+            </label>
+            <label>
+              <span data-i18n="checkout_phone_label">Phone Number</span>
+              <input type="tel" name="phone" data-i18n-placeholder="checkout_phone_ph" placeholder="e.g., 0612345678" required />
+            </label>
+            <label>
+              <span data-i18n="checkout_city">City</span>
+              <input type="text" name="city" data-i18n-placeholder="checkout_city_ph" placeholder="e.g., Casablanca" required />
+            </label>
+            <label>
+              <span data-i18n="checkout_address">Address</span>
+              <textarea name="address" rows="3" data-i18n-placeholder="checkout_address_ph" placeholder="Your full address for delivery" required></textarea>
+            </label>
+          </div>
+          <div class="cart__summary" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line);">
+             <div class="row">
+                <span class="muted" data-i18n="cart_subtotal">Subtotal</span>
+                <strong id="checkoutSubtotal">0 MAD</strong>
+              </div>
+            <button class="btn btn--primary btn--full" id="btnConfirmCheckout" type="submit" data-i18n="checkout_confirm">
+              Confirm Order on WhatsApp
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Policies / Legal Modal -->
+  <div class="modal" id="policyModal" aria-hidden="true">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
+      <div class="modal__head">
+        <div class="modal__title" id="policyTitle">Policy</div>
+        <button class="icon-btn" data-close-modal aria-label="Close">
+          <span class="icon icon--close" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal__body" id="policyBody">
+        <!-- JS injects content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation (Android / iOS / iPad only) -->
+  <nav class="bottomNav" id="bottomNav" aria-label="Mobile navigation">
+    <button class="bottomNav__btn" type="button" data-bottom="home" aria-label="Home">
+      <span class="bottomNav__ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span>
+      <span class="bottomNav__txt" data-i18n="bn_home">Home</span>
+    </button>
+    <button class="bottomNav__btn" type="button" data-bottom="categories" aria-label="Categories">
+      <span class="bottomNav__ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></span>
+      <span class="bottomNav__txt" data-i18n="bn_categories">Categories</span>
+    </button>
+    <button class="bottomNav__btn" type="button" data-bottom="search" aria-label="Search">
+      <span class="bottomNav__ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+      <span class="bottomNav__txt" data-i18n="bn_search">Search</span>
+    </button>
+    <button class="bottomNav__btn" type="button" data-bottom="cart" aria-label="Cart">
+      <span class="bottomNav__ico">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      </span>
+      <span class="bottomNav__txt" data-i18n="bn_cart">Cart</span>
+    </button>
+    <a class="bottomNav__btn bottomNav__btn--wa" href="https://wa.me/212663750210" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <span class="bottomNav__ico">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" /></svg>
+      </span>
+      <span class="bottomNav__txt" data-i18n="bn_whatsapp">WhatsApp</span>
+    </a>
+  </nav>
+
+  <!-- Chatbot (UI only, no backend) -->
+  <div class="chatbot" id="chatbot" aria-hidden="true">
+    <div class="chatbot__attention" id="chatbotAttention" role="tooltip" aria-hidden="true">
+      <span id="chatbotAttentionText"></span>
+      <button class="chatbot__attention-close" id="chatbotAttentionClose" aria-label="Dismiss">×</button>
+    </div>
+
+    <button class="chatbot__fab" id="chatbotFab" aria-label="Open chat">
+      <span class="chatbot__badge" id="chatbotBadge" aria-hidden="true">1</span>
+      <svg class="icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+
+    <div class="chatbot__panel" role="dialog" aria-modal="false" aria-label="Chat assistant">
+      <div class="chatbot__head">
+        <div>
+          <div class="chatbot__title" data-i18n="chat_title">Ipordise Assistant</div>
+          <div class="chatbot__sub" data-i18n="chat_sub">Quick help to choose a scent.</div>
+        </div>
+        <button class="icon-btn" id="chatbotClose" aria-label="Close chat">
+          <span class="icon icon--close" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="chatbot__msgs" id="chatbotMsgs" aria-live="polite"></div>
+
+      <div class="chatbot__quick" id="chatbotQuick">
+        <button class="chip chip--small" type="button" data-quick="recommend" data-i18n="chat_quick_reco">Recommend for me</button>
+        <button class="chip chip--small" type="button" data-quick="best" data-i18n="chat_quick_best" data-i18n="sec_best_title">Best sellers</button>
+        <button class="chip chip--small" type="button" data-quick="delivery" data-i18n="chat_quick_delivery">Delivery</button>
+        <button class="chip chip--small" type="button" data-quick="whatsapp" data-i18n="chat_quick_whatsapp">WhatsApp order</button>
+      </div>
+
+      <form class="chatbot__form" id="chatbotForm">
+        <input class="chatbot__input" id="chatbotInput" type="text" autocomplete="off" data-i18n-placeholder="chat_ph" placeholder="Type a message…" aria-label="Type a message" />
+        <button class="chatbot__send" type="submit" aria-label="Send">
+          ➤
+        </button>
+      </form>
+      <div class="chatbot__note" data-i18n="chat_note">Tip: write notes you like (vanilla, musk, fresh…). For real orders, use WhatsApp.</div>
+    </div>
+  </div>
+<a class="wa-float" href="https://wa.me/212663750210" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <span class="wa-float__icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" /></svg>
+    </span>
+    <span class="wa-float__text">WhatsApp</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

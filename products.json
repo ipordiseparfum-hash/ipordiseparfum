@@ -1,0 +1,134 @@
+[
+  {
+    "id": "p1",
+    "brand": "Oriental Bliss",
+    "name": "Rose Garden",
+    "category": "women",
+    "price": 450,
+    "rating": 4.8,
+    "reviews": 150,
+    "tag": "Best Seller",
+    "notes": ["rose", "jasmine", "vanilla"]
+  },
+  {
+    "id": "p2",
+    "brand": "Atlas Scents",
+    "name": "Cedar Musk",
+    "category": "men",
+    "price": 500,
+    "rating": 4.7,
+    "reviews": 100,
+    "tag": "Popular",
+    "notes": ["cedar", "musk", "amber"]
+  },
+  {
+    "id": "p3",
+    "brand": "Moroccan Essence",
+    "name": "Lemon Zest",
+    "category": "unisex",
+    "price": 350,
+    "rating": 4.5,
+    "reviews": 80,
+    "tag": "Refreshing",
+    "notes": ["lemon", "lime", "mint"]
+  },
+  {
+    "id": "p4",
+    "brand": "Zahra Perfumes",
+    "name": "Perfume Duo Gift Set",
+    "category": "gift",
+    "price": 600,
+    "rating": 4.9,
+    "reviews": 60,
+    "tag": "Gift Idea",
+    "notes": ["floral", "woody"]
+  },
+  {
+    "id": "p5",
+    "brand": "Travel Luxe",
+    "name": "Mini Perfume Spray",
+    "category": "travel",
+    "price": 250,
+    "rating": 4.4,
+    "reviews": 40,
+    "tag": "Compact",
+    "notes": ["floral", "citrus"]
+  },
+  {
+    "id": "p6",
+    "brand": "Home Harmony",
+    "name": "Lavender Room Spray",
+    "category": "home",
+    "price": 300,
+    "rating": 4.6,
+    "reviews": 90,
+    "tag": "Relaxing",
+    "notes": ["lavender", "chamomile"]
+  },
+  {
+    "id": "p7",
+    "brand": "Oriental Bliss",
+    "name": "Orange Blossom",
+    "category": "women",
+    "price": 420,
+    "rating": 4.7,
+    "reviews": 130,
+    "tag": "Exotic",
+    "notes": ["orange blossom", "neroli", "patchouli"]
+  },
+  {
+    "id": "p8",
+    "brand": "Atlas Scents",
+    "name": "Sandalwood Spice",
+    "category": "men",
+    "price": 480,
+    "rating": 4.6,
+    "reviews": 110,
+    "tag": "Bold",
+    "notes": ["sandalwood", "cinnamon", "vetiver"]
+  },
+  {
+    "id": "p9",
+    "brand": "Moroccan Essence",
+    "name": "Argan Blossom",
+    "category": "unisex",
+    "price": 380,
+    "rating": 4.8,
+    "reviews": 95,
+    "tag": "Natural",
+    "notes": ["argan", "rose", "honey"]
+  },
+  {
+    "id": "p10",
+    "brand": "Zahra Perfumes",
+    "name": "Family Gift Pack",
+    "category": "gift",
+    "price": 550,
+    "rating": 4.9,
+    "reviews": 70,
+    "tag": "Family Favorite",
+    "notes": ["mixed scents"]
+  },
+  {
+    "id": "p11",
+    "brand": "Travel Luxe",
+    "name": "Pocket Perfume",
+    "category": "travel",
+    "price": 220,
+    "rating": 4.3,
+    "reviews": 50,
+    "tag": "On-the-Go",
+    "notes": ["fresh", "light"]
+  },
+  {
+    "id": "p12",
+    "brand": "Home Harmony",
+    "name": "Jasmine Diffuser Oil",
+    "category": "home",
+    "price": 320,
+    "rating": 4.7,
+    "reviews": 85,
+    "tag": "Aromatic",
+    "notes": ["jasmine", "ylang-ylang"]
+  }
+]
