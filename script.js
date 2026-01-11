@@ -132,7 +132,13 @@ const I18N = {
     cart_delivery: "Delivery",
     cart_delivery_info: "Calculated on WhatsApp",
     translate_unavailable: "Translation not available; showing English.",
-    choose_size: "Choose size"
+    choose_size: "Choose size",
+    flash_text: "Shop now before the offer ends",
+    toast_title: "Flash deal 🎁",
+    toast_meta: "Shop now before the offer ends",
+    toast_cta: "Shop deals",
+    toast_alt: "Best sellers",
+    back_home: "Back to home"
   },
 
   fr: {
@@ -258,7 +264,13 @@ const I18N = {
     cart_delivery: "Livraison",
     cart_delivery_info: "Calculé sur WhatsApp",
     translate_unavailable: "Traduction non disponible; affichage en anglais.",
-    choose_size: "Choisir la taille"
+    choose_size: "Choisir la taille",
+    flash_text: "Achetez maintenant avant la fin de l’offre",
+    toast_title: "Offre flash 🎁",
+    toast_meta: "Achetez maintenant قبل انتهاء العرض",
+    toast_cta: "Voir les promos",
+    toast_alt: "Meilleures ventes",
+    back_home: "Retour à l'accueil"
   },
 
   ar: {
@@ -384,7 +396,13 @@ const I18N = {
     cart_delivery: "التوصيل",
     cart_delivery_info: "يُحسب عند تأكيد الطلب",
     translate_unavailable: "الترجمة غير متوفرة؛ يتم العرض بالإنجليزية.",
-    choose_size: "اختيار الحجم"
+    choose_size: "اختيار الحجم",
+    flash_text: "تسوق الآن قبل ما يسالي العرض",
+    toast_title: "عرض سريع 🎁",
+    toast_meta: "تسوق الآن قبل ما يسالي العرض",
+    toast_cta: "تسوق العروض",
+    toast_alt: "الأكثر مبيعاً",
+    back_home: "الرجوع للرئيسية"
   }
 };
 
@@ -394,6 +412,21 @@ let currentLang = DEFAULT_LANG; window.currentLang = currentLang;
 function t(key){
   const dict = I18N[currentLang] || I18N.en;
   return (dict && dict[key] != null) ? dict[key] : (I18N.en[key] ?? key);
+}
+
+
+function preloadHeroImages(){
+  const heroImage = document.getElementById("heroImage");
+  if (!heroImage) return;
+  const urls = [
+    heroImage.dataset.srcEn,
+    heroImage.dataset.srcFr,
+    heroImage.dataset.srcAr
+  ].filter(Boolean);
+  urls.forEach(u=>{
+    const img = new Image();
+    img.src = u;
+  });
 }
 
 function applyI18n(lang){
@@ -406,6 +439,29 @@ function applyI18n(lang){
 
   const label = document.getElementById("langLabel");
   if (label) label.textContent = currentLang.toUpperCase();
+
+  // Update hero image based on language
+  const heroImage = document.getElementById('heroImage');
+  if (heroImage) {
+    const srcKey =
+      (currentLang === "fr") ? "srcFr" :
+      (currentLang === "ar") ? "srcAr" :
+      "srcEn";
+    const newSrc = heroImage.dataset[srcKey] || heroImage.dataset.srcEn;
+    if (heroImage.src !== newSrc) {
+      // Preload the new image to ensure it's cached before transition
+      const tempImg = new Image();
+      tempImg.onload = () => {
+        // Start fade-out, then swap image and fade-in
+        heroImage.style.opacity = 0;
+        setTimeout(() => {
+          heroImage.src = newSrc;
+          heroImage.style.opacity = 1;
+        }, 300); // Must match CSS transition duration
+      };
+      tempImg.src = newSrc;
+    }
+  }
 
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
@@ -471,6 +527,21 @@ function isMobileOS(){
   return false;
 }
 
+function getProductPrice(p, variantSize = null) {
+  if (!p) return 0;
+  if (p.price != null && !variantSize) return p.price;
+  if (!p.variants || p.variants.length === 0) return p.price || 0;
+
+  let variant;
+  if (variantSize) {
+    variant = p.variants.find(v => v.size === variantSize);
+  }
+  // Default to the first variant if no size is given or if the size is not found
+  if (!variant) variant = p.variants[0];
+
+  return variant ? (variant.price || 0) : 0;
+}
+
 // ---------- Products ----------
 let PRODUCTS = [];
 
@@ -481,7 +552,7 @@ async function loadProducts(){
     const data = await res.json();
     if (Array.isArray(data)) PRODUCTS = data;
   }catch(e){
-    // fallback
+    // Fallback if products.json fails
     PRODUCTS = [
       { id:"p1", brand:"IPORDISE", name:"Vanilla Bloom Eau de Parfum", category:"women", price:299, rating:4.7, reviews:1852, tag:"Best Seller", notes:["vanilla","amber","sweet"] }
     ];
@@ -717,8 +788,8 @@ function getFilteredProducts(){
   }
 
   // sort
-  if (state.sort === "price_asc") items.sort((a,b)=>(a.price||0)-(b.price||0));
-  if (state.sort === "price_desc") items.sort((a,b)=>(b.price||0)-(a.price||0));
+  if (state.sort === "price_asc") items.sort((a,b)=>getProductPrice(a)-getProductPrice(b));
+  if (state.sort === "price_desc") items.sort((a,b)=>getProductPrice(b)-getProductPrice(a));
   if (state.sort === "rating") items.sort((a,b)=>(b.rating||0)-(a.rating||0));
   // featured: keep original order
 
@@ -747,8 +818,7 @@ function productCard(p){
         </div>
       </a>
       <div class="card__actions">
-        ${ (p.variants && p.variants.length) ? `<select class="variantSelect" data-id="${escapeHtml(p.id)}">${p.variants.map(v=>`<option value="${escapeHtml(v.size||'')}">${escapeHtml(v.size||'')}</option>`).join('')}</select>` : ''}
-        ${ (p.price != null) ? `<div class="card__price">${formatMoney(p.price)}</div>` : `<div class="card__price muted small">Choose size</div>` }
+        <div class="card__price">${formatMoney(getProductPrice(p))}</div>
         <button class="btn btn--small btn--primary" data-add="${escapeHtml(p.id)}">+ Add</button>
       </div>
     </article>
@@ -772,8 +842,8 @@ function renderProducts(){
       const id = btn.getAttribute("data-add");
       const p = PRODUCTS.find(x=>x.id===id);
       if (!p) return;
-      const sel = elGrid.querySelector(`.variantSelect[data-id="${id}"]`);
-      const variant = sel ? sel.value : null;
+      // Add the first variant by default if variants exist, simplifying the card UI
+      const variant = (p.variants && p.variants.length > 0) ? p.variants[0].size : null;
       addToCart(p, variant);
       openDrawer(cartDrawer);
     });
@@ -810,7 +880,8 @@ function changeQty(key, delta){
 function cartTotal(){
   return state.cart.reduce((sum,i)=>{
     const p = PRODUCTS.find(x=>x.id===i.id);
-    return sum + (p ? (p.price||0)*i.qty : 0);
+    const price = getProductPrice(p, i.variant);
+    return sum + (price * i.qty);
   },0);
 }
 function updateCartUI(){
@@ -834,8 +905,8 @@ function updateCartUI(){
 
   cartItems.innerHTML = state.cart.map(i=>{
     const p = PRODUCTS.find(x=>x.id===i.id) || {};
-    const unit = p.price != null ? formatMoney(p.price) : '';
-    const lineTotal = formatMoney((p.price||0) * i.qty);
+    const price = getProductPrice(p, i.variant);
+    const lineTotal = formatMoney(price * i.qty);
 
     return `
       <div class="cartItem" data-key="${escapeHtml(i.key)}">
@@ -861,7 +932,7 @@ function updateCartUI(){
         </div>
 
         <div class="cartItem__price">
-          <div class="cartItem__unit muted small">${unit}</div>
+          <div class="cartItem__unit muted small">${formatMoney(price)}</div>
           <div class="cartItem__total">${lineTotal}</div>
         </div>
       </div>
@@ -924,7 +995,7 @@ checkoutForm?.addEventListener("submit", (e) => {
     const lines = state.cart.map(i=>{
       const p = PRODUCTS.find(x=>x.id===i.id);
       const name = p ? p.name : i.id;
-      const price = p ? p.price : 0;
+      const price = getProductPrice(p, i.variant);
       const variant = i.variant ? ` (${i.variant})` : '';
       return `• ${name}${variant} x${i.qty} — ${formatMoney(price * i.qty)}`;
     }).join("\n");
@@ -968,7 +1039,7 @@ btnConfirmEmail?.addEventListener('click', ()=>{
   const lines = state.cart.map(i=>{
     const p = PRODUCTS.find(x=>x.id===i.id);
     const name = p ? p.name : i.id;
-    const price = p ? p.price : 0;
+    const price = getProductPrice(p, i.variant);
     const variant = i.variant ? ` (${i.variant})` : '';
     return `- ${name}${variant} x${i.qty} — ${formatMoney(price * i.qty)}`;
   }).join("\n");
@@ -1025,7 +1096,7 @@ document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") closeLangMenu();
 document.querySelectorAll(".langOption").forEach(btn=>{
   btn.addEventListener("click", ()=>{
     applyI18n(btn.dataset.setLang || "en");
-    closeLangMenu();
+closeLangMenu();
   });
 });
 
@@ -1176,7 +1247,7 @@ function renderFinder(){
       ${items.map(p=>`
         <div class="miniCard">
           <div><strong>${escapeHtml(p.name||"")}</strong> <span class="muted small">• ${escapeHtml(p.brand||"")}</span></div>
-          <div class="muted small">${p.price != null ? formatMoney(p.price) + ' • ' : ''}${(p.rating||4.5).toFixed(1)}★</div>
+          <div class="muted small">${formatMoney(getProductPrice(p))} • ${(p.rating||4.5).toFixed(1)}★</div>
         </div>
       `).join("")}
     </div>
@@ -1193,150 +1264,10 @@ function renderFinder(){
 }
 
 // ---------- Promo banner JS ----------
-function initPromoBanner(){
-  try{
-    const timerEl = document.getElementById('promoTimer');
-    const badgeEl = document.getElementById('promoBadge');
-    if (!timerEl) return;
-
-    // start at 2:15:34
-    let remaining = 2*3600 + 15*60 + 34;
-    function tick(){
-      if (remaining <= 0){
-        timerEl.textContent = '00:00:00';
-        if (badgeEl) badgeEl.textContent = 'Offer ended';
-        return;
-      }
-      const h = String(Math.floor(remaining/3600)).padStart(2,'0');
-      const m = String(Math.floor((remaining%3600)/60)).padStart(2,'0');
-      const s = String(remaining%60).padStart(2,'0');
-      timerEl.textContent = `${h}:${m}:${s}`;
-      remaining--;
-    }
-    tick();
-    setInterval(tick, 1000);
-
-    // options
-    // Use data-product on buttons for direct mapping and support smooth swap animations
-    function getProductById(id){ return (window.PRODUCTS || []).find(x=>x.id === id) || null; }
-
-    // promo image preload cache
-    const _promoImageCache = {};
-    function preloadImage(src){
-      return new Promise((resolve)=>{
-        if (!src) return resolve(false);
-        if (_promoImageCache[src] === true) return resolve(true);
-        if (_promoImageCache[src] instanceof Promise) return _promoImageCache[src].then(()=>resolve(true)).catch(()=>resolve(false));
-
-        const p = new Promise((res)=>{
-          const img = new Image();
-          img.onload = ()=>{ _promoImageCache[src] = true; res(true); };
-          img.onerror = ()=>{ _promoImageCache[src] = false; res(false); };
-          img.src = src;
-        });
-        _promoImageCache[src] = p;
-        p.then(()=>resolve(true)).catch(()=>resolve(false));
-      });
-    }
-
-    function animateSwap(el, updateFn){
-      if (!el) { updateFn(); return; }
-      el.classList.add('fade-out','slide-out');
-      setTimeout(()=>{
-        updateFn();
-        el.classList.remove('fade-out','slide-out');
-        el.classList.add('fade-in','slide-in');
-        setTimeout(()=> el.classList.remove('fade-in','slide-in'), 420);
-      }, 220);
-    }
-
-    function updatePromoDisplayByProductId(pid){
-      const prod = getProductById(pid) || {};
-      const img = prod.image || document.getElementById('promoPreviewImg')?.src;
-      const bottleBackSrc = prod.backImage || document.getElementById('promoBottleBack')?.src;
-      const name = prod.name || pid;
-      const lang = window.currentLang || 'en';
-      const desc = (lang === 'fr' && prod.description_fr) ? prod.description_fr.split('\n')[0] : (lang === 'ar' && prod.description_ar) ? prod.description_ar.split('\n')[0] : (prod.description || '').split('\n')[0] || '';
-
-      const previewImg = document.getElementById('promoPreviewImg');
-      const previewName = document.getElementById('promoPreviewName');
-      const previewDesc = document.getElementById('promoPreviewDesc');
-      const bottleFront = document.getElementById('promoBottleFront');
-      const bottleBack = document.getElementById('promoBottleBack');
-
-      // preload images then animate swap
-      Promise.all([preloadImage(img), preloadImage(bottleBackSrc)]).then(()=> {
-        if (previewImg){
-          animateSwap(previewImg, ()=> { previewImg.src = img; previewImg.removeAttribute('aria-hidden'); });
-        }
-        if (previewName){ animateSwap(previewName, ()=> previewName.textContent = name); }
-        if (previewDesc){ animateSwap(previewDesc, ()=> previewDesc.textContent = desc); }
-
-        if (bottleFront){
-          bottleFront.classList.add('swap-out');
-          setTimeout(()=>{
-            bottleFront.src = img;
-            bottleFront.classList.remove('swap-out');
-            bottleFront.classList.add('swap-in');
-            setTimeout(()=> bottleFront.classList.remove('swap-in'), 460);
-          }, 220);
-        }
-        if (bottleBack){
-          bottleBack.classList.add('swap-out');
-          setTimeout(()=>{
-            bottleBack.src = bottleBackSrc;
-            bottleBack.classList.remove('swap-out');
-            bottleBack.classList.add('swap-in');
-            setTimeout(()=> bottleBack.classList.remove('swap-in'), 460);
-          }, 220);
-        }
-
-        // announce to screen readers
-        const live = document.getElementById('promoPreviewName');
-        if (live) live.setAttribute('aria-live', 'polite');
-      });
-    }
-
-    // Buttons binding with keyboard support
-    const optionBtns = Array.from(document.querySelectorAll('.promo-option'));
-    optionBtns.forEach((btn, idx)=>{
-      const pid = btn.dataset.product;
-      const p = getProductById(pid);
-      if (p){ if (p.image) preloadImage(p.image); if (p.backImage) preloadImage(p.backImage); }
-
-      btn.addEventListener('click', ()=>{
-        optionBtns.forEach(b=>{ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
-        btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
-        if (pid) updatePromoDisplayByProductId(pid);
-      });
-
-      btn.addEventListener('keydown', (e)=>{
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown'){
-          const next = optionBtns[(idx+1) % optionBtns.length]; next.focus(); e.preventDefault();
-        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
-          const prev = optionBtns[(idx-1 + optionBtns.length) % optionBtns.length]; prev.focus(); e.preventDefault();
-        } else if (e.key === 'Enter' || e.key === ' '){ btn.click(); e.preventDefault(); }
-      });
-    });
-
-    // initialize with first option (respect data-product)
-    const first = document.querySelector('.promo-option.active') || document.querySelector('.promo-option');
-    if (first){ first.classList.add('active'); first.setAttribute('aria-pressed','true'); const pid = first.dataset.product; if (pid) updatePromoDisplayByProductId(pid); }
-
-    document.querySelectorAll('.promo-shop-btn').forEach(b=> b.addEventListener('click', (e)=>{ e.preventDefault(); document.getElementById('deals')?.scrollIntoView({behavior:'smooth'}); }));
-
-    document.getElementById('promoWhatsApp')?.addEventListener('click', (e)=>{
-      e.preventDefault();
-      const selected = document.querySelector('.promo-option.active');
-      const selText = selected ? selected.getAttribute('data-key') : '';
-      const base = (currentLang === 'ar' ? 'مرحباً، أنا مهتم بهذا العرض:' : (currentLang === 'fr' ? 'Bonjour, je suis intéressé par cette offre :' : "Hello, I'm interested in this offer:"));
-      const message = selText ? `${base} ${selText}` : base;
-      const url = `https://wa.me/${WHATSAPP_PHONE_INTL}?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
-    });
-
-  }catch(e){ console.warn('promo init failed', e); }
-}
+/* 
+  The complex promo banner was removed in favor of a simpler, more elegant design.
+  The initPromoBanner() function is no longer needed.
+*/
 
 // ---------- Bottom nav ----------
 bottomNav?.addEventListener("click", (e)=>{
@@ -1502,7 +1433,7 @@ function recommendFromText(text){
 
   if (!items.length) return currentLang==="ar" ? "ما لقيتش اقتراحات دابا. سولني فواتساب 👍" : (currentLang==="fr" ? "Je n’ai pas de suggestion maintenant. Écrivez-nous sur WhatsApp 👍" : "I couldn't find suggestions right now. Ask us on WhatsApp 👍");
 
-  const lines = items.map(p=>`• ${p.name}${p.price != null ? ' ('+formatMoney(p.price)+')' : ''}`).join("\n");
+  const lines = items.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join("\n");
   return (currentLang==="ar" ? "هادو اقتراحات:" : (currentLang==="fr" ? "Voici des suggestions :" : "Here are suggestions:")) + "\n" + lines;
 }
 
@@ -1709,9 +1640,69 @@ function observeAnimatableElements() {
   if (y) y.textContent = String(new Date().getFullYear());
 
   applyI18n(DEFAULT_LANG);
+  preloadHeroImages();
   updateCartUI();
   renderFinder();
   handleChatbotAttention();
   initScrollAnimations();
-  initPromoBanner();
+  // initPromoBanner(); // Removed as the promo banner is now static
 })();
+
+// ---------- Flash deal countdown + promo toast ----------
+(function(){
+  const dealEl = document.getElementById("dealCountdown");
+  const toast = document.getElementById("promoToast");
+  const toastCountdown = document.getElementById("toastCountdown");
+  const toastClose = document.getElementById("promoToastClose");
+
+  // Run only on pages that have the elements
+  if (!dealEl && !toast) return;
+
+  // Set a 6-hour rolling offer window (resets after it ends)
+  const KEY = "ipordise_offer_end";
+  let end = Number(localStorage.getItem(KEY) || 0);
+  const now = Date.now();
+  if (!end || end < now){
+    end = now + 6 * 60 * 60 * 1000;
+    localStorage.setItem(KEY, String(end));
+  }
+
+  function pad(n){ return String(n).padStart(2,"0"); }
+  function fmt(ms){
+    const s = Math.max(0, Math.floor(ms/1000));
+    const h = Math.floor(s/3600);
+    const m = Math.floor((s%3600)/60);
+    const ss = s%60;
+    return `${pad(h)}:${pad(m)}:${pad(ss)}`;
+  }
+
+  function tick(){
+    const ms = end - Date.now();
+    const out = fmt(ms);
+    if (dealEl) dealEl.textContent = out;
+    if (toastCountdown) toastCountdown.textContent = out;
+    if (ms <= 0){
+      // reset
+      const n2 = Date.now() + 6*60*60*1000;
+      end = n2; localStorage.setItem(KEY, String(end));
+    }
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // Show toast once per session, mostly on mobile
+  const seenKey = "ipordise_toast_seen";
+  const isMobile = window.matchMedia && window.matchMedia("(max-width: 860px)").matches;
+  if (toast && isMobile && !sessionStorage.getItem(seenKey)){
+    setTimeout(()=>{
+      toast.classList.add("show");
+      sessionStorage.setItem(seenKey,"1");
+    }, 1600);
+  }
+  if (toastClose){
+    toastClose.addEventListener("click", ()=>{
+      toast?.classList.remove("show");
+    });
+  }
+})();
+

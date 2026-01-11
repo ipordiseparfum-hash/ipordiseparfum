@@ -102,13 +102,13 @@
         <div class="drawer__content">
           <div class="drawer__section">
             <div class="drawer__section-title" data-i18n="nav_categories">Categories</div>
-            <a class="drawer__link" href="#categories" data-filter="all" data-i18n="cat_all">Shop All</a>
-            <a class="drawer__link" href="#categories" data-filter="women" data-i18n="cat_women">Women's Fragrances</a>
-            <a class="drawer__link" href="#categories" data-filter="men" data-i18n="cat_men">Men's Fragrances</a>
-            <a class="drawer__link" href="#categories" data-filter="unisex" data-i18n="cat_unisex">Unisex Fragrances</a>
-            <a class="drawer__link" href="#categories" data-filter="gift" data-i18n="cat_gift">Gift Sets</a>
-            <a class="drawer__link" href="#categories" data-filter="home" data-i18n="cat_home">Home Fragrance</a>
-            <a class="drawer__link" href="#categories" data-filter="travel" data-i18n="cat_travel">Travel Size</a>
+            <a class="drawer__link" data-close-drawer href="#categories" data-filter="all" data-i18n="cat_all">Shop All</a>
+            <a class="drawer__link" data-close-drawer href="#categories" data-filter="women" data-i18n="cat_women">Women's Fragrances</a>
+            <a class="drawer__link" data-close-drawer href="#categories" data-filter="men" data-i18n="cat_men">Men's Fragrances</a>
+            <a class="drawer__link" data-close-drawer href="#categories" data-filter="unisex" data-i18n="cat_unisex">Unisex Fragrances</a>
+            <a class="drawer__link" data-close-drawer href="#categories" data-filter="gift" data-i18n="cat_gift">Gift Sets</a>
+            <a class="drawer__link" data-close-drawer href="#categories" data-filter="home" data-i18n="cat_home">Home Fragrance</a>
+            <a class="drawer__link" data-close-drawer href="#categories" data-filter="travel" data-i18n="cat_travel">Travel Size</a>
           </div>
 
           <a class="drawer__link" href="#best" data-close-drawer data-i18n="nav_best">Best Sellers</a>
@@ -130,168 +130,41 @@
   <!-- Main -->
   <main>
     <!-- Hero -->
-    <section class="hero">
-      <div class="container hero__inner">
-        <div class="hero__copy">
-          <div class="pill">✨ <span data-i18n="hero_pill">✨ Premium Moroccan Fragrances</span></div>
-          <h1 data-i18n="hero_title">Discover Your Signature Scent</h1>
-          <p data-i18n="hero_desc">Curated perfumes inspired by Morocco's rich heritage. Authentic scents for women, men, and unisex — with express delivery across Morocco and 24/7 personalized support.</p>
-
-          <!-- Trust Signals -->
-          <div class="trust-badges">
-            <div class="trust-badge">
-              <span class="trust-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </span>
-              <span data-i18n="trust_auth">100% Authentic</span>
-            </div>
-            <div class="trust-badge">
-              <span class="trust-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-              </span>
-              <span data-i18n="trust_delivery">Free Delivery 299 MAD+</span>
-            </div>
-            <div class="trust-badge">
-              <span class="trust-icon trust-icon--wa">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" /></svg>
-              </span>
-              <span data-i18n="trust_support">24/7 WhatsApp Support</span>
-            </div>
-          </div>
-
-          <div class="hero__cta">
-            <a class="btn btn--primary btn--urgent" href="#categories">
-              Shop Now
-              <span class="btn-arrow">→</span>
-            </a>
-            <a class="btn btn--ghost" href="#best" data-i18n="cta_best">View Best Sellers</a>
-          </div>
-
-          <div class="hero__stats">
-            <div class="stat animate-on-scroll">
-              <div class="stat__num">5000+</div>
-              <div class="stat__label" data-i18n="stat_customers">Happy Customers</div>
-            </div>
-            <div class="stat animate-on-scroll">
-              <div class="stat__num">4.8★</div>
-              <div class="stat__label" data-i18n="stat_rating">Average Rating</div>
-            </div>
-            <div class="stat animate-on-scroll">
-              <div class="stat__num">48h</div>
-              <div class="stat__label" data-i18n="stat_delivery">Express Delivery</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero__visual">
-          <div class="heroCard">
-            <div class="heroCard__top">
-              <span class="heroCard__badge">🌟 Editor's Choice</span>
-              <span class="heroCard__chip">Vanilla • Musk • Amber</span>
-            </div>
-            <div class="heroCard__grid">
-              <a class="heroCard__item" href="product.html?id=p14" aria-label="Jean Paul Gaultier Ultra Male">
-                <div class="heroCard__imgWrap">
-                  <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Ultra%20Male%20set.png" alt="Ultra Male" loading="lazy">
-                </div>
-                <div class="heroCard__meta">
-                  <div class="heroCard__name">Jean Paul Gaultier<br><span class="muted small">Ultra Male</span></div>
-                  <div class="heroCard__tag">Vanilla</div>
-                </div>
-              </a>
-
-              <a class="heroCard__item" href="product.html?id=p27" aria-label="Xerjoff — Erba Pura">
-                <div class="heroCard__imgWrap">
-                  <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Xerjoff%20Erba%20Pura%20fragrance%20collection.png" alt="Erba Pura" loading="lazy">
-                </div>
-                <div class="heroCard__meta">
-                  <div class="heroCard__name">Xerjoff<br><span class="muted small">Erba Pura</span></div>
-                  <div class="heroCard__tag">Musk</div>
-                </div>
-              </a>
-
-              <a class="heroCard__item" href="product.html?id=p18" aria-label="Montale — Arabians Tonka">
-                <div class="heroCard__imgWrap">
-                  <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Montale%20Paris%20Arabians%20Tonka%20set.png" alt="Arabians Tonka" loading="lazy">
-                </div>
-                <div class="heroCard__meta">
-                  <div class="heroCard__name">Montale Paris<br><span class="muted small">Arabians Tonka</span></div>
-                  <div class="heroCard__tag">Amber</div>
-                </div>
-              </a>
-            </div>
-            <div class="heroCard__bottom">
-              <div>
-                <div class="heroCard__title">Season Favorites</div>
-                <div class="heroCard__sub">Warm, sweet & elegant scents</div>
-              </div>
-              <a class="btn btn--small btn--premium" href="#best">
-                Shop Collection
-                <span class="btn-arrow">→</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Moroccan Cultural Element -->
-          <div class="moroccan-pattern" aria-hidden="true">
-            <div class="pattern-element pattern-1"></div>
-            <div class="pattern-element pattern-2"></div>
-            <div class="pattern-element pattern-3"></div>
-          </div>
+    <section class="hero" aria-label="Hero">
+      <div class="container">
+        <div class="hero__media">
+          <img
+            id="heroImage"
+            src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%20english.png"
+            data-src-en="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%20english.png"
+            data-src-fr="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%20frensh.png"
+            data-src-ar="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%20arabic.png"
+            alt="IPORDISE PARFUM hero"
+            loading="eager"
+            decoding="async"
+            width="1920"
+            height="1080"
+          />
         </div>
       </div>
     </section>
 
-    <!-- Promo Hero -->
-    <section class="promo-hero" aria-label="Limited fragrance offer">
+    <!-- Promo Banner -->
+    <section class="section section--soft" id="deals">
       <div class="container promo-hero__inner">
-        <div class="promo-hero__left">
-          <div class="promo-badge" id="promoBadge" aria-hidden="true">Limited Offer • Ends in <strong id="promoTimer">02:15:34</strong></div>
-
-          <div class="promo-card">
-            <div class="promo-card__kicker">Fragrance deals for you</div>
-            <h2 class="promo-card__title" data-i18n="sec_deals_title">Fragrance deals for you</h2>
-            <p class="promo-card__sub muted">Selected premium scents at exclusive prices for a limited time. Curated with care.</p>
-
-            <div class="promo-card__meta">
-              <div class="promo-rating">★★★★★ <span class="muted small">Trusted by 1,000+ fragrance lovers</span></div>
-              <div class="promo-cta">
-                <a class="btn btn--primary promo-shop-btn" href="#deals">Shop deals <span class="btn-arrow">→</span></a>
-              </div>
-            </div>
+        <div class="promo-banner animate-on-scroll">
+          <div class="promo-banner__text">
+            <div class="kicker" data-i18n="sec_deals_kicker">LIMITED TIME OFFER</div>
+            <div class="flash-strip" aria-live="polite"><span class="flash-dot" aria-hidden="true"></span><span data-i18n="flash_text">Shop now before the offer ends</span><span id="dealCountdown">00:00:00</span></div>
+            <h3 data-i18n="sec_deals_title">Elegance in Every Drop</h3>
+            <p class="muted" data-i18n="sec_deals_desc">
+              Discover our curated collection of premium fragrances and find your signature scent today. Save up to 20% on selected items.
+            </p>
+            <a class="btn btn--primary" href="#best" data-i18n="sec_deals_cta">Shop The Collection</a>
           </div>
-        </div>
-
-        <div class="promo-hero__center">
-          <div class="promo-center-card">
-            <div class="promo-preview">
-              <img id="promoPreviewImg" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Ultra%20Male%20set.png" alt="Preview bottle" loading="lazy">
-              <div class="promo-preview__meta">
-                <div id="promoPreviewName" class="promo-preview__name">Jean Paul Gaultier — Ultra Male</div>
-                <div id="promoPreviewDesc" class="promo-preview__desc muted small">A modern, seductive and energetic fragrance with sweet pear and warm vanilla notes.</div>
-              </div>
-            </div>
-            <h3 class="promo-center-title">What kind of fragrance suits you?</h3>
-            <div class="promo-options" role="tablist" aria-label="Fragrance types">
-              <button class="promo-option" role="tab" aria-pressed="true" data-key="Strong &amp; Intense" data-product="p24">Strong &amp; Intense</button>
-              <button class="promo-option" role="tab" aria-pressed="false" data-key="Soft &amp; Feminine" data-product="p28">Soft &amp; Feminine</button>
-              <button class="promo-option" role="tab" aria-pressed="false" data-key="Dark &amp; Oud" data-product="p13">Dark &amp; Oud</button>
-              <button class="promo-option" role="tab" aria-pressed="false" data-key="Fresh &amp; Clean" data-product="p27">Fresh &amp; Clean</button>
-            </div>
+          <div class="promo-banner__visual">
+            <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Intense%20Oud%20perfume%20collection.png" alt="Featured Perfume">
           </div>
-        </div>
-
-        <div class="promo-hero__right" aria-hidden="true">
-          <div class="promo-right__scene">
-            <img id="promoBottleFront" class="promo-bottle promo-bottle--front" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Ultra%20Male%20set.png" alt="perfume bottle front" loading="lazy">
-            <img id="promoBottleBack" class="promo-bottle promo-bottle--back" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Xerjoff%20Erba%20Pura%20fragrance%20collection.png" alt="perfume bottle back" loading="lazy">
-            <div class="promo-ornaments">
-              <div class="petal petal--1"></div>
-              <div class="petal petal--2"></div>
-              <div class="citrus"></div>
-            </div>
-          </div>
-          <a id="promoWhatsApp" class="btn btn--wa promo-whatsapp" href="https://wa.me/212663750210" target="_blank" rel="noopener" aria-label="Ask us on WhatsApp">Ask us on WhatsApp — Get your perfect fragrance</a>
         </div>
       </div>
     </section>
@@ -306,31 +179,24 @@
 
         <div class="cats">
           <button class="cat animate-on-scroll" data-filter="all">
-            <div class="cat__icon cat__icon--all"></div>
             <div class="cat__label" data-i18n="cat_all">Shop All</div>
           </button>
           <button class="cat animate-on-scroll" data-filter="women">
-            <div class="cat__icon cat__icon--women"></div>
             <div class="cat__label" data-i18n="tile_women">Women’s</div>
           </button>
           <button class="cat animate-on-scroll" data-filter="men">
-            <div class="cat__icon cat__icon--men"></div>
             <div class="cat__label" data-i18n="tile_men">Men’s</div>
           </button>
           <button class="cat animate-on-scroll" data-filter="unisex">
-            <div class="cat__icon cat__icon--unisex"></div>
             <div class="cat__label" data-i18n="tile_unisex">Unisex</div>
           </button>
           <button class="cat animate-on-scroll" data-filter="gift">
-            <div class="cat__icon cat__icon--gift"></div>
             <div class="cat__label" data-i18n="cat_gift">Gift Sets</div>
           </button>
           <button class="cat animate-on-scroll" data-filter="home">
-            <div class="cat__icon cat__icon--home"></div>
             <div class="cat__label" data-i18n="cat_home">Home Fragrance</div>
           </button>
           <button class="cat animate-on-scroll" data-filter="travel">
-            <div class="cat__icon cat__icon--travel"></div>
             <div class="cat__label" data-i18n="cat_travel">Travel Size</div>
           </button>
         </div>
@@ -410,30 +276,6 @@
               <button class="btn btn--small btn--primary" disabled>+ Add</button>
             </div>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Promo / Discover -->
-    <section class="section section--soft" id="deals">
-      <div class="container">
-        <div class="split">
-          <div class="split__box animate-on-scroll">
-            <div class="kicker" data-i18n="sec_deals_kicker">More to discover</div>
-            <h3 data-i18n="sec_deals_title">Fragrance deals for you</h3>
-            <p class="muted">
-              Save on selected fragrances. Limited offers updated weekly.
-            </p>
-            <a class="btn btn--primary" href="#best" data-i18n="sec_deals_cta">Shop deals</a>
-          </div>
-
-          <div class="split__box split__box--img animate-on-scroll" aria-hidden="true">
-            <div class="promoBottles">
-              <div class="promoBottle p1"></div>
-              <div class="promoBottle p2"></div>
-              <div class="promoBottle p3"></div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -816,6 +658,24 @@
     <span class="wa-float__text">WhatsApp</span>
   </a>
 
+  
+  <!-- Floating promo toast -->
+  <div class="promo-toast" id="promoToast" aria-live="polite">
+    <div class="promo-toast__row">
+      <img class="promo-toast__img" id="promoToastImg" alt="Featured perfume" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Intense%20Oud%20perfume%20collection.png">
+      <div style="flex:1;">
+        <p class="promo-toast__title" data-i18n="toast_title">Flash deal 🎁</p>
+        <p class="promo-toast__meta"><span data-i18n="toast_meta">Shop now before the offer ends</span> • <strong id="toastCountdown">00:00:00</strong></p>
+        <div class="promo-toast__actions">
+          <a class="btn btn--small btn--primary" href="#deals" data-i18n="toast_cta">Shop deals</a>
+          <a class="btn btn--small btn--ghost" href="#best" data-i18n="toast_alt">Best sellers</a>
+        </div>
+      </div>
+      <button class="promo-toast__close" id="promoToastClose" aria-label="Close">×</button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+
 </body>
 </html>
