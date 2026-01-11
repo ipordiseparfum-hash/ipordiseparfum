@@ -1,134 +1,290 @@
 [
   {
-    "id": "p1",
-    "brand": "Oriental Bliss",
-    "name": "Rose Garden",
-    "category": "women",
-    "price": 450,
-    "rating": 4.8,
-    "reviews": 150,
-    "tag": "Best Seller",
-    "notes": ["rose", "jasmine", "vanilla"]
-  },
-  {
-    "id": "p2",
-    "brand": "Atlas Scents",
-    "name": "Cedar Musk",
+    "id": "p13",
+    "brand": "Gucci",
+    "name": "Gucci Intense Oud",
     "category": "men",
-    "price": 500,
-    "rating": 4.7,
-    "reviews": 100,
-    "tag": "Popular",
-    "notes": ["cedar", "musk", "amber"]
+    "description": "Gucci Intense Oud\n\nA luxurious oriental fragrance crafted for true oud lovers.\nDeep notes of precious oud, leather, incense, and woody accords deliver a rich and powerful scent experience.\nElegant, mysterious, and refined—ideal for formal occasions and confident personalities.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Intense%20Oud%20perfume%20collection.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.8,
+    "reviews": 120,
+    "tag": "Oriental",
+    "notes": ["oud","leather","incense","woody"]
   },
   {
-    "id": "p3",
-    "brand": "Moroccan Essence",
-    "name": "Lemon Zest",
-    "category": "unisex",
-    "price": 350,
-    "rating": 4.5,
+    "id": "p14",
+    "brand": "Jean Paul Gaultier",
+    "name": "Jean Paul Gaultier Ultra Male",
+    "category": "men",
+    "description": "A modern, seductive, and energetic fragrance.\nA delicious blend of pear, vanilla, cinnamon, and lavender creates a sweet yet powerful aroma.\nIdeal for nights out and special moments, this fragrance is known for its strong projection and attraction.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Ultra%20Male%20set.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.6,
     "reviews": 80,
-    "tag": "Refreshing",
-    "notes": ["lemon", "lime", "mint"]
+    "tag": "Seductive",
+    "notes": ["pear","vanilla","cinnamon","lavender"]
   },
   {
-    "id": "p4",
-    "brand": "Zahra Perfumes",
-    "name": "Perfume Duo Gift Set",
-    "category": "gift",
-    "price": 600,
-    "rating": 4.9,
-    "reviews": 60,
-    "tag": "Gift Idea",
-    "notes": ["floral", "woody"]
-  },
-  {
-    "id": "p5",
-    "brand": "Travel Luxe",
-    "name": "Mini Perfume Spray",
-    "category": "travel",
-    "price": 250,
-    "rating": 4.4,
-    "reviews": 40,
-    "tag": "Compact",
-    "notes": ["floral", "citrus"]
-  },
-  {
-    "id": "p6",
-    "brand": "Home Harmony",
-    "name": "Lavender Room Spray",
-    "category": "home",
-    "price": 300,
-    "rating": 4.6,
-    "reviews": 90,
-    "tag": "Relaxing",
-    "notes": ["lavender", "chamomile"]
-  },
-  {
-    "id": "p7",
-    "brand": "Oriental Bliss",
-    "name": "Orange Blossom",
-    "category": "women",
-    "price": 420,
-    "rating": 4.7,
-    "reviews": 130,
-    "tag": "Exotic",
-    "notes": ["orange blossom", "neroli", "patchouli"]
-  },
-  {
-    "id": "p8",
-    "brand": "Atlas Scents",
-    "name": "Sandalwood Spice",
+    "id": "p15",
+    "brand": "Hugo Boss",
+    "name": "Hugo Boss The Scent Elixir",
     "category": "men",
-    "price": 480,
-    "rating": 4.6,
-    "reviews": 110,
-    "tag": "Bold",
-    "notes": ["sandalwood", "cinnamon", "vetiver"]
+    "description": "An intense and refined fragrance that radiates confidence.\nBold notes of spicy pepper, lavender, and warm woody accords create a deep and masculine scent.\nPerfect for elegant men seeking a strong yet sophisticated presence.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Hugo%20Boss%20The%20Scent%20Elixir%20set.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.5,
+    "reviews": 65,
+    "tag": "Refined",
+    "notes": ["pepper","lavender","woody"]
   },
   {
-    "id": "p9",
-    "brand": "Moroccan Essence",
-    "name": "Argan Blossom",
-    "category": "unisex",
-    "price": 380,
-    "rating": 4.8,
-    "reviews": 95,
-    "tag": "Natural",
-    "notes": ["argan", "rose", "honey"]
-  },
-  {
-    "id": "p10",
-    "brand": "Zahra Perfumes",
-    "name": "Family Gift Pack",
-    "category": "gift",
-    "price": 550,
-    "rating": 4.9,
-    "reviews": 70,
-    "tag": "Family Favorite",
-    "notes": ["mixed scents"]
-  },
-  {
-    "id": "p11",
-    "brand": "Travel Luxe",
-    "name": "Pocket Perfume",
-    "category": "travel",
-    "price": 220,
-    "rating": 4.3,
-    "reviews": 50,
-    "tag": "On-the-Go",
-    "notes": ["fresh", "light"]
-  },
-  {
-    "id": "p12",
-    "brand": "Home Harmony",
-    "name": "Jasmine Diffuser Oil",
-    "category": "home",
-    "price": 320,
+    "id": "p16",
+    "brand": "Jean Paul Gaultier",
+    "name": "Jean Paul Gaultier Le Male Elixir",
+    "category": "men",
+    "description": "A richer and more intense version of the iconic Le Male.\nWarm notes of vanilla, honey, amber, and spices deliver a sensual and long-lasting scent.\nIdeal for evening wear, this fragrance offers depth, elegance, and irresistible charm.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20fragrance%20set.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
     "rating": 4.7,
+    "reviews": 95,
+    "tag": "Sensual",
+    "notes": ["vanilla","honey","amber","spices"]
+  },
+  {
+    "id": "p17",
+    "brand": "Gucci",
+    "name": "Gucci Guilty Elixir Pour Homme",
+    "category": "men",
+    "description": "A modern and expressive fragrance with a refined character.\nA smooth blend of lavender, vanilla, and aromatic notes creates a balanced and captivating scent.\nPerfect for daily wear or special occasions, offering elegance and confidence.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Guilty%20Elixir%20fragrance%20set.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.6,
+    "reviews": 70,
+    "tag": "Elegant",
+    "notes": ["lavender","vanilla","aromatic"]
+  },
+  {
+    "id": "p18",
+    "brand": "Montale Paris",
+    "name": "Arabians Tonka",
+    "category": "men",
+    "description": "Arabians Tonka is a rich, intense, and captivating oriental fragrance.\nA luxurious blend of oud, tonka bean, vanilla, amber, and musk creates a warm, sweet, and addictive scent.\nPowerful and long-lasting, this fragrance is perfect for evening wear and cold seasons, leaving a strong and elegant trail that commands attention.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Montale%20Paris%20Arabians%20Tonka%20set.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.9,
+    "reviews": 40,
+    "tag": "Oriental",
+    "notes": ["oud","tonka bean","vanilla","amber","musk"]
+  },
+  {
+    "id": "p19",
+    "brand": "Givenchy",
+    "name": "Givenchy – Gentleman",
+    "category": "men",
+    "description": "Givenchy Gentleman is a refined and elegant masculine fragrance that embodies modern sophistication and timeless style.\nBuilt around a warm and smooth character, it blends woody, spicy, and sensual accords to create a confident and charismatic scent.\nPerfect for men who appreciate class, elegance, and subtle power, this fragrance transitions effortlessly from day to evening, leaving a polished and lasting impression.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Givenchy%20Gentleman%20R%C3%A9serve%20Priv%C3%A9e%20set.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.6,
     "reviews": 85,
-    "tag": "Aromatic",
-    "notes": ["jasmine", "ylang-ylang"]
+    "tag": "Elegant",
+    "notes": ["woody","spicy","sensual"]
+  },
+  {
+    "id": "p20",
+    "brand": "Jean Paul Gaultier",
+    "name": "Jean Paul Gaultier – Scandal Elixir",
+    "category": "men",
+    "description": "Scandal Elixir is a bold, intense, and highly seductive masculine fragrance.\nDesigned for confident men, this scent delivers a powerful and luxurious presence from the very first spray.\nRich notes of honey, vanilla, amber, and warm woody accords create a deep, sweet, and addictive aroma.\nThe fragrance is smooth yet strong, leaving an unforgettable trail that turns heads wherever you go.\nPerfect for evening wear and special occasions, Scandal Elixir is a statement fragrance that embodies strength, elegance, and irresistible charm.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Scandal%20Elixir%20set.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.6,
+    "reviews": 55,
+    "tag": "Seductive",
+    "notes": ["honey","vanilla","amber","woody"]
+  },
+  {
+    "id": "p21",
+    "brand": "Jean Paul Gaultier",
+    "name": "Jean Paul Gaultier – Le Male Le Parfum",
+    "category": "men",
+    "description": "Le Male Le Parfum is a bold, intense, and sophisticated interpretation of the iconic Le Male signature.\nThis fragrance delivers a powerful and elegant presence, designed for confident men with strong character.\nA rich blend of cardamom, vanilla, oriental woods, and warm amber notes creates a deep, smooth, and addictive scent.\nCreamy, spicy, and sensual, it offers excellent longevity and a refined trail that commands attention.\nPerfect for evening wear and special occasions, Le Male Le Parfum embodies modern masculinity, elegance, and irresistible charm.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Le%20Male%20set.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.7,
+    "reviews": 110,
+    "tag": "Elegant",
+    "notes": ["cardamom","vanilla","woods","amber"]
+  },
+  {
+    "id": "p22",
+    "brand": "Gucci",
+    "name": "Gucci – Gucci Guilty Absolu de Parfum Pour Homme",
+    "category": "men",
+    "description": "Gucci Guilty Absolu de Parfum Pour Homme is a bold, intense, and highly distinctive masculine fragrance.\nDesigned for men who embrace confidence and individuality, this scent delivers a powerful and unconventional character.\nA rich composition of leather, patchouli, woody accords, and warm amber notes creates a deep, earthy, and sensual aroma.\nStrong yet refined, the fragrance offers excellent longevity and a daring trail that stands apart from classic masculine scents.\nPerfect for evening wear and special occasions, Gucci Guilty Absolu de Parfum is made for men who are fearless, elegant, and unapologetically unique.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Guilty%20Absolu%20de%20Parfum%20collection.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.6,
+    "reviews": 72,
+    "tag": "Bold",
+    "notes": ["leather","patchouli","woody","amber"]
+  },
+  {
+    "id": "p23",
+    "brand": "Hugo Boss",
+    "name": "Hugo Boss – Boss Bottled Absolu",
+    "category": "men",
+    "description": "Boss Bottled Absolu is an intense and refined interpretation of the iconic Boss Bottled signature.\nCreated for confident and ambitious men, this fragrance delivers a powerful yet elegant presence.\nA rich blend of woody notes, warm amber, leather nuances, and subtle spices creates a deep, smooth, and masculine scent.\nThe composition is bold and sophisticated, offering excellent longevity with a warm, elegant trail.\nPerfect for evening wear and special occasions, Boss Bottled Absolu represents strength, success, and modern masculinity.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Luxury%20Hugo%20Boss%20perfume%20set.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.6,
+    "reviews": 88,
+    "tag": "Refined",
+    "notes": ["woody","amber","leather","spices"]
+  },
+  {
+    "id": "p24",
+    "brand": "Dior",
+    "name": "Dior – Dior Homme Intense",
+    "category": "men",
+    "description": "Dior Homme Intense is a refined, elegant, and deeply sensual masculine fragrance.\nIt represents modern sophistication with a powerful yet smooth character.\nA rich and velvety blend of iris, amber, vanilla, and woody accords creates a warm, creamy, and luxurious scent.\nElegant and intense, this fragrance delivers excellent longevity with a refined and intimate trail.\nPerfect for evening wear and special occasions, Dior Homme Intense is designed for men who appreciate elegance, confidence, and timeless style.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Dior%20Homme%20Intense%20fragrance%20set.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.8,
+    "reviews": 140,
+    "tag": "Elegant",
+    "notes": ["iris","amber","vanilla","woody"]
+  },
+  {
+    "id": "p25",
+    "brand": "Valentino",
+    "name": "Valentino – Valentino Uomo Born in Roma Extradose",
+    "category": "men",
+    "description": "Valentino Uomo Born in Roma Extradose is an intense, bold, and modern masculine fragrance.\nThis scent is designed for men who embrace confidence, individuality, and a strong urban elegance.\nA powerful blend of spicy notes, rich vanilla, woody accords, and warm amber creates a deep, sensual, and addictive aroma.\nThe Extradose version amplifies the signature Born in Roma DNA, delivering stronger projection and exceptional longevity.\nPerfect for evening wear and special occasions, this fragrance leaves a magnetic trail that is both refined and daring.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Valentino%20Uomo%20Born%20in%20Roma%20set.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.6,
+    "reviews": 52,
+    "tag": "Bold",
+    "notes": ["spicy","vanilla","woody","amber"]
+  },
+  {
+    "id": "p26",
+    "brand": "Paco Rabanne",
+    "name": "1 Million Elixir",
+    "category": "men",
+    "description": "A bold and intense fragrance that embodies power and confidence.\nRich notes of vanilla, apple, damask rose, and amber create a warm, seductive scent with exceptional longevity.\nPerfect for evenings and special occasions, this fragrance leaves a strong and unforgettable impression.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gold%20elegance%20in%201%20Million%20Elixir.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.7,
+    "reviews": 1953,
+    "tag": "Bold",
+    "notes": ["vanilla","apple","damask rose","amber","tonka bean","cedar"]
+  },
+  {
+    "id": "p27",
+    "brand": "Xerjoff",
+    "name": "Xerjoff – Erba Pura",
+    "category": "unisex",
+    "description": "Xerjoff Erba Pura is a vibrant, luxurious, and addictive unisex fragrance that radiates elegance and joy.\nThis iconic scent is known for its powerful freshness combined with a rich and sensual base.\n\nA luminous blend of exotic fruits, Sicilian citrus, white musk, amber, and vanilla creates a smooth, sweet, and long-lasting aroma.\nFresh yet creamy, Erba Pura offers exceptional projection and longevity, leaving a bright and elegant trail.\n\nPerfect for both day and evening wear, Erba Pura is ideal for those who love refined freshness with a seductive, modern touch.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Xerjoff%20Erba%20Pura%20fragrance%20collection.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.8,
+    "reviews": 210,
+    "tag": "Fresh",
+    "notes": ["exotic fruits","Sicilian citrus","white musk","amber","vanilla"]
+  },
+  {
+    "id": "p28",
+    "brand": "Xerjoff",
+    "name": "Xerjoff – Naxos",
+    "category": "unisex",
+    "description": "Xerjoff Naxos is a rich, elegant, and iconic unisex fragrance inspired by Italian heritage and timeless luxury.\nThis masterpiece perfectly balances freshness, sweetness, and depth.\n\nA sophisticated blend of lavender, honey, tobacco, vanilla, and warm spices creates a smooth, creamy, and addictive scent.\nThe opening is fresh and aromatic, while the dry-down becomes warm, sweet, and sensual with outstanding longevity and projection.\n\nPerfect for both day and evening wear, Naxos is ideal for those who appreciate refinement, confidence, and a luxurious signature scent.",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Luxurious%20Xerjoff%20Naxos%20perfume%20collection.png",
+    "variants": [
+      { "size": "10ml" },
+      { "size": "20ml" },
+      { "size": "30ml" },
+      { "size": "50ml" }
+    ],
+    "rating": 4.9,
+    "reviews": 320,
+    "tag": "Elegant",
+    "notes": ["lavender","honey","tobacco","vanilla","spices"]
   }
 ]

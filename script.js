@@ -734,7 +734,8 @@ function productCard(p){
         </div>
       </a>
       <div class="card__actions">
-        <div class="card__price">${formatMoney(p.price||0)}</div>
+        ${ (p.variants && p.variants.length) ? `<select class="variantSelect" data-id="${escapeHtml(p.id)}">${p.variants.map(v=>`<option value="${escapeHtml(v.size||'')}">${escapeHtml(v.size||'')}</option>`).join('')}</select>` : ''}
+        ${ (p.price != null) ? `<div class="card__price">${formatMoney(p.price)}</div>` : `<div class="card__price muted small">Choose size</div>` }
         <button class="btn btn--small btn--primary" data-add="${escapeHtml(p.id)}">+ Add</button>
       </div>
     </article>
@@ -758,7 +759,9 @@ function renderProducts(){
       const id = btn.getAttribute("data-add");
       const p = PRODUCTS.find(x=>x.id===id);
       if (!p) return;
-      addToCart(p);
+      const sel = elGrid.querySelector(`.variantSelect[data-id="${id}"]`);
+      const variant = sel ? sel.value : null;
+      addToCart(p, variant);
       openDrawer(cartDrawer);
     });
   });
@@ -769,20 +772,23 @@ function escapeHtml(str){
 }
 
 // ---------- Cart ----------
-function addToCart(p){
-  const item = state.cart.find(i=>i.id===p.id);
+function addToCart(p, variant){
+  const key = variant ? `${p.id}::${variant}` : p.id;
+  const item = state.cart.find(i=>i.key===key);
   if (item) item.qty += 1;
-  else state.cart.push({ id:p.id, qty:1 });
+  else state.cart.push({ key, id:p.id, variant: variant || null, qty:1 });
   saveCart();
   updateCartUI();
 }
-function removeFromCart(id){
-  state.cart = state.cart.filter(i=>i.id!==id);
+
+function removeFromCart(key){
+  state.cart = state.cart.filter(i=>i.key!==key);
   saveCart();
   updateCartUI();
 }
-function changeQty(id, delta){
-  const item = state.cart.find(i=>i.id===id);
+
+function changeQty(key, delta){
+  const item = state.cart.find(i=>i.key===key);
   if (!item) return;
   item.qty = Math.max(1, item.qty + delta);
   saveCart();
@@ -812,14 +818,14 @@ function updateCartUI(){
       <div class="cartItem">
         <div class="cartItem__main">
           <div class="cartItem__name">${escapeHtml(p.name||"")}</div>
-          <div class="cartItem__meta muted small">${escapeHtml(p.brand||"")} • ${formatMoney(p.price||0)}</div>
+          <div class="cartItem__meta muted small">${escapeHtml(p.brand||"")}${i.variant ? ' • '+escapeHtml(i.variant) : (p.price != null ? ' • '+formatMoney(p.price) : '')}</div>
           <div class="cartItem__qty">
-            <button class="qtyBtn" data-qty="-1" data-id="${escapeHtml(i.id)}">−</button>
+            <button class="qtyBtn" data-qty="-1" data-key="${escapeHtml(i.key)}">−</button>
             <span class="qtyNum">${i.qty}</span>
-            <button class="qtyBtn" data-qty="1" data-id="${escapeHtml(i.id)}">+</button>
+            <button class="qtyBtn" data-qty="1" data-key="${escapeHtml(i.key)}">+</button>
           </div>
         </div>
-        <button class="icon-btn" data-remove="${escapeHtml(i.id)}" aria-label="Remove">
+        <button class="icon-btn" data-remove="${escapeHtml(i.key)}" aria-label="Remove">
           <span class="icon icon--close" aria-hidden="true"></span>
         </button>
       </div>
@@ -832,8 +838,8 @@ function updateCartUI(){
   cartItems.querySelectorAll(".qtyBtn").forEach(b=>{
     b.addEventListener("click", ()=>{
       const delta = parseInt(b.dataset.qty,10);
-      const id = b.dataset.id;
-      changeQty(id, delta);
+      const key = b.dataset.key;
+      changeQty(key, delta);
     });
   });
 
@@ -868,7 +874,8 @@ checkoutForm?.addEventListener("submit", (e) => {
       const p = PRODUCTS.find(x=>x.id===i.id);
       const name = p ? p.name : i.id;
       const price = p ? p.price : 0;
-      return `• ${name} x${i.qty} — ${formatMoney(price * i.qty)}`;
+      const variant = i.variant ? ` (${i.variant})` : '';
+      return `• ${name}${variant} x${i.qty} — ${formatMoney(price * i.qty)}`;
     }).join("\n");
 
     const total = cartTotal();
@@ -1075,7 +1082,7 @@ function renderFinder(){
       ${items.map(p=>`
         <div class="miniCard">
           <div><strong>${escapeHtml(p.name||"")}</strong> <span class="muted small">• ${escapeHtml(p.brand||"")}</span></div>
-          <div class="muted small">${formatMoney(p.price||0)} • ${(p.rating||4.5).toFixed(1)}★</div>
+          <div class="muted small">${p.price != null ? formatMoney(p.price) + ' • ' : ''}${(p.rating||4.5).toFixed(1)}★</div>
         </div>
       `).join("")}
     </div>
@@ -1167,7 +1174,7 @@ function recommendFromText(text){
 
   if (!items.length) return currentLang==="ar" ? "ما لقيتش اقتراحات دابا. سولني فواتساب 👍" : (currentLang==="fr" ? "Je n’ai pas de suggestion maintenant. Écrivez-nous sur WhatsApp 👍" : "I couldn't find suggestions right now. Ask us on WhatsApp 👍");
 
-  const lines = items.map(p=>`• ${p.name} (${formatMoney(p.price||0)})`).join("\n");
+  const lines = items.map(p=>`• ${p.name}${p.price != null ? ' ('+formatMoney(p.price)+')' : ''}`).join("\n");
   return (currentLang==="ar" ? "هادو اقتراحات:" : (currentLang==="fr" ? "Voici des suggestions :" : "Here are suggestions:")) + "\n" + lines;
 }
 
