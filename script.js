@@ -98,6 +98,7 @@ const I18N = {
     bn_search: "Search",
     bn_cart: "Cart",
     bn_whatsapp: "WhatsApp",
+    wa_prefill: "Hello, I'm interested in this product: {name} • Size: {size}",
 
     chat_title: "Ipordise Assistant",
     chat_sub: "Quick help to choose a scent.",
@@ -129,7 +130,9 @@ const I18N = {
     checkout_confirm: "Confirm Order on WhatsApp",
     cart_subtotal: "Subtotal",
     cart_delivery: "Delivery",
-    cart_delivery_info: "Calculated on WhatsApp"
+    cart_delivery_info: "Calculated on WhatsApp",
+    translate_unavailable: "Translation not available; showing English.",
+    choose_size: "Choose size"
   },
 
   fr: {
@@ -221,6 +224,7 @@ const I18N = {
     bn_search: "Recherche",
     bn_cart: "Panier",
     bn_whatsapp: "WhatsApp",
+    wa_prefill: "Bonjour, je suis intéressé par ce produit : {name} • Taille : {size}",
 
     chat_title: "Assistant Ipordise",
     chat_sub: "Aide rapide pour choisir.",
@@ -252,7 +256,9 @@ const I18N = {
     checkout_confirm: "Confirmer la commande sur WhatsApp",
     cart_subtotal: "Sous-total",
     cart_delivery: "Livraison",
-    cart_delivery_info: "Calculé sur WhatsApp"
+    cart_delivery_info: "Calculé sur WhatsApp",
+    translate_unavailable: "Traduction non disponible; affichage en anglais.",
+    choose_size: "Choisir la taille"
   },
 
   ar: {
@@ -344,6 +350,7 @@ const I18N = {
     bn_search: "بحث",
     bn_cart: "السلة",
     bn_whatsapp: "واتساب",
+    wa_prefill: "مرحباً، أنا مهتم بهذا المنتج: {name} • الحجم: {size}",
 
     chat_title: "مساعد Ipordise",
     chat_sub: "مساعدة سريعة باش تختار.",
@@ -375,12 +382,14 @@ const I18N = {
     checkout_confirm: "تأكيد الطلب عبر واتساب",
     cart_subtotal: "المجموع",
     cart_delivery: "التوصيل",
-    cart_delivery_info: "يُحسب عند تأكيد الطلب"
+    cart_delivery_info: "يُحسب عند تأكيد الطلب",
+    translate_unavailable: "الترجمة غير متوفرة؛ يتم العرض بالإنجليزية.",
+    choose_size: "اختيار الحجم"
   }
 };
 
 const DEFAULT_LANG = localStorage.getItem("ipordise_lang") || "en";
-let currentLang = DEFAULT_LANG;
+let currentLang = DEFAULT_LANG; window.currentLang = currentLang;
 
 function t(key){
   const dict = I18N[currentLang] || I18N.en;
@@ -393,6 +402,7 @@ function applyI18n(lang){
 
   document.documentElement.lang = currentLang;
   document.documentElement.dir = (currentLang === "ar") ? "rtl" : "ltr";
+  window.currentLang = currentLang;
 
   const label = document.getElementById("langLabel");
   if (label) label.textContent = currentLang.toUpperCase();
@@ -416,12 +426,15 @@ function applyI18n(lang){
     btn.setAttribute("aria-checked", is ? "true" : "false");
   });
 
+  // dispatch a language change event for other modules to react
+  try{ document.dispatchEvent(new CustomEvent('languagechange', { detail: { lang: currentLang } })); }catch(e){ /* noop */ }
+
   // refresh dynamic UI
   renderProducts();
   updateCartUI();
   renderFinder();
   if (chatHasStarted) seedChatIfEmpty();
-}
+} 
 
 // ---------- Utilities ----------
 function throttle(func, limit) {
@@ -719,7 +732,7 @@ function productCard(p){
 
   return `
     <article class="card animate-on-scroll">
-      <a href="#" class="card__link" aria-label="View product: ${escapeHtml(p.name||"")}">
+      <a href="product.html?id=${escapeHtml(p.id)}" class="card__link" aria-label="View product: ${escapeHtml(p.name||"")}">
         <div class="card__img">
           ${p.tag ? `<span class="card__tag">${escapeHtml(p.tag)}</span>` : ""}
           <img src="${escapeHtml(image)}" alt="${escapeHtml(p.name||"")}" loading="lazy" width="200" height="200">
