@@ -820,30 +820,67 @@ function updateCartUI(){
   if (!cartItems || !cartSubtotal) return;
 
   if (!state.cart.length){
-    cartItems.innerHTML = `<div class="muted" style="padding:10px 0;">${currentLang==="ar" ? "السلة خاوية ✨" : (currentLang==="fr" ? "Votre panier est vide ✨" : "Your bag is empty ✨")}</div>`;
+    cartItems.innerHTML = `
+      <div class="cart__empty" style="padding:18px 0; text-align:center;">
+        <div style="font-size:48px; margin-bottom:12px;">👜</div>
+        <div class="muted" style="margin-bottom:12px;">${currentLang==="ar" ? "السلة خاوية ✨" : (currentLang==="fr" ? "Votre panier est vide ✨" : "Your bag is empty ✨")}</div>
+        <a href="#deals" class="btn btn--primary">${currentLang==="ar" ? "تسوق الآن" : (currentLang==="fr" ? "Magasinez" : "Shop deals")}</a>
+      </div>
+    `;
     cartSubtotal.textContent = formatMoney(0);
+    if (cartSubtotal) cartSubtotal.setAttribute('aria-live','polite');
     return;
   }
 
   cartItems.innerHTML = state.cart.map(i=>{
     const p = PRODUCTS.find(x=>x.id===i.id) || {};
+    const unit = p.price != null ? formatMoney(p.price) : '';
+    const lineTotal = formatMoney((p.price||0) * i.qty);
+
     return `
-      <div class="cartItem">
-        <div class="cartItem__main">
-          <div class="cartItem__name">${escapeHtml(p.name||"")}</div>
-          <div class="cartItem__meta muted small">${escapeHtml(p.brand||"")}${i.variant ? ' • '+escapeHtml(i.variant) : (p.price != null ? ' • '+formatMoney(p.price) : '')}</div>
-          <div class="cartItem__qty">
-            <button class="qtyBtn" data-qty="-1" data-key="${escapeHtml(i.key)}">−</button>
-            <span class="qtyNum">${i.qty}</span>
-            <button class="qtyBtn" data-qty="1" data-key="${escapeHtml(i.key)}">+</button>
+      <div class="cartItem" data-key="${escapeHtml(i.key)}">
+        <div class="cartItem__thumb">
+          <img src="${escapeHtml(p.image || '')}" alt="${escapeHtml(p.name || '')}" loading="lazy">
+        </div>
+        <div class="cartItem__details">
+          <div>
+            <div class="cartItem__name">${escapeHtml(p.name||"")}</div>
+            <div class="cartItem__meta muted small">${escapeHtml(p.brand||"")}${i.variant ? ' • '+escapeHtml(i.variant) : ''}</div>
+          </div>
+
+          <div class="cartItem__controls">
+            <div class="cartItem__qty">
+              <button class="qtyBtn" aria-label="Decrease quantity" data-qty="-1" data-key="${escapeHtml(i.key)}">−</button>
+              <span class="qtyNum" aria-live="polite">${i.qty}</span>
+              <button class="qtyBtn" aria-label="Increase quantity" data-qty="1" data-key="${escapeHtml(i.key)}">+</button>
+            </div>
+            <button class="icon-btn cartItem__remove" data-remove="${escapeHtml(i.key)}" aria-label="Remove ${escapeHtml(p.name||'')}">
+              <span class="icon icon--close" aria-hidden="true"></span>
+            </button>
           </div>
         </div>
-        <button class="icon-btn" data-remove="${escapeHtml(i.key)}" aria-label="Remove">
-          <span class="icon icon--close" aria-hidden="true"></span>
-        </button>
+
+        <div class="cartItem__price">
+          <div class="cartItem__unit muted small">${unit}</div>
+          <div class="cartItem__total">${lineTotal}</div>
+        </div>
       </div>
     `;
   }).join("");
+
+  cartItems.querySelectorAll("[data-remove]").forEach(b=>{
+    b.addEventListener("click", ()=> removeFromCart(b.dataset.remove));
+  });
+  cartItems.querySelectorAll(".qtyBtn").forEach(b=>{
+    b.addEventListener("click", ()=>{
+      const delta = parseInt(b.dataset.qty,10);
+      const key = b.dataset.key;
+      changeQty(key, delta);
+    });
+  });
+
+  cartSubtotal.textContent = formatMoney(cartTotal());
+  if (cartSubtotal) cartSubtotal.setAttribute('aria-live','polite');
 
   cartItems.querySelectorAll("[data-remove]").forEach(b=>{
     b.addEventListener("click", ()=> removeFromCart(b.dataset.remove));
@@ -883,6 +920,7 @@ checkoutForm?.addEventListener("submit", (e) => {
       return;
     }
 
+    // Build order lines
     const lines = state.cart.map(i=>{
       const p = PRODUCTS.find(x=>x.id===i.id);
       const name = p ? p.name : i.id;
@@ -892,6 +930,8 @@ checkoutForm?.addEventListener("submit", (e) => {
     }).join("\n");
 
     const total = cartTotal();
+
+    // WhatsApp message
     const hello = currentLang==="ar" ? "السلام عليكم IPORDISE PARFUM 👋" : (currentLang==="fr" ? "Bonjour IPORDISE PARFUM 👋" : "Hello IPORDISE PARFUM 👋");
 
     const msg =
@@ -909,6 +949,47 @@ checkoutForm?.addEventListener("submit", (e) => {
     const url = `https://wa.me/${WHATSAPP_PHONE_INTL}?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank");
     closeModal(checkoutModal);
+});
+
+// Email checkout (uses same form fields)
+const btnConfirmEmail = document.getElementById('btnConfirmEmail');
+btnConfirmEmail?.addEventListener('click', ()=>{
+  if (!state.cart.length) return alert(currentLang === 'ar' ? 'السلة خاوية' : (currentLang === 'fr' ? 'Votre panier est vide' : 'Your cart is empty'));
+  const name = checkoutForm.querySelector("input[name='name']")?.value?.trim();
+  const city = checkoutForm.querySelector("input[name='city']")?.value?.trim();
+  const phone = checkoutForm.querySelector("input[name='phone']")?.value?.trim();
+  const address = checkoutForm.querySelector("textarea[name='address']")?.value?.trim();
+
+  if (!name || !city || !address || !phone) {
+    alert(currentLang === 'ar' ? 'المرجو ملء جميع الخانات' : (currentLang === 'fr' ? 'Veuillez remplir tous les champs' : 'Please fill all fields'));
+    return;
+  }
+
+  const lines = state.cart.map(i=>{
+    const p = PRODUCTS.find(x=>x.id===i.id);
+    const name = p ? p.name : i.id;
+    const price = p ? p.price : 0;
+    const variant = i.variant ? ` (${i.variant})` : '';
+    return `- ${name}${variant} x${i.qty} — ${formatMoney(price * i.qty)}`;
+  }).join("\n");
+
+  const total = cartTotal();
+
+  const subject = (currentLang === 'ar') ? `طلب من الموقع - ${name}` : (currentLang === 'fr' ? `Commande depuis le site - ${name}` : `Order from website - ${name}`);
+  const body = `Hello IPORDISE PARFUM,
+
+I would like to place the following order:\n\n${lines}\n\nTotal: ${formatMoney(total)}\n\nShipping information:\nName: ${name}\nPhone: ${phone}\nCity: ${city}\nAddress: ${address}\n\nPlease confirm receipt and next steps.\n\nThank you!`;
+
+  window.location.href = `mailto:${STORE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  closeModal(checkoutModal);
+});
+
+// Quick open checkout modal from 'Checkout — Email' on cart
+const btnCheckoutEmail = document.getElementById('btnCheckoutEmail');
+btnCheckoutEmail?.addEventListener('click', ()=>{
+  openCheckoutModal();
+  // focus first input for quick filling
+  setTimeout(()=> checkoutForm.querySelector("input[name='name']")?.focus(), 250);
 });
 
 // ---------- Contact form ----------
@@ -961,7 +1042,7 @@ const POLICY_CONTENT = {
           <li>Product names/prices can change without notice.</li>
         </ul>
         <h3>Orders</h3>
-        <p>Checkout opens WhatsApp with your cart details. Delivery fees are confirmed on WhatsApp.</p>
+        <p>Checkout opens WhatsApp or your email app with your cart details. Delivery fees are confirmed during order confirmation (WhatsApp or email).</p>
       `
     },
     privacy: {
@@ -1111,6 +1192,152 @@ function renderFinder(){
   if (finderWhatsApp) finderWhatsApp.href = `https://wa.me/${WHATSAPP_PHONE_INTL}?text=${encodeURIComponent(msg)}`;
 }
 
+// ---------- Promo banner JS ----------
+function initPromoBanner(){
+  try{
+    const timerEl = document.getElementById('promoTimer');
+    const badgeEl = document.getElementById('promoBadge');
+    if (!timerEl) return;
+
+    // start at 2:15:34
+    let remaining = 2*3600 + 15*60 + 34;
+    function tick(){
+      if (remaining <= 0){
+        timerEl.textContent = '00:00:00';
+        if (badgeEl) badgeEl.textContent = 'Offer ended';
+        return;
+      }
+      const h = String(Math.floor(remaining/3600)).padStart(2,'0');
+      const m = String(Math.floor((remaining%3600)/60)).padStart(2,'0');
+      const s = String(remaining%60).padStart(2,'0');
+      timerEl.textContent = `${h}:${m}:${s}`;
+      remaining--;
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // options
+    // Use data-product on buttons for direct mapping and support smooth swap animations
+    function getProductById(id){ return (window.PRODUCTS || []).find(x=>x.id === id) || null; }
+
+    // promo image preload cache
+    const _promoImageCache = {};
+    function preloadImage(src){
+      return new Promise((resolve)=>{
+        if (!src) return resolve(false);
+        if (_promoImageCache[src] === true) return resolve(true);
+        if (_promoImageCache[src] instanceof Promise) return _promoImageCache[src].then(()=>resolve(true)).catch(()=>resolve(false));
+
+        const p = new Promise((res)=>{
+          const img = new Image();
+          img.onload = ()=>{ _promoImageCache[src] = true; res(true); };
+          img.onerror = ()=>{ _promoImageCache[src] = false; res(false); };
+          img.src = src;
+        });
+        _promoImageCache[src] = p;
+        p.then(()=>resolve(true)).catch(()=>resolve(false));
+      });
+    }
+
+    function animateSwap(el, updateFn){
+      if (!el) { updateFn(); return; }
+      el.classList.add('fade-out','slide-out');
+      setTimeout(()=>{
+        updateFn();
+        el.classList.remove('fade-out','slide-out');
+        el.classList.add('fade-in','slide-in');
+        setTimeout(()=> el.classList.remove('fade-in','slide-in'), 420);
+      }, 220);
+    }
+
+    function updatePromoDisplayByProductId(pid){
+      const prod = getProductById(pid) || {};
+      const img = prod.image || document.getElementById('promoPreviewImg')?.src;
+      const bottleBackSrc = prod.backImage || document.getElementById('promoBottleBack')?.src;
+      const name = prod.name || pid;
+      const lang = window.currentLang || 'en';
+      const desc = (lang === 'fr' && prod.description_fr) ? prod.description_fr.split('\n')[0] : (lang === 'ar' && prod.description_ar) ? prod.description_ar.split('\n')[0] : (prod.description || '').split('\n')[0] || '';
+
+      const previewImg = document.getElementById('promoPreviewImg');
+      const previewName = document.getElementById('promoPreviewName');
+      const previewDesc = document.getElementById('promoPreviewDesc');
+      const bottleFront = document.getElementById('promoBottleFront');
+      const bottleBack = document.getElementById('promoBottleBack');
+
+      // preload images then animate swap
+      Promise.all([preloadImage(img), preloadImage(bottleBackSrc)]).then(()=> {
+        if (previewImg){
+          animateSwap(previewImg, ()=> { previewImg.src = img; previewImg.removeAttribute('aria-hidden'); });
+        }
+        if (previewName){ animateSwap(previewName, ()=> previewName.textContent = name); }
+        if (previewDesc){ animateSwap(previewDesc, ()=> previewDesc.textContent = desc); }
+
+        if (bottleFront){
+          bottleFront.classList.add('swap-out');
+          setTimeout(()=>{
+            bottleFront.src = img;
+            bottleFront.classList.remove('swap-out');
+            bottleFront.classList.add('swap-in');
+            setTimeout(()=> bottleFront.classList.remove('swap-in'), 460);
+          }, 220);
+        }
+        if (bottleBack){
+          bottleBack.classList.add('swap-out');
+          setTimeout(()=>{
+            bottleBack.src = bottleBackSrc;
+            bottleBack.classList.remove('swap-out');
+            bottleBack.classList.add('swap-in');
+            setTimeout(()=> bottleBack.classList.remove('swap-in'), 460);
+          }, 220);
+        }
+
+        // announce to screen readers
+        const live = document.getElementById('promoPreviewName');
+        if (live) live.setAttribute('aria-live', 'polite');
+      });
+    }
+
+    // Buttons binding with keyboard support
+    const optionBtns = Array.from(document.querySelectorAll('.promo-option'));
+    optionBtns.forEach((btn, idx)=>{
+      const pid = btn.dataset.product;
+      const p = getProductById(pid);
+      if (p){ if (p.image) preloadImage(p.image); if (p.backImage) preloadImage(p.backImage); }
+
+      btn.addEventListener('click', ()=>{
+        optionBtns.forEach(b=>{ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+        btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
+        if (pid) updatePromoDisplayByProductId(pid);
+      });
+
+      btn.addEventListener('keydown', (e)=>{
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown'){
+          const next = optionBtns[(idx+1) % optionBtns.length]; next.focus(); e.preventDefault();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
+          const prev = optionBtns[(idx-1 + optionBtns.length) % optionBtns.length]; prev.focus(); e.preventDefault();
+        } else if (e.key === 'Enter' || e.key === ' '){ btn.click(); e.preventDefault(); }
+      });
+    });
+
+    // initialize with first option (respect data-product)
+    const first = document.querySelector('.promo-option.active') || document.querySelector('.promo-option');
+    if (first){ first.classList.add('active'); first.setAttribute('aria-pressed','true'); const pid = first.dataset.product; if (pid) updatePromoDisplayByProductId(pid); }
+
+    document.querySelectorAll('.promo-shop-btn').forEach(b=> b.addEventListener('click', (e)=>{ e.preventDefault(); document.getElementById('deals')?.scrollIntoView({behavior:'smooth'}); }));
+
+    document.getElementById('promoWhatsApp')?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const selected = document.querySelector('.promo-option.active');
+      const selText = selected ? selected.getAttribute('data-key') : '';
+      const base = (currentLang === 'ar' ? 'مرحباً، أنا مهتم بهذا العرض:' : (currentLang === 'fr' ? 'Bonjour, je suis intéressé par cette offre :' : "Hello, I'm interested in this offer:"));
+      const message = selText ? `${base} ${selText}` : base;
+      const url = `https://wa.me/${WHATSAPP_PHONE_INTL}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    });
+
+  }catch(e){ console.warn('promo init failed', e); }
+}
+
 // ---------- Bottom nav ----------
 bottomNav?.addEventListener("click", (e)=>{
   const btn = e.target.closest("[data-bottom]");
@@ -1163,9 +1390,97 @@ function addMsg(text, who="bot"){
 function seedChatIfEmpty(){
   if (!chatbotMsgs) return;
   if (chatbotMsgs.childElementCount===0){
-    addMsg(t("chat_hi"), "bot");
+    sendBotMessage(t("chat_hi"), { intent: 'greeting' });
   }
 }
+
+// Chat logging + typing simulation + helper
+let _chatLogs = JSON.parse(localStorage.getItem('ipordise_chat_logs')||'[]');
+let _chatFallbacks = 0;
+function logChatEntry(entry){
+  try{
+    _chatLogs.push(entry);
+    if (_chatLogs.length > 300) _chatLogs.shift();
+    localStorage.setItem('ipordise_chat_logs', JSON.stringify(_chatLogs));
+  }catch(e){/* noop */}
+}
+
+function showTyping(){
+  if (!chatbotMsgs) return;
+  hideTyping();
+  const d = document.createElement('div');
+  d.className = 'msg msg--typing';
+  d.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+  chatbotMsgs.appendChild(d);
+  chatbotMsgs.scrollTop = chatbotMsgs.scrollHeight;
+}
+function hideTyping(){
+  if (!chatbotMsgs) return;
+  const tEl = chatbotMsgs.querySelector('.msg--typing');
+  if (tEl) tEl.remove();
+}
+
+function sendBotMessage(text, opts){
+  opts = opts || {};
+  const len = String(text||'').length;
+  const base = Math.min(1200 + len * 20, 2800);
+  showTyping();
+  setTimeout(()=>{
+    hideTyping();
+    if (!chatbotMsgs) return;
+    const div = document.createElement('div');
+    div.className = 'msg';
+    div.innerHTML = opts.html ? opts.html : escapeHtml(String(text||''));
+    chatbotMsgs.appendChild(div);
+
+    // add chips (quick replies) if provided
+    if (opts.chips && Array.isArray(opts.chips) && opts.chips.length){
+      const chips = document.createElement('div');
+      chips.className = 'msg__chips';
+      chips.innerHTML = opts.chips.map(c=>`<button class="chip" data-quick="${c.action}">${escapeHtml(c.label)}</button>`).join('');
+      div.appendChild(chips);
+      chips.querySelectorAll('button').forEach(b=> b.addEventListener('click', ()=> handleQuickFromChat(b.dataset.quick) ));
+    }
+
+    chatbotMsgs.scrollTop = chatbotMsgs.scrollHeight;
+
+    logChatEntry({ ts: Date.now(), lang: currentLang, user: opts.user || null, bot: text, intent: opts.intent || null });
+
+    if (typeof opts.onShown === 'function') setTimeout(()=> opts.onShown(div), 50);
+  }, opts.delay || base);
+}
+
+function handleQuickFromChat(action){
+  if (!action) return;
+  if (action === 'open_whatsapp' || action === 'order_whatsapp'){
+    // Open WhatsApp with a small prefilled message
+    const msg = t('wa_prefill') || "Hello, I'm interested in this product: {name} • Size: {size}";
+    // try to pull last suggested product name from chat logs
+    const lastSuggestion = _chatLogs.slice().reverse().find(l => l && l.intent === 'recommendation');
+    const productName = (lastSuggestion && lastSuggestion.bot) ? (lastSuggestion.bot.split('\n')[1] || '').replace('• ','').trim() : '';
+    const message = msg.replace('{name}', productName || '').replace('{size}', '10ml');
+    const url = `https://wa.me/${WHATSAPP_PHONE_INTL}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+    return;
+  }
+  if (action === 'more_recommend'){
+    const items = [...PRODUCTS].sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,6);
+    const text = items.map(p=>`• ${p.name}`).join('\n');
+    sendBotMessage((currentLang === 'ar' ? 'هادو اقتراحات أكثر:' : (currentLang === 'fr' ? 'Voici plus de suggestions :' : 'Here are more suggestions:')) + '\n' + text, { intent: 'recommendation' });
+    return;
+  }
+  if (action === 'note_vanilla' || action === 'note_musk' || action === 'note_fresh'){
+    const mapping = { note_vanilla: (currentLang==='ar' ? 'فانيلا' : (currentLang==='fr' ? 'vanille' : 'vanilla')), note_musk: (currentLang==='ar' ? 'مسك' : (currentLang==='fr' ? 'musc' : 'musk')), note_fresh: (currentLang==='ar' ? 'فريش' : (currentLang==='fr' ? 'frais' : 'fresh')) };
+    const val = mapping[action] || '';
+    if (chatbotInput){ chatbotInput.value = val; chatbotForm.dispatchEvent(new Event('submit', { bubbles:true, cancelable:true })); }
+    return;
+  }
+  // fallback to quick actions handled elsewhere
+}
+
+// Admin helper: print chat logs
+function showChatLogs(){ try{ const logs = JSON.parse(localStorage.getItem('ipordise_chat_logs')||'[]'); console.table(logs); return logs; }catch(e){ console.warn('no logs'); return []; } }
+
 
 function recommendFromText(text){
   const q = (text||"").toLowerCase();
@@ -1197,22 +1512,28 @@ chatbotQuick?.addEventListener("click",(e)=>{
   const q = b.dataset.quick;
   if (q==="recommend"){
     addMsg(currentLang==="ar" ? "بغيت اقتراح" : (currentLang==="fr" ? "Je veux une recommandation" : "I want a recommendation"), "me");
-    addMsg(currentLang==="ar" ? "كتب ليا النوتات اللي كتفضل (مثلاً: فانيلا، مسك، فريش…)." : (currentLang==="fr" ? "Dites-moi vos notes préférées (vanille, musc, frais…)." : "Tell me your favorite notes (vanilla, musk, fresh…)."), "bot");
+    sendBotMessage(currentLang==="ar" ? "كتب ليا النوتات اللي كتفضل (مثلاً: فانيلا، مسك، فريش…)." : (currentLang==="fr" ? "Dites-moi vos notes préférées (vanille, musc, frais…)." : "Tell me your favorite notes (vanilla, musk, fresh…)."), {
+      intent: 'ask_notes',
+      chips: [
+        { action: 'note_vanilla', label: currentLang === 'ar' ? 'فانيلا' : (currentLang === 'fr' ? 'Vanille' : 'Vanilla') },
+        { action: 'note_musk', label: currentLang === 'ar' ? 'مسك' : (currentLang === 'fr' ? 'Musc' : 'Musk') },
+        { action: 'note_fresh', label: currentLang === 'ar' ? 'فريش' : (currentLang === 'fr' ? 'Frais' : 'Fresh') }
+      ]
+    });
   }
   if (q==="best"){
     addMsg(currentLang==="ar" ? "الأكثر مبيعاً" : (currentLang==="fr" ? "Best-sellers" : "Best sellers"), "me");
     const items = [...PRODUCTS].sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,3);
-    addMsg(items.map(p=>`• ${p.name}`).join("\n"), "bot");
+    sendBotMessage(items.map(p=>`• ${p.name}`).join("\n"), { intent: 'best', chips: [ { action: 'more_recommend', label: currentLang==='ar' ? 'المزيد' : (currentLang==='fr' ? 'Plus' : 'More') }, { action: 'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' } ] });
     document.getElementById("best")?.scrollIntoView({behavior:"smooth"});
   }
   if (q==="delivery"){
     addMsg(currentLang==="ar" ? "التوصيل" : (currentLang==="fr" ? "Livraison" : "Delivery"), "me");
-    addMsg(t("topbar_text"), "bot");
+    sendBotMessage(t("topbar_text"), { intent: 'delivery' });
   }
   if (q==="whatsapp"){
     addMsg(currentLang==="ar" ? "بغيت نطلب فواتساب" : (currentLang==="fr" ? "Je veux commander sur WhatsApp" : "I want to order on WhatsApp"), "me");
-    addMsg(`WhatsApp: ${WHATSAPP_DISPLAY}`, "bot");
-    window.open(`https://wa.me/${WHATSAPP_PHONE_INTL}`, "_blank");
+    sendBotMessage(`WhatsApp: ${WHATSAPP_DISPLAY}`, { intent: 'whatsapp', onShown: ()=> window.open(`https://wa.me/${WHATSAPP_PHONE_INTL}`, "_blank") });
   }
 });
 
@@ -1221,6 +1542,7 @@ chatbotForm?.addEventListener("submit",(e)=>{
   const text = (chatbotInput?.value || "").trim();
   if (!text) return;
   addMsg(text, "me");
+  try{ logChatEntry({ ts: Date.now(), lang: currentLang, user: text, bot: null }); }catch(e){}
   chatbotInput.value = "";
 
   // simple intents
@@ -1228,64 +1550,74 @@ chatbotForm?.addEventListener("submit",(e)=>{
 
   // --- Greetings ---
   if (["hello", "hi", "hey", "bonjour", "salut", "مرحبا", "السلام"].some(g => lower.startsWith(g))) {
-    addMsg(t("chat_generic_greeting"), "bot");
+    sendBotMessage(t("chat_generic_greeting"), { intent: 'greeting' });
     return;
   }
 
   // --- Thanks ---
   if (["thanks", "thank you", "merci", "شكرا"].some(g => lower.includes(g))) {
-    addMsg(t("chat_welcome"), "bot");
+    sendBotMessage(t("chat_welcome"), { intent: 'thanks' });
     return;
   }
 
   // --- WhatsApp ---
   if (lower.includes("whatsapp") || lower.includes("واتساب")) {
-    addMsg(`WhatsApp: ${WHATSAPP_DISPLAY}`, "bot");
-    window.open(`https://wa.me/${WHATSAPP_PHONE_INTL}?text=${encodeURIComponent(text)}`, "_blank");
+    sendBotMessage(`WhatsApp: ${WHATSAPP_DISPLAY}`, { intent: 'whatsapp', onShown: ()=> window.open(`https://wa.me/${WHATSAPP_PHONE_INTL}?text=${encodeURIComponent(text)}`, "_blank") });
     return;
   }
 
   // --- Delivery ---
   if (lower.includes("delivery") || lower.includes("livraison") || lower.includes("توصيل")) {
-    addMsg(t("topbar_text"), "bot");
+    sendBotMessage(t("topbar_text"), { intent: 'delivery' });
     return;
   }
 
   // --- Payment ---
   if (lower.includes("payment") || lower.includes("pay") || lower.includes("paiement") || lower.includes("دفع") || lower.includes("أداء")) {
-    addMsg(t("chat_payment"), "bot");
+    sendBotMessage(t("chat_payment"), { intent: 'payment' });
     return;
   }
 
   // --- Contact ---
   if (lower.includes("contact") || lower.includes("email") || lower.includes("phone") || lower.includes("تواصل")) {
-    addMsg(t("chat_contact"), "bot");
+    sendBotMessage(t("chat_contact"), { intent: 'contact' });
     return;
   }
 
   // --- Best sellers ---
   if (lower.includes("best") || lower.includes("meille") || lower.includes("الأكثر")) {
     const items = [...PRODUCTS].sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,3);
-    addMsg(items.map(p=>`• ${p.name}`).join("\n"), "bot");
+    sendBotMessage(items.map(p=>`• ${p.name}`).join("\n"), { intent: 'best', chips: [ { action: 'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' }, { action: 'more_recommend', label: currentLang==='ar' ? 'المزيد' : (currentLang==='fr' ? 'Plus' : 'More') } ] });
     return;
   }
 
   // --- Category specific ---
   if (lower.includes("men") || lower.includes("homme") || lower.includes("رجال")) {
-    addMsg(t("chat_men_suggestion"), "bot");
+    sendBotMessage(t("chat_men_suggestion"), { intent: 'men_suggestion' });
     const items = PRODUCTS.filter(p => p.category === 'men').sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,3);
-    if (items.length) addMsg(items.map(p=>`• ${p.name}`).join("\n"), "bot");
+    if (items.length) sendBotMessage(items.map(p=>`• ${p.name}`).join("\n"), { intent: 'men_suggestion' });
     return;
   }
   if (lower.includes("women") || lower.includes("femme") || lower.includes("نساء")) {
-    addMsg(t("chat_women_suggestion"), "bot");
+    sendBotMessage(t("chat_women_suggestion"), { intent: 'women_suggestion' });
     const items = PRODUCTS.filter(p => p.category === 'women').sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,3);
-    if (items.length) addMsg(items.map(p=>`• ${p.name}`).join("\n"), "bot");
+    if (items.length) sendBotMessage(items.map(p=>`• ${p.name}`).join("\n"), { intent: 'women_suggestion' });
     return;
   }
 
   // --- Fallback: recommend from text ---
-  addMsg(recommendFromText(text), "bot");
+  const reply = recommendFromText(text);
+  sendBotMessage(reply, { intent: 'recommendation', onShown: ()=>{
+    const kw = currentLang === 'ar' ? 'واتساب' : (currentLang === 'fr' ? 'WhatsApp' : 'WhatsApp');
+    if (reply && reply.includes(kw)){
+      _chatFallbacks++;
+      if (_chatFallbacks >= 2){
+        sendBotMessage(currentLang === 'ar' ? 'بغيت نتواصلو فواتساب باش نعاونك مباشرة؟' : (currentLang === 'fr' ? 'Souhaitez-vous que l’on prenne la commande via WhatsApp ?' : 'Would you like us to take the order on WhatsApp?'), { chips: [ { action: 'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' } ], intent: 'escalation' });
+      }
+    } else {
+      _chatFallbacks = 0;
+    }
+  } });
 });
 
 function handleChatbotAttention() {
@@ -1381,4 +1713,5 @@ function observeAnimatableElements() {
   renderFinder();
   handleChatbotAttention();
   initScrollAnimations();
+  initPromoBanner();
 })();

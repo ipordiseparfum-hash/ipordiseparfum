@@ -83,7 +83,7 @@
         </a>
         <button class="icon-btn cart-btn" id="btnCart" aria-label="Open cart">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-          <span class="cart-badge" id="cartCount">0</span>
+          <span class="cart-badge" id="cartCount" role="status" aria-live="polite">0</span>
         </button>
       </nav>
     </div>
@@ -238,6 +238,60 @@
             <div class="pattern-element pattern-2"></div>
             <div class="pattern-element pattern-3"></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promo Hero -->
+    <section class="promo-hero" aria-label="Limited fragrance offer">
+      <div class="container promo-hero__inner">
+        <div class="promo-hero__left">
+          <div class="promo-badge" id="promoBadge" aria-hidden="true">Limited Offer • Ends in <strong id="promoTimer">02:15:34</strong></div>
+
+          <div class="promo-card">
+            <div class="promo-card__kicker">Fragrance deals for you</div>
+            <h2 class="promo-card__title" data-i18n="sec_deals_title">Fragrance deals for you</h2>
+            <p class="promo-card__sub muted">Selected premium scents at exclusive prices for a limited time. Curated with care.</p>
+
+            <div class="promo-card__meta">
+              <div class="promo-rating">★★★★★ <span class="muted small">Trusted by 1,000+ fragrance lovers</span></div>
+              <div class="promo-cta">
+                <a class="btn btn--primary promo-shop-btn" href="#deals">Shop deals <span class="btn-arrow">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-hero__center">
+          <div class="promo-center-card">
+            <div class="promo-preview">
+              <img id="promoPreviewImg" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Ultra%20Male%20set.png" alt="Preview bottle" loading="lazy">
+              <div class="promo-preview__meta">
+                <div id="promoPreviewName" class="promo-preview__name">Jean Paul Gaultier — Ultra Male</div>
+                <div id="promoPreviewDesc" class="promo-preview__desc muted small">A modern, seductive and energetic fragrance with sweet pear and warm vanilla notes.</div>
+              </div>
+            </div>
+            <h3 class="promo-center-title">What kind of fragrance suits you?</h3>
+            <div class="promo-options" role="tablist" aria-label="Fragrance types">
+              <button class="promo-option" role="tab" aria-pressed="true" data-key="Strong &amp; Intense" data-product="p24">Strong &amp; Intense</button>
+              <button class="promo-option" role="tab" aria-pressed="false" data-key="Soft &amp; Feminine" data-product="p28">Soft &amp; Feminine</button>
+              <button class="promo-option" role="tab" aria-pressed="false" data-key="Dark &amp; Oud" data-product="p13">Dark &amp; Oud</button>
+              <button class="promo-option" role="tab" aria-pressed="false" data-key="Fresh &amp; Clean" data-product="p27">Fresh &amp; Clean</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-hero__right" aria-hidden="true">
+          <div class="promo-right__scene">
+            <img id="promoBottleFront" class="promo-bottle promo-bottle--front" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Ultra%20Male%20set.png" alt="perfume bottle front" loading="lazy">
+            <img id="promoBottleBack" class="promo-bottle promo-bottle--back" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Xerjoff%20Erba%20Pura%20fragrance%20collection.png" alt="perfume bottle back" loading="lazy">
+            <div class="promo-ornaments">
+              <div class="petal petal--1"></div>
+              <div class="petal petal--2"></div>
+              <div class="citrus"></div>
+            </div>
+          </div>
+          <a id="promoWhatsApp" class="btn btn--wa promo-whatsapp" href="https://wa.me/212663750210" target="_blank" rel="noopener" aria-label="Ask us on WhatsApp">Ask us on WhatsApp — Get your perfect fragrance</a>
         </div>
       </div>
     </section>
@@ -596,12 +650,24 @@
           </div>
 
           <button class="btn btn--primary btn--full" id="btnCheckout">
-            Checkout on WhatsApp
+            Checkout — WhatsApp
           </button>
+          <button class="btn btn--ghost btn--full" id="btnCheckoutEmail">
+            Checkout — Email
+          </button>
+          <button class="btn btn--ghost btn--full" id="btnOrderDirectEmail">
+            Order by Email (Quick)
+          </button>
+
           <button class="btn btn--ghost btn--full" id="btnClearCart">
             Clear cart
           </button>
-          <p class="muted small">Checkout opens WhatsApp with your order details.</p>
+          <p class="muted small">Checkout opens WhatsApp or your email app with your order details. You can also place orders by email directly from this cart and mark them confirmed once you receive our reply.</p>
+        </div>
+
+        <div class="drawer__section" id="orderSection">
+          <div class="drawer__section-title">Your orders</div>
+          <div id="orderList" class="drawer__box"></div>
         </div>
       </div>
     </div>
@@ -643,9 +709,14 @@
                 <span class="muted" data-i18n="cart_subtotal">Subtotal</span>
                 <strong id="checkoutSubtotal">0 MAD</strong>
               </div>
+            <div style="display:flex; gap:10px;">
             <button class="btn btn--primary btn--full" id="btnConfirmCheckout" type="submit" data-i18n="checkout_confirm">
-              Confirm Order on WhatsApp
+              Confirm Order — WhatsApp
             </button>
+            <button class="btn btn--ghost btn--full" id="btnConfirmEmail" type="button">
+              Send Order — Email
+            </button>
+          </div>
           </div>
         </form>
       </div>
