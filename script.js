@@ -10,6 +10,7 @@ const STORE_CURRENCY = "MAD";
 // ---------- i18n ----------
 const I18N = {
   en: {
+    nav_home: "Home",
     brand_tag: "Fragrance Boutique",
     topbar_text: "Free delivery in Morocco from 299 MAD • Pay on delivery available",
     topbar_link: "See deals",
@@ -33,6 +34,7 @@ const I18N = {
     search_ph: "Search perfumes, brands, notes...",
     hero_pill: "✨ Premium Moroccan Fragrances",
     hero_title: "Discover Your Signature Scent",
+    hero_cta_badge: "Discover our products",
     hero_desc: "Curated perfumes inspired by Morocco's rich heritage. Authentic scents for women, men, and unisex — with express delivery across Morocco and 24/7 personalized support.",
     trust_auth: "100% Authentic",
     trust_delivery: "Free Delivery 299 MAD+",
@@ -47,10 +49,11 @@ const I18N = {
     sec_new_desc: "Freshly curated scents, just for you.",
     sec_best_title: "Best sellers",
     sec_best_desc: "Top-rated picks customers love.",
-    sec_deals_kicker: "More to discover",
-    sec_deals_title: "Fragrance deals for you",
-    sec_deals_desc: "Save on selected fragrances. Limited offers updated weekly.",
-    sec_deals_cta: "Shop deals",
+    sec_deals_kicker: "LIMITED TIME OFFER",
+    flash_text: "Shop now before the offer ends",
+    sec_deals_title: "Grateful Offers",
+    sec_deals_desc: "Discover our curated collection of premium fragrances and find your signature scent today. Save up to 20% on selected items.",
+    sec_deals_cta: "Shop The Collection",
     sec_brands_title: "Featured Brands",
     sec_brands_desc: "A clean brand row that looks premium on mobile.",
     sec_reviews_title: "Customer Reviews",
@@ -105,10 +108,11 @@ const I18N = {
     chat_quick_reco: "Recommend for me",
     chat_quick_best: "Best sellers",
     chat_quick_delivery: "Delivery",
+    chat_quick_payment: "Payment",
     chat_quick_whatsapp: "WhatsApp order",
     chat_ph: "Type a message…",
     chat_note: "Tip: write notes you like (vanilla, musk, fresh…). For real orders, use WhatsApp.",
-    chat_hi: "Hi 👋 Tell me what you like: vanilla / musk / fresh / floral / woody…",
+    chat_hi: "Hi! I’m the IPORDISE assistant.\nI can help with recommendations, prices, delivery, payment, returns, and how to order. Tell me what you like (vanilla, musk, fresh, floral, oud…), or tap an option below.",
     chat_generic_greeting: "Hello! How can I help you today?",
     chat_welcome: "You're welcome! Let me know if you need anything else.",
     chat_payment: "We offer cash on delivery. You pay when you receive your order.",
@@ -132,16 +136,15 @@ const I18N = {
     cart_delivery: "Delivery",
     cart_delivery_info: "Calculated on WhatsApp",
     translate_unavailable: "Translation not available; showing English.",
-    choose_size: "Choose size",
-    flash_text: "Shop now before the offer ends",
-    toast_title: "Flash deal 🎁",
-    toast_meta: "Shop now before the offer ends",
-    toast_cta: "Shop deals",
-    toast_alt: "Best sellers",
-    back_home: "Back to home"
+    choose_size: "Choose size"
+    ,toast_title: "Flash deal 🎁"
+    ,toast_meta: "Shop now before the offer ends"
+    ,toast_cta: "Shop deals"
+    ,toast_alt: "Best sellers"
   },
 
   fr: {
+    nav_home: "Accueil",
     brand_tag: "Boutique de parfums",
     topbar_text: "Livraison gratuite au Maroc dès 299 MAD • Paiement à la livraison disponible",
     topbar_link: "Voir les offres",
@@ -165,6 +168,7 @@ const I18N = {
     search_ph: "Rechercher parfums, marques, notes…",
     hero_pill: "✨ Parfums marocains premium",
     hero_title: "Trouvez votre parfum signature",
+    hero_cta_badge: "Découvrir nos produits",
     hero_desc: "Des parfums inspirés du patrimoine marocain. Pour femme, homme et unisex — avec livraison express au Maroc et support WhatsApp 24/7.",
     trust_auth: "100% Authentique",
     trust_delivery: "Livraison offerte dès 299 MAD+",
@@ -179,10 +183,11 @@ const I18N = {
     sec_new_desc: "Des parfums fraîchement sélectionnés, juste pour vous.",
     sec_best_title: "Meilleures ventes",
     sec_best_desc: "Les choix préférés de nos clients.",
-    sec_deals_kicker: "À découvrir",
-    sec_deals_title: "Des offres pour vous",
-    sec_deals_desc: "Économisez sur une sélection. Offres mises à jour chaque semaine.",
-    sec_deals_cta: "Voir les promos",
+    sec_deals_kicker: "OFFRE À DURÉE LIMITÉE",
+    flash_text: "Achetez avant la fin de l’offre",
+    sec_deals_title: "Offres exceptionnelles",
+    sec_deals_desc: "Découvrez notre collection de parfums premium et trouvez votre parfum signature. Jusqu’à 20% de réduction sur une sélection.",
+    sec_deals_cta: "Découvrir la collection",
     sec_brands_title: "Marques en vedette",
     sec_brands_desc: "Une rangée de marques propre et premium.",
     sec_reviews_title: "Avis clients",
@@ -237,10 +242,11 @@ const I18N = {
     chat_quick_reco: "Me recommander",
     chat_quick_best: "Best-sellers",
     chat_quick_delivery: "Livraison",
+    chat_quick_payment: "Paiement",
     chat_quick_whatsapp: "Commander WhatsApp",
     chat_ph: "Écrire un message…",
     chat_note: "Astuce : écrivez les notes que vous aimez (vanille, musc, frais…). Pour commander, utilisez WhatsApp.",
-    chat_hi: "Bonjour 👋 Dites-moi ce que vous aimez : vanille / musc / frais / floral / boisé…",
+    chat_hi: "Bonjour ! Je suis l’assistant IPORDISE.\nJe peux aider avec recommandations, prix, livraison, paiement, retours, et comment commander. Dites-moi ce que vous aimez (vanille, musc, frais, floral, oud…), ou choisissez une option ci-dessous.",
     chat_generic_greeting: "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
     chat_welcome: "De rien ! N'hésitez pas si vous avez d'autres questions.",
     chat_payment: "Nous proposons le paiement à la livraison. Vous payez lorsque vous recevez votre commande.",
@@ -264,13 +270,11 @@ const I18N = {
     cart_delivery: "Livraison",
     cart_delivery_info: "Calculé sur WhatsApp",
     translate_unavailable: "Traduction non disponible; affichage en anglais.",
-    choose_size: "Choisir la taille",
-    flash_text: "Achetez maintenant avant la fin de l’offre",
-    toast_title: "Offre flash 🎁",
-    toast_meta: "Achetez maintenant قبل انتهاء العرض",
-    toast_cta: "Voir les promos",
-    toast_alt: "Meilleures ventes",
-    back_home: "Retour à l'accueil"
+    choose_size: "Choisir la taille"
+    ,toast_title: "Offre flash 🎁"
+    ,toast_meta: "Achetez avant la fin de l’offre"
+    ,toast_cta: "Voir les promos"
+    ,toast_alt: "Meilleures ventes"
   },
 
   ar: {
@@ -297,6 +301,7 @@ const I18N = {
     search_ph: "بحث عن العطور، الماركات، النوتات…",
     hero_pill: "✨ عطور مغربية فاخرة",
     hero_title: "اكتشف عطرك المميز",
+    hero_cta_badge: "اكتشف منتجاتنا",
     hero_desc: "عطور مستوحاة من تراث المغرب. للنساء والرجال واليونيسكس — مع توصيل سريع داخل المغرب ودعم واتساب 24/7.",
     trust_auth: "100% أصلي",
     trust_delivery: "توصيل مجاني 299+ درهم",
@@ -311,10 +316,11 @@ const I18N = {
     sec_new_desc: "عطور مختارة بعناية، خصيصاً لك.",
     sec_best_title: "الأكثر مبيعاً",
     sec_best_desc: "اختيارات محبوبة عند الزبناء.",
-    sec_deals_kicker: "اكتشف المزيد",
-    sec_deals_title: "عروض خاصة لك",
-    sec_deals_desc: "تخفيضات على عطور مختارة. عروض تتجدد أسبوعياً.",
-    sec_deals_cta: "تسوق العروض",
+    sec_deals_kicker: "عرض لفترة محدودة",
+    flash_text: "تسوق الآن قبل انتهاء العرض",
+    sec_deals_title: "عروض مميزة",
+    sec_deals_desc: "اكتشف مجموعتنا المختارة من العطور الفاخرة واعثر على عطرك المميز. خصم يصل إلى 20% على منتجات محددة.",
+    sec_deals_cta: "تسوق المجموعة",
     sec_brands_title: "ماركات مختارة",
     sec_brands_desc: "صف ماركات أنيق ومناسب للموبايل.",
     sec_reviews_title: "آراء الزبناء",
@@ -369,10 +375,11 @@ const I18N = {
     chat_quick_reco: "اقترح عليا",
     chat_quick_best: "الأكثر مبيعاً",
     chat_quick_delivery: "التوصيل",
+    chat_quick_payment: "الدفع",
     chat_quick_whatsapp: "طلب عبر واتساب",
     chat_ph: "كتب رسالة…",
     chat_note: "نصيحة: كتب النوتات اللي كتعجبك (فانيلا، مسك، فريش…). باش تطلب فعلاً استعمل واتساب.",
-    chat_hi: "مرحبا 👋 قول ليا شنو كتعجبك: فانيلا / مسك / فريش / فلورال / خشبي…",
+    chat_hi: "مرحبا! أنا مساعد IPORDISE.\nنقدر نعاونك فالاقتراحات، الأثمنة، التوصيل، الدفع، الإرجاع، وكيفاش تطلب. قول ليا شنو كتعجبك (فانيلا، مسك، فريش، فلورال، عود…) ولا اختار من الخيارات لتحت.",
     chat_generic_greeting: "مرحبا! كيفاش نقدر نساعدك اليوم؟",
     chat_welcome: "على الرحب والسعة! مرحبا بأي سؤال آخر.",
     chat_payment: "عندنا الدفع عند الاستلام. كتخلص حتى توصلك الطلبية.",
@@ -397,12 +404,11 @@ const I18N = {
     cart_delivery_info: "يُحسب عند تأكيد الطلب",
     translate_unavailable: "الترجمة غير متوفرة؛ يتم العرض بالإنجليزية.",
     choose_size: "اختيار الحجم",
-    flash_text: "تسوق الآن قبل ما يسالي العرض",
-    toast_title: "عرض سريع 🎁",
-    toast_meta: "تسوق الآن قبل ما يسالي العرض",
-    toast_cta: "تسوق العروض",
-    toast_alt: "الأكثر مبيعاً",
-    back_home: "الرجوع للرئيسية"
+    back_to_home: "الرجوع للرئيسية"
+    ,toast_title: "عرض خاطف 🎁"
+    ,toast_meta: "تسوق الآن قبل انتهاء العرض"
+    ,toast_cta: "تسوق العروض"
+    ,toast_alt: "الأكثر مبيعاً"
   }
 };
 
@@ -414,20 +420,6 @@ function t(key){
   return (dict && dict[key] != null) ? dict[key] : (I18N.en[key] ?? key);
 }
 
-
-function preloadHeroImages(){
-  const heroImage = document.getElementById("heroImage");
-  if (!heroImage) return;
-  const urls = [
-    heroImage.dataset.srcEn,
-    heroImage.dataset.srcFr,
-    heroImage.dataset.srcAr
-  ].filter(Boolean);
-  urls.forEach(u=>{
-    const img = new Image();
-    img.src = u;
-  });
-}
 
 function applyI18n(lang){
   currentLang = (I18N[lang] ? lang : "en");
@@ -441,26 +433,22 @@ function applyI18n(lang){
   if (label) label.textContent = currentLang.toUpperCase();
 
   // Update hero image based on language
-  const heroImage = document.getElementById('heroImage');
-  if (heroImage) {
-    const srcKey =
-      (currentLang === "fr") ? "srcFr" :
-      (currentLang === "ar") ? "srcAr" :
-      "srcEn";
-    const newSrc = heroImage.dataset[srcKey] || heroImage.dataset.srcEn;
-    if (heroImage.src !== newSrc) {
-      // Preload the new image to ensure it's cached before transition
-      const tempImg = new Image();
-      tempImg.onload = () => {
-        // Start fade-out, then swap image and fade-in
-        heroImage.style.opacity = 0;
-        setTimeout(() => {
-          heroImage.src = newSrc;
-          heroImage.style.opacity = 1;
-        }, 300); // Must match CSS transition duration
-      };
-      tempImg.src = newSrc;
-    }
+  const capLang = currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
+  const img = document.getElementById("heroImage");
+  if (img){
+    const newSrc = img.dataset[`src${capLang}`] || img.dataset.srcEn || img.getAttribute("src");
+    if (!newSrc) return;
+    if ((img.getAttribute("src") || "") === newSrc) return;
+
+    const tempImg = new Image();
+    tempImg.onload = () => {
+      img.style.opacity = 0;
+      setTimeout(() => {
+        img.setAttribute("src", newSrc);
+        img.style.opacity = 1;
+      }, 260);
+    };
+    tempImg.src = newSrc;
   }
 
   document.querySelectorAll("[data-i18n]").forEach(el => {
@@ -527,6 +515,20 @@ function isMobileOS(){
   return false;
 }
 
+function isMobileView(){
+  try{
+    return !!window.matchMedia && window.matchMedia("(max-width: 860px)").matches;
+  }catch{
+    return (window.innerWidth || 0) <= 860;
+  }
+}
+
+function syncViewportClasses(){
+  const mobile = isMobileView();
+  document.body.classList.toggle("is-mobile", mobile);
+  document.body.classList.toggle("is-desktop", !mobile);
+}
+
 function getProductPrice(p, variantSize = null) {
   if (!p) return 0;
   if (p.price != null && !variantSize) return p.price;
@@ -545,19 +547,53 @@ function getProductPrice(p, variantSize = null) {
 // ---------- Products ----------
 let PRODUCTS = [];
 
+function normalizeSortValue(v){
+  const val = String(v || "").trim();
+  if (val === "price-asc") return "price_asc";
+  if (val === "price-desc") return "price_desc";
+  if (val === "rating-desc") return "rating";
+  return val || "featured";
+}
+
+async function fetchJson(url){
+  const res = await fetch(url, { cache:"no-store" });
+  if (!res.ok) throw new Error(`Fetch failed: ${url} (${res.status})`);
+  return res.json();
+}
+
 async function loadProducts(){
-  try{
-    const res = await fetch("products.json", { cache:"no-store" });
-    if (!res.ok) throw new Error("products.json not found");
-    const data = await res.json();
-    if (Array.isArray(data)) PRODUCTS = data;
-  }catch(e){
-    // Fallback if products.json fails
-    PRODUCTS = [
-      { id:"p1", brand:"IPORDISE", name:"Vanilla Bloom Eau de Parfum", category:"women", price:299, rating:4.7, reviews:1852, tag:"Best Seller", notes:["vanilla","amber","sweet"] }
-    ];
-    console.warn("Using fallback products list", e);
+  const sources = [
+    // Local file (recommended when hosted via a web server)
+    "products.json",
+    // Online fallback (works even when opening index.html directly via file://)
+    "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/products.json",
+    "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/products.json"
+  ];
+
+  let lastErr;
+  for (const url of sources){
+    try{
+      const data = await fetchJson(url);
+      const list = Array.isArray(data) ? data : (data && Array.isArray(data.products) ? data.products : null);
+      if (Array.isArray(list) && list.length){
+        PRODUCTS = list;
+        return;
+      }
+    }catch(e){
+      lastErr = e;
+    }
   }
+
+  // Fallback if all sources fail
+  PRODUCTS = [
+    { id:"p1", brand:"IPORDISE", name:"Vanilla Bloom Eau de Parfum", category:"women", price:299, rating:4.7, reviews:1852, tag:"Best Seller", notes:["vanilla","amber","sweet"], image:"assets/logo.svg" },
+    { id:"p2", brand:"IPORDISE", name:"Oud Royal Eau de Parfum", category:"men", price:349, rating:4.6, reviews:940, tag:"Popular", notes:["oud","woody","amber"], image:"assets/logo.svg" },
+    { id:"p3", brand:"IPORDISE", name:"Musk & Rose Eau de Parfum", category:"unisex", price:319, rating:4.5, reviews:610, tag:"Unisex", notes:["musk","rose","powdery"], image:"assets/logo.svg" },
+    { id:"p4", brand:"IPORDISE", name:"Gift Set — Signature Trio", category:"gift", price:499, rating:4.8, reviews:210, tag:"Gift", notes:["vanilla","musk","woody"], image:"assets/logo.svg" },
+    { id:"p5", brand:"IPORDISE", name:"Home Diffuser — Amber Nights", category:"home", price:259, rating:4.4, reviews:180, tag:"Home", notes:["amber","warm","sweet"], image:"assets/logo.svg" },
+    { id:"p6", brand:"IPORDISE", name:"Travel Spray — Fresh Citrus", category:"travel", price:149, rating:4.3, reviews:95, tag:"Travel", notes:["citrus","fresh","clean"], image:"assets/logo.svg" }
+  ];
+  console.warn("Using fallback products list (could not load products.json)", lastErr);
 }
 
 // ---------- State ----------
@@ -622,6 +658,7 @@ const finderWhatsApp = document.getElementById("finderWhatsApp");
 const chatbot = document.getElementById("chatbot");
 const chatbotFab = document.getElementById("chatbotFab");
 const chatbotClose = document.getElementById("chatbotClose");
+const chatbotReset = document.getElementById("chatbotReset");
 const chatbotMsgs = document.getElementById("chatbotMsgs");
 const chatbotForm = document.getElementById("chatbotForm");
 const chatbotInput = document.getElementById("chatbotInput");
@@ -634,6 +671,57 @@ const chatbotAttentionClose = document.getElementById("chatbotAttentionClose");
 
 // bottom nav
 const bottomNav = document.getElementById("bottomNav");
+
+// toast
+const toastStack = document.getElementById('toastStack');
+
+// ========================================
+// WISHLIST SYSTEM
+// ========================================
+const wishlist = {
+  key: 'ipordise_wishlist',
+  items: new Set(),
+  
+  init() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(this.key) || '[]');
+      this.items = new Set(saved);
+    } catch {
+      this.items = new Set();
+    }
+  },
+  
+  add(productId) {
+    this.items.add(productId);
+    this.save();
+  },
+  
+  remove(productId) {
+    this.items.delete(productId);
+    this.save();
+  },
+  
+  toggle(productId) {
+    if (this.items.has(productId)) {
+      this.remove(productId);
+      return false;
+    } else {
+      this.add(productId);
+      return true;
+    }
+  },
+  
+  has(productId) {
+    return this.items.has(productId);
+  },
+  
+  save() {
+    localStorage.setItem(this.key, JSON.stringify([...this.items]));
+  }
+};
+
+// Initialize wishlist
+wishlist.init();
 
 // ---------- Drawers ----------
 function openDrawer(drawer){
@@ -673,12 +761,9 @@ document.addEventListener("click", (e) => {
   if (modalClose) closeModal(modalClose.closest(".modal"));
 });
 
-// Menu button only on Android/iOS/iPad, hide for desktop web
-if (isMobileOS()){
-  document.body.classList.add("is-mobile-os");
-} else {
-  document.body.classList.add("is-desktop");
-}
+// Mobile layout should be based on viewport width (more reliable than UA)
+syncViewportClasses();
+window.addEventListener("resize", throttle(syncViewportClasses, 150));
 
 btnMenu?.addEventListener("click", ()=> openDrawer(menuDrawer));
 btnCart?.addEventListener("click", () => openDrawer(cartDrawer));
@@ -710,7 +795,7 @@ document.addEventListener("keydown",(e)=>{
   }
 });
 
-// Dropdown filter links
+// Dropdown filter links (desktop nav removed from header; keep safe no-op if present elsewhere)
 document.querySelectorAll(".nav-dropdown__item[data-filter]").forEach(a=>{
   a.addEventListener("click", ()=>{
     const f = a.dataset.filter || "all";
@@ -744,7 +829,7 @@ elClear?.addEventListener("click", ()=>{
   renderProducts();
 });
 elSort?.addEventListener("change", (e)=>{
-  state.sort = e.target.value;
+  state.sort = normalizeSortValue(e.target.value);
   renderProducts();
 });
 
@@ -788,9 +873,10 @@ function getFilteredProducts(){
   }
 
   // sort
-  if (state.sort === "price_asc") items.sort((a,b)=>getProductPrice(a)-getProductPrice(b));
-  if (state.sort === "price_desc") items.sort((a,b)=>getProductPrice(b)-getProductPrice(a));
-  if (state.sort === "rating") items.sort((a,b)=>(b.rating||0)-(a.rating||0));
+  const sort = normalizeSortValue(state.sort);
+  if (sort === "price_asc") items.sort((a,b)=>getProductPrice(a)-getProductPrice(b));
+  if (sort === "price_desc") items.sort((a,b)=>getProductPrice(b)-getProductPrice(a));
+  if (sort === "rating") items.sort((a,b)=>(b.rating||0)-(a.rating||0));
   // featured: keep original order
 
   return items;
@@ -799,11 +885,39 @@ function getFilteredProducts(){
 function productCard(p){
   const stars = "★★★★★".slice(0, Math.round(clamp(p.rating||4.5,0,5)));
   const tag = p.tag ? `<span class="tag">${escapeHtml(p.tag)}</span>` : "";
-  const image = p.image || 'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/logo.jpeg';
+  const image = p.image || 'assets/logo.svg';
+  const defaultVariant = (p.variants && p.variants.length > 0) ? p.variants[0] : null;
+  const initialPrice = getProductPrice(p, defaultVariant ? defaultVariant.size : null);
+  const initialHref = `product.html?id=${escapeHtml(p.id)}${defaultVariant ? '&size=' + escapeHtml(defaultVariant.size) : ''}`;
+
+  // Wishlist check
+  const isWishlisted = wishlist.has(p.id);
+  
+  // Product badge (New, Bestseller, Sale)
+  let badge = '';
+  if (p.isNew) {
+    badge = '<span class="card__badge card__badge--new">New</span>';
+  } else if (p.isBestseller || (p.reviews && p.reviews > 100)) {
+    badge = '<span class="card__badge card__badge--bestseller">Bestseller</span>';
+  } else if (p.onSale) {
+    badge = '<span class="card__badge card__badge--sale">Sale</span>';
+  }
+  
+  // Stock urgency
+  let stockHtml = '';
+  if (p.stock && p.stock < 5) {
+    stockHtml = `<div class="card__stock card__stock--low">Only ${p.stock} left!</div>`;
+  }
 
   return `
-    <article class="card animate-on-scroll">
-      <a href="product.html?id=${escapeHtml(p.id)}" class="card__link" aria-label="View product: ${escapeHtml(p.name||"")}">
+    <article class="card animate-on-scroll" data-product-id="${p.id}">
+      ${badge}
+      <button class="card__wishlist ${isWishlisted ? 'active' : ''}" data-wishlist="${escapeHtml(p.id)}" aria-label="Add to wishlist" title="Add to wishlist">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      </button>
+      <a href="${initialHref}" class="card__link" aria-label="View product: ${escapeHtml(p.name||"")}">
         <div class="card__img">
           ${p.tag ? `<span class="card__tag">${escapeHtml(p.tag)}</span>` : ""}
           <img src="${escapeHtml(image)}" alt="${escapeHtml(p.name||"")}" loading="lazy" width="200" height="200">
@@ -815,10 +929,11 @@ function productCard(p){
             <span class="stars" aria-label="${(p.rating||0)} rating">${stars}</span>
             <span class="muted small">(${p.reviews||0})</span>
           </div>
+          ${stockHtml}
         </div>
       </a>
       <div class="card__actions">
-        <div class="card__price">${formatMoney(getProductPrice(p))}</div>
+        <div class="card__price">${formatMoney(initialPrice)}</div>
         <button class="btn btn--small btn--primary" data-add="${escapeHtml(p.id)}">+ Add</button>
       </div>
     </article>
@@ -842,12 +957,86 @@ function renderProducts(){
       const id = btn.getAttribute("data-add");
       const p = PRODUCTS.find(x=>x.id===id);
       if (!p) return;
-      // Add the first variant by default if variants exist, simplifying the card UI
-      const variant = (p.variants && p.variants.length > 0) ? p.variants[0].size : null;
-      addToCart(p, variant);
-      openDrawer(cartDrawer);
+      
+      // Show size selection modal
+      showSizeSelectionModal(p);
     });
   });
+  
+  // Wishlist button handlers
+  elGrid.querySelectorAll("[data-wishlist]").forEach(btn=>{
+    btn.addEventListener("click", (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      const id = btn.getAttribute("data-wishlist");
+      const isAdded = wishlist.toggle(id);
+      
+      // Update button state
+      if (isAdded) {
+        btn.classList.add("active");
+        btn.querySelector('svg').setAttribute('fill', 'currentColor');
+      } else {
+        btn.classList.remove("active");
+        btn.querySelector('svg').setAttribute('fill', 'none');
+      }
+    });
+  });
+}
+
+function renderProductSkeletons(count = 8){
+  if (!elGrid) return;
+  const items = Array.from({ length: count }).map(() => `
+    <article class="card skeleton">
+      <div class="card__img">
+        <div class="skeletonBox" style="width:100%; height:100%;"></div>
+      </div>
+      <div class="card__body" style="gap:10px;">
+        <div class="skeletonBox" style="height:12px; width:45%;"></div>
+        <div class="skeletonBox" style="height:14px; width:90%;"></div>
+        <div class="skeletonBox" style="height:12px; width:60%;"></div>
+      </div>
+      <div class="card__actions">
+        <div class="skeletonBox" style="height:16px; width:35%;"></div>
+        <div class="skeletonBox" style="height:34px; width:92px; border-radius:999px;"></div>
+      </div>
+    </article>
+  `).join('');
+  elGrid.innerHTML = items;
+}
+
+function showToast({ title, message, actionLabel, onAction, timeoutMs = 2600 } = {}){
+  if (!toastStack) return;
+  const el = document.createElement('div');
+  el.className = 'toast';
+
+  const safeTitle = escapeHtml(title || (currentLang === 'fr' ? 'Ajouté au panier' : (currentLang === 'ar' ? 'تزاد فالسلة' : 'Added to cart')));
+  const safeMessage = escapeHtml(message || '');
+
+  el.innerHTML = `
+    <div>
+      <p class="toast__title">${safeTitle}</p>
+      ${safeMessage ? `<p class="toast__meta">${safeMessage}</p>` : ''}
+    </div>
+    <div class="toast__actions">
+      ${actionLabel ? `<button class="toast__btn" type="button" data-toast-action>${escapeHtml(actionLabel)}</button>` : ''}
+      <button class="toast__close" type="button" aria-label="Close">×</button>
+    </div>
+  `;
+
+  toastStack.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('is-in'));
+
+  const close = () => {
+    el.classList.remove('is-in');
+    setTimeout(() => el.remove(), 180);
+  };
+
+  el.querySelector('.toast__close')?.addEventListener('click', close);
+  el.querySelector('[data-toast-action]')?.addEventListener('click', () => {
+    try{ onAction && onAction(); } finally{ close(); }
+  });
+
+  if (timeoutMs > 0) setTimeout(close, timeoutMs);
 }
 
 function escapeHtml(str){
@@ -855,6 +1044,36 @@ function escapeHtml(str){
 }
 
 // ---------- Cart ----------
+function showSizeSelectionModal(product) {
+  const sizeModal = document.getElementById("sizeModal");
+  const sizeSelectionOptions = document.getElementById("sizeSelectionOptions");
+  const sizeProductInfo = document.getElementById("sizeProductInfo");
+  const sizeError = document.getElementById("sizeError");
+  
+  if (!sizeModal || !sizeSelectionOptions) return;
+  
+  // Reset state
+  sizeModal.dataset.currentProduct = JSON.stringify(product);
+  sizeModal.dataset.selectedSize = '';
+  if (sizeError) sizeError.style.display = 'none';
+  
+  // If no variants, add directly
+  if (!product.variants || product.variants.length === 0) {
+    addToCart(product, null);
+    openDrawer(cartDrawer);
+    return;
+  }
+  
+  // Populate and open modal
+  if (sizeProductInfo) {
+    sizeProductInfo.innerHTML = `<img src="${escapeHtml(product.image || '')}" alt="${escapeHtml(product.name || '')}" class="size-product__img"><div class="size-product__details"><div class="size-product__brand">${escapeHtml(product.brand || '')}</div><div class="size-product__name">${escapeHtml(product.name || '')}</div></div>`;
+  }
+  
+  sizeSelectionOptions.innerHTML = product.variants.map(v => `<button class="size-option" data-size="${escapeHtml(v.size)}" data-price="${v.price}"><div class="size-option__content"><div class="size-option__size">${escapeHtml(v.size)}</div><div class="size-option__price">${formatMoney(v.price)}</div></div><div class="size-option__check">✓</div></button>`).join('');
+  
+  openModal(sizeModal);
+}
+
 function addToCart(p, variant){
   const key = variant ? `${p.id}::${variant}` : p.id;
   const item = state.cart.find(i=>i.key===key);
@@ -862,6 +1081,14 @@ function addToCart(p, variant){
   else state.cart.push({ key, id:p.id, variant: variant || null, qty:1 });
   saveCart();
   updateCartUI();
+
+  const msg = `${p?.name ? p.name : ''}${variant ? ` • ${variant}` : ''}`.trim();
+  showToast({
+    title: currentLang === 'fr' ? 'Ajouté au panier' : (currentLang === 'ar' ? 'تزاد فالسلة' : 'Added to cart'),
+    message: msg,
+    actionLabel: currentLang === 'fr' ? 'Voir panier' : (currentLang === 'ar' ? 'شوف السلة' : 'View cart'),
+    onAction: () => openDrawer(cartDrawer)
+  });
 }
 
 function removeFromCart(key){
@@ -938,20 +1165,6 @@ function updateCartUI(){
       </div>
     `;
   }).join("");
-
-  cartItems.querySelectorAll("[data-remove]").forEach(b=>{
-    b.addEventListener("click", ()=> removeFromCart(b.dataset.remove));
-  });
-  cartItems.querySelectorAll(".qtyBtn").forEach(b=>{
-    b.addEventListener("click", ()=>{
-      const delta = parseInt(b.dataset.qty,10);
-      const key = b.dataset.key;
-      changeQty(key, delta);
-    });
-  });
-
-  cartSubtotal.textContent = formatMoney(cartTotal());
-  if (cartSubtotal) cartSubtotal.setAttribute('aria-live','polite');
 
   cartItems.querySelectorAll("[data-remove]").forEach(b=>{
     b.addEventListener("click", ()=> removeFromCart(b.dataset.remove));
@@ -1156,6 +1369,7 @@ const POLICY_CONTENT = {
     }
   },
   fr: {
+    nav_home: "الرئيسية",
     terms: { title:"Conditions d’utilisation", html:`<p>IPORDISE PARFUM est une vitrine (pas de paiement sur le site). Les commandes se confirment sur WhatsApp.</p><h3>Utilisation</h3><ul><li>Ne pas abuser du formulaire, panier ou chatbot.</li><li>Les prix peuvent changer.</li></ul><h3>Commandes</h3><p>Le checkout ouvre WhatsApp avec les détails du panier.</p>` },
     privacy: { title:"Politique de confidentialité", html:`<p>Nous utilisons uniquement les infos que vous envoyez volontairement (WhatsApp ou email).</p><ul><li>Pas de compte requis.</li><li>Aucune donnée de paiement stockée.</li></ul>` },
     shipping: { title:"Livraison", html:`<p>Livraison partout au Maroc. Livraison gratuite possible dès 299 MAD (selon la bannière).</p><ul><li>Délai selon la ville.</li><li>Frais confirmés sur WhatsApp.</li></ul>` },
@@ -1264,10 +1478,55 @@ function renderFinder(){
 }
 
 // ---------- Promo banner JS ----------
-/* 
-  The complex promo banner was removed in favor of a simpler, more elegant design.
-  The initPromoBanner() function is no longer needed.
-*/
+function initDealsRotator() {
+    const dealProducts = ['p27', 'p28', 'p13', 'p26']; // Products to rotate
+    const textContainer = document.querySelector('.promo-banner__text');
+    const imageContainer = document.querySelector('.promo-banner__visual');
+    const imageEl = document.getElementById('dealImage');
+    const titleEl = document.getElementById('dealTitle');
+    const descEl = document.getElementById('dealDesc');
+    const countdownEl = document.getElementById('dealCountdown');
+
+    if (!imageEl || !titleEl || !descEl || !textContainer || !imageContainer) return;
+
+    let currentIndex = 0;
+
+    function updateDeal() {
+        const productId = dealProducts[currentIndex];
+        const product = PRODUCTS.find(p => p.id === productId);
+        if (!product) return;
+
+        // Animate out
+        textContainer.classList.add('is-changing');
+        imageContainer.classList.add('is-changing');
+
+        setTimeout(() => {
+            // Update content
+            imageEl.src = product.image;
+            titleEl.textContent = product.name;
+            descEl.textContent = (product.description || '').split('\n')[0];
+            // Animate in
+            textContainer.classList.remove('is-changing');
+            imageContainer.classList.remove('is-changing');
+        }, 500); // Match CSS transition duration
+
+        currentIndex = (currentIndex + 1) % dealProducts.length;
+    }
+
+    function initCountdown() {
+        let remaining = 8 * 3600 + 25 * 60 + 10; // 8h 25m 10s
+        setInterval(() => {
+            remaining--;
+            const h = String(Math.floor(remaining / 3600)).padStart(2, '0');
+            const m = String(Math.floor((remaining % 3600) / 60)).padStart(2, '0');
+            const s = String(remaining % 60).padStart(2, '0');
+            if (countdownEl) countdownEl.innerHTML = `${t('sec_deals_kicker')} &bull; ${h}:${m}:${s}`;
+        }, 1000);
+    }
+
+    setInterval(updateDeal, 5000);
+    initCountdown();
+}
 
 // ---------- Bottom nav ----------
 bottomNav?.addEventListener("click", (e)=>{
@@ -1276,9 +1535,7 @@ bottomNav?.addEventListener("click", (e)=>{
   const action = btn.dataset.bottom;
   if (action==="home") window.scrollTo({ top:0, behavior:"smooth" });
   if (action==="categories"){
-    // open drawer on mobile OS; fallback to section scroll
-    if (isMobileOS()) openDrawer(menuDrawer);
-    else document.getElementById("categories")?.scrollIntoView({behavior:"smooth"});
+    document.getElementById("categories")?.scrollIntoView({behavior:"smooth"});
   }
   if (action==="search"){
     document.getElementById("header")?.scrollIntoView({behavior:"smooth"});
@@ -1287,7 +1544,35 @@ bottomNav?.addEventListener("click", (e)=>{
   if (action==="cart") openDrawer(cartDrawer);
 });
 
+// ---------- Desktop/Web menu smooth scroll ----------
+document.querySelectorAll(".webNav__link").forEach((a)=>{
+  a.addEventListener("click", (e)=>{
+    const href = a.getAttribute("href") || "";
+    if (!href.startsWith("#")) return;
+    const id = href.slice(1);
+    const target = id ? document.getElementById(id) : null;
+    if (!target) {
+      // fallback for '#header' / '#'
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      e.preventDefault();
+      return;
+    }
+    e.preventDefault();
+    target.scrollIntoView({ behavior: "smooth" });
+  });
+});
+
 // ---------- Chatbot (UI only) ----------
+function triggerChatQuick(action){
+  if (!action) return false;
+  const btn = chatbotQuick?.querySelector(`[data-quick="${action}"]`);
+  if (btn){
+    btn.click();
+    return true;
+  }
+  return false;
+}
+
 function openChat(){
   if (!chatbot) return;
   chatbot.classList.add("open");
@@ -1309,6 +1594,18 @@ function toggleChat() {
 }
 chatbotFab?.addEventListener("click", toggleChat);
 chatbotClose?.addEventListener("click", closeChat);
+chatbotReset?.addEventListener("click", ()=>{
+  if (!chatbotMsgs) return;
+  chatbotMsgs.innerHTML = "";
+  _chatFallbacks = 0;
+  seedChatIfEmpty();
+  setTimeout(()=> chatbotInput?.focus(), 50);
+});
+
+document.addEventListener("keydown", (e)=>{
+  if (e.key !== "Escape") return;
+  if (chatbot?.classList.contains("open")) closeChat();
+});
 
 function addMsg(text, who="bot"){
   if (!chatbotMsgs) return;
@@ -1321,7 +1618,16 @@ function addMsg(text, who="bot"){
 function seedChatIfEmpty(){
   if (!chatbotMsgs) return;
   if (chatbotMsgs.childElementCount===0){
-    sendBotMessage(t("chat_hi"), { intent: 'greeting' });
+    sendBotMessage(t("chat_hi"), {
+      intent: 'greeting',
+      chips: [
+        { action: 'recommend', label: t('chat_quick_reco') || 'Recommend' },
+        { action: 'best', label: t('chat_quick_best') || 'Best sellers' },
+        { action: 'delivery', label: t('chat_quick_delivery') || 'Delivery' },
+        { action: 'payment', label: t('chat_quick_payment') || 'Payment' },
+        { action: 'whatsapp', label: t('chat_quick_whatsapp') || 'WhatsApp' }
+      ]
+    });
   }
 }
 
@@ -1383,6 +1689,22 @@ function sendBotMessage(text, opts){
 
 function handleQuickFromChat(action){
   if (!action) return;
+  if (triggerChatQuick(action)) return;
+  // Policies
+  if (action && action.startsWith('policy_')){
+    const key = action.replace('policy_','');
+    const allowed = ['terms','privacy','shipping','returns','cookies'];
+    if (allowed.includes(key)){
+      openPolicy(key);
+      const msg = currentLang === 'ar'
+        ? 'فتحت ليك صفحة السياسة. إذا بغيتي نعاونك أكثر قول ليا السؤال ديالك.'
+        : (currentLang === 'fr'
+          ? 'J’ai ouvert la politique correspondante. Dites-moi votre question si besoin.'
+          : 'I opened the policy for you. Tell me your question if you want details.');
+      sendBotMessage(msg, { intent: 'policy' });
+      return;
+    }
+  }
   if (action === 'open_whatsapp' || action === 'order_whatsapp'){
     // Open WhatsApp with a small prefilled message
     const msg = t('wa_prefill') || "Hello, I'm interested in this product: {name} • Size: {size}";
@@ -1437,6 +1759,168 @@ function recommendFromText(text){
   return (currentLang==="ar" ? "هادو اقتراحات:" : (currentLang==="fr" ? "Voici des suggestions :" : "Here are suggestions:")) + "\n" + lines;
 }
 
+function normalizeChatText(text){
+  const s = String(text || "").trim();
+  // Basic Latin cleanup
+  let out = s.normalize ? s.normalize('NFD') : s;
+  out = out.replace(/[\u0300-\u036f]/g, '');
+  out = out.toLowerCase();
+  // Basic Arabic normalization (kept light)
+  out = out
+    .replace(/[إأآٱ]/g, 'ا')
+    .replace(/ى/g, 'ي')
+    .replace(/ؤ/g, 'و')
+    .replace(/ئ/g, 'ي')
+    .replace(/ة/g, 'ه');
+  out = out.replace(/[^\p{L}\p{N}\s]+/gu, ' ').replace(/\s+/g, ' ').trim();
+  return out;
+}
+
+function includesAny(haystack, needles){
+  for (const n of needles){
+    if (!n) continue;
+    if (haystack.includes(n)) return true;
+  }
+  return false;
+}
+
+function tokens(text){
+  const tks = normalizeChatText(text).split(' ').filter(Boolean);
+  return tks.length ? tks : [];
+}
+
+function findProductsByQuery(query, limit = 3){
+  const qTokens = new Set(tokens(query));
+  if (!qTokens.size) return [];
+
+  const scored = PRODUCTS.map(p => {
+    const hay = `${p.brand || ''} ${p.name || ''} ${(p.notes||[]).join(' ')}`;
+    const pTokens = new Set(tokens(hay));
+    let score = 0;
+    qTokens.forEach(tk => { if (pTokens.has(tk)) score += 2; });
+
+    // bonus for partial name match
+    const qNorm = normalizeChatText(query);
+    const nameNorm = normalizeChatText(p.name || '');
+    if (qNorm.length >= 3 && nameNorm.includes(qNorm)) score += 4;
+    if ((p.tag || '').toLowerCase().includes('best')) score += 0.2;
+    score += (p.rating || 0) * 0.05;
+    return { p, score };
+  }).filter(x => x.score > 0.5);
+
+  scored.sort((a,b)=> b.score - a.score);
+  return scored.slice(0, limit).map(x => x.p);
+}
+
+function makeOrderHowToText(){
+  if (currentLang === 'ar'){
+    return 'باش تطلب:\n1) اختار المنتج + الحجم\n2) زيد للسلة\n3) افتح السلة → Checkout\n4) غادي نأكدّو الطلب فواتساب.';
+  }
+  if (currentLang === 'fr'){
+    return 'Pour commander :\n1) Choisissez un produit + une taille\n2) Ajoutez au panier\n3) Ouvrez le panier → Checkout\n4) On confirme la commande sur WhatsApp.';
+  }
+  return 'How to order:\n1) Choose a product + size\n2) Add to cart\n3) Open cart → Checkout\n4) We confirm the order on WhatsApp.';
+}
+
+function makeUnknownFallback(){
+  if (currentLang === 'ar'){
+    return 'ما فهمتش السؤال مزيان. نقدر نعاونك فالعطور/الأثمنة/التوصيل/الدفع/الإرجاع. إلى بغيتي جواب دقيق، صيفط لينا السؤال فواتساب.';
+  }
+  if (currentLang === 'fr'){
+    return "Je ne suis pas sûr de la réponse. Je peux aider pour parfums/prix/livraison/paiement/retours. Pour une réponse exacte, écrivez-nous sur WhatsApp.";
+  }
+  return "I’m not sure about that. I can help with perfumes/prices/delivery/payment/returns. For an exact answer, message us on WhatsApp.";
+}
+
+function getChatResponse(userText){
+  const raw = String(userText || '').trim();
+  const lower = normalizeChatText(raw);
+  const chips = [];
+
+  // greetings / thanks
+  if (includesAny(lower, ['hello','hi','hey','bonjour','salut','salam','السلام','مرحبا','اهلا','bonjour'])){
+    return { intent:'greeting', text: t('chat_generic_greeting') };
+  }
+  if (includesAny(lower, ['thanks','thank you','merci','شكرا','chokran','thx'])){
+    return { intent:'thanks', text: t('chat_welcome') };
+  }
+
+  // policies
+  if (includesAny(lower, ['return','refund','retour','rembourse','إرجاع','استرجاع','تعويض'])){
+    chips.push({ action:'policy_returns', label: currentLang==='ar' ? 'سياسة الإرجاع' : (currentLang==='fr' ? 'Politique retours' : 'Returns policy') });
+    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
+    return { intent:'returns', text: currentLang==='ar' ? 'الإرجاع/الاسترجاع: تواصل معانا فواتساب خلال 24 ساعة من بعد التوصيل.' : (currentLang==='fr' ? 'Retours: contactez-nous sur WhatsApp dans les 24h après livraison.' : 'Returns: contact us on WhatsApp within 24h after delivery.'), chips };
+  }
+  if (includesAny(lower, ['delivery','shipping','livraison','expedition','توصيل','شحن'])){
+    chips.push({ action:'policy_shipping', label: currentLang==='ar' ? 'سياسة التوصيل' : (currentLang==='fr' ? 'Livraison' : 'Shipping') });
+    return { intent:'delivery', text: t('topbar_text'), chips };
+  }
+  if (includesAny(lower, ['privacy','confidential','خصوصيه','خصوصية','vie privee','privacy policy'])){
+    chips.push({ action:'policy_privacy', label: currentLang==='ar' ? 'سياسة الخصوصية' : (currentLang==='fr' ? 'Confidentialité' : 'Privacy') });
+    return { intent:'privacy', text: currentLang==='ar' ? 'كنستعملو غير المعلومات اللي كتصيفط لينا بإرادتك (واتساب أو إيميل).' : (currentLang==='fr' ? "On utilise seulement les infos que vous envoyez volontairement (WhatsApp ou email)." : 'We only use the info you send voluntarily (WhatsApp or email).'), chips };
+  }
+  if (includesAny(lower, ['terms','conditions','شروط','condition','terms of use'])){
+    chips.push({ action:'policy_terms', label: currentLang==='ar' ? 'الشروط' : (currentLang==='fr' ? 'Conditions' : 'Terms') });
+    return { intent:'terms', text: currentLang==='ar' ? 'هذا الموقع واجهة عرض: تأكيد الطلب كيتدار عبر واتساب.' : (currentLang==='fr' ? 'Le site est une vitrine: la confirmation se fait sur WhatsApp.' : 'This site is a storefront demo: orders are confirmed on WhatsApp.'), chips };
+  }
+
+  // payment / contact
+  if (includesAny(lower, ['payment','pay','paiement','دفع','أداء','performance'])){
+    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
+    return { intent:'payment', text: t('chat_payment'), chips };
+  }
+  if (includesAny(lower, ['contact','email','mail','phone','whatsapp','واتساب','تواصل','رقم'])){
+    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
+    return { intent:'contact', text: t('chat_contact'), chips };
+  }
+
+  // how to order
+  if (includesAny(lower, ['order','buy','how to','commander','acheter','كيفاش','كيف','طلب','نطلب'])){
+    chips.push({ action:'order_whatsapp', label: currentLang==='ar' ? 'طلب عبر واتساب' : (currentLang==='fr' ? 'Commander WhatsApp' : 'Order on WhatsApp') });
+    return { intent:'how_to_order', text: makeOrderHowToText(), chips };
+  }
+
+  // deals / discounts
+  if (includesAny(lower, ['deal','discount','promo','offer','offre','sold','تخفيض','عرض','عروض'])){
+    chips.push({ action:'best', label: t('chat_quick_best') || 'Best sellers' });
+    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
+    return { intent:'deals', text: currentLang==='ar' ? 'كاينين عروض محدودة. شوف قسم Deals فالصفحة، أو سولنا فواتساب على عرض اليوم.' : (currentLang==='fr' ? "Il y a des offres limitées. Voir la section Deals, ou demandez l’offre du jour sur WhatsApp." : 'We have limited-time offers. See the Deals section, or ask us on WhatsApp for today’s best offer.'), chips };
+  }
+
+  // product price / availability / search
+  const isPriceQuestion = includesAny(lower, ['price','how much','cost','prix','combien','ثمن','بشحال','سعر']);
+  const products = findProductsByQuery(raw, 3);
+  if (isPriceQuestion && products.length){
+    const p = products[0];
+    const price = formatMoney(getProductPrice(p));
+    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
+    return { intent:'price', text: `${p.name}: ${price}`, chips };
+  }
+  if (products.length && includesAny(lower, ['have','available','stock','disponible','avez vous','كاين','موجود'])){
+    const list = products.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join('\n');
+    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
+    return { intent:'product_search', text: (currentLang==='ar' ? 'ها شنو لقيت:' : (currentLang==='fr' ? 'Voici ce que j’ai trouvé :' : 'Here’s what I found:')) + `\n${list}`, chips };
+  }
+  if (products.length && !isPriceQuestion && includesAny(lower, ['recommend','suggest','reco','اقترح','اقترحلي','نقترح','suggestion'])){
+    const list = products.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join('\n');
+    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
+    return { intent:'recommendation', text: (currentLang==='ar' ? 'كنقترح عليك:' : (currentLang==='fr' ? 'Je vous recommande :' : 'I recommend:')) + `\n${list}`, chips };
+  }
+
+  // notes-based recommendation (existing logic)
+  const rec = recommendFromText(raw);
+  if (rec){
+    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
+    return { intent:'recommendation', text: rec, chips: chips.length ? chips : undefined };
+  }
+
+  // final fallback
+  chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
+  chips.push({ action:'policy_shipping', label: currentLang==='ar' ? 'التوصيل' : (currentLang==='fr' ? 'Livraison' : 'Delivery') });
+  chips.push({ action:'policy_returns', label: currentLang==='ar' ? 'الإرجاع' : (currentLang==='fr' ? 'Retours' : 'Returns') });
+  return { intent:'unknown', text: makeUnknownFallback(), chips };
+}
+
 chatbotQuick?.addEventListener("click",(e)=>{
   const b = e.target.closest("[data-quick]");
   if (!b) return;
@@ -1462,6 +1946,10 @@ chatbotQuick?.addEventListener("click",(e)=>{
     addMsg(currentLang==="ar" ? "التوصيل" : (currentLang==="fr" ? "Livraison" : "Delivery"), "me");
     sendBotMessage(t("topbar_text"), { intent: 'delivery' });
   }
+  if (q==="payment"){
+    addMsg(currentLang==="ar" ? "الدفع" : (currentLang==="fr" ? "Paiement" : "Payment"), "me");
+    sendBotMessage(t("chat_payment"), { intent: 'payment' });
+  }
   if (q==="whatsapp"){
     addMsg(currentLang==="ar" ? "بغيت نطلب فواتساب" : (currentLang==="fr" ? "Je veux commander sur WhatsApp" : "I want to order on WhatsApp"), "me");
     sendBotMessage(`WhatsApp: ${WHATSAPP_DISPLAY}`, { intent: 'whatsapp', onShown: ()=> window.open(`https://wa.me/${WHATSAPP_PHONE_INTL}`, "_blank") });
@@ -1476,79 +1964,30 @@ chatbotForm?.addEventListener("submit",(e)=>{
   try{ logChatEntry({ ts: Date.now(), lang: currentLang, user: text, bot: null }); }catch(e){}
   chatbotInput.value = "";
 
-  // simple intents
-  const lower = text.toLowerCase();
-
-  // --- Greetings ---
-  if (["hello", "hi", "hey", "bonjour", "salut", "مرحبا", "السلام"].some(g => lower.startsWith(g))) {
-    sendBotMessage(t("chat_generic_greeting"), { intent: 'greeting' });
-    return;
-  }
-
-  // --- Thanks ---
-  if (["thanks", "thank you", "merci", "شكرا"].some(g => lower.includes(g))) {
-    sendBotMessage(t("chat_welcome"), { intent: 'thanks' });
-    return;
-  }
-
-  // --- WhatsApp ---
-  if (lower.includes("whatsapp") || lower.includes("واتساب")) {
-    sendBotMessage(`WhatsApp: ${WHATSAPP_DISPLAY}`, { intent: 'whatsapp', onShown: ()=> window.open(`https://wa.me/${WHATSAPP_PHONE_INTL}?text=${encodeURIComponent(text)}`, "_blank") });
-    return;
-  }
-
-  // --- Delivery ---
-  if (lower.includes("delivery") || lower.includes("livraison") || lower.includes("توصيل")) {
-    sendBotMessage(t("topbar_text"), { intent: 'delivery' });
-    return;
-  }
-
-  // --- Payment ---
-  if (lower.includes("payment") || lower.includes("pay") || lower.includes("paiement") || lower.includes("دفع") || lower.includes("أداء")) {
-    sendBotMessage(t("chat_payment"), { intent: 'payment' });
-    return;
-  }
-
-  // --- Contact ---
-  if (lower.includes("contact") || lower.includes("email") || lower.includes("phone") || lower.includes("تواصل")) {
-    sendBotMessage(t("chat_contact"), { intent: 'contact' });
-    return;
-  }
-
-  // --- Best sellers ---
-  if (lower.includes("best") || lower.includes("meille") || lower.includes("الأكثر")) {
-    const items = [...PRODUCTS].sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,3);
-    sendBotMessage(items.map(p=>`• ${p.name}`).join("\n"), { intent: 'best', chips: [ { action: 'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' }, { action: 'more_recommend', label: currentLang==='ar' ? 'المزيد' : (currentLang==='fr' ? 'Plus' : 'More') } ] });
-    return;
-  }
-
-  // --- Category specific ---
-  if (lower.includes("men") || lower.includes("homme") || lower.includes("رجال")) {
-    sendBotMessage(t("chat_men_suggestion"), { intent: 'men_suggestion' });
-    const items = PRODUCTS.filter(p => p.category === 'men').sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,3);
-    if (items.length) sendBotMessage(items.map(p=>`• ${p.name}`).join("\n"), { intent: 'men_suggestion' });
-    return;
-  }
-  if (lower.includes("women") || lower.includes("femme") || lower.includes("نساء")) {
-    sendBotMessage(t("chat_women_suggestion"), { intent: 'women_suggestion' });
-    const items = PRODUCTS.filter(p => p.category === 'women').sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,3);
-    if (items.length) sendBotMessage(items.map(p=>`• ${p.name}`).join("\n"), { intent: 'women_suggestion' });
-    return;
-  }
-
-  // --- Fallback: recommend from text ---
-  const reply = recommendFromText(text);
-  sendBotMessage(reply, { intent: 'recommendation', onShown: ()=>{
-    const kw = currentLang === 'ar' ? 'واتساب' : (currentLang === 'fr' ? 'WhatsApp' : 'WhatsApp');
-    if (reply && reply.includes(kw)){
-      _chatFallbacks++;
-      if (_chatFallbacks >= 2){
-        sendBotMessage(currentLang === 'ar' ? 'بغيت نتواصلو فواتساب باش نعاونك مباشرة؟' : (currentLang === 'fr' ? 'Souhaitez-vous que l’on prenne la commande via WhatsApp ?' : 'Would you like us to take the order on WhatsApp?'), { chips: [ { action: 'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' } ], intent: 'escalation' });
+  const res = getChatResponse(text);
+  sendBotMessage(res.text, {
+    intent: res.intent,
+    chips: res.chips,
+    user: text,
+    onShown: ()=>{
+      if (res.intent === 'unknown' || res.intent === 'recommendation'){
+        _chatFallbacks++;
+        if (_chatFallbacks >= 3){
+          sendBotMessage(
+            currentLang === 'ar'
+              ? 'إلى بغيتي، صيفط لينا السؤال فواتساب وغادي نجاوبوك بسرعة.'
+              : (currentLang === 'fr'
+                ? 'Si vous voulez, envoyez votre question sur WhatsApp et on vous répond vite.'
+                : 'If you want, send your question on WhatsApp and we’ll reply quickly.'),
+            { intent: 'escalation', chips: [ { action: 'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' } ] }
+          );
+          _chatFallbacks = 0;
+        }
+      } else {
+        _chatFallbacks = 0;
       }
-    } else {
-      _chatFallbacks = 0;
     }
-  } });
+  });
 });
 
 function handleChatbotAttention() {
@@ -1631,6 +2070,8 @@ function observeAnimatableElements() {
 }
 // ---------- Init ----------
 (async function init(){
+  // Perceived performance: show skeletons immediately
+  renderProductSkeletons(8);
   await loadProducts();
   // default: highlight filter all
   setFilter("all");
@@ -1640,69 +2081,50 @@ function observeAnimatableElements() {
   if (y) y.textContent = String(new Date().getFullYear());
 
   applyI18n(DEFAULT_LANG);
-  preloadHeroImages();
   updateCartUI();
   renderFinder();
   handleChatbotAttention();
   initScrollAnimations();
-  // initPromoBanner(); // Removed as the promo banner is now static
-})();
+  initDealsRotator();
 
-// ---------- Flash deal countdown + promo toast ----------
-(function(){
-  const dealEl = document.getElementById("dealCountdown");
-  const toast = document.getElementById("promoToast");
-  const toastCountdown = document.getElementById("toastCountdown");
-  const toastClose = document.getElementById("promoToastClose");
+  // Size modal listeners
+  const sizeModal = document.getElementById("sizeModal");
+  if (sizeModal) {
+    const sizeSelectionOptions = document.getElementById("sizeSelectionOptions");
+    const sizeError = document.getElementById("sizeError");
+    const btnAddToCartSize = document.getElementById("btnAddToCartSize");
 
-  // Run only on pages that have the elements
-  if (!dealEl && !toast) return;
+    sizeSelectionOptions?.addEventListener('click', (e) => {
+      const btn = e.target.closest('.size-option');
+      if (btn) {
+        sizeSelectionOptions.querySelectorAll('.size-option').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        sizeModal.dataset.selectedSize = btn.dataset.size;
+        if (sizeError) sizeError.style.display = 'none';
+      }
+    });
 
-  // Set a 6-hour rolling offer window (resets after it ends)
-  const KEY = "ipordise_offer_end";
-  let end = Number(localStorage.getItem(KEY) || 0);
-  const now = Date.now();
-  if (!end || end < now){
-    end = now + 6 * 60 * 60 * 1000;
-    localStorage.setItem(KEY, String(end));
-  }
+    btnAddToCartSize?.addEventListener('click', () => {
+      const selectedSize = sizeModal.dataset.selectedSize;
+      if (!selectedSize) {
+        if (sizeError) {
+          sizeError.style.display = 'block';
+          sizeError.classList.add('shake');
+          setTimeout(() => sizeError.classList.remove('shake'), 500);
+        }
+        return;
+      }
+      
+      const product = JSON.parse(sizeModal.dataset.currentProduct || '{}');
+      if (product.id) {
+        addToCart(product, selectedSize);
+        closeModal(sizeModal);
+        openDrawer(cartDrawer);
+      }
+    });
 
-  function pad(n){ return String(n).padStart(2,"0"); }
-  function fmt(ms){
-    const s = Math.max(0, Math.floor(ms/1000));
-    const h = Math.floor(s/3600);
-    const m = Math.floor((s%3600)/60);
-    const ss = s%60;
-    return `${pad(h)}:${pad(m)}:${pad(ss)}`;
-  }
-
-  function tick(){
-    const ms = end - Date.now();
-    const out = fmt(ms);
-    if (dealEl) dealEl.textContent = out;
-    if (toastCountdown) toastCountdown.textContent = out;
-    if (ms <= 0){
-      // reset
-      const n2 = Date.now() + 6*60*60*1000;
-      end = n2; localStorage.setItem(KEY, String(end));
-    }
-  }
-  tick();
-  setInterval(tick, 1000);
-
-  // Show toast once per session, mostly on mobile
-  const seenKey = "ipordise_toast_seen";
-  const isMobile = window.matchMedia && window.matchMedia("(max-width: 860px)").matches;
-  if (toast && isMobile && !sessionStorage.getItem(seenKey)){
-    setTimeout(()=>{
-      toast.classList.add("show");
-      sessionStorage.setItem(seenKey,"1");
-    }, 1600);
-  }
-  if (toastClose){
-    toastClose.addEventListener("click", ()=>{
-      toast?.classList.remove("show");
+    document.querySelectorAll('[data-close-size-modal]').forEach(el => {
+      el.addEventListener('click', () => closeModal(sizeModal));
     });
   }
 })();
-

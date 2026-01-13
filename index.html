@@ -5,6 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>IPORDISE PARFUM</title>
   <meta name="description" content="IPORDISE PARFUM – Discover premium fragrances for women, men, unisex and more. Shop best sellers, new arrivals, and deals." />
+  <meta name="theme-color" content="#c09a59" />
+  <meta name="color-scheme" content="light" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Social preview (Open Graph / Twitter) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="IPORDISE PARFUM" />
+  <meta property="og:description" content="Discover premium fragrances for women, men, unisex and more. Shop best sellers, new arrivals, and deals." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%20english.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IPORDISE PARFUM" />
+  <meta name="twitter:description" content="Discover premium fragrances for women, men, unisex and more. Shop best sellers, new arrivals, and deals." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%20english.png" />
+
+  <!-- Favicon (uses store logo) -->
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/logo.svg" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "IPORDISE PARFUM",
+          "email": "Ipordise@gmail.com",
+          "telephone": "+212663750210",
+          "logo": "assets/logo.svg"
+        },
+        {
+          "@type": "WebSite",
+          "name": "IPORDISE PARFUM",
+          "description": "Discover premium fragrances for women, men, unisex and more. Shop best sellers, new arrivals, and deals."
+        }
+      ]
+    }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,9 +51,10 @@
 </head>
 
 <body>
+  <a class="skipLink" href="#main">Skip to content</a>
   <!-- Top notice -->
   <div class="topbar">
-    <div class="container topbar__inner">
+    <div class="container container--wide topbar__inner">
       <span class="topbar__text" data-i18n="topbar_text">Free delivery in Morocco from 299 MAD • Pay on delivery available</span>
       <a class="topbar__link" href="#deals" data-i18n="topbar_link">See deals</a>
     </div>
@@ -22,13 +62,9 @@
 
   <!-- Header -->
   <header class="header" id="header">
-    <div class="container header__inner">
-      <button class="icon-btn" id="btnMenu" aria-label="Open menu">
-        <span class="icon icon--menu" aria-hidden="true"></span>
-      </button>
-
+    <div class="container container--wide header__inner">
       <a class="brand" href="#">
-        <img class="brand__mark" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/logo.jpeg" alt="IPORDISE PARFUM Logo">
+        <img class="brand__mark" src="assets/logo.svg" alt="IPORDISE PARFUM Logo" width="40" height="40" decoding="async">
         <div class="brand__text">
           <span class="brand__name">IPORDISE PARFUM</span>
           <span class="brand__tag" data-i18n="brand_tag">Fragrance Boutique</span>
@@ -41,34 +77,10 @@
         <button class="search__clear" id="clearSearch" aria-label="Clear search" title="Clear">×</button>
       </div>
 
-      <!-- Desktop Navigation -->
-      <nav class="desktop-nav" aria-label="Main navigation">
-        <div class="nav-dropdown">
-          <button class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">
-            Categories
-            <span class="nav-dropdown__arrow">▼</span>
-          </button>
-          <div class="nav-dropdown__menu" aria-hidden="true">
-            <a href="#categories" class="nav-dropdown__item" data-i18n="cat_all">Shop All</a>
-            <a href="#categories" class="nav-dropdown__item" data-filter="women" data-i18n="cat_women">Women's Fragrances</a>
-            <a href="#categories" class="nav-dropdown__item" data-filter="men" data-i18n="cat_men">Men's Fragrances</a>
-            <a href="#categories" class="nav-dropdown__item" data-filter="unisex" data-i18n="cat_unisex">Unisex Fragrances</a>
-            <a href="#categories" class="nav-dropdown__item" data-filter="gift" data-i18n="cat_gift">Gift Sets</a>
-            <a href="#categories" class="nav-dropdown__item" data-filter="home" data-i18n="cat_home">Home Fragrance</a>
-            <a href="#categories" class="nav-dropdown__item" data-filter="travel" data-i18n="cat_travel">Travel Size</a>
-          </div>
-        </div>
-        <a href="#best" data-i18n="nav_best">Best Sellers</a>
-        <a href="#new" data-i18n="nav_new">New Arrivals</a>
-        <a href="#deals" data-i18n="nav_deals">Deals</a>
-        <a href="#brands" data-i18n="nav_brands">Brands</a>
-        <a href="#contact" data-i18n="nav_contact">Contact</a>
-      </nav>
-
       <nav class="header__actions" aria-label="Quick actions">
 
         <div class="lang">
-          <button class="btn btn--small btn--ghost" id="btnLang" aria-haspopup="true" aria-expanded="false" aria-label="Language">
+          <button class="btn btn--small btn--ghost langToggle" id="btnLang" aria-haspopup="true" aria-expanded="false" aria-label="Language">
             <span id="langLabel">EN</span> ▾
           </button>
           <div class="langMenu" id="langMenu" role="menu" aria-label="Language menu">
@@ -88,47 +100,22 @@
       </nav>
     </div>
 
-    <!-- Mobile menu drawer -->
-    <aside class="drawer" id="menuDrawer" aria-hidden="true">
-      <div class="drawer__overlay" data-close-drawer></div>
-      <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
-        <div class="drawer__header">
-          <div class="drawer__title" data-i18n="drawer_menu">Menu</div>
-          <button class="icon-btn" data-close-drawer aria-label="Close menu">
-            <span class="icon icon--close" aria-hidden="true"></span>
-          </button>
-        </div>
-
-        <div class="drawer__content">
-          <div class="drawer__section">
-            <div class="drawer__section-title" data-i18n="nav_categories">Categories</div>
-            <a class="drawer__link" data-close-drawer href="#categories" data-filter="all" data-i18n="cat_all">Shop All</a>
-            <a class="drawer__link" data-close-drawer href="#categories" data-filter="women" data-i18n="cat_women">Women's Fragrances</a>
-            <a class="drawer__link" data-close-drawer href="#categories" data-filter="men" data-i18n="cat_men">Men's Fragrances</a>
-            <a class="drawer__link" data-close-drawer href="#categories" data-filter="unisex" data-i18n="cat_unisex">Unisex Fragrances</a>
-            <a class="drawer__link" data-close-drawer href="#categories" data-filter="gift" data-i18n="cat_gift">Gift Sets</a>
-            <a class="drawer__link" data-close-drawer href="#categories" data-filter="home" data-i18n="cat_home">Home Fragrance</a>
-            <a class="drawer__link" data-close-drawer href="#categories" data-filter="travel" data-i18n="cat_travel">Travel Size</a>
-          </div>
-
-          <a class="drawer__link" href="#best" data-close-drawer data-i18n="nav_best">Best Sellers</a>
-          <a class="drawer__link" href="#new" data-close-drawer data-i18n="nav_new">New Arrivals</a>
-          <a class="drawer__link" href="#deals" data-close-drawer data-i18n="nav_deals">Deals</a>
-          <a class="drawer__link" href="#brands" data-close-drawer data-i18n="nav_brands">Brands</a>
-          <a class="drawer__link" href="#contact" data-close-drawer data-i18n="nav_contact">Contact</a>
-
-          <div class="drawer__box">
-            <div class="drawer__boxTitle">WhatsApp</div>
-            <a class="drawer__boxBtn" href="https://wa.me/212663750210" target="_blank" rel="noopener">Chat on WhatsApp: 0663750210</a>
-            <div class="drawer__muted">Email: <a href="mailto:Ipordise@gmail.com">Ipordise@gmail.com</a></div>
-          </div>
-        </div>
+    <!-- Desktop / Web menu (hidden on mobile & tablet) -->
+    <nav class="webNav" aria-label="Main menu">
+      <div class="container container--wide webNav__inner">
+        <a class="webNav__link" href="#header" data-i18n="nav_home">Home</a>
+        <a class="webNav__link" href="#categories" data-i18n="nav_categories">Categories</a>
+        <a class="webNav__link" href="#best" data-i18n="nav_best">Best Sellers</a>
+        <a class="webNav__link" href="#new" data-i18n="nav_new">New Arrivals</a>
+        <a class="webNav__link" href="#deals" data-i18n="nav_deals">Deals</a>
+        <a class="webNav__link" href="#brands" data-i18n="nav_brands">Brands</a>
+        <a class="webNav__link" href="#contact" data-i18n="nav_contact">Contact</a>
       </div>
-    </aside>
+    </nav>
   </header>
 
   <!-- Main -->
-  <main>
+  <main id="main">
     <!-- Hero -->
     <section class="hero" aria-label="Hero">
       <div class="container">
@@ -141,6 +128,7 @@
             data-src-ar="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%20arabic.png"
             alt="IPORDISE PARFUM hero"
             loading="eager"
+            fetchpriority="high"
             decoding="async"
             width="1920"
             height="1080"
@@ -151,7 +139,7 @@
 
     <!-- Promo Banner -->
     <section class="section section--soft" id="deals">
-      <div class="container promo-hero__inner">
+      <div class="container container--wide promo-hero__inner">
         <div class="promo-banner animate-on-scroll">
           <div class="promo-banner__text">
             <div class="kicker" data-i18n="sec_deals_kicker">LIMITED TIME OFFER</div>
@@ -165,6 +153,96 @@
           <div class="promo-banner__visual">
             <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Intense%20Oud%20perfume%20collection.png" alt="Featured Perfume">
           </div>
+        </div>
+
+        <!-- Grateful Offers -->
+        <div class="section__head animate-on-scroll" style="margin-top: 18px; margin-bottom: 12px;">
+          <h3 style="margin: 0;">Grateful Offers</h3>
+          <p class="muted" style="margin-top: 6px;">Limited-time bundles, gifts, and extra savings.</p>
+        </div>
+
+        <div class="grid" aria-label="Grateful offers">
+          <article class="card animate-on-scroll">
+            <a href="#best" class="card__link">
+              <div class="card__img">
+                <span class="card__tag">Offer</span>
+                <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Intense%20Oud%20perfume%20collection.png" alt="Bundle deal" loading="lazy" width="200" height="200" decoding="async">
+              </div>
+              <div class="card__body">
+                <div class="card__brand">IPORDISE</div>
+                <h3 class="card__name">Bundle Deal</h3>
+                <div class="card__meta">
+                  <span class="muted small">Save up to 20% on selected items</span>
+                </div>
+              </div>
+            </a>
+            <div class="card__actions">
+              <div class="card__price">Limited time</div>
+              <a class="btn btn--small btn--primary" href="#best">Shop</a>
+            </div>
+          </article>
+
+          <article class="card animate-on-scroll">
+            <a href="#categories" class="card__link">
+              <div class="card__img">
+                <span class="card__tag">Offer</span>
+                <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Elegant%20fragrance%20in%20a%20gold-accented%20box.png" alt="Gift sets" loading="lazy" width="200" height="200" decoding="async">
+              </div>
+              <div class="card__body">
+                <div class="card__brand">IPORDISE</div>
+                <h3 class="card__name">Gift Sets</h3>
+                <div class="card__meta">
+                  <span class="muted small">Perfect for gifting — while stock lasts</span>
+                </div>
+              </div>
+            </a>
+            <div class="card__actions">
+              <div class="card__price">Special offer</div>
+              <a class="btn btn--small btn--primary" href="#categories">Browse</a>
+            </div>
+          </article>
+
+          <article class="card animate-on-scroll">
+            <a href="https://wa.me/212663750210" target="_blank" rel="noopener" class="card__link">
+              <div class="card__img">
+                <span class="card__tag">Offer</span>
+                <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Tom%20Ford%20and%20WhatsApp%20connection.png" alt="WhatsApp offer" loading="lazy" width="200" height="200" decoding="async">
+              </div>
+              <div class="card__body">
+                <div class="card__brand">IPORDISE</div>
+                <h3 class="card__name">WhatsApp Exclusive</h3>
+                <div class="card__meta">
+                  <span class="muted small">Ask us for today’s best deal</span>
+                </div>
+              </div>
+            </a>
+            <div class="card__actions">
+              <div class="card__price">Chat now</div>
+              <a class="btn btn--small btn--primary" href="https://wa.me/212663750210" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Ads photos (auto-rotate) -->
+        <div class="adsRotator animate-on-scroll" id="adsRotator" aria-label="Special offers">
+          <img
+            class="adsRotator__img adsRotator__img--1"
+            src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/ADSPHOTO.png"
+            alt="Special offer banner"
+            loading="lazy"
+            decoding="async"
+            width="1400"
+            height="520"
+          />
+          <img
+            class="adsRotator__img adsRotator__img--2"
+            src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/ADSPHOTO1.png"
+            alt="Special offer banner"
+            loading="lazy"
+            decoding="async"
+            width="1400"
+            height="520"
+          />
         </div>
       </div>
     </section>
@@ -240,7 +318,7 @@
             <a href="#" class="card__link">
               <div class="card__img">
                 <span class="card__tag">New</span>
-                <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/logo.jpeg" alt="Coming Soon" loading="lazy" width="200" height="200">
+                <img src="assets/logo.svg" alt="Coming Soon" loading="lazy" width="200" height="200" decoding="async">
               </div>
               <div class="card__body">
                 <div class="card__brand">IPORDISE</div>
@@ -260,7 +338,7 @@
             <a href="#" class="card__link">
               <div class="card__img">
                 <span class="card__tag">New</span>
-                <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/logo.jpeg" alt="Coming Soon" loading="lazy" width="200" height="200">
+                <img src="assets/logo.svg" alt="Coming Soon" loading="lazy" width="200" height="200" decoding="async">
               </div>
               <div class="card__body">
                 <div class="card__brand">IPORDISE</div>
@@ -434,7 +512,7 @@
       <div class="container footer__inner">
         <div class="footer__brand">
           <a href="#" class="footer-logo">
-            <img class="footer-logo__img" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/logo.jpeg" alt="IPORDISE PARFUM Logo" width="40" height="40">
+            <img class="footer-logo__img" src="assets/logo.svg" alt="IPORDISE PARFUM Logo" width="40" height="40" decoding="async">
             <span class="footer-logo__name">IPORDISE PARFUM</span>
           </a>
         </div>
@@ -514,6 +592,28 @@
       </div>
     </div>
   </aside>
+
+  <!-- Size Selection Modal -->
+  <div class="modal" id="sizeModal" aria-hidden="true">
+    <div class="modal__overlay" data-close-modal data-close-size-modal></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Choose size">
+      <div class="modal__head">
+        <div class="modal__title" data-i18n="choose_size">Choose size</div>
+        <button class="icon-btn" data-close-modal data-close-size-modal aria-label="Close">
+          <span class="icon icon--close" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal__body">
+        <div id="sizeProductInfo" style="display:flex; gap:12px; align-items:center; margin-bottom:12px;"></div>
+        <div id="sizeSelectionOptions" style="display:grid; gap:10px;"></div>
+        <div id="sizeError" class="muted small" style="display:none; margin-top:10px; color: var(--danger);">Please select a size.</div>
+        <div style="display:flex; gap:10px; margin-top:14px;">
+          <button class="btn btn--primary btn--full" id="btnAddToCartSize" type="button">+ Add to cart</button>
+          <button class="btn btn--ghost btn--full" type="button" data-close-modal data-close-size-modal>Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Checkout Modal -->
   <div class="modal" id="checkoutModal" aria-hidden="true">
@@ -624,21 +724,31 @@
 
     <div class="chatbot__panel" role="dialog" aria-modal="false" aria-label="Chat assistant">
       <div class="chatbot__head">
-        <div>
-          <div class="chatbot__title" data-i18n="chat_title">Ipordise Assistant</div>
-          <div class="chatbot__sub" data-i18n="chat_sub">Quick help to choose a scent.</div>
+        <div class="chatbot__brand">
+          <img class="chatbot__logo" src="assets/logo.svg" alt="" width="28" height="28" decoding="async">
+          <div>
+            <div class="chatbot__title" data-i18n="chat_title">Ipordise Assistant</div>
+            <div class="chatbot__sub" data-i18n="chat_sub">Quick help to choose a scent.</div>
+          </div>
         </div>
-        <button class="icon-btn" id="chatbotClose" aria-label="Close chat">
-          <span class="icon icon--close" aria-hidden="true"></span>
-        </button>
+
+        <div class="chatbot__headActions">
+          <button class="icon-btn" id="chatbotReset" type="button" aria-label="Restart chat" title="Restart">
+            ↻
+          </button>
+          <button class="icon-btn" id="chatbotClose" aria-label="Close chat" title="Close">
+            <span class="icon icon--close" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
 
       <div class="chatbot__msgs" id="chatbotMsgs" aria-live="polite"></div>
 
       <div class="chatbot__quick" id="chatbotQuick">
         <button class="chip chip--small" type="button" data-quick="recommend" data-i18n="chat_quick_reco">Recommend for me</button>
-        <button class="chip chip--small" type="button" data-quick="best" data-i18n="chat_quick_best" data-i18n="sec_best_title">Best sellers</button>
+        <button class="chip chip--small" type="button" data-quick="best" data-i18n="chat_quick_best">Best sellers</button>
         <button class="chip chip--small" type="button" data-quick="delivery" data-i18n="chat_quick_delivery">Delivery</button>
+        <button class="chip chip--small" type="button" data-quick="payment" data-i18n="chat_quick_payment">Payment</button>
         <button class="chip chip--small" type="button" data-quick="whatsapp" data-i18n="chat_quick_whatsapp">WhatsApp order</button>
       </div>
 
@@ -675,7 +785,10 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Global toast notifications (Add to cart, etc.) -->
+  <div class="toastStack" id="toastStack" aria-live="polite" aria-relevant="additions removals"></div>
+
+  <script src="script.js" defer></script>
 
 </body>
 </html>
