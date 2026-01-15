@@ -160,15 +160,44 @@
     // Add to cart
     const btnAdd = document.getElementById("btnAddDetail");
     if (btnAdd){
+      const originalText = btnAdd.innerHTML;
       btnAdd.addEventListener("click", ()=>{
-        if (typeof addToCart === "function") addToCart(p, selectedSize || null);
-        else console.warn("addToCart is not available");
+        if (typeof addToCart === "function") {
+          addToCart(p, selectedSize || null);
+          
+          // Open cart drawer to show the item was added
+          if (typeof openDrawer === "function" && typeof cartDrawer !== "undefined") {
+            openDrawer(cartDrawer);
+          }
+
+          // Provide visual feedback on the button
+          btnAdd.textContent = 'Added ✓';
+          setTimeout(() => { btnAdd.innerHTML = originalText; }, 1500);
+
+        } else { console.warn("addToCart is not available"); }
       });
     }
   }
 
   // React to language changes from global script (dispatches 'languagechange')
   document.addEventListener("languagechange", ()=>{ render(); });
+
+  // Keep certain product prices in sync (even if products.json is outdated somewhere)
+  const PRICE_OVERRIDES = {
+    p16: { '10ml': 90, '20ml': 180, '30ml': 270 },
+    p21: { '10ml': 90, '20ml': 170, '30ml': 255 }
+  };
+  function applyOverrides(p){
+    if (!p || !p.id) return;
+    const ov = PRICE_OVERRIDES[String(p.id)];
+    if (!ov) return;
+    const order = ['10ml','20ml','30ml'];
+    const updated = order.filter(s => ov[s] != null).map(s => ({ size: s, price: ov[s] }));
+    const existing = Array.isArray(p.variants) ? p.variants : [];
+    const extras = existing.filter(v => v && v.size && ov[String(v.size)] == null);
+    p.variants = [...updated, ...extras];
+    if (ov['10ml'] != null) p.price = ov['10ml'];
+  }
 
   fetch("products.json", { cache:"no-store" })
     .then(r=>r.json())
@@ -180,6 +209,7 @@
         </div>`;
         return;
       }
+      applyOverrides(productData);
       render();
     })
     .catch(err=>{

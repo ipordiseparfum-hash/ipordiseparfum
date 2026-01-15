@@ -544,6 +544,32 @@ function getProductPrice(p, variantSize = null) {
   return variant ? (variant.price || 0) : 0;
 }
 
+// Price overrides (ensures critical prices stay correct even if products.json loads from an older online copy)
+const PRODUCT_VARIANT_PRICE_OVERRIDES = {
+  // Jean Paul Gaultier Le Male Elixir
+  p16: { '10ml': 90, '20ml': 180, '30ml': 270 },
+  // Jean Paul Gaultier – Le Male Le Parfum
+  p21: { '10ml': 90, '20ml': 170, '30ml': 255 }
+};
+
+function applyVariantPriceOverrides(p){
+  if (!p || !p.id) return;
+  const ov = PRODUCT_VARIANT_PRICE_OVERRIDES[String(p.id)];
+  if (!ov) return;
+
+  const order = ['10ml', '20ml', '30ml'];
+  const updated = [];
+  for (const size of order){
+    if (ov[size] == null) continue;
+    updated.push({ size, price: ov[size] });
+  }
+
+  const existing = Array.isArray(p.variants) ? p.variants : [];
+  const extras = existing.filter(v => v && v.size && ov[String(v.size)] == null);
+  p.variants = [...updated, ...extras];
+  if (ov['10ml'] != null) p.price = ov['10ml'];
+}
+
 // ---------- Products ----------
 let PRODUCTS = [];
 
@@ -577,6 +603,7 @@ async function loadProducts(){
       const list = Array.isArray(data) ? data : (data && Array.isArray(data.products) ? data.products : null);
       if (Array.isArray(list) && list.length){
         PRODUCTS = list;
+        try{ PRODUCTS.forEach(applyVariantPriceOverrides); }catch(e){/* noop */}
         return;
       }
     }catch(e){
@@ -668,6 +695,9 @@ const chatbotBadge = document.getElementById("chatbotBadge");
 const chatbotAttention = document.getElementById("chatbotAttention");
 const chatbotAttentionText = document.getElementById("chatbotAttentionText");
 const chatbotAttentionClose = document.getElementById("chatbotAttentionClose");
+const chatbotOverlay = document.getElementById("chatbotOverlay");
+const chatbotPanel = chatbot?.querySelector?.(".chatbot__panel");
+const chatbotHead = chatbot?.querySelector?.('.chatbot__head');
 
 // bottom nav
 const bottomNav = document.getElementById("bottomNav");
@@ -724,15 +754,25 @@ const wishlist = {
 wishlist.init();
 
 // ---------- Drawers ----------
+function syncDrawerScrollLock(){
+  try{
+    const anyOpen = !!document.querySelector('.drawer.open');
+    document.documentElement.classList.toggle('drawer-open', anyOpen);
+    document.body.classList.toggle('drawer-open', anyOpen);
+  }catch(e){/* noop */}
+}
+
 function openDrawer(drawer){
   if (!drawer) return;
   drawer.classList.add("open");
   drawer.setAttribute("aria-hidden","false");
+  syncDrawerScrollLock();
 }
 function closeDrawer(drawer){
   if (!drawer) return;
   drawer.classList.remove("open");
   drawer.setAttribute("aria-hidden","true");
+  syncDrawerScrollLock();
 }
 
 // ---------- Modals (Policy, Checkout) ----------
@@ -792,6 +832,8 @@ document.addEventListener("keydown",(e)=>{
     closeDropdown();
     closeModal(policyModal);
     closeModal(checkoutModal);
+    closeDrawer(menuDrawer);
+    closeDrawer(cartDrawer);
   }
 });
 
@@ -1563,6 +1605,37 @@ document.querySelectorAll(".webNav__link").forEach((a)=>{
 });
 
 // ---------- Chatbot (UI only) ----------
+function setChatOpenClass(isOpen){
+  document.documentElement.classList.toggle('chatbot-open', !!isOpen);
+  document.body.classList.toggle('chatbot-open', !!isOpen);
+}
+
+function setChatViewportVars(){
+  // Helps on iOS Safari where fixed elements can be covered by the keyboard.
+  const vv = window.visualViewport;
+  const height = vv ? vv.height : window.innerHeight;
+  const offsetTop = vv ? vv.offsetTop : 0;
+
+  try{
+    document.documentElement.style.setProperty('--vvh', `${Math.round(height)}px`);
+    document.documentElement.style.setProperty('--vvOffsetTop', `${Math.round(offsetTop)}px`);
+  }catch(e){/* noop */}
+}
+
+function scrollChatToBottom(){
+  if (!chatbotMsgs) return;
+  chatbotMsgs.scrollTop = chatbotMsgs.scrollHeight;
+}
+
+if (chatbot){
+  setChatViewportVars();
+  window.addEventListener('resize', setChatViewportVars, { passive: true });
+  if (window.visualViewport){
+    window.visualViewport.addEventListener('resize', setChatViewportVars, { passive: true });
+    window.visualViewport.addEventListener('scroll', setChatViewportVars, { passive: true });
+  }
+}
+
 function triggerChatQuick(action){
   if (!action) return false;
   const btn = chatbotQuick?.querySelector(`[data-quick="${action}"]`);
@@ -1578,15 +1651,46 @@ function openChat(){
   chatbot.classList.add("open");
   chatbot.setAttribute("aria-hidden","false");
   chatbotFab?.setAttribute("aria-label", "Close chat");
+  chatbotOverlay?.setAttribute('aria-hidden', 'false');
+  setChatOpenClass(true);
+  setChatViewportVars();
+  // Mobile = treat as a modal drawer
+  const isMobile = window.matchMedia && window.matchMedia('(max-width: 860px)').matches;
+  chatbotPanel?.setAttribute('aria-modal', isMobile ? 'true' : 'false');
+  // Clear any inline drag styles
+  if (chatbotPanel){
+    chatbotPanel.style.transform = '';
+    chatbotPanel.style.transition = '';
+  }
+  if (chatbotOverlay){
+    chatbotOverlay.style.opacity = '';
+    chatbotOverlay.style.transition = '';
+  }
   chatHasStarted = true;
   seedChatIfEmpty();
-  setTimeout(()=> chatbotInput?.focus(), 150);
+  setTimeout(()=>{
+    try{ chatbotInput?.focus({ preventScroll: true }); }catch(e){ chatbotInput?.focus(); }
+    setTimeout(scrollChatToBottom, 60);
+  }, 150);
 }
 function closeChat(){
   if (!chatbot) return;
   chatbot.classList.remove("open");
   chatbot.setAttribute("aria-hidden","true");
   chatbotFab?.setAttribute("aria-label", "Open chat");
+  chatbotOverlay?.setAttribute('aria-hidden', 'true');
+  chatbotPanel?.setAttribute('aria-modal', 'false');
+  setChatOpenClass(false);
+  // Reset any inline drag styles
+  if (chatbotPanel){
+    chatbotPanel.style.transform = '';
+    chatbotPanel.style.transition = '';
+  }
+  if (chatbotOverlay){
+    chatbotOverlay.style.opacity = '';
+    chatbotOverlay.style.transition = '';
+  }
+  try{ chatbotInput?.blur(); }catch(e){}
 }
 function toggleChat() {
   if (chatbot?.classList.contains("open")) closeChat();
@@ -1594,6 +1698,7 @@ function toggleChat() {
 }
 chatbotFab?.addEventListener("click", toggleChat);
 chatbotClose?.addEventListener("click", closeChat);
+chatbotOverlay?.addEventListener('click', closeChat);
 chatbotReset?.addEventListener("click", ()=>{
   if (!chatbotMsgs) return;
   chatbotMsgs.innerHTML = "";
@@ -1601,6 +1706,100 @@ chatbotReset?.addEventListener("click", ()=>{
   seedChatIfEmpty();
   setTimeout(()=> chatbotInput?.focus(), 50);
 });
+
+chatbotInput?.addEventListener('focus', ()=>{
+  setChatViewportVars();
+  setTimeout(scrollChatToBottom, 80);
+});
+
+// Mobile: swipe/drag down on header to close (bottom-sheet feel)
+(function initChatDragToClose(){
+  if (!chatbot || !chatbotHead || !chatbotPanel) return;
+
+  const isMobileNow = ()=> window.matchMedia && window.matchMedia('(max-width: 860px)').matches;
+
+  const drag = {
+    active: false,
+    pointerId: null,
+    startY: 0,
+    currentY: 0,
+    lastY: 0,
+    lastT: 0,
+    velocity: 0
+  };
+
+  const setDraggingStyles = (isDragging)=>{
+    if (!chatbotPanel) return;
+    chatbotPanel.style.transition = isDragging ? 'none' : '';
+    if (chatbotOverlay) chatbotOverlay.style.transition = isDragging ? 'none' : '';
+  };
+
+  const applyDrag = (dy)=>{
+    const y = Math.max(0, dy);
+    drag.currentY = y;
+    chatbotPanel.style.transform = `translateX(-50%) translateY(${y}px)`;
+    if (chatbotOverlay){
+      const opacity = Math.max(0, Math.min(1, 1 - (y / 320)));
+      chatbotOverlay.style.opacity = String(opacity);
+    }
+  };
+
+  const finishDrag = ()=>{
+    if (!drag.active) return;
+    drag.active = false;
+    const dy = drag.currentY;
+    const v = drag.velocity; // px/ms
+
+    setDraggingStyles(false);
+
+    // Fast swipe or long drag closes
+    const shouldClose = dy > 140 || v > 0.75;
+    // Reset inline styles before state change
+    chatbotPanel.style.transform = '';
+    if (chatbotOverlay) chatbotOverlay.style.opacity = '';
+
+    if (shouldClose) closeChat();
+  };
+
+  chatbotHead.addEventListener('pointerdown', (e)=>{
+    if (!chatbot.classList.contains('open')) return;
+    if (!isMobileNow()) return;
+    // Don’t start drag when tapping action buttons
+    if (e.target && e.target.closest && e.target.closest('button, a')) return;
+
+    drag.active = true;
+    drag.pointerId = e.pointerId;
+    drag.startY = e.clientY;
+    drag.currentY = 0;
+    drag.lastY = e.clientY;
+    drag.lastT = performance.now();
+    drag.velocity = 0;
+
+    setDraggingStyles(true);
+    try{ chatbotHead.setPointerCapture(e.pointerId); }catch(err){}
+    try{ e.preventDefault(); }catch(err){}
+  }, { passive: false });
+
+  chatbotHead.addEventListener('pointermove', (e)=>{
+    if (!drag.active) return;
+    if (drag.pointerId !== null && e.pointerId !== drag.pointerId) return;
+
+    const now = performance.now();
+    const dt = now - drag.lastT;
+    if (dt > 0){
+      drag.velocity = (e.clientY - drag.lastY) / dt;
+      drag.lastY = e.clientY;
+      drag.lastT = now;
+    }
+
+    const dy = e.clientY - drag.startY;
+    applyDrag(dy);
+    try{ e.preventDefault(); }catch(err){}
+  }, { passive: false });
+
+  chatbotHead.addEventListener('pointerup', finishDrag);
+  chatbotHead.addEventListener('pointercancel', finishDrag);
+})();
 
 document.addEventListener("keydown", (e)=>{
   if (e.key !== "Escape") return;
