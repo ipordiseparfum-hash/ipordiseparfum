@@ -104,6 +104,286 @@ a{ color:inherit; text-decoration:none; }
   font-weight:600; font-size:12px;
 }
 
+/* Layout guards (prevents random horizontal overflow) */
+html, body{ max-width:100%; overflow-x:hidden; }
+@supports (overflow: clip){
+  html, body{ overflow-x:clip; }
+}
+
+/* -----------------------
+   Flash Deals (Primor-like)
+------------------------*/
+.flashSection{
+  background:#fff;
+  border-top: 1px solid rgba(229,231,235,.85);
+  border-bottom: 1px solid rgba(229,231,235,.85);
+}
+.flashSection__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:14px;
+}
+.flashSection__title{
+  margin:0;
+  font-weight:1000;
+  letter-spacing:-0.02em;
+}
+.flashSection__sub{ margin:6px 0 0; font-weight:650; }
+.flashSection__tools{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.flashSection__pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid rgba(229,231,235,.95);
+  background: rgba(250,250,249,.9);
+  font-weight:900;
+}
+.flashSection__arrows{ display:flex; gap:10px; }
+.carouselArrows{ display:flex; gap:10px; align-items:center; }
+.flashArrow{
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  border:1px solid rgba(229,231,235,.95);
+  background: rgba(255,255,255,.92);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 12px 26px rgba(2,6,23,.10);
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.flashArrow:hover{ transform: translateY(-1px); border-color: rgba(192,154,89,.35); box-shadow: 0 18px 40px rgba(2,6,23,.14); }
+.flashArrow:disabled{ opacity:.5; cursor:not-allowed; transform:none; box-shadow:none; }
+
+.flashCarousel{ position:relative; }
+.flashCarousel__viewport{
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  display:block;
+  padding:6px 12px 14px;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  overscroll-behavior-x:contain;
+}
+.flashCarousel__viewport::-webkit-scrollbar{ display:none; }
+.flashCarousel__track{
+  display:flex;
+  gap:14px;
+  padding:2px;
+  flex-wrap:nowrap;
+}
+
+.flashCard{
+  flex: 0 0 220px;
+  scroll-snap-align:start;
+  background:#fff;
+  border:1px solid rgba(229,231,235,.92);
+  border-radius:18px;
+  box-shadow: 0 18px 44px rgba(2,6,23,.10);
+  overflow:hidden;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  height:452px;
+}
+.flashCard__inner{
+  padding:12px 12px 14px;
+  display:flex;
+  flex-direction:column;
+  flex: 1 1 auto;
+}
+.flashCard__top{
+  position:absolute;
+  top:10px;
+  left:10px;
+  right:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  pointer-events:none;
+  z-index:2;
+}
+.flashCard__badge,
+.flashCard__off{
+  pointer-events:none;
+  display:inline-flex;
+  align-items:center;
+  height:26px;
+  padding:0 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:1000;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.flashCard__badge{
+  background: rgba(192,154,89,.14);
+  border:1px solid rgba(192,154,89,.28);
+  color: var(--brand-deep);
+}
+.flashCard__off{
+  margin-left:auto;
+  background: rgba(239,68,68,.10);
+  border:1px solid rgba(239,68,68,.22);
+  color:#b91c1c;
+}
+
+.flashCard__wish{
+  position:absolute;
+  top:10px;
+  right:10px;
+  z-index:3;
+  width:36px;
+  height:36px;
+  border-radius:999px;
+  border:1px solid rgba(229,231,235,.95);
+  background: rgba(255,255,255,.95);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.flashCard__wish:hover{ transform: translateY(-1px); box-shadow: 0 12px 26px rgba(2,6,23,.12); border-color: rgba(192,154,89,.35); }
+.flashCard__wish.active{ color:#e11d48; border-color: rgba(225,29,72,.22); }
+
+.flashCard__media{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px 12px 10px;
+}
+.flashCard__link{ display:block; color:inherit; text-decoration:none; }
+.flashCard__img{
+  width:160px;
+  height:160px;
+  object-fit:contain;
+  display:block;
+}
+.flashCard__brand{
+  font-weight:1000;
+  font-size:12px;
+  color: var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.flashCard__title{
+  margin:6px 0 10px;
+  font-weight:800;
+  font-size:14px;
+  line-height:1.3;
+  display:-webkit-box;
+  line-clamp:2;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  min-height:36px;
+}
+.flashCard__meta{ display:flex; align-items:center; gap:8px; margin:-2px 0 10px; }
+.flashCard__prices{ display:flex; align-items:baseline; gap:10px; }
+.flashCard__old{ color: var(--muted); text-decoration: line-through; font-weight:800; font-size:13px; }
+.flashCard__new{ color:#b91c1c; font-weight:1000; font-size:18px; }
+.flashCard__sizes{ margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; }
+.flashCard__actions{ margin-top:auto; }
+
+.flashAdd{
+  width:100%;
+  height:40px;
+  border-radius:12px;
+  border:1px solid rgba(192,154,89,.30);
+  background: linear-gradient(180deg, rgba(192,154,89,.95), rgba(192,154,89,.82));
+  color:#111827;
+  font-weight:1000;
+  letter-spacing:.02em;
+  cursor:pointer;
+  box-shadow: 0 14px 30px rgba(2,6,23,.12);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.flashAdd:hover{ transform: translateY(-1px); box-shadow: 0 18px 44px rgba(2,6,23,.16); filter:saturate(1.06); }
+.flashAdd:active{ transform: translateY(0); }
+
+.flashSize{
+  height:32px;
+  padding:0 10px;
+  border-radius:999px;
+  border:1px solid rgba(229,231,235,.95);
+  background: rgba(250,250,249,.7);
+  font-weight:900;
+  font-size:12px;
+  cursor:pointer;
+  transition: transform .12s ease, border-color .12s ease, background-color .12s ease;
+}
+.flashSize:hover{ transform: translateY(-1px); border-color: rgba(192,154,89,.35); }
+.flashSize.active{
+  border-color: rgba(192,154,89,.55);
+  background: rgba(192,154,89,.12);
+  color: var(--brand-deep);
+}
+
+@media (max-width: 860px){
+  .flashSection__head{ align-items:flex-start; flex-direction:column; }
+  .flashSection__tools{ width:100%; justify-content:space-between; }
+  .flashCard{ flex-basis: min(78vw, 320px); }
+}
+
+@media (max-width: 540px){
+  .flashSection__pill{ width:100%; justify-content:center; }
+  .flashSection__arrows{ display:none; }
+  .carouselArrows{ display:none; }
+}
+
+/* -----------------------
+   Best Sellers carousel
+------------------------*/
+.productCarousel{ position:relative; }
+.productCarousel__viewport{
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-snap-stop:always;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  scroll-behavior:smooth;
+  overscroll-behavior-x:contain;
+  padding:2px 12px 14px;
+  scroll-padding-left:2px;
+}
+.productCarousel__viewport::-webkit-scrollbar{ display:none; }
+
+/* Override default grid for the carousel track only */
+#productGrid{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  gap:14px;
+  padding:2px;
+}
+#productGrid > .card,
+#productGrid > article{
+  flex: 0 0 220px;
+  scroll-snap-align:start;
+}
+@media (max-width: 860px){
+  #productGrid > .card,
+  #productGrid > article{ flex-basis: min(78vw, 320px); }
+
+  /* Mobile: make swiping feel less sticky */
+  .flashCarousel__viewport{ scroll-snap-type: x proximity; }
+  .productCarousel__viewport{ scroll-snap-type: x proximity; scroll-snap-stop: normal; }
+}
+
 /* Topbar */
 .topbar{
   background: linear-gradient(90deg, var(--brand), #ff4d7d);
