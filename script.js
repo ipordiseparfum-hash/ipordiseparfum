@@ -835,6 +835,12 @@ function initBestSellersCarousel(){
 
   let autoTimer = null;
   let resumeTimer = null;
+  let autoScrollingUntil = 0;
+  let isPointerActive = false;
+  let isHovering = false;
+  let hasFocus = false;
+
+  const IDLE_RESUME_MS = 2200;
 
   const getStep = () => {
     const firstCard = document.querySelector('#productGrid > .flashCard, #productGrid > .card, #productGrid > article');
@@ -849,6 +855,10 @@ function initBestSellersCarousel(){
     const maxScroll = bestViewport.scrollWidth - bestViewport.clientWidth;
     const x = bestViewport.scrollLeft;
     const atEnd = x >= (maxScroll - 6);
+
+    // Ignore scroll events caused by our own smooth scrolling
+    autoScrollingUntil = Date.now() + 900;
+
     if (atEnd) {
       bestViewport.scrollTo({ left: 0, behavior: 'smooth' });
     } else {
@@ -866,23 +876,75 @@ function initBestSellersCarousel(){
       autoTimer = null;
     }
   };
-  const pauseThenResume = (ms = 4500) => {
-    stopAuto();
+
+  const scheduleResume = () => {
     if (resumeTimer) clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(startAuto, ms);
+    resumeTimer = setTimeout(() => {
+      // Only resume when user is clearly idle
+      if (isPointerActive || isHovering || hasFocus) return;
+      startAuto();
+    }, IDLE_RESUME_MS);
+  };
+
+  const userActivity = () => {
+    stopAuto();
+    scheduleResume();
   };
 
   // Start after initial paint (ensures widths are correct)
   requestAnimationFrame(() => startAuto());
 
-  // Pause on user interaction
-  bestViewport.addEventListener('pointerdown', () => pauseThenResume(5500), { passive: true });
-  bestViewport.addEventListener('wheel', () => pauseThenResume(5500), { passive: true });
-  bestViewport.addEventListener('touchstart', () => pauseThenResume(6500), { passive: true });
-  bestViewport.addEventListener('mouseenter', () => stopAuto(), { passive: true });
-  bestViewport.addEventListener('mouseleave', () => pauseThenResume(1200), { passive: true });
-  bestViewport.addEventListener('focusin', () => stopAuto(), { passive: true });
-  bestViewport.addEventListener('focusout', () => pauseThenResume(1200), { passive: true });
+  // Pause autoplay while the user is interacting; resume only after idle.
+  bestViewport.addEventListener('pointerdown', () => {
+    isPointerActive = true;
+    userActivity();
+  }, { passive: true });
+  bestViewport.addEventListener('pointerup', () => {
+    isPointerActive = false;
+    scheduleResume();
+  }, { passive: true });
+  bestViewport.addEventListener('pointercancel', () => {
+    isPointerActive = false;
+    scheduleResume();
+  }, { passive: true });
+
+  bestViewport.addEventListener('touchstart', () => {
+    isPointerActive = true;
+    userActivity();
+  }, { passive: true });
+  bestViewport.addEventListener('touchend', () => {
+    isPointerActive = false;
+    scheduleResume();
+  }, { passive: true });
+  bestViewport.addEventListener('touchcancel', () => {
+    isPointerActive = false;
+    scheduleResume();
+  }, { passive: true });
+
+  bestViewport.addEventListener('wheel', () => userActivity(), { passive: true });
+
+  // If the user is scrolling (dragging/swiping), keep postponing resume until idle.
+  bestViewport.addEventListener('scroll', () => {
+    if (Date.now() < autoScrollingUntil) return;
+    userActivity();
+  }, { passive: true });
+
+  bestViewport.addEventListener('mouseenter', () => {
+    isHovering = true;
+    stopAuto();
+  }, { passive: true });
+  bestViewport.addEventListener('mouseleave', () => {
+    isHovering = false;
+    scheduleResume();
+  }, { passive: true });
+  bestViewport.addEventListener('focusin', () => {
+    hasFocus = true;
+    stopAuto();
+  }, { passive: true });
+  bestViewport.addEventListener('focusout', () => {
+    hasFocus = false;
+    scheduleResume();
+  }, { passive: true });
 }
 
 // ========================================
