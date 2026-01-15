@@ -2145,6 +2145,13 @@ html[dir="rtl"] .langOption{ text-align:right; }
   aspect-ratio: 16 / 7;
 }
 
+@media (min-width: 1025px){
+  .hero__media{
+    aspect-ratio: 16 / 6;
+    min-height: 360px;
+  }
+}
+
 @media (max-width: 860px){
   .hero__media{ border-radius: 18px; aspect-ratio: 4 / 3; }
 }
