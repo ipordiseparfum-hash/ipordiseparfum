@@ -134,90 +134,39 @@
       </div>
     </section>
 
-    <!-- Promo Banner -->
-    <section class="section section--soft" id="deals">
-      <div class="container container--wide promo-hero__inner">
-        <div class="promo-banner animate-on-scroll">
-          <div class="promo-banner__text">
-            <div class="kicker" data-i18n="sec_deals_kicker">LIMITED TIME OFFER</div>
-            <div class="flash-strip" aria-live="polite"><span class="flash-dot" aria-hidden="true"></span><span data-i18n="flash_text">Shop now before the offer ends</span><span id="dealCountdown">00:00:00</span></div>
-            <h3 data-i18n="sec_deals_title">Elegance in Every Drop</h3>
-            <p class="muted" data-i18n="sec_deals_desc">
-              Discover our curated collection of premium fragrances and find your signature scent today. Save up to 20% on selected items.
-            </p>
-            <a class="btn btn--primary" href="#best" data-i18n="sec_deals_cta">Shop The Collection</a>
+    <!-- Flash Deals (premium carousel) -->
+    <section class="section flashSection" id="deals" aria-label="Flash deals">
+      <div class="container container--wide">
+        <div class="flashSection__head animate-on-scroll">
+          <div>
+            <h2 class="flashSection__title" data-i18n="flash_title">Flash Deals</h2>
+            <p class="flashSection__sub muted" data-i18n="flash_sub">Limited-time offers • 24h only</p>
           </div>
-          <div class="promo-banner__visual">
-            <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Intense%20Oud%20perfume%20collection.png" alt="Featured Perfume">
+
+          <div class="flashSection__tools">
+            <div class="flashSection__pill" aria-live="polite">
+              <span class="flash-dot" aria-hidden="true"></span>
+              <span data-i18n="flash_ends">Ends in</span>
+              <strong id="dealCountdown">24:00:00</strong>
+            </div>
+
+            <div class="flashSection__arrows" aria-label="Carousel controls">
+              <button class="flashArrow" type="button" data-flash-prev aria-label="Previous deals" title="Previous">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button class="flashArrow" type="button" data-flash-next aria-label="Next deals" title="Next">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Grateful Offers -->
-        <div class="section__head animate-on-scroll" style="margin-top: 18px; margin-bottom: 12px;">
-          <h3 style="margin: 0;">Grateful Offers</h3>
-          <p class="muted" style="margin-top: 6px;">Limited-time bundles, gifts, and extra savings.</p>
-        </div>
-
-        <div class="grid" aria-label="Grateful offers">
-          <article class="card animate-on-scroll">
-            <a href="#best" class="card__link">
-              <div class="card__img">
-                <span class="card__tag">Offer</span>
-                <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Intense%20Oud%20perfume%20collection.png" alt="Bundle deal" loading="lazy" width="200" height="200" decoding="async">
-              </div>
-              <div class="card__body">
-                <div class="card__brand">IPORDISE</div>
-                <h3 class="card__name">Bundle Deal</h3>
-                <div class="card__meta">
-                  <span class="muted small">Save up to 20% on selected items</span>
-                </div>
-              </div>
-            </a>
-            <div class="card__actions">
-              <div class="card__price">Limited time</div>
-              <a class="btn btn--small btn--primary" href="#best">Shop</a>
+        <div class="flashCarousel" role="region" aria-label="Flash deals carousel">
+          <div class="flashCarousel__viewport" id="flashDealsViewport" tabindex="0">
+            <div class="flashCarousel__track" id="flashDealsTrack" role="list">
+              <!-- JS renders flash deal cards -->
             </div>
-          </article>
-
-          <article class="card animate-on-scroll">
-            <a href="#categories" class="card__link">
-              <div class="card__img">
-                <span class="card__tag">Offer</span>
-                <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Elegant%20fragrance%20in%20a%20gold-accented%20box.png" alt="Gift sets" loading="lazy" width="200" height="200" decoding="async">
-              </div>
-              <div class="card__body">
-                <div class="card__brand">IPORDISE</div>
-                <h3 class="card__name">Gift Sets</h3>
-                <div class="card__meta">
-                  <span class="muted small">Perfect for gifting — while stock lasts</span>
-                </div>
-              </div>
-            </a>
-            <div class="card__actions">
-              <div class="card__price">Special offer</div>
-              <a class="btn btn--small btn--primary" href="#categories">Browse</a>
-            </div>
-          </article>
-
-          <article class="card animate-on-scroll">
-            <a href="https://wa.me/212663750210" target="_blank" rel="noopener" class="card__link">
-              <div class="card__img">
-                <span class="card__tag">Offer</span>
-                <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Tom%20Ford%20and%20WhatsApp%20connection.png" alt="WhatsApp offer" loading="lazy" width="200" height="200" decoding="async">
-              </div>
-              <div class="card__body">
-                <div class="card__brand">IPORDISE</div>
-                <h3 class="card__name">WhatsApp Exclusive</h3>
-                <div class="card__meta">
-                  <span class="muted small">Ask us for today’s best deal</span>
-                </div>
-              </div>
-            </a>
-            <div class="card__actions">
-              <div class="card__price">Chat now</div>
-              <a class="btn btn--small btn--primary" href="https://wa.me/212663750210" target="_blank" rel="noopener">WhatsApp</a>
-            </div>
-          </article>
+          </div>
         </div>
 
         <!-- Ads photos (auto-rotate) -->
@@ -293,11 +242,24 @@
               <option value="price-desc">Price: High to Low</option>
               <option value="rating-desc">Rating: High to Low</option>
             </select>
+
+            <div class="carouselArrows" aria-label="Best sellers carousel controls">
+              <button class="flashArrow" type="button" data-best-prev aria-label="Previous products" title="Previous">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button class="flashArrow" type="button" data-best-next aria-label="Next products" title="Next">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
           </div>
         </div>
 
-        <div class="grid" id="productGrid">
-          <!-- JS renders cards -->
+        <div class="productCarousel" role="region" aria-label="Best sellers carousel">
+          <div class="productCarousel__viewport" id="bestViewport" tabindex="0">
+            <div class="grid productCarousel__track" id="productGrid">
+              <!-- JS renders cards -->
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -786,6 +748,14 @@
 
   <!-- Global toast notifications (Add to cart, etc.) -->
   <div class="toastStack" id="toastStack" aria-live="polite" aria-relevant="additions removals"></div>
+
+  <!-- Back to top -->
+  <button class="toTop" id="toTopBtn" type="button" aria-label="Back to top" title="Back to top">
+    <svg class="toTop__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5" />
+      <path d="M5 12l7-7 7 7" />
+    </svg>
+  </button>
 
   <script src="script.js" defer></script>
 

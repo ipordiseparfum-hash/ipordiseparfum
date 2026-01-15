@@ -51,7 +51,7 @@ const I18N = {
     sec_best_desc: "Top-rated picks customers love.",
     sec_deals_kicker: "LIMITED TIME OFFER",
     flash_text: "Shop now before the offer ends",
-    sec_deals_title: "Grateful Offers",
+    sec_deals_title: "Gucci Intense Oud",
     sec_deals_desc: "Discover our curated collection of premium fragrances and find your signature scent today. Save up to 20% on selected items.",
     sec_deals_cta: "Shop The Collection",
     sec_brands_title: "Featured Brands",
@@ -141,6 +141,10 @@ const I18N = {
     ,toast_meta: "Shop now before the offer ends"
     ,toast_cta: "Shop deals"
     ,toast_alt: "Best sellers"
+    ,flash_title: "Flash Deals"
+    ,flash_sub: "Limited-time offers • 24h only"
+    ,flash_ends: "Ends in"
+    ,flash_badge: "BEST PRICE"
   },
 
   fr: {
@@ -185,7 +189,7 @@ const I18N = {
     sec_best_desc: "Les choix préférés de nos clients.",
     sec_deals_kicker: "OFFRE À DURÉE LIMITÉE",
     flash_text: "Achetez avant la fin de l’offre",
-    sec_deals_title: "Offres exceptionnelles",
+    sec_deals_title: "Gucci Intense Oud",
     sec_deals_desc: "Découvrez notre collection de parfums premium et trouvez votre parfum signature. Jusqu’à 20% de réduction sur une sélection.",
     sec_deals_cta: "Découvrir la collection",
     sec_brands_title: "Marques en vedette",
@@ -275,6 +279,10 @@ const I18N = {
     ,toast_meta: "Achetez avant la fin de l’offre"
     ,toast_cta: "Voir les promos"
     ,toast_alt: "Meilleures ventes"
+    ,flash_title: "Offres Flash"
+    ,flash_sub: "Offres limitées • 24h seulement"
+    ,flash_ends: "Se termine dans"
+    ,flash_badge: "MEILLEUR PRIX"
   },
 
   ar: {
@@ -318,7 +326,7 @@ const I18N = {
     sec_best_desc: "اختيارات محبوبة عند الزبناء.",
     sec_deals_kicker: "عرض لفترة محدودة",
     flash_text: "تسوق الآن قبل انتهاء العرض",
-    sec_deals_title: "عروض مميزة",
+    sec_deals_title: "Gucci Intense Oud",
     sec_deals_desc: "اكتشف مجموعتنا المختارة من العطور الفاخرة واعثر على عطرك المميز. خصم يصل إلى 20% على منتجات محددة.",
     sec_deals_cta: "تسوق المجموعة",
     sec_brands_title: "ماركات مختارة",
@@ -409,6 +417,10 @@ const I18N = {
     ,toast_meta: "تسوق الآن قبل انتهاء العرض"
     ,toast_cta: "تسوق العروض"
     ,toast_alt: "الأكثر مبيعاً"
+    ,flash_title: "عروض فلاش"
+    ,flash_sub: "عروض محدودة • فقط 24 ساعة"
+    ,flash_ends: "ينتهي خلال"
+    ,flash_badge: "أفضل سعر"
   }
 };
 
@@ -476,6 +488,7 @@ function applyI18n(lang){
   // refresh dynamic UI
   renderProducts();
   updateCartUI();
+  renderFlashDeals();
   renderFinder();
   if (chatHasStarted) seedChatIfEmpty();
 } 
@@ -552,6 +565,36 @@ const PRODUCT_VARIANT_PRICE_OVERRIDES = {
   p21: { '10ml': 90, '20ml': 170, '30ml': 255 }
 };
 
+// Ensure featured/custom products exist even if products.json comes from an older copy
+const ALL_DAY_PRODUCT = {
+  id: "p30",
+  brand: "IPORDISE",
+  name: "All Day",
+  category: "unisex",
+  isNew: true,
+  description: "All Day is a clean and versatile unisex fragrance designed to stay with you from morning to night. Soft, elegant, and easy to wear, it’s perfect for everyday use — office, outings, and special moments.\n\nLong-lasting freshness • Smooth dry-down • Easy signature scent.",
+  description_fr: "All Day est un parfum unisex propre et polyvalent, conçu pour vous accompagner du matin au soir. Doux, élégant et facile à porter, il est parfait au quotidien — bureau, sorties et moments spéciaux.\n\nFraîcheur longue tenue • Fond doux • Parfum signature facile.",
+  description_ar: "All Day هو عطر يونيكس نظيف ومتعدد الاستخدامات، مصمم ليدوم معك من الصباح إلى الليل. ناعم وأنيق وسهل الاستخدام، مناسب لليوميات — العمل، الخروج والمناسبات.\n\nانتعاش طويل • ثبات مريح • عطر مميز وسهل.",
+  image: "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/logo.jpeg",
+  variants: [
+    { size: "10ml", price: 90 },
+    { size: "20ml", price: 180 },
+    { size: "30ml", price: 270 }
+  ],
+  rating: 4.7,
+  reviews: 0,
+  tag: "All Day",
+  notes: ["fresh", "clean", "musk", "amber"]
+};
+
+function ensureAllDayProduct(){
+  try{
+    if (!Array.isArray(PRODUCTS)) return;
+    if (PRODUCTS.some(p => String(p?.id) === "p30")) return;
+    PRODUCTS.push({ ...ALL_DAY_PRODUCT });
+  }catch{/* noop */}
+}
+
 function applyVariantPriceOverrides(p){
   if (!p || !p.id) return;
   const ov = PRODUCT_VARIANT_PRICE_OVERRIDES[String(p.id)];
@@ -604,6 +647,7 @@ async function loadProducts(){
       if (Array.isArray(list) && list.length){
         PRODUCTS = list;
         try{ PRODUCTS.forEach(applyVariantPriceOverrides); }catch(e){/* noop */}
+        ensureAllDayProduct();
         return;
       }
     }catch(e){
@@ -620,6 +664,7 @@ async function loadProducts(){
     { id:"p5", brand:"IPORDISE", name:"Home Diffuser — Amber Nights", category:"home", price:259, rating:4.4, reviews:180, tag:"Home", notes:["amber","warm","sweet"], image:"assets/logo.svg" },
     { id:"p6", brand:"IPORDISE", name:"Travel Spray — Fresh Citrus", category:"travel", price:149, rating:4.3, reviews:95, tag:"Travel", notes:["citrus","fresh","clean"], image:"assets/logo.svg" }
   ];
+  ensureAllDayProduct();
   console.warn("Using fallback products list (could not load products.json)", lastErr);
 }
 
@@ -705,6 +750,141 @@ const bottomNav = document.getElementById("bottomNav");
 // toast
 const toastStack = document.getElementById('toastStack');
 
+// flash deals
+const flashDealsViewport = document.getElementById("flashDealsViewport");
+const flashDealsTrack = document.getElementById("flashDealsTrack");
+const flashPrevBtn = document.querySelector("[data-flash-prev]");
+const flashNextBtn = document.querySelector("[data-flash-next]");
+
+// best sellers carousel
+const bestViewport = document.getElementById("bestViewport");
+const bestPrevBtn = document.querySelector("[data-best-prev]");
+const bestNextBtn = document.querySelector("[data-best-next]");
+
+function updateBestArrows(){
+  if (!bestViewport || !bestPrevBtn || !bestNextBtn) return;
+  const maxScroll = bestViewport.scrollWidth - bestViewport.clientWidth;
+  const x = bestViewport.scrollLeft;
+  const atStart = x <= 2;
+  const atEnd = x >= (maxScroll - 2);
+  bestPrevBtn.disabled = atStart;
+  bestNextBtn.disabled = atEnd;
+}
+
+function initBestSellersCarousel(){
+  if (!bestViewport) return;
+
+  updateBestArrows();
+
+  bestViewport.addEventListener("scroll", throttle(updateBestArrows, 120));
+  window.addEventListener("resize", throttle(updateBestArrows, 150));
+
+  bestPrevBtn?.addEventListener("click", ()=>{
+    const delta = Math.round(bestViewport.clientWidth * 0.85);
+    bestViewport.scrollBy({ left: -delta, behavior: "smooth" });
+  });
+  bestNextBtn?.addEventListener("click", ()=>{
+    const delta = Math.round(bestViewport.clientWidth * 0.85);
+    bestViewport.scrollBy({ left: delta, behavior: "smooth" });
+  });
+
+  bestViewport.addEventListener("keydown", (e)=>{
+    if (e.key === "ArrowLeft") { e.preventDefault(); bestPrevBtn?.click(); }
+    if (e.key === "ArrowRight") { e.preventDefault(); bestNextBtn?.click(); }
+  });
+
+  // Desktop drag-to-scroll only (avoid fighting native mobile swipe)
+  const enableDrag = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (enableDrag){
+    let isPointerDown = false;
+    let didDrag = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    bestViewport.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0) return;
+      if (e.target.closest('button, a, input, select, textarea, [role="button"]')) return;
+      isPointerDown = true;
+      didDrag = false;
+      startX = e.clientX;
+      startScrollLeft = bestViewport.scrollLeft;
+      bestViewport.setPointerCapture?.(e.pointerId);
+    });
+    bestViewport.addEventListener('pointermove', (e) => {
+      if (!isPointerDown) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) didDrag = true;
+      bestViewport.scrollLeft = startScrollLeft - dx;
+    });
+    const endDrag = () => {
+      isPointerDown = false;
+      setTimeout(() => { didDrag = false; }, 0);
+    };
+    bestViewport.addEventListener('pointerup', endDrag);
+    bestViewport.addEventListener('pointercancel', endDrag);
+    bestViewport.addEventListener('click', (e) => {
+      if (!didDrag) return;
+      e.preventDefault();
+      e.stopPropagation();
+    }, true);
+  }
+
+  // Autoplay: smooth slide card-by-card (pause on interaction)
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  let autoTimer = null;
+  let resumeTimer = null;
+
+  const getStep = () => {
+    const firstCard = document.querySelector('#productGrid > .flashCard, #productGrid > .card, #productGrid > article');
+    if (!firstCard) return Math.round(bestViewport.clientWidth * 0.85);
+    const cardW = firstCard.getBoundingClientRect().width || 252;
+    const gap = parseFloat(getComputedStyle(document.getElementById('productGrid')).gap || '14') || 14;
+    return Math.round(cardW + gap);
+  };
+
+  const tick = () => {
+    if (!bestViewport) return;
+    const maxScroll = bestViewport.scrollWidth - bestViewport.clientWidth;
+    const x = bestViewport.scrollLeft;
+    const atEnd = x >= (maxScroll - 6);
+    if (atEnd) {
+      bestViewport.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      bestViewport.scrollBy({ left: getStep(), behavior: 'smooth' });
+    }
+  };
+
+  const startAuto = () => {
+    if (autoTimer) return;
+    autoTimer = setInterval(tick, 3200);
+  };
+  const stopAuto = () => {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  };
+  const pauseThenResume = (ms = 4500) => {
+    stopAuto();
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(startAuto, ms);
+  };
+
+  // Start after initial paint (ensures widths are correct)
+  requestAnimationFrame(() => startAuto());
+
+  // Pause on user interaction
+  bestViewport.addEventListener('pointerdown', () => pauseThenResume(5500), { passive: true });
+  bestViewport.addEventListener('wheel', () => pauseThenResume(5500), { passive: true });
+  bestViewport.addEventListener('touchstart', () => pauseThenResume(6500), { passive: true });
+  bestViewport.addEventListener('mouseenter', () => stopAuto(), { passive: true });
+  bestViewport.addEventListener('mouseleave', () => pauseThenResume(1200), { passive: true });
+  bestViewport.addEventListener('focusin', () => stopAuto(), { passive: true });
+  bestViewport.addEventListener('focusout', () => pauseThenResume(1200), { passive: true });
+}
+
 // ========================================
 // WISHLIST SYSTEM
 // ========================================
@@ -752,6 +932,270 @@ const wishlist = {
 
 // Initialize wishlist
 wishlist.init();
+
+// ========================================
+// FLASH DEALS (Carousel)
+// ========================================
+const FLASH_DEALS_CONFIG = [
+  { id: "p16", discount: 25 },
+  { id: "p21", discount: 25 }
+];
+
+let flashCountdownInterval = null;
+
+function getPreferredFlashSizes(p){
+  const variants = Array.isArray(p?.variants) ? p.variants : [];
+  const sizes = variants.map(v => String(v?.size || "")).filter(Boolean);
+  if (!sizes.length) return [];
+
+  const preferredOrder = ["10ml", "30ml", "50ml", "20ml"];
+  const picked = [];
+  for (const s of preferredOrder){
+    if (sizes.includes(s) && !picked.includes(s)) picked.push(s);
+  }
+  for (const s of sizes){
+    if (picked.length >= 3) break;
+    if (!picked.includes(s)) picked.push(s);
+  }
+  return picked.slice(0, 3);
+}
+
+function computeDiscountedPrice(price, percent){
+  const p = Number(price || 0);
+  const d = Number(percent || 0);
+  return Math.max(0, Math.round(p * (1 - d / 100)));
+}
+
+function getFlashDealList(){
+  const out = [];
+  for (const cfg of FLASH_DEALS_CONFIG){
+    const p = PRODUCTS.find(x => String(x?.id) === String(cfg.id));
+    if (p) out.push({ product: p, discount: cfg.discount });
+  }
+
+  // No fallback: Flash Deals should only show the configured products.
+  return out;
+}
+
+function renderFlashDeals(){
+  if (!flashDealsTrack) return;
+
+  const deals = getFlashDealList();
+  if (!deals.length){
+    flashDealsTrack.innerHTML = "";
+    return;
+  }
+
+  flashDealsTrack.innerHTML = deals.map(({ product: p, discount })=>{
+    const brand = escapeHtml((p.brand || "").toUpperCase());
+    const name = escapeHtml(p.name || "");
+    const img = escapeHtml(p.image || "assets/logo.svg");
+
+    const sizes = getPreferredFlashSizes(p);
+    const defaultSize = sizes.includes("10ml") ? "10ml" : (sizes[0] || null);
+    const basePrice = getProductPrice(p, defaultSize);
+    const newPrice = computeDiscountedPrice(basePrice, discount);
+
+    const isWishlisted = wishlist.has(p.id);
+    const href = `product.html?id=${encodeURIComponent(p.id)}${defaultSize ? `&size=${encodeURIComponent(defaultSize)}` : ""}`;
+
+    const addLabel = currentLang === 'fr' ? 'Ajouter' : (currentLang === 'ar' ? 'زيد للسلة' : 'Add to cart');
+
+    return `
+      <article class="flashCard" role="listitem" data-flash-id="${escapeHtml(p.id)}" data-flash-discount="${escapeHtml(discount)}" data-flash-size="${escapeHtml(defaultSize || "")}">
+        <div class="flashCard__top" aria-hidden="true">
+          <span class="flashCard__badge">${escapeHtml(t("flash_badge"))}</span>
+          <span class="flashCard__off">-${escapeHtml(discount)}%</span>
+        </div>
+
+        <button class="flashCard__wish ${isWishlisted ? "active" : ""}" data-wishlist="${escapeHtml(p.id)}" aria-label="Add to wishlist" title="Add to wishlist" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="${isWishlisted ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </button>
+
+        <a class="flashCard__link" data-flash-link href="${href}" aria-label="Open product">
+          <div class="flashCard__media">
+            <img class="flashCard__img" src="${img}" alt="${name}" loading="lazy" decoding="async" width="220" height="220" />
+          </div>
+        </a>
+
+        <div class="flashCard__inner">
+          <div class="flashCard__brand">${brand}</div>
+          <div class="flashCard__title">${name}</div>
+
+          <div class="flashCard__prices" aria-label="Pricing">
+            <span class="flashCard__old">${formatMoney(basePrice)}</span>
+            <span class="flashCard__new">${formatMoney(newPrice)}</span>
+          </div>
+
+          ${sizes.length ? `
+            <div class="flashCard__sizes" role="radiogroup" aria-label="Choose size">
+              ${sizes.map(s=>{
+                const active = (s === defaultSize) ? "active" : "";
+                return `<button class="flashSize ${active}" type="button" data-flash-size="${escapeHtml(s)}" role="radio" aria-checked="${s===defaultSize}">${escapeHtml(s)}</button>`;
+              }).join("")}
+            </div>
+          ` : ""}
+
+          <div class="flashCard__actions">
+            <button class="flashAdd" type="button" data-flash-add="${escapeHtml(p.id)}">${escapeHtml(addLabel)}</button>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  updateFlashArrows();
+}
+
+function updateFlashArrows(){
+  if (!flashDealsViewport || !flashPrevBtn || !flashNextBtn) return;
+  const maxScroll = flashDealsViewport.scrollWidth - flashDealsViewport.clientWidth;
+  const x = flashDealsViewport.scrollLeft;
+  const atStart = x <= 2;
+  const atEnd = x >= (maxScroll - 2);
+  flashPrevBtn.disabled = atStart;
+  flashNextBtn.disabled = atEnd;
+}
+
+function initFlashDeals(){
+  if (!flashDealsViewport || !flashDealsTrack) return;
+
+  renderFlashDeals();
+
+  flashDealsViewport.addEventListener("scroll", throttle(updateFlashArrows, 120));
+  window.addEventListener("resize", throttle(updateFlashArrows, 150));
+
+  flashPrevBtn?.addEventListener("click", ()=>{
+    const delta = Math.round(flashDealsViewport.clientWidth * 0.85);
+    flashDealsViewport.scrollBy({ left: -delta, behavior: "smooth" });
+  });
+  flashNextBtn?.addEventListener("click", ()=>{
+    const delta = Math.round(flashDealsViewport.clientWidth * 0.85);
+    flashDealsViewport.scrollBy({ left: delta, behavior: "smooth" });
+  });
+
+  flashDealsViewport.addEventListener("keydown", (e)=>{
+    if (e.key === "ArrowLeft") { e.preventDefault(); flashPrevBtn?.click(); }
+    if (e.key === "ArrowRight") { e.preventDefault(); flashNextBtn?.click(); }
+  });
+
+  // Desktop drag-to-scroll (keeps mobile native swipe)
+  let isPointerDown = false;
+  let didDrag = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+
+  flashDealsViewport.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0) return;
+    if (e.target.closest('button, a, input, select, textarea, [role="button"]')) return;
+    isPointerDown = true;
+    didDrag = false;
+    startX = e.clientX;
+    startScrollLeft = flashDealsViewport.scrollLeft;
+    flashDealsViewport.setPointerCapture?.(e.pointerId);
+  });
+
+  flashDealsViewport.addEventListener('pointermove', (e) => {
+    if (!isPointerDown) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 4) didDrag = true;
+    flashDealsViewport.scrollLeft = startScrollLeft - dx;
+  });
+
+  const endDrag = () => {
+    isPointerDown = false;
+    setTimeout(() => { didDrag = false; }, 0);
+  };
+  flashDealsViewport.addEventListener('pointerup', endDrag);
+  flashDealsViewport.addEventListener('pointercancel', endDrag);
+
+  // Prevent accidental click-through after dragging
+  flashDealsViewport.addEventListener('click', (e) => {
+    if (!didDrag) return;
+    e.preventDefault();
+    e.stopPropagation();
+  }, true);
+
+  // Event delegation for wishlist + size selector
+  flashDealsTrack.addEventListener("click", (e)=>{
+    const wishBtn = e.target.closest("[data-wishlist]");
+    if (wishBtn){
+      const id = wishBtn.getAttribute("data-wishlist");
+      const isAdded = wishlist.toggle(id);
+      wishBtn.classList.toggle("active", isAdded);
+      const svg = wishBtn.querySelector("svg");
+      if (svg) svg.setAttribute("fill", isAdded ? "currentColor" : "none");
+      return;
+    }
+
+    const addBtn = e.target.closest("[data-flash-add]");
+    if (addBtn){
+      const card = addBtn.closest('.flashCard');
+      const id = card?.getAttribute('data-flash-id');
+      const size = (card?.getAttribute('data-flash-size') || '').trim();
+      if (!id) return;
+      const p = PRODUCTS.find(x => String(x?.id) === String(id));
+      if (!p) return;
+      addToCart(p, size || null);
+      return;
+    }
+
+    const sizeBtn = e.target.closest(".flashSize[data-flash-size]");
+    if (!sizeBtn) return;
+
+    const card = sizeBtn.closest(".flashCard");
+    if (!card) return;
+
+    const id = card.getAttribute("data-flash-id");
+    const discount = Number(card.getAttribute("data-flash-discount") || 0);
+    const size = sizeBtn.getAttribute("data-flash-size");
+    if (!id || !size) return;
+
+    const p = PRODUCTS.find(x => String(x?.id) === String(id));
+    if (!p) return;
+
+    card.setAttribute("data-flash-size", size);
+    card.querySelectorAll(".flashSize").forEach(b=>{
+      const on = (b.getAttribute("data-flash-size") === size);
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-checked", on ? "true" : "false");
+    });
+
+    const basePrice = getProductPrice(p, size);
+    const newPrice = computeDiscountedPrice(basePrice, discount);
+    const oldEl = card.querySelector(".flashCard__old");
+    const newEl = card.querySelector(".flashCard__new");
+    if (oldEl) oldEl.textContent = formatMoney(basePrice);
+    if (newEl) newEl.textContent = formatMoney(newPrice);
+
+    const link = card.querySelector("[data-flash-link]");
+    if (link) link.setAttribute("href", `product.html?id=${encodeURIComponent(id)}&size=${encodeURIComponent(size)}`);
+  });
+}
+
+function initFlashCountdown24h(){
+  const countdownEl = document.getElementById("dealCountdown");
+  if (!countdownEl) return;
+
+  if (flashCountdownInterval) {
+    try{ clearInterval(flashCountdownInterval); }catch(e){/* noop */}
+    flashCountdownInterval = null;
+  }
+
+  // Simple 24h countdown starting from page load (UI-only)
+  let remaining = 24 * 3600;
+  const tick = ()=>{
+    const h = String(Math.floor(remaining / 3600)).padStart(2, "0");
+    const m = String(Math.floor((remaining % 3600) / 60)).padStart(2, "0");
+    const s = String(remaining % 60).padStart(2, "0");
+    countdownEl.textContent = `${h}:${m}:${s}`;
+    remaining = Math.max(0, remaining - 1);
+  };
+  tick();
+  flashCountdownInterval = setInterval(tick, 1000);
+}
 
 // ---------- Drawers ----------
 function syncDrawerScrollLock(){
@@ -849,13 +1293,20 @@ document.querySelectorAll(".nav-dropdown__item[data-filter]").forEach(a=>{
 
 // ---------- Header compact on scroll ----------
 const header = document.getElementById("header");
+const toTopBtn = document.getElementById("toTopBtn");
 let lastScrollY = 0;
 window.addEventListener("scroll", throttle(() => {
   const y = window.scrollY || 0;
   const compact = y > 12;
   header?.classList.toggle("header--compact", compact);
+  toTopBtn?.classList.toggle("toTop--show", y > 520);
   lastScrollY = y;
 }, 100));
+
+toTopBtn?.addEventListener("click", ()=>{
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+});
 
 // ---------- Search / Sort ----------
 elSearch?.addEventListener("input", (e)=>{
@@ -925,58 +1376,76 @@ function getFilteredProducts(){
 }
 
 function productCard(p){
-  const stars = "★★★★★".slice(0, Math.round(clamp(p.rating||4.5,0,5)));
-  const tag = p.tag ? `<span class="tag">${escapeHtml(p.tag)}</span>` : "";
   const image = p.image || 'assets/logo.svg';
-  const defaultVariant = (p.variants && p.variants.length > 0) ? p.variants[0] : null;
-  const initialPrice = getProductPrice(p, defaultVariant ? defaultVariant.size : null);
-  const initialHref = `product.html?id=${escapeHtml(p.id)}${defaultVariant ? '&size=' + escapeHtml(defaultVariant.size) : ''}`;
+  const variants = Array.isArray(p?.variants) ? p.variants : [];
+  const sizes = variants.map(v => String(v?.size || "")).filter(Boolean);
+  const defaultSize = sizes.includes("10ml") ? "10ml" : (sizes[0] || "");
+  const price = getProductPrice(p, defaultSize || null);
 
-  // Wishlist check
+  // Keep displayed content the same (no fake discounts): show "old" as the same value.
+  const oldPrice = price;
+  const newPrice = price;
+
+  const brand = escapeHtml((p.brand || "").toUpperCase());
+  const name = escapeHtml(p.name || "");
+
+  const stars = "★★★★★".slice(0, Math.round(clamp(p.rating||4.5,0,5)));
+  const reviews = Number(p.reviews || 0);
+
   const isWishlisted = wishlist.has(p.id);
-  
-  // Product badge (New, Bestseller, Sale)
-  let badge = '';
-  if (p.isNew) {
-    badge = '<span class="card__badge card__badge--new">New</span>';
-  } else if (p.isBestseller || (p.reviews && p.reviews > 100)) {
-    badge = '<span class="card__badge card__badge--bestseller">Bestseller</span>';
-  } else if (p.onSale) {
-    badge = '<span class="card__badge card__badge--sale">Sale</span>';
-  }
-  
-  // Stock urgency
-  let stockHtml = '';
-  if (p.stock && p.stock < 5) {
-    stockHtml = `<div class="card__stock card__stock--low">Only ${p.stock} left!</div>`;
-  }
+  const href = `product.html?id=${encodeURIComponent(p.id)}${defaultSize ? `&size=${encodeURIComponent(defaultSize)}` : ""}`;
+
+  // Badge text (reuses existing product fields; no new content)
+  const badgeText = p.tag ? String(p.tag) : (p.isNew ? "New" : (p.isBestseller ? "Bestseller" : ""));
+
+  const addLabel = currentLang === 'fr' ? 'Ajouter' : (currentLang === 'ar' ? 'زيد للسلة' : 'Add to cart');
 
   return `
-    <article class="card animate-on-scroll" data-product-id="${p.id}">
-      ${badge}
-      <button class="card__wishlist ${isWishlisted ? 'active' : ''}" data-wishlist="${escapeHtml(p.id)}" aria-label="Add to wishlist" title="Add to wishlist">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <article class="flashCard flashCard--product animate-on-scroll" data-card-id="${escapeHtml(p.id)}" data-card-size="${escapeHtml(defaultSize)}">
+      ${badgeText ? `
+        <div class="flashCard__top" aria-hidden="true">
+          <span class="flashCard__badge">${escapeHtml(badgeText)}</span>
+        </div>
+      ` : ""}
+
+      <button class="flashCard__wish ${isWishlisted ? "active" : ""}" data-wishlist="${escapeHtml(p.id)}" aria-label="Add to wishlist" title="Add to wishlist" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="${isWishlisted ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
         </svg>
       </button>
-      <a href="${initialHref}" class="card__link" aria-label="View product: ${escapeHtml(p.name||"")}">
-        <div class="card__img">
-          ${p.tag ? `<span class="card__tag">${escapeHtml(p.tag)}</span>` : ""}
-          <img src="${escapeHtml(image)}" alt="${escapeHtml(p.name||"")}" loading="lazy" width="200" height="200">
-        </div>
-        <div class="card__body">
-          <div class="card__brand">${escapeHtml(p.brand||"")}</div>
-          <h3 class="card__name">${escapeHtml(p.name||"")}</h3>
-          <div class="card__meta">
-            <span class="stars" aria-label="${(p.rating||0)} rating">${stars}</span>
-            <span class="muted small">(${p.reviews||0})</span>
-          </div>
-          ${stockHtml}
+
+      <a class="flashCard__link" data-card-link href="${href}" aria-label="Open product">
+        <div class="flashCard__media">
+          <img class="flashCard__img" src="${escapeHtml(image)}" alt="${name}" loading="lazy" decoding="async" width="220" height="220" />
         </div>
       </a>
-      <div class="card__actions">
-        <div class="card__price">${formatMoney(initialPrice)}</div>
-        <button class="btn btn--small btn--primary" data-add="${escapeHtml(p.id)}">+ Add</button>
+
+      <div class="flashCard__inner">
+        <div class="flashCard__brand">${brand}</div>
+        <div class="flashCard__title">${name}</div>
+
+        <div class="flashCard__meta" aria-label="Rating">
+          <span class="stars" aria-label="${(p.rating||0)} rating">${stars}</span>
+          <span class="muted small">(${reviews})</span>
+        </div>
+
+        <div class="flashCard__prices" aria-label="Pricing">
+          <span class="flashCard__old">${formatMoney(oldPrice)}</span>
+          <span class="flashCard__new">${formatMoney(newPrice)}</span>
+        </div>
+
+        ${sizes.length ? `
+          <div class="flashCard__sizes" role="radiogroup" aria-label="Choose size">
+            ${sizes.map(s=>{
+              const active = (s === defaultSize) ? "active" : "";
+              return `<button class="flashSize ${active}" type="button" data-card-size="${escapeHtml(s)}" role="radio" aria-checked="${s===defaultSize}">${escapeHtml(s)}</button>`;
+            }).join("")}
+          </div>
+        ` : ""}
+
+        <div class="flashCard__actions">
+          <button class="flashAdd" type="button" data-card-add="${escapeHtml(p.id)}">${escapeHtml(addLabel)}</button>
+        </div>
       </div>
     </article>
   `;
@@ -994,52 +1463,81 @@ function renderProducts(){
   elGrid.innerHTML = items.map(productCard).join("");
   observeAnimatableElements(); // Observe newly rendered cards
 
-  elGrid.querySelectorAll("[data-add]").forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const id = btn.getAttribute("data-add");
-      const p = PRODUCTS.find(x=>x.id===id);
-      if (!p) return;
-      
-      // Show size selection modal
-      showSizeSelectionModal(p);
-    });
-  });
-  
-  // Wishlist button handlers
-  elGrid.querySelectorAll("[data-wishlist]").forEach(btn=>{
-    btn.addEventListener("click", (e)=>{
+  // Event delegation (wishlist, size select, add to cart) — bind once
+  if (!renderProducts._delegated){
+    renderProducts._delegated = true;
+    elGrid.addEventListener("click", (e)=>{
+    const wishBtn = e.target.closest("[data-wishlist]");
+    if (wishBtn && elGrid.contains(wishBtn)){
       e.preventDefault();
       e.stopPropagation();
-      const id = btn.getAttribute("data-wishlist");
+      const id = wishBtn.getAttribute("data-wishlist");
       const isAdded = wishlist.toggle(id);
-      
-      // Update button state
-      if (isAdded) {
-        btn.classList.add("active");
-        btn.querySelector('svg').setAttribute('fill', 'currentColor');
-      } else {
-        btn.classList.remove("active");
-        btn.querySelector('svg').setAttribute('fill', 'none');
-      }
-    });
-  });
+      wishBtn.classList.toggle("active", isAdded);
+      const svg = wishBtn.querySelector("svg");
+      if (svg) svg.setAttribute("fill", isAdded ? "currentColor" : "none");
+      return;
+    }
+
+    const sizeBtn = e.target.closest(".flashSize[data-card-size]");
+    if (sizeBtn && elGrid.contains(sizeBtn)){
+      e.preventDefault();
+      e.stopPropagation();
+      const card = sizeBtn.closest(".flashCard[data-card-id]");
+      const id = card?.getAttribute("data-card-id");
+      const size = sizeBtn.getAttribute("data-card-size");
+      if (!card || !id || !size) return;
+      const p = PRODUCTS.find(x => String(x?.id) === String(id));
+      if (!p) return;
+
+      card.setAttribute("data-card-size", size);
+      card.querySelectorAll(".flashSize[data-card-size]").forEach(b=>{
+        const on = (b.getAttribute("data-card-size") === size);
+        b.classList.toggle("active", on);
+        b.setAttribute("aria-checked", on ? "true" : "false");
+      });
+
+      const price = getProductPrice(p, size);
+      const oldEl = card.querySelector(".flashCard__old");
+      const newEl = card.querySelector(".flashCard__new");
+      if (oldEl) oldEl.textContent = formatMoney(price);
+      if (newEl) newEl.textContent = formatMoney(price);
+
+      const link = card.querySelector("[data-card-link]");
+      if (link) link.setAttribute("href", `product.html?id=${encodeURIComponent(id)}&size=${encodeURIComponent(size)}`);
+      return;
+    }
+
+    const addBtn = e.target.closest("[data-card-add]");
+    if (addBtn && elGrid.contains(addBtn)){
+      e.preventDefault();
+      e.stopPropagation();
+      const card = addBtn.closest(".flashCard[data-card-id]");
+      const id = card?.getAttribute("data-card-id");
+      const size = (card?.getAttribute("data-card-size") || "").trim();
+      if (!id) return;
+      const p = PRODUCTS.find(x => String(x?.id) === String(id));
+      if (!p) return;
+      addToCart(p, size || null);
+      return;
+    }
+    }, { passive: false });
+  }
 }
 
 function renderProductSkeletons(count = 8){
   if (!elGrid) return;
   const items = Array.from({ length: count }).map(() => `
-    <article class="card skeleton">
-      <div class="card__img">
-        <div class="skeletonBox" style="width:100%; height:100%;"></div>
+    <article class="flashCard flashCard--product skeleton" aria-hidden="true">
+      <div class="flashCard__media">
+        <div class="skeletonBox" style="width:160px; height:160px; border-radius:14px;"></div>
       </div>
-      <div class="card__body" style="gap:10px;">
+      <div class="flashCard__inner" style="gap:10px;">
         <div class="skeletonBox" style="height:12px; width:45%;"></div>
         <div class="skeletonBox" style="height:14px; width:90%;"></div>
         <div class="skeletonBox" style="height:12px; width:60%;"></div>
-      </div>
-      <div class="card__actions">
-        <div class="skeletonBox" style="height:16px; width:35%;"></div>
-        <div class="skeletonBox" style="height:34px; width:92px; border-radius:999px;"></div>
+        <div class="skeletonBox" style="height:16px; width:55%;"></div>
+        <div class="skeletonBox" style="height:40px; width:100%; border-radius:12px;"></div>
       </div>
     </article>
   `).join('');
@@ -2274,6 +2772,7 @@ function observeAnimatableElements() {
   await loadProducts();
   // default: highlight filter all
   setFilter("all");
+  initBestSellersCarousel();
 
   // year
   const y = document.getElementById("year");
@@ -2284,7 +2783,9 @@ function observeAnimatableElements() {
   renderFinder();
   handleChatbotAttention();
   initScrollAnimations();
-  initDealsRotator();
+  initFlashDeals();
+  initFlashCountdown24h();
+  if (document.querySelector('.promo-banner')) initDealsRotator();
 
   // Size modal listeners
   const sizeModal = document.getElementById("sizeModal");
