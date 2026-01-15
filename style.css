@@ -375,9 +375,28 @@ html, body{ max-width:100%; overflow-x:hidden; }
   flex: 0 0 220px;
   scroll-snap-align:start;
 }
+
+/* Recently viewed uses the same carousel track layout */
+#recentGrid{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  gap:14px;
+  padding:2px;
+}
+#recentGrid > .flashCard,
+#recentGrid > .card,
+#recentGrid > article{
+  flex: 0 0 220px;
+  scroll-snap-align:start;
+}
 @media (max-width: 860px){
   #productGrid > .card,
   #productGrid > article{ flex-basis: min(78vw, 320px); }
+
+  #recentGrid > .flashCard,
+  #recentGrid > .card,
+  #recentGrid > article{ flex-basis: min(78vw, 320px); }
 
   /* Mobile: make swiping feel less sticky */
   .flashCarousel__viewport{ scroll-snap-type: x proximity; }
@@ -1647,6 +1666,85 @@ textarea{ resize: vertical; }
   color: #25D366;
 }
 .wa-float__text{ font-weight:900; }
+
+/* Back to top button (premium) */
+.toTop{
+  position: fixed;
+  left: 14px;
+  right: auto;
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  z-index: 65;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid rgba(192,154,89,.28);
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  color: var(--brand-deep);
+
+  box-shadow:
+    0 18px 40px rgba(2,6,23,.18),
+    0 0 0 1px rgba(255,255,255,.55) inset;
+
+  opacity: 0;
+  transform: translateY(10px) scale(.96);
+  pointer-events: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    opacity .16s ease,
+    transform .16s ease,
+    box-shadow .16s ease,
+    background-color .16s ease,
+    border-color .16s ease;
+}
+.toTop__icon{ display:block; }
+
+.toTop:hover{
+  background: rgba(255,255,255,.98);
+  border-color: rgba(192,154,89,.46);
+  transform: translateY(-2px) scale(1);
+  box-shadow:
+    0 24px 60px rgba(2,6,23,.22),
+    0 0 0 1px rgba(192,154,89,.12) inset;
+}
+.toTop:active{ transform: translateY(0) scale(.98); }
+
+.toTop.toTop--show{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* RTL: keep on the opposite side */
+html[dir="rtl"] .toTop{ left: auto; right: 14px; }
+
+@media (max-width: 860px){
+  /* Keep it above the mobile bottom nav + safe-area */
+  .toTop{ bottom: calc(110px + env(safe-area-inset-bottom)); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .toTop{ transition: none; }
+}
+
+/* Avoid overlap when modal/drawer/chat is open */
+html.drawer-open .toTop,
+body.drawer-open .toTop,
+html.chatbot-open .toTop,
+body.chatbot-open .toTop{
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(10px) scale(.96) !important;
+}
 
 
 

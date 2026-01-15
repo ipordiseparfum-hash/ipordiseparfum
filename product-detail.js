@@ -210,6 +210,7 @@
         return;
       }
       applyOverrides(productData);
+      try{ window.addRecentlyViewed?.(productData.id); }catch{}
       render();
     })
     .catch(err=>{

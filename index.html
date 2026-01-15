@@ -264,6 +264,36 @@
       </div>
     </section>
 
+    <!-- Recently viewed (shows only after a user opens products) -->
+    <section class="section" id="recent" hidden>
+      <div class="container">
+        <div class="section__head section__headRow animate-on-scroll">
+          <div>
+            <h2 data-i18n="sec_recent_title">Recently viewed</h2>
+            <p class="muted" data-i18n="sec_recent_desc">Pick up where you left off.</p>
+          </div>
+          <div class="tools">
+            <div class="carouselArrows" aria-label="Recently viewed carousel controls">
+              <button class="flashArrow" type="button" data-recent-prev aria-label="Previous products" title="Previous">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button class="flashArrow" type="button" data-recent-next aria-label="Next products" title="Next">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="productCarousel" role="region" aria-label="Recently viewed carousel">
+          <div class="productCarousel__viewport" id="recentViewport" tabindex="0">
+            <div class="grid productCarousel__track" id="recentGrid">
+              <!-- JS renders cards -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Products: New Arrivals -->
     <section class="section" id="new">
       <div class="container">

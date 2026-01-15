@@ -49,6 +49,8 @@ const I18N = {
     sec_new_desc: "Freshly curated scents, just for you.",
     sec_best_title: "Best sellers",
     sec_best_desc: "Top-rated picks customers love.",
+    sec_recent_title: "Recently viewed",
+    sec_recent_desc: "Pick up where you left off.",
     sec_deals_kicker: "LIMITED TIME OFFER",
     flash_text: "Shop now before the offer ends",
     sec_deals_title: "Gucci Intense Oud",
@@ -187,6 +189,8 @@ const I18N = {
     sec_new_desc: "Des parfums fraîchement sélectionnés, juste pour vous.",
     sec_best_title: "Meilleures ventes",
     sec_best_desc: "Les choix préférés de nos clients.",
+    sec_recent_title: "Récemment consultés",
+    sec_recent_desc: "Reprenez là où vous vous êtes arrêté.",
     sec_deals_kicker: "OFFRE À DURÉE LIMITÉE",
     flash_text: "Achetez avant la fin de l’offre",
     sec_deals_title: "Gucci Intense Oud",
@@ -324,6 +328,8 @@ const I18N = {
     sec_new_desc: "عطور مختارة بعناية، خصيصاً لك.",
     sec_best_title: "الأكثر مبيعاً",
     sec_best_desc: "اختيارات محبوبة عند الزبناء.",
+    sec_recent_title: "شاهدت مؤخراً",
+    sec_recent_desc: "كمّل منين وقفتي.",
     sec_deals_kicker: "عرض لفترة محدودة",
     flash_text: "تسوق الآن قبل انتهاء العرض",
     sec_deals_title: "Gucci Intense Oud",
@@ -760,6 +766,149 @@ const flashNextBtn = document.querySelector("[data-flash-next]");
 const bestViewport = document.getElementById("bestViewport");
 const bestPrevBtn = document.querySelector("[data-best-prev]");
 const bestNextBtn = document.querySelector("[data-best-next]");
+
+// recently viewed
+const recentSection = document.getElementById("recent");
+const recentViewport = document.getElementById("recentViewport");
+const recentGrid = document.getElementById("recentGrid");
+const recentPrevBtn = document.querySelector("[data-recent-prev]");
+const recentNextBtn = document.querySelector("[data-recent-next]");
+
+const RECENTLY_VIEWED_KEY = 'ipordise_recently_viewed_v1';
+
+function getRecentlyViewedIds(){
+  try{
+    const raw = JSON.parse(localStorage.getItem(RECENTLY_VIEWED_KEY) || '[]');
+    if (!Array.isArray(raw)) return [];
+    return raw.map(String).filter(Boolean);
+  }catch{
+    return [];
+  }
+}
+
+function addRecentlyViewed(productId){
+  const id = String(productId || '').trim();
+  if (!id) return;
+  const prev = getRecentlyViewedIds();
+  const next = [id, ...prev.filter(x => x !== id)].slice(0, 14);
+  try{ localStorage.setItem(RECENTLY_VIEWED_KEY, JSON.stringify(next)); }catch{}
+}
+
+// expose for product page
+window.addRecentlyViewed = addRecentlyViewed;
+
+const _delegatedContainers = new WeakSet();
+function bindProductCardDelegation(containerEl){
+  if (!containerEl) return;
+  if (_delegatedContainers.has(containerEl)) return;
+  _delegatedContainers.add(containerEl);
+
+  containerEl.addEventListener('click', (e)=>{
+    // Record clicks on product links as viewed
+    const linkEl = e.target.closest('a[data-card-link]');
+    if (linkEl && containerEl.contains(linkEl)){
+      const card = linkEl.closest('.flashCard[data-card-id]');
+      const id = card?.getAttribute('data-card-id');
+      if (id) addRecentlyViewed(id);
+      return; // allow navigation
+    }
+
+    const wishBtn = e.target.closest('[data-wishlist]');
+    if (wishBtn && containerEl.contains(wishBtn)){
+      e.preventDefault();
+      e.stopPropagation();
+      const id = wishBtn.getAttribute('data-wishlist');
+      const isAdded = wishlist.toggle(id);
+      wishBtn.classList.toggle('active', isAdded);
+      const svg = wishBtn.querySelector('svg');
+      if (svg) svg.setAttribute('fill', isAdded ? 'currentColor' : 'none');
+      return;
+    }
+
+    const sizeBtn = e.target.closest('.flashSize[data-card-size]');
+    if (sizeBtn && containerEl.contains(sizeBtn)){
+      e.preventDefault();
+      e.stopPropagation();
+      const card = sizeBtn.closest('.flashCard[data-card-id]');
+      const id = card?.getAttribute('data-card-id');
+      const size = sizeBtn.getAttribute('data-card-size');
+      if (!card || !id || !size) return;
+      const p = PRODUCTS.find(x => String(x?.id) === String(id));
+      if (!p) return;
+
+      card.setAttribute('data-card-size', size);
+      card.querySelectorAll('.flashSize[data-card-size]').forEach(b=>{
+        const on = (b.getAttribute('data-card-size') === size);
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-checked', on ? 'true' : 'false');
+      });
+
+      const price = getProductPrice(p, size);
+      const oldEl = card.querySelector('.flashCard__old');
+      const newEl = card.querySelector('.flashCard__new');
+      if (oldEl) oldEl.textContent = formatMoney(price);
+      if (newEl) newEl.textContent = formatMoney(price);
+
+      const link = card.querySelector('[data-card-link]');
+      if (link) link.setAttribute('href', `product.html?id=${encodeURIComponent(id)}&size=${encodeURIComponent(size)}`);
+      return;
+    }
+
+    const addBtn = e.target.closest('[data-card-add]');
+    if (addBtn && containerEl.contains(addBtn)){
+      e.preventDefault();
+      e.stopPropagation();
+      const card = addBtn.closest('.flashCard[data-card-id]');
+      const id = card?.getAttribute('data-card-id');
+      const size = (card?.getAttribute('data-card-size') || '').trim();
+      if (!id) return;
+      const p = PRODUCTS.find(x => String(x?.id) === String(id));
+      if (!p) return;
+      addToCart(p, size || null);
+      return;
+    }
+  }, { passive: false });
+}
+
+function updateRecentArrows(){
+  if (!recentViewport || !recentPrevBtn || !recentNextBtn) return;
+  const maxScroll = recentViewport.scrollWidth - recentViewport.clientWidth;
+  const x = recentViewport.scrollLeft;
+  const atStart = x <= 2;
+  const atEnd = x >= (maxScroll - 2);
+  recentPrevBtn.disabled = atStart;
+  recentNextBtn.disabled = atEnd;
+}
+
+function initRecentlyViewed(){
+  if (!recentSection || !recentGrid || !recentViewport) return;
+
+  const ids = getRecentlyViewedIds();
+  const items = ids.map(id => PRODUCTS.find(p => String(p?.id) === String(id))).filter(Boolean);
+
+  if (!items.length){
+    recentSection.hidden = true;
+    return;
+  }
+
+  recentSection.hidden = false;
+  recentGrid.innerHTML = items.map(productCard).join('');
+  observeAnimatableElements();
+  bindProductCardDelegation(recentGrid);
+
+  updateRecentArrows();
+  recentViewport.addEventListener('scroll', throttle(updateRecentArrows, 120));
+  window.addEventListener('resize', throttle(updateRecentArrows, 150));
+
+  recentPrevBtn?.addEventListener('click', ()=>{
+    const delta = Math.round(recentViewport.clientWidth * 0.85);
+    recentViewport.scrollBy({ left: -delta, behavior: 'smooth' });
+  });
+  recentNextBtn?.addEventListener('click', ()=>{
+    const delta = Math.round(recentViewport.clientWidth * 0.85);
+    recentViewport.scrollBy({ left: delta, behavior: 'smooth' });
+  });
+}
 
 function updateBestArrows(){
   if (!bestViewport || !bestPrevBtn || !bestNextBtn) return;
@@ -1525,66 +1674,8 @@ function renderProducts(){
   elGrid.innerHTML = items.map(productCard).join("");
   observeAnimatableElements(); // Observe newly rendered cards
 
-  // Event delegation (wishlist, size select, add to cart) — bind once
-  if (!renderProducts._delegated){
-    renderProducts._delegated = true;
-    elGrid.addEventListener("click", (e)=>{
-    const wishBtn = e.target.closest("[data-wishlist]");
-    if (wishBtn && elGrid.contains(wishBtn)){
-      e.preventDefault();
-      e.stopPropagation();
-      const id = wishBtn.getAttribute("data-wishlist");
-      const isAdded = wishlist.toggle(id);
-      wishBtn.classList.toggle("active", isAdded);
-      const svg = wishBtn.querySelector("svg");
-      if (svg) svg.setAttribute("fill", isAdded ? "currentColor" : "none");
-      return;
-    }
-
-    const sizeBtn = e.target.closest(".flashSize[data-card-size]");
-    if (sizeBtn && elGrid.contains(sizeBtn)){
-      e.preventDefault();
-      e.stopPropagation();
-      const card = sizeBtn.closest(".flashCard[data-card-id]");
-      const id = card?.getAttribute("data-card-id");
-      const size = sizeBtn.getAttribute("data-card-size");
-      if (!card || !id || !size) return;
-      const p = PRODUCTS.find(x => String(x?.id) === String(id));
-      if (!p) return;
-
-      card.setAttribute("data-card-size", size);
-      card.querySelectorAll(".flashSize[data-card-size]").forEach(b=>{
-        const on = (b.getAttribute("data-card-size") === size);
-        b.classList.toggle("active", on);
-        b.setAttribute("aria-checked", on ? "true" : "false");
-      });
-
-      const price = getProductPrice(p, size);
-      const oldEl = card.querySelector(".flashCard__old");
-      const newEl = card.querySelector(".flashCard__new");
-      if (oldEl) oldEl.textContent = formatMoney(price);
-      if (newEl) newEl.textContent = formatMoney(price);
-
-      const link = card.querySelector("[data-card-link]");
-      if (link) link.setAttribute("href", `product.html?id=${encodeURIComponent(id)}&size=${encodeURIComponent(size)}`);
-      return;
-    }
-
-    const addBtn = e.target.closest("[data-card-add]");
-    if (addBtn && elGrid.contains(addBtn)){
-      e.preventDefault();
-      e.stopPropagation();
-      const card = addBtn.closest(".flashCard[data-card-id]");
-      const id = card?.getAttribute("data-card-id");
-      const size = (card?.getAttribute("data-card-size") || "").trim();
-      if (!id) return;
-      const p = PRODUCTS.find(x => String(x?.id) === String(id));
-      if (!p) return;
-      addToCart(p, size || null);
-      return;
-    }
-    }, { passive: false });
-  }
+  // Event delegation (wishlist, size select, add to cart)
+  bindProductCardDelegation(elGrid);
 }
 
 function renderProductSkeletons(count = 8){
@@ -2847,6 +2938,7 @@ function observeAnimatableElements() {
   initScrollAnimations();
   initFlashDeals();
   initFlashCountdown24h();
+  initRecentlyViewed();
   if (document.querySelector('.promo-banner')) initDealsRotator();
 
   // Size modal listeners
