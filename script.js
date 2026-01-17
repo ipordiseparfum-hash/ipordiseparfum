@@ -39,6 +39,10 @@ const I18N = {
     trust_auth: "100% Authentic",
     trust_delivery: "Free Delivery 299 MAD+",
     trust_support: "24/7 WhatsApp Support",
+    concierge_title: "Personalized recommendations",
+    concierge_desc: "Tell us the notes you love (vanilla, musk, fresh, floral, oud…) and we’ll suggest the perfect match in minutes.",
+    concierge_cta_wa: "Chat on WhatsApp",
+    concierge_cta_finder: "Try the Fragrance Finder",
     cta_shop: "Shop Now",
     cta_best: "View Best Sellers",
     stat_customers: "Happy Customers",
@@ -179,6 +183,10 @@ const I18N = {
     trust_auth: "100% Authentique",
     trust_delivery: "Livraison offerte dès 299 MAD+",
     trust_support: "Support WhatsApp 24/7",
+    concierge_title: "Recommandations personnalisées",
+    concierge_desc: "Dites-nous les notes que vous aimez (vanille, musc, frais, floral, oud…) et on vous recommande le parfum idéal en quelques minutes.",
+    concierge_cta_wa: "Discuter sur WhatsApp",
+    concierge_cta_finder: "Essayer le Finder",
     cta_shop: "Acheter",
     cta_best: "Voir les best-sellers",
     stat_customers: "Clients satisfaits",
@@ -318,6 +326,10 @@ const I18N = {
     trust_auth: "100% أصلي",
     trust_delivery: "توصيل مجاني 299+ درهم",
     trust_support: "دعم واتساب 24/7",
+    concierge_title: "اقتراحات مخصّصة",
+    concierge_desc: "قول لينا النوتات اللي كتعجبك (فانيلا، مسك، فريش، زهري، عود…) وغادي نقترحو عليك الأنسب فدقايق.",
+    concierge_cta_wa: "تواصل على واتساب",
+    concierge_cta_finder: "جرّب Fragrance Finder",
     cta_shop: "تسوق الآن",
     cta_best: "شاهد الأكثر مبيعاً",
     stat_customers: "زبناء سعداء",
@@ -448,7 +460,11 @@ function applyI18n(lang){
   window.currentLang = currentLang;
 
   const label = document.getElementById("langLabel");
-  if (label) label.textContent = currentLang.toUpperCase();
+  if (label) {
+    const flag = (currentLang==='fr')?'🇫🇷':(currentLang==='ar'?'🇲🇦':'🇺🇸');
+    // Use innerHTML to show flag + code
+    label.innerHTML = `<span class="flag" aria-hidden="true">${flag}</span>${currentLang.toUpperCase()}`;
+  }
 
   // Update hero image based on language
   const capLang = currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
@@ -820,6 +836,8 @@ function bindProductCardDelegation(containerEl){
       const id = wishBtn.getAttribute('data-wishlist');
       const isAdded = wishlist.toggle(id);
       wishBtn.classList.toggle('active', isAdded);
+      updateFavBadge();
+      renderFavDrawer();
       const svg = wishBtn.querySelector('svg');
       if (svg) svg.setAttribute('fill', isAdded ? 'currentColor' : 'none');
       return;
@@ -1136,13 +1154,113 @@ const wishlist = {
     return this.items.has(productId);
   },
   
+  count() { return this.items.size; },
+
+  list() { return [...this.items]; },
+
   save() {
     localStorage.setItem(this.key, JSON.stringify([...this.items]));
+    try{ updateFavBadge(); renderFavDrawer(); }catch(e){ /* noop */ }
   }
 };
 
 // Initialize wishlist
 wishlist.init();
+
+// ========================================
+// FAVOURITES (Drawer)
+// ========================================
+function updateFavBadge(){
+  const el = document.getElementById('favCount');
+  if (!el) return;
+  const c = wishlist.count();
+  el.textContent = String(c);
+  el.style.display = c ? 'inline-flex' : 'none';
+  const btn = document.getElementById('btnFav');
+  if (btn) btn.classList.toggle('has-items', !!c);
+}
+
+function favRowHTML(p){
+  const name = escapeHtml(p?.name || '');
+  const brand = escapeHtml(p?.brand || '');
+  const img = escapeHtml(p?.image || '');
+  const price = formatMoney(getProductPrice(p));
+  const href = `product.html?id=${encodeURIComponent(p.id)}`;
+  return `
+    <div class="cartItem favItem">
+      <a class="cartItem__img" href="${href}">
+        <img src="${img}" alt="${name}" loading="lazy">
+      </a>
+      <div class="cartItem__meta">
+        <div class="cartItem__name">${name}</div>
+        <div class="muted small">${brand}</div>
+        <div class="cartItem__price"><strong>${price}</strong></div>
+      </div>
+      <div class="cartItem__actions">
+        <button class="icon-btn" type="button" data-fav-remove="${escapeHtml(p.id)}" aria-label="Remove from favourites" title="Remove">
+          <span class="icon icon--close" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>`;
+}
+
+function renderFavDrawer(){
+  const wrap = document.getElementById('favItems');
+  if (!wrap) return;
+  const ids = wishlist.list();
+  if (!ids.length){
+    wrap.innerHTML = `
+      <div class="muted" style="padding:12px 0;">${currentLang==='ar' ? 'ما كاين حتى مفضل حالياً ✨' : (currentLang==='fr' ? 'Aucun favori pour le moment ✨' : 'No favourites yet ✨')}</div>
+      <a href="index.html#best" class="btn btn--primary">${currentLang==='ar' ? 'تسوق دابا' : (currentLang==='fr' ? 'Découvrir' : 'Shop now')}</a>`;
+    return;
+  }
+  const items = ids
+    .map(id => PRODUCTS.find(p => String(p.id) === String(id)))
+    .filter(Boolean);
+  wrap.innerHTML = items.map(favRowHTML).join('');
+}
+
+function openFavDrawer(){
+  const drawer = document.getElementById('favDrawer');
+  if (!drawer) return;
+  drawer.setAttribute('aria-hidden','false');
+  drawer.classList.add('open');
+  renderFavDrawer();
+}
+function closeFavDrawer(){
+  const drawer = document.getElementById('favDrawer');
+  if (!drawer) return;
+  drawer.setAttribute('aria-hidden','true');
+  drawer.classList.remove('open');
+}
+
+(function initFavDrawer(){
+  const btn = document.getElementById('btnFav');
+  btn?.addEventListener('click', openFavDrawer);
+  document.addEventListener('click', (e)=>{
+    const t = e.target;
+    if (t && t.closest('[data-close-fav]')) closeFavDrawer();
+    const rm = t && t.closest('[data-fav-remove]');
+    if (rm){
+      const id = rm.getAttribute('data-fav-remove');
+      wishlist.remove(id);
+      // sync any visible heart buttons
+      document.querySelectorAll(`[data-wishlist="${CSS.escape(String(id))}"]`).forEach(b=>b.classList.remove('active'));
+      updateFavBadge();
+      renderFavDrawer();
+    }
+  });
+  document.getElementById('btnClearFav')?.addEventListener('click', ()=>{
+    wishlist.items = new Set();
+    wishlist.save();
+    // sync hearts
+    document.querySelectorAll('[data-wishlist]').forEach(b=>b.classList.remove('active'));
+    updateFavBadge();
+    renderFavDrawer();
+  });
+  updateFavBadge();
+})();
+
 
 // ========================================
 // FLASH DEALS (Carousel)
@@ -1336,6 +1454,12 @@ function initFlashDeals(){
       const id = wishBtn.getAttribute("data-wishlist");
       const isAdded = wishlist.toggle(id);
       wishBtn.classList.toggle("active", isAdded);
+      updateFavBadge();
+      renderFavDrawer();
+      updateFavBadge();
+      renderFavDrawer();
+      updateFavBadge();
+      renderFavDrawer();
       const svg = wishBtn.querySelector("svg");
       if (svg) svg.setAttribute("fill", isAdded ? "currentColor" : "none");
       return;
@@ -1454,6 +1578,25 @@ document.addEventListener("click", (e) => {
 
   const modalClose = e.target.closest("[data-close-modal]");
   if (modalClose) closeModal(modalClose.closest(".modal"));
+});
+
+// Smooth-scroll hash links (also works when drawers are open)
+document.addEventListener("click", (e) => {
+  const link = e.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href') || '';
+  if (hash.length <= 1) return;
+  const target = document.querySelector(hash);
+  if (!target) return;
+  e.preventDefault();
+  closeDrawer(menuDrawer);
+  closeDrawer(cartDrawer);
+  const favDrawer = document.getElementById('favDrawer');
+  if (favDrawer) closeDrawer(favDrawer);
+  setTimeout(() => {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.pushState(null, '', hash);
+  }, 30);
 });
 
 // Mobile layout should be based on viewport width (more reliable than UA)
@@ -1812,10 +1955,10 @@ function updateCartUI(){
 
   if (!state.cart.length){
     cartItems.innerHTML = `
-      <div class="cart__empty" style="padding:18px 0; text-align:center;">
-        <div style="font-size:48px; margin-bottom:12px;">👜</div>
-        <div class="muted" style="margin-bottom:12px;">${currentLang==="ar" ? "السلة خاوية ✨" : (currentLang==="fr" ? "Votre panier est vide ✨" : "Your bag is empty ✨")}</div>
-        <a href="#deals" class="btn btn--primary">${currentLang==="ar" ? "تسوق الآن" : (currentLang==="fr" ? "Magasinez" : "Shop deals")}</a>
+      <div class="cart__empty">
+        <div class="cart__empty-icon" aria-hidden="true">👜</div>
+        <div class="cart__empty-text">${currentLang==="ar" ? "السلة خاوية ✨" : (currentLang==="fr" ? "Votre panier est vide ✨" : "Your bag is empty ✨")}</div>
+        <a href="#best" class="btn btn--primary">${currentLang==="ar" ? "تسوق الآن" : (currentLang==="fr" ? "Magasinez" : "Shop deals")}</a>
       </div>
     `;
     cartSubtotal.textContent = formatMoney(0);

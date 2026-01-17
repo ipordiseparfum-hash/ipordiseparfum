@@ -34,6 +34,26 @@
   let productData = null;
   let selectedSize = null;
 
+  // Favourites (shared with homepage)
+  const WISH_KEY = 'ipordise_wishlist';
+  function getWishSet(){
+    try{ return new Set(JSON.parse(localStorage.getItem(WISH_KEY)||'[]')); }catch(e){ return new Set(); }
+  }
+  function saveWishSet(set){
+    try{ localStorage.setItem(WISH_KEY, JSON.stringify([...set])); }catch(e){}
+    const badge = document.getElementById('favCount');
+    if (badge){
+      const n = set.size||0;
+      badge.textContent = String(n);
+      badge.style.display = n ? 'inline-flex' : 'none';
+    }
+    const favBtn = document.getElementById('btnFav');
+    if (favBtn) favBtn.classList.toggle('has-items', (set.size||0) > 0);
+  }
+  function isWished(pid){
+    return getWishSet().has(String(pid));
+  }
+
   function getLocalized(field){
     const lang = window.currentLang || "en";
     if (!productData) return "";
@@ -126,6 +146,9 @@
 
           <div class="product__actions" style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
             <button id="btnAddDetail" class="btn btn--primary">+ ${(typeof t==="function" && t("bn_cart")) ? t("bn_cart") : "Add to cart"}</button>
+            <button id="btnWishDetail" class="icon-btn" type="button" aria-label="Add to favourites" title="Favourites">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
             <a id="btnWhatsApp" class="btn btn--wa" target="_blank" rel="noopener">${(typeof t==="function" && t("bn_whatsapp")) ? t("bn_whatsapp") : "WhatsApp"}</a>
           </div>
 
@@ -156,6 +179,23 @@
     // WhatsApp href
     const wa = document.getElementById("btnWhatsApp");
     if (wa) wa.href = buildWhatsAppHref();
+
+    // Favourites toggle
+    const wishBtn = document.getElementById('btnWishDetail');
+    if (wishBtn){
+      const setState = (on)=>{
+        wishBtn.classList.toggle('active', !!on);
+        wishBtn.setAttribute('aria-label', on ? (lang==='fr' ? 'Retirer des favoris' : (lang==='ar' ? 'حيد من المفضلة' : 'Remove from favourites')) : (lang==='fr' ? 'Ajouter aux favoris' : (lang==='ar' ? 'زيد للمفضلة' : 'Add to favourites')));
+      };
+      setState(isWished(p.id));
+      wishBtn.addEventListener('click', ()=>{
+        const s = getWishSet();
+        const pid = String(p.id);
+        if (s.has(pid)) s.delete(pid); else s.add(pid);
+        saveWishSet(s);
+        setState(s.has(pid));
+      });
+    }
 
     // Add to cart
     const btnAdd = document.getElementById("btnAddDetail");
