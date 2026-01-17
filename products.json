@@ -345,5 +345,25 @@
     "reviews": 250,
     "tag": "Bold",
     "notes": ["cardamom", "black leather", "jasmine sambac", "amber", "patchouli", "moss"]
+  },
+  {
+    "id": "p30",
+    "brand": "Tom Ford",
+    "name": "Ombré Leather – Eau de Parfum",
+    "category": "unisex",
+    "isNew": true,
+    "description": "Tom Ford Ombré Leather is a bold, sensual, and luxurious leather fragrance that captures the raw elegance of fine leather. Rich black leather notes blend seamlessly with spicy cardamom, jasmine sambac, and warm amber, creating a deep, smooth, and addictive scent.\n\nThis fragrance delivers a powerful and confident aura, perfect for those who appreciate sophistication with an edge. Dark, smoky, and slightly sweet, Ombré Leather leaves a strong and long-lasting impression.\n\nBest for:\n\nMen & women (unisex)\n\nConfident, elegant personalities\n\nEvening wear, special occasions, nights out\n\nFall & winter seasons\n\nStyle: Leather • Spicy • Warm • Luxurious\nLongevity & Projection: Very strong and long-lasting",
+    "description_fr": "Tom Ford Ombré Leather is a bold, sensual, and luxurious leather fragrance that captures the raw elegance of fine leather. Rich black leather notes blend seamlessly with spicy cardamom, jasmine sambac, and warm amber, creating a deep, smooth, and addictive scent.\n\nThis fragrance delivers a powerful and confident aura, perfect for those who appreciate sophistication with an edge. Dark, smoky, and slightly sweet, Ombré Leather leaves a strong and long-lasting impression.\n\nBest for:\n\nMen & women (unisex)\n\nConfident, elegant personalities\n\nEvening wear, special occasions, nights out\n\nFall & winter seasons\n\nStyle: Leather • Spicy • Warm • Luxurious\nLongevity & Projection: Very strong and long-lasting",
+    "description_ar": "Tom Ford Ombré Leather is a bold, sensual, and luxurious leather fragrance that captures the raw elegance of fine leather. Rich black leather notes blend seamlessly with spicy cardamom, jasmine sambac, and warm amber, creating a deep, smooth, and addictive scent.\n\nThis fragrance delivers a powerful and confident aura, perfect for those who appreciate sophistication with an edge. Dark, smoky, and slightly sweet, Ombré Leather leaves a strong and long-lasting impression.\n\nBest for:\n\nMen & women (unisex)\n\nConfident, elegant personalities\n\nEvening wear, special occasions, nights out\n\nFall & winter seasons\n\nStyle: Leather • Spicy • Warm • Luxurious\nLongevity & Projection: Very strong and long-lasting",
+    "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Azzaro%20The%20Most%20Wanted%20fragrance%20set.png",
+    "variants": [
+      { "size": "10ml", "price": 210 },
+      { "size": "20ml", "price": 380 },
+      { "size": "30ml", "price": 540 }
+    ],
+    "rating": 4.9,
+    "reviews": 140,
+    "tag": "Luxurious",
+    "notes": ["black leather", "cardamom", "jasmine sambac", "amber"]
   }
 ]

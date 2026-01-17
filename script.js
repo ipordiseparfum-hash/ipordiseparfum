@@ -1210,8 +1210,11 @@ function renderFavDrawer(){
   const ids = wishlist.list();
   if (!ids.length){
     wrap.innerHTML = `
-      <div class="muted" style="padding:12px 0;">${currentLang==='ar' ? 'ما كاين حتى مفضل حالياً ✨' : (currentLang==='fr' ? 'Aucun favori pour le moment ✨' : 'No favourites yet ✨')}</div>
-      <a href="index.html#best" class="btn btn--primary">${currentLang==='ar' ? 'تسوق دابا' : (currentLang==='fr' ? 'Découvrir' : 'Shop now')}</a>`;
+      <div class="fav-empty">
+        <div class="fav-empty__icon" aria-hidden="true">♡</div>
+        <div class="fav-empty__text">${currentLang==='ar' ? 'ما كاين حتى مفضل حالياً' : (currentLang==='fr' ? 'Aucun favori pour le moment' : 'No favourites yet')}</div>
+        <a href="index.html#best" class="btn btn--primary btn--full fav-empty__cta">${currentLang==='ar' ? 'تسوق دابا' : (currentLang==='fr' ? 'Découvrir' : 'Shop now')}</a>
+      </div>`;
     return;
   }
   const items = ids
