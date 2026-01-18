@@ -186,7 +186,7 @@
               width="1400"
               height="520"
             />
-            <a class="reco-gallery__cta" href="#best" data-i18n="hero_cta_badge">Discover our products</a>
+            <a class="reco-gallery__cta" href="#best" data-i18n="hero_cta_badge">Explore the collection</a>
           </div>
           <div class="reco-gallery__item">
             <img
@@ -198,7 +198,7 @@
               width="1400"
               height="520"
             />
-            <a class="reco-gallery__cta" href="#best" data-i18n="hero_cta_badge">Discover our products</a>
+            <a class="reco-gallery__cta" href="#best" data-i18n="hero_cta_badge">Explore the collection</a>
           </div>
         </div>
       </div>
@@ -478,7 +478,7 @@
           <article class="review animate-on-scroll">
             <div class="review__stars" aria-label="5 stars">★★★★★</div>
             <div class="review__text" data-i18n="review_1">Fast delivery and the scent lasts all day. I’ll order again!</div>
-            <div class="review__meta"><span class="review__name">Sara</span> • Casablanca</div>
+            <div class="review__meta"><span class="review__name">Omar</span> • Casablanca</div>
             <span class="review__badge" data-i18n="review_sample">Sample</span>
           </article>
 
@@ -492,7 +492,7 @@
           <article class="review animate-on-scroll">
             <div class="review__stars" aria-label="5 stars">★★★★★</div>
             <div class="review__text" data-i18n="review_3">Loved the recommendations — the perfume matches my style perfectly.</div>
-            <div class="review__meta"><span class="review__name">Khadija</span> • Marrakech</div>
+            <div class="review__meta"><span class="review__name">Adil</span> • Marrakech</div>
             <span class="review__badge" data-i18n="review_sample">Sample</span>
           </article>
         </div>
@@ -529,16 +529,19 @@
             </div>
           </div>
 
-          <form class="contact__form" id="contactForm">
-            <label>
-              Name
-              <input type="text" name="name" placeholder="Your name" data-i18n-placeholder="form_name_ph" required />
+          <form class="contact__form newsletter" id="contactForm">
+            <div class="newsletter__head">
+              <h3 class="newsletter__title">Join our newsletter</h3>
+              <p class="newsletter__sub muted">Weekly drops, exclusive offers, and new arrivals.</p>
+            </div>
+            <label class="newsletter__label">
+              Email
+              <div class="newsletter__row">
+                <input type="email" name="email" placeholder="you@email.com" autocomplete="email" required />
+                <button class="btn btn--primary" type="submit">Subscribe</button>
+              </div>
             </label>
-            <label>
-              Message
-              <textarea name="message" rows="4" placeholder="What kind of fragrance are you looking for?" data-i18n-placeholder="form_message_ph" required></textarea>
-            </label>
-            <button class="btn btn--primary" type="submit" data-i18n="form_send">Send message</button>
+            <p class="newsletter__note muted">No spam. Unsubscribe anytime.</p>
             <div class="formNote muted" id="formNote"></div>
           </form>
         </div>
