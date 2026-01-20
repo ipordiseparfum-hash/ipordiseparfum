@@ -34,7 +34,7 @@ const I18N = {
     search_ph: "Search perfumes, brands, notes...",
     hero_pill: "✨ Premium Moroccan Fragrances",
     hero_title: "Discover Your Signature Scent",
-    hero_cta_badge: "Discover our products",
+    hero_cta_badge: "Explore the collection",
     hero_desc: "Curated perfumes inspired by Morocco's rich heritage. Authentic scents for women, men, and unisex — with express delivery across Morocco and 24/7 personalized support.",
     trust_auth: "100% Authentic",
     trust_delivery: "Free Delivery 299 MAD+",
@@ -53,6 +53,7 @@ const I18N = {
     sec_new_desc: "Freshly curated scents, just for you.",
     sec_best_title: "Best sellers",
     sec_best_desc: "Top-rated picks customers love.",
+    filter_label: "Showing: {cat}",
     sec_recent_title: "Recently viewed",
     sec_recent_desc: "Pick up where you left off.",
     sec_deals_kicker: "LIMITED TIME OFFER",
@@ -79,6 +80,7 @@ const I18N = {
     footer_support: "Support",
     footer_legal: "Legal",
     footer_rights: "All rights reserved.",
+    fav_title: "Favourites",
 
     pol_terms: "Terms of Use",
     pol_privacy: "Privacy Policy",
@@ -156,7 +158,7 @@ const I18N = {
   fr: {
     nav_home: "Accueil",
     brand_tag: "Boutique de parfums",
-    topbar_text: "Livraison gratuite au Maroc dès 299 MAD • Paiement à la livraison disponible",
+    topbar_text: "عطور أصلية، جودة مضمونة، تجربة فريدة – IPORDISE",
     topbar_link: "Voir les offres",
     nav_categories: "Catégories",
     nav_best: "Meilleures ventes",
@@ -178,7 +180,7 @@ const I18N = {
     search_ph: "Rechercher parfums, marques, notes…",
     hero_pill: "✨ Parfums marocains premium",
     hero_title: "Trouvez votre parfum signature",
-    hero_cta_badge: "Découvrir nos produits",
+    hero_cta_badge: "Explorer la collection",
     hero_desc: "Des parfums inspirés du patrimoine marocain. Pour femme, homme et unisex — avec livraison express au Maroc et support WhatsApp 24/7.",
     trust_auth: "100% Authentique",
     trust_delivery: "Livraison offerte dès 299 MAD+",
@@ -197,6 +199,7 @@ const I18N = {
     sec_new_desc: "Des parfums fraîchement sélectionnés, juste pour vous.",
     sec_best_title: "Meilleures ventes",
     sec_best_desc: "Les choix préférés de nos clients.",
+    filter_label: "Voir : {cat}",
     sec_recent_title: "Récemment consultés",
     sec_recent_desc: "Reprenez là où vous vous êtes arrêté.",
     sec_deals_kicker: "OFFRE À DURÉE LIMITÉE",
@@ -223,6 +226,7 @@ const I18N = {
     footer_support: "Support",
     footer_legal: "Mentions",
     footer_rights: "Tous droits réservés.",
+    fav_title: "Favoris",
 
     pol_terms: "Conditions d’utilisation",
     pol_privacy: "Politique de confidentialité",
@@ -299,7 +303,7 @@ const I18N = {
 
   ar: {
     brand_tag: "متجر العطور",
-    topbar_text: "توصيل مجاني داخل المغرب ابتداءً من 299 درهم • الدفع عند الاستلام متوفر",
+    topbar_text: "عطور أصلية، جودة مضمونة، تجربة فريدة – IPORDISE",
     topbar_link: "شوف العروض",
     nav_categories: "الأقسام",
     nav_best: "الأكثر مبيعاً",
@@ -321,7 +325,7 @@ const I18N = {
     search_ph: "بحث عن العطور، الماركات، النوتات…",
     hero_pill: "✨ عطور مغربية فاخرة",
     hero_title: "اكتشف عطرك المميز",
-    hero_cta_badge: "اكتشف منتجاتنا",
+    hero_cta_badge: "استكشف التشكيلة",
     hero_desc: "عطور مستوحاة من تراث المغرب. للنساء والرجال واليونيسكس — مع توصيل سريع داخل المغرب ودعم واتساب 24/7.",
     trust_auth: "100% أصلي",
     trust_delivery: "توصيل مجاني 299+ درهم",
@@ -340,6 +344,7 @@ const I18N = {
     sec_new_desc: "عطور مختارة بعناية، خصيصاً لك.",
     sec_best_title: "الأكثر مبيعاً",
     sec_best_desc: "اختيارات محبوبة عند الزبناء.",
+    filter_label: "التصنيف: {cat}",
     sec_recent_title: "شاهدت مؤخراً",
     sec_recent_desc: "كمّل منين وقفتي.",
     sec_deals_kicker: "عرض لفترة محدودة",
@@ -366,6 +371,7 @@ const I18N = {
     footer_support: "الدعم",
     footer_legal: "قانوني",
     footer_rights: "جميع الحقوق محفوظة.",
+    fav_title: "المفضلة",
 
     pol_terms: "شروط الاستخدام",
     pol_privacy: "سياسة الخصوصية",
@@ -582,9 +588,9 @@ function getProductPrice(p, variantSize = null) {
 // Price overrides (ensures critical prices stay correct even if products.json loads from an older online copy)
 const PRODUCT_VARIANT_PRICE_OVERRIDES = {
   // Jean Paul Gaultier Le Male Elixir
-  p16: { '10ml': 90, '20ml': 180, '30ml': 270 },
+  p16: { '10ml': 110, '20ml': 200, '30ml': 290 },
   // Jean Paul Gaultier – Le Male Le Parfum
-  p21: { '10ml': 90, '20ml': 170, '30ml': 255 }
+  p21: { '10ml': 110, '20ml': 190, '30ml': 275 }
 };
 
 // Ensure featured/custom products exist even if products.json comes from an older copy
@@ -694,6 +700,7 @@ async function loadProducts(){
 let state = {
   filter: "all",
   search: "",
+  lastFilterBeforeSearch: null,
   sort: "featured",
   cart: loadCart()
 };
@@ -755,6 +762,99 @@ const chatbotClose = document.getElementById("chatbotClose");
 const chatbotReset = document.getElementById("chatbotReset");
 const chatbotMsgs = document.getElementById("chatbotMsgs");
 const chatbotForm = document.getElementById("chatbotForm");
+
+// Search dropdown UI
+const searchBox = document.querySelector(".search");
+let searchResultsEl = null;
+let searchActiveIndex = -1;
+
+function ensureSearchResultsEl(){
+  if (!searchBox || searchResultsEl) return;
+  searchResultsEl = document.createElement("div");
+  searchResultsEl.className = "search__results";
+  searchResultsEl.setAttribute("role", "listbox");
+  searchResultsEl.id = "searchResults";
+  searchBox.appendChild(searchResultsEl);
+  elSearch?.setAttribute("aria-controls", "searchResults");
+}
+
+function hideSearchResults(){
+  if (!searchResultsEl) return;
+  searchResultsEl.classList.remove("is-open");
+  searchResultsEl.innerHTML = "";
+  searchActiveIndex = -1;
+  elSearch?.setAttribute("aria-expanded", "false");
+}
+
+function getSearchNoResultsText(){
+  if (currentLang === "ar") return "ما لقيّنا حتى منتوج";
+  if (currentLang === "fr") return "Aucun produit trouvé";
+  return "No products found";
+}
+
+function getSearchMatches(query, limit = 6){
+  const q = normalizeChatText(query);
+  if (!q) return [];
+  const qTokens = q.split(" ").filter(Boolean);
+  if (!qTokens.length || isGenericSearch(qTokens)) return [];
+
+  const scored = PRODUCTS.map(p => {
+    const hay = buildSearchHaystack(p);
+    if (!hay) return null;
+    let score = 0;
+    if (q.length >= 3 && hay.includes(q)) score += 6;
+    qTokens.forEach(t => { if (hay.includes(t)) score += 2; });
+    const nameNorm = normalizeChatText(p?.name || "");
+    if (nameNorm.includes(q)) score += 4;
+    score += (p.rating || 0) * 0.05;
+    return score > 0 ? { p, score } : null;
+  }).filter(Boolean);
+
+  scored.sort((a,b)=> b.score - a.score);
+  return scored.slice(0, limit).map(x => x.p);
+}
+
+function renderSearchResults(query){
+  ensureSearchResultsEl();
+  if (!searchResultsEl) return;
+  const matches = getSearchMatches(query, 6);
+  searchActiveIndex = -1;
+
+  if (!query || !matches.length){
+    if (query && matches.length === 0){
+      searchResultsEl.innerHTML = `<div class="search__empty">${getSearchNoResultsText()}</div>`;
+      searchResultsEl.classList.add("is-open");
+      elSearch?.setAttribute("aria-expanded", "true");
+      return;
+    }
+    hideSearchResults();
+    return;
+  }
+
+  searchResultsEl.innerHTML = matches.map(p=>{
+    const variants = Array.isArray(p?.variants) ? p.variants : [];
+    const sizes = variants.map(v => String(v?.size || "")).filter(Boolean);
+    const defaultSize = sizes.includes("10ml") ? "10ml" : (sizes[0] || "");
+    const href = `product.html?id=${encodeURIComponent(p.id)}${defaultSize ? `&size=${encodeURIComponent(defaultSize)}` : ""}`;
+    const image = p.image || "assets/logo.svg";
+    const brand = escapeHtml(p.brand || "");
+    const name = escapeHtml(p.name || "");
+    const price = formatMoney(getProductPrice(p, defaultSize || null));
+    const meta = defaultSize ? `${escapeHtml(defaultSize)} • ${price}` : price;
+    return `
+      <a class="search__item" role="option" href="${href}" data-search-item>
+        <img class="search__thumb" src="${escapeHtml(image)}" alt="" loading="lazy" width="36" height="36" />
+        <div class="search__info">
+          <div class="search__name">${name}</div>
+          <div class="search__meta">${brand} • ${meta}</div>
+        </div>
+      </a>
+    `;
+  }).join("");
+
+  searchResultsEl.classList.add("is-open");
+  elSearch?.setAttribute("aria-expanded", "true");
+}
 const chatbotInput = document.getElementById("chatbotInput");
 const chatbotQuick = document.getElementById("chatbotQuick");
 let chatHasStarted = false;
@@ -1273,6 +1373,13 @@ const FLASH_DEALS_CONFIG = [
   { id: "p21", discount: 25 }
 ];
 
+const FLASH_DEAL_PRICE_OVERRIDES = {
+  // Le Male Elixir (flash offer prices)
+  p16: { '10ml': 90, '20ml': 180, '30ml': 270 },
+  // Le Male Le Parfum (flash offer prices)
+  p21: { '10ml': 90, '20ml': 170, '30ml': 255 }
+};
+
 let flashCountdownInterval = null;
 
 function getPreferredFlashSizes(p){
@@ -1296,6 +1403,12 @@ function computeDiscountedPrice(price, percent){
   const p = Number(price || 0);
   const d = Number(percent || 0);
   return Math.max(0, Math.round(p * (1 - d / 100)));
+}
+
+function getFlashDealPrice(p, size, discount){
+  const ov = FLASH_DEAL_PRICE_OVERRIDES[String(p?.id)];
+  if (ov && size && ov[String(size)] != null) return Number(ov[String(size)]) || 0;
+  return computeDiscountedPrice(getProductPrice(p, size), discount);
 }
 
 function getFlashDealList(){
@@ -1326,7 +1439,7 @@ function renderFlashDeals(){
     const sizes = getPreferredFlashSizes(p);
     const defaultSize = sizes.includes("10ml") ? "10ml" : (sizes[0] || null);
     const basePrice = getProductPrice(p, defaultSize);
-    const newPrice = computeDiscountedPrice(basePrice, discount);
+    const newPrice = getFlashDealPrice(p, defaultSize, discount);
 
     const isWishlisted = wishlist.has(p.id);
     const href = `product.html?id=${encodeURIComponent(p.id)}${defaultSize ? `&size=${encodeURIComponent(defaultSize)}` : ""}`;
@@ -1502,7 +1615,7 @@ function initFlashDeals(){
     });
 
     const basePrice = getProductPrice(p, size);
-    const newPrice = computeDiscountedPrice(basePrice, discount);
+    const newPrice = getFlashDealPrice(p, size, discount);
     const oldEl = card.querySelector(".flashCard__old");
     const newEl = card.querySelector(".flashCard__new");
     if (oldEl) oldEl.textContent = formatMoney(basePrice);
@@ -1667,8 +1780,26 @@ toTopBtn?.addEventListener("click", ()=>{
 
 // ---------- Search / Sort ----------
 elSearch?.addEventListener("input", (e)=>{
-  state.search = (e.target.value || "").trim().toLowerCase();
-  document.querySelector(".search")?.classList.toggle("hasValue", !!state.search);
+  const raw = (e.target.value || "").trim();
+  state.search = normalizeChatText(raw);
+  document.querySelector(".search")?.classList.toggle("hasValue", !!raw);
+
+  renderSearchResults(raw);
+
+  if (state.search && state.filter !== "all"){
+    if (!state.lastFilterBeforeSearch) state.lastFilterBeforeSearch = state.filter;
+    state.filter = "all";
+    document.querySelectorAll(".cat[data-filter]").forEach(b=>{
+      b.classList.toggle("active", (b.dataset.filter||"all")===state.filter);
+    });
+  }
+
+  if (!state.search && state.lastFilterBeforeSearch){
+    setFilter(state.lastFilterBeforeSearch);
+    state.lastFilterBeforeSearch = null;
+    return;
+  }
+
   renderProducts();
 });
 elClear?.addEventListener("click", ()=>{
@@ -1676,7 +1807,56 @@ elClear?.addEventListener("click", ()=>{
   elSearch.value = "";
   state.search = "";
   document.querySelector(".search")?.classList.remove("hasValue");
+  hideSearchResults();
+  if (state.lastFilterBeforeSearch){
+    setFilter(state.lastFilterBeforeSearch);
+    state.lastFilterBeforeSearch = null;
+    return;
+  }
   renderProducts();
+});
+elSearch?.addEventListener("search", ()=>{
+  if (!state.search) return;
+  document.getElementById("best")?.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+elSearch?.addEventListener("focus", (e)=>{
+  const raw = (e.target.value || "").trim();
+  if (raw) renderSearchResults(raw);
+});
+elSearch?.addEventListener("keydown", (e)=>{
+  if (!searchResultsEl || !searchResultsEl.classList.contains("is-open")) return;
+  const items = Array.from(searchResultsEl.querySelectorAll("[data-search-item]"));
+  if (!items.length) return;
+
+  if (e.key === "ArrowDown"){
+    e.preventDefault();
+    searchActiveIndex = (searchActiveIndex + 1) % items.length;
+  }
+  if (e.key === "ArrowUp"){
+    e.preventDefault();
+    searchActiveIndex = (searchActiveIndex - 1 + items.length) % items.length;
+  }
+  if (e.key === "Enter"){
+    if (searchActiveIndex >= 0 && items[searchActiveIndex]){
+      e.preventDefault();
+      items[searchActiveIndex].click();
+      return;
+    }
+  }
+  if (e.key === "Escape"){
+    hideSearchResults();
+    return;
+  }
+
+  items.forEach((el, idx)=>{
+    el.classList.toggle("is-active", idx === searchActiveIndex);
+    if (idx === searchActiveIndex) el.scrollIntoView({ block: "nearest" });
+  });
+});
+
+document.addEventListener("click", (e)=>{
+  if (!searchBox || !searchResultsEl) return;
+  if (!searchBox.contains(e.target)) hideSearchResults();
 });
 elSort?.addEventListener("change", (e)=>{
   state.sort = normalizeSortValue(e.target.value);
@@ -1684,10 +1864,34 @@ elSort?.addEventListener("change", (e)=>{
 });
 
 // ---------- Category buttons ----------
+const categoryFilterLabel = document.getElementById("categoryFilterLabel");
+const CATEGORY_LABEL_KEYS = {
+  all: "cat_all",
+  women: "tile_women",
+  men: "tile_men",
+  unisex: "tile_unisex",
+  gift: "cat_gift",
+  home: "cat_home",
+  travel: "cat_travel"
+};
+
+function updateCategoryFilterLabel(){
+  if (!categoryFilterLabel) return;
+  if (!state.filter || state.filter === "all"){
+    categoryFilterLabel.textContent = "";
+    return;
+  }
+  const labelKey = CATEGORY_LABEL_KEYS[state.filter] || "cat_all";
+  const label = t(labelKey);
+  categoryFilterLabel.textContent = t("filter_label").replace("{cat}", label);
+}
+
 document.querySelectorAll(".cat[data-filter]").forEach(btn=>{
   btn.addEventListener("click", ()=>{
     setFilter(btn.dataset.filter || "all");
-    document.getElementById("best")?.scrollIntoView({behavior:"smooth"});
+    const bestSection = document.getElementById("best");
+    bestSection?.scrollIntoView({behavior:"smooth", block:"start"});
+    setTimeout(()=> document.getElementById("bestViewport")?.focus({ preventScroll: true }), 300);
   });
 });
 document.querySelectorAll(".drawer__link[data-filter]").forEach(a=>{
@@ -1700,13 +1904,60 @@ document.querySelectorAll(".drawer__link[data-filter]").forEach(a=>{
 function setFilter(filter){
   state.filter = filter || "all";
   renderProducts();
+  updateCategoryFilterLabel();
   // highlight category tiles
   document.querySelectorAll(".cat[data-filter]").forEach(b=>{
     b.classList.toggle("active", (b.dataset.filter||"all")===state.filter);
   });
 }
 
+document.addEventListener("languagechange", ()=>{
+  updateCategoryFilterLabel();
+});
+
 // ---------- Render products ----------
+const GENERIC_SEARCH_TOKENS = new Set([
+  "parfum","parfums","perfume","perfumes","fragrance","fragrances",
+  "عطر","عطور","parfumerie"
+]);
+
+const CATEGORY_ALIASES = {
+  men: ["men","mens","man","male","homme","hommes","رجال","رجالي","للرجال"],
+  women: ["women","womens","woman","female","femme","femmes","نساء","نسائي","للنساء"],
+  unisex: ["unisex","unisexe","mixte","للجنسين","مشترك"],
+  gift: ["gift","gifts","cadeau","coffret","هدايا","هدية"],
+  home: ["home","maison","home fragrance","منزل","بيتي"],
+  travel: ["travel","voyage","travel size","mini","سفر","حجم السفر"]
+};
+
+function buildSearchHaystack(p){
+  const variants = Array.isArray(p?.variants) ? p.variants : [];
+  const sizes = variants.map(v=>v?.size).filter(Boolean).join(" ");
+  const cat = String(p?.category || "").toLowerCase();
+  const catAliases = CATEGORY_ALIASES[cat] || [];
+  const parts = [
+    p?.brand,
+    p?.name,
+    p?.name_fr,
+    p?.name_ar,
+    p?.tag,
+    p?.category,
+    catAliases.join(" "),
+    sizes,
+    (p?.notes || []).join(" "),
+    p?.description,
+    p?.description_fr,
+    p?.description_ar
+  ].filter(Boolean).join(" ");
+
+  return normalizeChatText(parts);
+}
+
+function isGenericSearch(tokens){
+  if (!tokens.length) return false;
+  return tokens.every(t => GENERIC_SEARCH_TOKENS.has(t));
+}
+
 function getFilteredProducts(){
   let items = [...PRODUCTS];
 
@@ -1716,10 +1967,15 @@ function getFilteredProducts(){
 
   if (state.search){
     const q = state.search;
-    items = items.filter(p=>{
-      const hay = `${p.brand||""} ${p.name||""} ${(p.notes||[]).join(" ")}`.toLowerCase();
-      return hay.includes(q);
-    });
+    const qTokens = q.split(" ").filter(Boolean);
+    if (!isGenericSearch(qTokens)){
+      items = items.filter(p=>{
+        const hay = buildSearchHaystack(p);
+        if (!hay) return false;
+        if (q.length >= 3 && hay.includes(q)) return true;
+        return qTokens.every(t => hay.includes(t));
+      });
+    }
   }
 
   // sort
@@ -1961,7 +2217,11 @@ function updateCartUI(){
       <div class="cart__empty">
         <div class="cart__empty-icon" aria-hidden="true">👜</div>
         <div class="cart__empty-text">${currentLang==="ar" ? "السلة خاوية ✨" : (currentLang==="fr" ? "Votre panier est vide ✨" : "Your bag is empty ✨")}</div>
-        <a href="#best" class="btn btn--primary">${currentLang==="ar" ? "تسوق الآن" : (currentLang==="fr" ? "Magasinez" : "Shop deals")}</a>
+        <div class="cart__empty-sub">${currentLang==="ar" ? "اكتشف العطور الأكثر مبيعاً وأحدث العروض." : (currentLang==="fr" ? "Découvrez les best‑sellers et les nouvelles offres." : "Discover best sellers and new offers.")}</div>
+        <div class="cart__empty-actions">
+          <a href="#best" class="btn btn--primary">${currentLang==="ar" ? "تسوق الآن" : (currentLang==="fr" ? "Voir les best‑sellers" : "Shop best sellers")}</a>
+          <a href="#categories" class="btn btn--ghost">${currentLang==="ar" ? "تصفح الفئات" : (currentLang==="fr" ? "Parcourir les catégories" : "Browse categories")}</a>
+        </div>
       </div>
     `;
     cartSubtotal.textContent = formatMoney(0);
@@ -2115,18 +2375,27 @@ btnCheckoutEmail?.addEventListener('click', ()=>{
   setTimeout(()=> checkoutForm.querySelector("input[name='name']")?.focus(), 250);
 });
 
-// ---------- Contact form ----------
+// Quick open checkout modal from 'Order by Email (Quick)'
+const btnOrderDirectEmail = document.getElementById('btnOrderDirectEmail');
+btnOrderDirectEmail?.addEventListener('click', ()=>{
+  openCheckoutModal();
+  setTimeout(()=> checkoutForm.querySelector("input[name='name']")?.focus(), 250);
+});
+
+// ---------- Newsletter signup ----------
 form?.addEventListener("submit", (e)=>{
   e.preventDefault();
-  const name = form.querySelector("input[name='name']")?.value?.trim() || "";
-  const message = form.querySelector("textarea[name='message']")?.value?.trim() || "";
-  if (!name || !message) return;
-  const subject = `Message from ${name} via website`;
-  const full = `Name: ${name}\n\nMessage:\n${message}`;
-  const body = encodeURIComponent(full);
-  window.location.href = `mailto:${STORE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+  const email = form.querySelector("input[name='email']")?.value?.trim() || "";
+  if (!email) return;
+  const subject = currentLang === "ar"
+    ? "اشتراك في النشرة البريدية"
+    : (currentLang === "fr" ? "Inscription à la newsletter" : "Newsletter signup");
+  const full = `Newsletter signup: ${email}`;
+  window.location.href = `mailto:${STORE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(full)}`;
   if (formNote){
-    formNote.textContent = currentLang==="ar" ? "تم فتح تطبيق الإيميل… إلا ما تحلش، صيفط لينا مباشرة." : (currentLang==="fr" ? "Ouverture de votre application email…" : "Opening your email app…");
+    formNote.textContent = currentLang==="ar"
+      ? "شكراً! تم فتح تطبيق البريد لإكمال الاشتراك."
+      : (currentLang==="fr" ? "Merci ! Ouverture de votre application email…" : "Thanks! Opening your email app to complete signup…");
   }
 });
 
