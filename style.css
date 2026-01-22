@@ -1150,8 +1150,8 @@ html[dir="rtl"] .search__item{
   text-align: center;
 }
 .promo-banner__visual img {
-  width: min(360px, 70vw);
-  max-width: 360px;
+  width: min(460px, 75vw);
+  max-width: 460px;
   height: auto;
   filter: drop-shadow(0 24px 36px rgba(26, 32, 44, 0.22));
 }
@@ -1165,8 +1165,8 @@ html[dir="rtl"] .search__item{
     margin-bottom: 16px;
   }
   .promo-banner__visual img {
-    width: min(320px, 80vw);
-    max-width: 320px;
+    width: min(400px, 86vw);
+    max-width: 400px;
   }
 }
 
@@ -1396,7 +1396,7 @@ html[dir="rtl"] .search__item{
   .section{ padding: 26px 0; }
   .section__head h2{ font-size: 22px; }
   .promo-banner{ padding: 18px; }
-  .promo-banner__visual img{ width: min(280px, 88vw); max-width: 280px; }
+  .promo-banner__visual img{ width: min(340px, 92vw); max-width: 340px; }
   .cats{ grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; }
   .header__inner{ padding:10px 0; }
 }
@@ -3078,6 +3078,70 @@ html[dir="rtl"] .langOption{ text-align:right; }
   will-change: opacity;
 }
 .hero__bg.is-active{ opacity:1; }
+
+.hero__shop{
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,.92);
+  color: #111827;
+  border: 1px solid rgba(229,231,235,.95);
+  box-shadow: 0 16px 36px rgba(2,6,23,.18);
+  border-radius: 999px;
+  height: 52px;
+  padding: 0 24px;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+[dir="rtl"] .hero__shop{
+  left: auto;
+  right: 24px;
+}
+
+.hero__shop-icon{
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero__shop:hover{
+  transform: scale(1.02);
+  border-color: rgba(192,154,89,.45);
+  box-shadow: 0 22px 48px rgba(2,6,23,.22);
+}
+
+.hero__shop:active{
+  transform: scale(.98);
+  box-shadow: 0 12px 28px rgba(2,6,23,.2);
+}
+
+.hero__shop-icon svg{
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 560px){
+  .hero__shop{
+    left: 14px;
+    bottom: 14px;
+    height: 46px;
+    padding: 0 18px;
+    font-size: 14px;
+  }
+
+  [dir="rtl"] .hero__shop{
+    left: auto;
+    right: 14px;
+  }
+}
 
 @media (prefers-reduced-motion: reduce){
   .hero__bg{ transition:none; }
