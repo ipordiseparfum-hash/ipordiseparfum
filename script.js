@@ -12,7 +12,7 @@ const I18N = {
   en: {
     nav_home: "Home",
     brand_tag: "Fragrance Boutique",
-    topbar_text: "Free delivery in Morocco from 299 MAD • Pay on delivery available",
+    topbar_text: "عطور أصلية، جودة مضمونة، تجربة فريدة – IPORDISE",
     topbar_link: "See deals",
     nav_categories: "Categories",
     nav_best: "Best Sellers",
@@ -39,6 +39,11 @@ const I18N = {
     trust_auth: "100% Authentic",
     trust_delivery: "Free Delivery 299 MAD+",
     trust_support: "24/7 WhatsApp Support",
+    trust_auth_desc: "Original fragrances sourced from trusted suppliers.",
+    trust_delivery_desc: "Fast delivery across Morocco with careful packaging.",
+    trust_support_desc: "Get fast recommendations and order help anytime.",
+    trust_returns: "Easy returns",
+    trust_returns_desc: "Hassle‑free exchange if something isn’t right.",
     concierge_title: "Personalized recommendations",
     concierge_desc: "Tell us the notes you love (vanilla, musk, fresh, floral, oud…) and we’ll suggest the perfect match in minutes.",
     concierge_cta_wa: "Chat on WhatsApp",
@@ -50,9 +55,22 @@ const I18N = {
     stat_delivery: "Express Delivery",
     sec_categories_title: "Fragrance",
     sec_categories_desc: "Browse by category like on a big store — clean and easy.",
+    sec_families_title: "Shop by Scent Family",
+    sec_families_desc: "Pick a vibe and discover perfumes that match.",
+    family_fresh: "Fresh",
+    family_floral: "Floral",
+    family_woody: "Woody",
+    family_oriental: "Oriental",
+    family_gourmand: "Gourmand",
     sec_new_desc: "Freshly curated scents, just for you.",
     sec_best_title: "Best sellers",
     sec_best_desc: "Top-rated picks customers love.",
+    quick_filters: "Quick filters:",
+    quick_vanilla: "Vanilla",
+    quick_oud: "Oud",
+    quick_fresh: "Fresh",
+    quick_musk: "Musk",
+    quick_gift: "Gift",
     filter_label: "Showing: {cat}",
     sec_recent_title: "Recently viewed",
     sec_recent_desc: "Pick up where you left off.",
@@ -78,6 +96,8 @@ const I18N = {
     form_send: "Send message",
     footer_shop: "Shop",
     footer_support: "Support",
+    footer_payments: "Payments",
+    payment_cod: "Cash on Delivery",
     footer_legal: "Legal",
     footer_rights: "All rights reserved.",
     fav_title: "Favourites",
@@ -109,6 +129,7 @@ const I18N = {
     bn_search: "Search",
     bn_cart: "Cart",
     bn_whatsapp: "WhatsApp",
+    card_view: "View",
     wa_prefill: "Hello, I'm interested in this product: {name} • Size: {size}",
 
     chat_title: "Ipordise Assistant",
@@ -145,6 +166,9 @@ const I18N = {
     cart_delivery_info: "Calculated on WhatsApp",
     translate_unavailable: "Translation not available; showing English.",
     choose_size: "Choose size"
+    ,notes_top: "Top notes"
+    ,notes_heart: "Heart notes"
+    ,notes_base: "Base notes"
     ,toast_title: "Flash deal 🎁"
     ,toast_meta: "Shop now before the offer ends"
     ,toast_cta: "Shop deals"
@@ -185,6 +209,11 @@ const I18N = {
     trust_auth: "100% Authentique",
     trust_delivery: "Livraison offerte dès 299 MAD+",
     trust_support: "Support WhatsApp 24/7",
+    trust_auth_desc: "Parfums originaux provenant de fournisseurs fiables.",
+    trust_delivery_desc: "Livraison rapide au Maroc avec emballage soigné.",
+    trust_support_desc: "Recommandations rapides et aide à la commande à tout moment.",
+    trust_returns: "Retours faciles",
+    trust_returns_desc: "Échange simple si quelque chose ne convient pas.",
     concierge_title: "Recommandations personnalisées",
     concierge_desc: "Dites-nous les notes que vous aimez (vanille, musc, frais, floral, oud…) et on vous recommande le parfum idéal en quelques minutes.",
     concierge_cta_wa: "Discuter sur WhatsApp",
@@ -196,9 +225,22 @@ const I18N = {
     stat_delivery: "Livraison express",
     sec_categories_title: "Parfums",
     sec_categories_desc: "Parcourez par catégorie, simple et clair.",
+    sec_families_title: "Par familles olfactives",
+    sec_families_desc: "Choisissez une vibe et découvrez les parfums adaptés.",
+    family_fresh: "Frais",
+    family_floral: "Floral",
+    family_woody: "Boisé",
+    family_oriental: "Oriental",
+    family_gourmand: "Gourmand",
     sec_new_desc: "Des parfums fraîchement sélectionnés, juste pour vous.",
     sec_best_title: "Meilleures ventes",
     sec_best_desc: "Les choix préférés de nos clients.",
+    quick_filters: "Filtres rapides :",
+    quick_vanilla: "Vanille",
+    quick_oud: "Oud",
+    quick_fresh: "Frais",
+    quick_musk: "Musc",
+    quick_gift: "Cadeau",
     filter_label: "Voir : {cat}",
     sec_recent_title: "Récemment consultés",
     sec_recent_desc: "Reprenez là où vous vous êtes arrêté.",
@@ -224,6 +266,8 @@ const I18N = {
     form_send: "Envoyer",
     footer_shop: "Boutique",
     footer_support: "Support",
+    footer_payments: "Paiement",
+    payment_cod: "Paiement à la livraison",
     footer_legal: "Mentions",
     footer_rights: "Tous droits réservés.",
     fav_title: "Favoris",
@@ -255,6 +299,7 @@ const I18N = {
     bn_search: "Recherche",
     bn_cart: "Panier",
     bn_whatsapp: "WhatsApp",
+    card_view: "Voir",
     wa_prefill: "Bonjour, je suis intéressé par ce produit : {name} • Taille : {size}",
 
     chat_title: "Assistant Ipordise",
@@ -291,6 +336,9 @@ const I18N = {
     cart_delivery_info: "Calculé sur WhatsApp",
     translate_unavailable: "Traduction non disponible; affichage en anglais.",
     choose_size: "Choisir la taille"
+    ,notes_top: "Notes de tête"
+    ,notes_heart: "Notes de cœur"
+    ,notes_base: "Notes de fond"
     ,toast_title: "Offre flash 🎁"
     ,toast_meta: "Achetez avant la fin de l’offre"
     ,toast_cta: "Voir les promos"
@@ -330,6 +378,11 @@ const I18N = {
     trust_auth: "100% أصلي",
     trust_delivery: "توصيل مجاني 299+ درهم",
     trust_support: "دعم واتساب 24/7",
+    trust_auth_desc: "عطور أصلية من موردين موثوقين.",
+    trust_delivery_desc: "توصيل سريع داخل المغرب مع تغليف آمن.",
+    trust_support_desc: "اقتراحات سريعة ومساعدة في الطلب في أي وقت.",
+    trust_returns: "إرجاع سهل",
+    trust_returns_desc: "تبديل بدون تعقيد إذا كان هناك أي مشكل.",
     concierge_title: "اقتراحات مخصّصة",
     concierge_desc: "قول لينا النوتات اللي كتعجبك (فانيلا، مسك، فريش، زهري، عود…) وغادي نقترحو عليك الأنسب فدقايق.",
     concierge_cta_wa: "تواصل على واتساب",
@@ -341,9 +394,22 @@ const I18N = {
     stat_delivery: "توصيل سريع",
     sec_categories_title: "العطور",
     sec_categories_desc: "تصفح حسب الأقسام بطريقة واضحة وسهلة.",
+    sec_families_title: "تسوّق حسب العائلة العطرية",
+    sec_families_desc: "اختار المود وغادي نوريك العطور المناسبة.",
+    family_fresh: "فريش",
+    family_floral: "زهري",
+    family_woody: "خشبي",
+    family_oriental: "شرقي",
+    family_gourmand: "غورمون",
     sec_new_desc: "عطور مختارة بعناية، خصيصاً لك.",
     sec_best_title: "الأكثر مبيعاً",
     sec_best_desc: "اختيارات محبوبة عند الزبناء.",
+    quick_filters: "فلاتر سريعة:",
+    quick_vanilla: "فانيلا",
+    quick_oud: "عود",
+    quick_fresh: "فريش",
+    quick_musk: "مسك",
+    quick_gift: "هدية",
     filter_label: "التصنيف: {cat}",
     sec_recent_title: "شاهدت مؤخراً",
     sec_recent_desc: "كمّل منين وقفتي.",
@@ -369,6 +435,8 @@ const I18N = {
     form_send: "إرسال",
     footer_shop: "المتجر",
     footer_support: "الدعم",
+    footer_payments: "الدفع",
+    payment_cod: "الدفع عند الاستلام",
     footer_legal: "قانوني",
     footer_rights: "جميع الحقوق محفوظة.",
     fav_title: "المفضلة",
@@ -400,6 +468,7 @@ const I18N = {
     bn_search: "بحث",
     bn_cart: "السلة",
     bn_whatsapp: "واتساب",
+    card_view: "شوف",
     wa_prefill: "مرحباً، أنا مهتم بهذا المنتج: {name} • الحجم: {size}",
 
     chat_title: "مساعد Ipordise",
@@ -436,6 +505,9 @@ const I18N = {
     cart_delivery_info: "يُحسب عند تأكيد الطلب",
     translate_unavailable: "الترجمة غير متوفرة؛ يتم العرض بالإنجليزية.",
     choose_size: "اختيار الحجم",
+    notes_top: "النوتات العليا",
+    notes_heart: "النوتات الوسطى",
+    notes_base: "النوتات الأساسية",
     back_to_home: "الرجوع للرئيسية"
     ,toast_title: "عرض خاطف 🎁"
     ,toast_meta: "تسوق الآن قبل انتهاء العرض"
@@ -472,24 +544,7 @@ function applyI18n(lang){
     label.innerHTML = `<span class="flag" aria-hidden="true">${flag}</span>${currentLang.toUpperCase()}`;
   }
 
-  // Update hero image based on language
-  const capLang = currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
-  const img = document.getElementById("heroImage");
-  if (img){
-    const newSrc = img.dataset[`src${capLang}`] || img.dataset.srcEn || img.getAttribute("src");
-    if (!newSrc) return;
-    if ((img.getAttribute("src") || "") === newSrc) return;
-
-    const tempImg = new Image();
-    tempImg.onload = () => {
-      img.style.opacity = 0;
-      setTimeout(() => {
-        img.setAttribute("src", newSrc);
-        img.style.opacity = 1;
-      }, 260);
-    };
-    tempImg.src = newSrc;
-  }
+  // Hero slider is now background-based; no language swap needed
 
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
@@ -1930,6 +1985,21 @@ const CATEGORY_ALIASES = {
   travel: ["travel","voyage","travel size","mini","سفر","حجم السفر"]
 };
 
+function getCategoryLabel(cat){
+  const c = String(cat || "").toLowerCase();
+  const map = {
+    women: "tile_women",
+    men: "tile_men",
+    unisex: "tile_unisex",
+    gift: "cat_gift",
+    home: "cat_home",
+    travel: "cat_travel"
+  };
+  const key = map[c];
+  if (typeof t === "function" && key) return t(key);
+  return cat || "";
+}
+
 function buildSearchHaystack(p){
   const variants = Array.isArray(p?.variants) ? p.variants : [];
   const sizes = variants.map(v=>v?.size).filter(Boolean).join(" ");
@@ -2004,6 +2074,8 @@ function productCard(p){
 
   const stars = "★★★★★".slice(0, Math.round(clamp(p.rating||4.5,0,5)));
   const reviews = Number(p.reviews || 0);
+  const notes = Array.isArray(p?.notes) ? p.notes.slice(0, 3) : [];
+  const catLabel = getCategoryLabel(p?.category);
 
   const isWishlisted = wishlist.has(p.id);
   const href = `product.html?id=${encodeURIComponent(p.id)}${defaultSize ? `&size=${encodeURIComponent(defaultSize)}` : ""}`;
@@ -2012,6 +2084,7 @@ function productCard(p){
   const badgeText = p.tag ? String(p.tag) : (p.isNew ? "New" : (p.isBestseller ? "Bestseller" : ""));
 
   const addLabel = currentLang === 'fr' ? 'Ajouter' : (currentLang === 'ar' ? 'زيد للسلة' : 'Add to cart');
+  const viewLabel = (typeof t === "function" && t("card_view")) ? t("card_view") : (currentLang === 'fr' ? 'Voir' : (currentLang === 'ar' ? 'شوف' : 'View'));
 
   return `
     <article class="flashCard flashCard--product animate-on-scroll" data-card-id="${escapeHtml(p.id)}" data-card-size="${escapeHtml(defaultSize)}">
@@ -2042,6 +2115,18 @@ function productCard(p){
           <span class="muted small">(${reviews})</span>
         </div>
 
+        <div class="flashCard__metaRow" aria-label="Quick info">
+          ${catLabel ? `<span class="metaPill">${escapeHtml(catLabel)}</span>` : ""}
+          ${defaultSize ? `<span class="metaPill">${escapeHtml(defaultSize)}</span>` : ""}
+          ${p.tag ? `<span class="metaPill">${escapeHtml(p.tag)}</span>` : ""}
+        </div>
+
+        ${notes.length ? `
+          <div class="flashCard__notes" aria-label="Notes">
+            ${notes.map(n => `<span class="notePill">${escapeHtml(n)}</span>`).join("")}
+          </div>
+        ` : ""}
+
         <div class="flashCard__prices" aria-label="Pricing">
           <span class="flashCard__old">${formatMoney(oldPrice)}</span>
           <span class="flashCard__new">${formatMoney(newPrice)}</span>
@@ -2058,6 +2143,7 @@ function productCard(p){
 
         <div class="flashCard__actions">
           <button class="flashAdd" type="button" data-card-add="${escapeHtml(p.id)}">${escapeHtml(addLabel)}</button>
+          <a class="flashLink" href="${href}">${escapeHtml(viewLabel)}</a>
         </div>
       </div>
     </article>
@@ -2397,6 +2483,32 @@ form?.addEventListener("submit", (e)=>{
       ? "شكراً! تم فتح تطبيق البريد لإكمال الاشتراك."
       : (currentLang==="fr" ? "Merci ! Ouverture de votre application email…" : "Thanks! Opening your email app to complete signup…");
   }
+});
+
+// ---------- Quick filters (below hero) ----------
+function applyQuickFilter(term){
+  if (!elSearch) return;
+  const raw = String(term || "").trim();
+  if (!raw) return;
+  elSearch.value = raw;
+  state.search = normalizeChatText(raw);
+  document.querySelector(".search")?.classList.toggle("hasValue", !!raw);
+  renderSearchResults(raw);
+
+  if (state.search && state.filter !== "all"){
+    if (!state.lastFilterBeforeSearch) state.lastFilterBeforeSearch = state.filter;
+    state.filter = "all";
+    document.querySelectorAll(".cat[data-filter]").forEach(b=>{
+      b.classList.toggle("active", (b.dataset.filter||"all")===state.filter);
+    });
+  }
+
+  renderProducts();
+  document.getElementById("best")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+document.querySelectorAll("[data-quick-filter]").forEach(btn=>{
+  btn.addEventListener("click", ()=> applyQuickFilter(btn.dataset.quickFilter));
 });
 
 // ---------- Language menu ----------
@@ -3333,6 +3445,72 @@ function observeAnimatableElements() {
     if (!scrollObserver) return;
     document.querySelectorAll(".animate-on-scroll:not(.is-visible)").forEach(el => scrollObserver.observe(el));
 }
+
+// ---------- Hero slider ----------
+function initHeroSlider(){
+  const slides = Array.from(document.querySelectorAll('.hero__bg'));
+  if (!slides.length) return;
+
+  // Desktop (wide) hero images
+  const desktopUrls = [
+    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%201%20mens.png',
+    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%202%20women.png'
+  ];
+
+  // Optional: add dedicated mobile crops here (recommended for best results).
+  // If you don't have mobile-specific files yet, we fallback to desktop images.
+  const mobileUrls = [
+    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%201%20mens.png',
+    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%202%20women.png'
+  ];
+
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Preload images to avoid flashes during swap
+  const preload = (urls) => {
+    try{
+      urls.forEach(u => { const img = new Image(); img.decoding = 'async'; img.loading = 'eager'; img.src = u; });
+    }catch(e){}
+  };
+  preload(desktopUrls);
+  preload(mobileUrls);
+
+  const pickUrls = () => {
+    const isMobile = window.matchMedia && window.matchMedia('(max-width: 860px)').matches;
+    return (isMobile ? mobileUrls : desktopUrls);
+  };
+
+  const applyUrls = () => {
+    const urls = pickUrls();
+    slides.forEach((el, i)=>{
+      const url = urls[i % urls.length];
+      if (el.dataset.bgApplied === url) return;
+      el.style.backgroundImage = `url("${url}")`;
+      el.dataset.bgApplied = url;
+    });
+  };
+
+  applyUrls();
+
+  // Ensure the first slide is visible
+  slides.forEach((s, i)=> s.classList.toggle('is-active', i === 0));
+
+  // Update backgrounds on viewport changes (mobile ↔ desktop)
+  try{
+    const mq = window.matchMedia('(max-width: 860px)');
+    mq.addEventListener ? mq.addEventListener('change', applyUrls) : mq.addListener(applyUrls);
+  }catch(e){}
+
+  if (slides.length <= 1 || prefersReduced) return;
+
+  let idx = 0;
+  setInterval(()=>{
+    slides[idx].classList.remove('is-active');
+    idx = (idx + 1) % slides.length;
+    slides[idx].classList.add('is-active');
+  }, 4500);
+}
+
 // ---------- Init ----------
 (async function init(){
   // Perceived performance: show skeletons immediately
@@ -3355,6 +3533,7 @@ function observeAnimatableElements() {
   initFlashCountdown24h();
   initRecentlyViewed();
   if (document.querySelector('.promo-banner')) initDealsRotator();
+  initHeroSlider();
 
   // Size modal listeners
   const sizeModal = document.getElementById("sizeModal");

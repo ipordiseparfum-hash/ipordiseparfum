@@ -95,6 +95,27 @@
     const brand = escapeHtml(p.brand || "");
     const img = escapeHtml(p.image || "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/logo.jpeg");
     const descHtml = formatParagraphs(getLocalized("description") || p.description || "");
+    const notes = Array.isArray(p?.notes) ? p.notes : [];
+    const chunk = Math.ceil(notes.length / 3) || 0;
+    const topNotes = notes.slice(0, chunk);
+    const heartNotes = notes.slice(chunk, chunk * 2);
+    const baseNotes = notes.slice(chunk * 2);
+    const notesHtml = notes.length ? `
+      <div class="notesPyramid">
+        <div class="notesPyramid__col">
+          <div class="notesPyramid__title">${escapeHtml((typeof t === "function" && t("notes_top")) ? t("notes_top") : "Top notes")}</div>
+          <div class="notesPyramid__items">${topNotes.map(n=>`<span class="notePill">${escapeHtml(n)}</span>`).join("") || "—"}</div>
+        </div>
+        <div class="notesPyramid__col">
+          <div class="notesPyramid__title">${escapeHtml((typeof t === "function" && t("notes_heart")) ? t("notes_heart") : "Heart notes")}</div>
+          <div class="notesPyramid__items">${heartNotes.map(n=>`<span class="notePill">${escapeHtml(n)}</span>`).join("") || "—"}</div>
+        </div>
+        <div class="notesPyramid__col">
+          <div class="notesPyramid__title">${escapeHtml((typeof t === "function" && t("notes_base")) ? t("notes_base") : "Base notes")}</div>
+          <div class="notesPyramid__items">${baseNotes.map(n=>`<span class="notePill">${escapeHtml(n)}</span>`).join("") || "—"}</div>
+        </div>
+      </div>
+    ` : "";
 
     const vars = p.variants || [];
     if (!selectedSize) selectedSize = defaultSize();
@@ -141,6 +162,14 @@
           </div>
 
           <div class="product__desc">${descHtml}</div>
+
+          ${notesHtml}
+
+          <div class="reassurance">
+            <div class="reassurance__item">✓ ${(lang === "ar") ? "100% أصلي" : (lang === "fr" ? "100% Authentique" : "100% Authentic")}</div>
+            <div class="reassurance__item">🚚 ${(lang === "ar") ? "توصيل سريع" : (lang === "fr" ? "Livraison rapide" : "Fast delivery")}</div>
+            <div class="reassurance__item">↩️ ${(lang === "ar") ? "إرجاع سهل" : (lang === "fr" ? "Retours faciles" : "Easy returns")}</div>
+          </div>
 
           ${chips}
 
@@ -224,8 +253,8 @@
 
   // Keep certain product prices in sync (even if products.json is outdated somewhere)
   const PRICE_OVERRIDES = {
-    p16: { '10ml': 90, '20ml': 180, '30ml': 270 },
-    p21: { '10ml': 90, '20ml': 170, '30ml': 255 }
+    p16: { '10ml': 110, '20ml': 200, '30ml': 290 },
+    p21: { '10ml': 110, '20ml': 190, '30ml': 275 }
   };
   function applyOverrides(p){
     if (!p || !p.id) return;
