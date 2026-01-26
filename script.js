@@ -3585,4 +3585,18 @@ function initHeroSlider(){
       el.addEventListener('click', () => closeModal(sizeModal));
     });
   }
+
+  // Premium Loading Screen
+  const loadingScreen = document.getElementById('loadingScreen');
+  if (loadingScreen) {
+    // Hide loading screen after content loads
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        loadingScreen.classList.add('fade-out');
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+        }, 600);
+      }, 800); // Minimum show time for premium feel
+    });
+  }
 })();
