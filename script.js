@@ -2995,14 +2995,21 @@ function addMsg(text, who="bot"){
 function seedChatIfEmpty(){
   if (!chatbotMsgs) return;
   if (chatbotMsgs.childElementCount===0){
-    sendBotMessage(t("chat_hi"), {
+    const welcomeMessages = {
+      'en': "👋 Welcome to IPORDISE PARFUM! I'm your personal fragrance expert. How can I help you discover your perfect scent today?",
+      'fr': "👋 Bienvenue chez IPORDISE PARFUM! Je suis votre expert personnel en parfums. Comment puis-je vous aider à découvrir votre fragrance idéale?",
+      'ar': "👋 أهلا بك في آي بورديس بارفان! أنا خبير العطور الشخصي ديالك. كيفاش نقدر نساعدك تكتشف عطرك المثالي اليوم؟"
+    };
+    const welcomeText = welcomeMessages[currentLang] || welcomeMessages['en'];
+
+    sendBotMessage(welcomeText, {
       intent: 'greeting',
+      delay: 500, // Slightly faster initial response
       chips: [
-        { action: 'recommend', label: t('chat_quick_reco') || 'Recommend' },
-        { action: 'best', label: t('chat_quick_best') || 'Best sellers' },
-        { action: 'delivery', label: t('chat_quick_delivery') || 'Delivery' },
-        { action: 'payment', label: t('chat_quick_payment') || 'Payment' },
-        { action: 'whatsapp', label: t('chat_quick_whatsapp') || 'WhatsApp' }
+        { action: 'recommend', label: currentLang==='ar' ? 'اقتراحات' : (currentLang==='fr' ? 'Suggestions' : 'Recommendations') },
+        { action: 'best', label: currentLang==='ar' ? 'الأكثر مبيعاً' : (currentLang==='fr' ? 'Best-sellers' : 'Best sellers') },
+        { action: 'delivery', label: currentLang==='ar' ? 'التوصيل' : (currentLang==='fr' ? 'Livraison' : 'Delivery') },
+        { action: 'whatsapp', label: currentLang==='ar' ? 'واتساب' : (currentLang==='fr' ? 'WhatsApp' : 'WhatsApp') }
       ]
     });
   }
@@ -3037,7 +3044,10 @@ function hideTyping(){
 function sendBotMessage(text, opts){
   opts = opts || {};
   const len = String(text||'').length;
-  const base = Math.min(1200 + len * 20, 2800);
+  // More realistic typing delays based on message length
+  const base = Math.min(1500 + len * 25, 3500);
+  const delay = opts.delay || base;
+
   showTyping();
   setTimeout(()=>{
     hideTyping();
@@ -3047,7 +3057,7 @@ function sendBotMessage(text, opts){
     div.innerHTML = opts.html ? opts.html : escapeHtml(String(text||''));
     chatbotMsgs.appendChild(div);
 
-    // add chips (quick replies) if provided
+    // Enhanced chips with better styling
     if (opts.chips && Array.isArray(opts.chips) && opts.chips.length){
       const chips = document.createElement('div');
       chips.className = 'msg__chips';
@@ -3056,49 +3066,101 @@ function sendBotMessage(text, opts){
       chips.querySelectorAll('button').forEach(b=> b.addEventListener('click', ()=> handleQuickFromChat(b.dataset.quick) ));
     }
 
-    chatbotMsgs.scrollTop = chatbotMsgs.scrollHeight;
+    // Smooth scroll to bottom with better animation
+    setTimeout(() => {
+      chatbotMsgs.scrollTo({
+        top: chatbotMsgs.scrollHeight,
+        behavior: 'smooth'
+      });
+    }, 100);
 
     logChatEntry({ ts: Date.now(), lang: currentLang, user: opts.user || null, bot: text, intent: opts.intent || null });
 
-    if (typeof opts.onShown === 'function') setTimeout(()=> opts.onShown(div), 50);
-  }, opts.delay || base);
+    if (typeof opts.onShown === 'function') setTimeout(()=> opts.onShown(div), 150);
+  }, delay);
 }
 
 function handleQuickFromChat(action){
   if (!action) return;
   if (triggerChatQuick(action)) return;
-  // Policies
+
+  // Enhanced policy handling
   if (action && action.startsWith('policy_')){
     const key = action.replace('policy_','');
     const allowed = ['terms','privacy','shipping','returns','cookies'];
     if (allowed.includes(key)){
       openPolicy(key);
-      const msg = currentLang === 'ar'
-        ? 'فتحت ليك صفحة السياسة. إذا بغيتي نعاونك أكثر قول ليا السؤال ديالك.'
-        : (currentLang === 'fr'
-          ? 'J’ai ouvert la politique correspondante. Dites-moi votre question si besoin.'
-          : 'I opened the policy for you. Tell me your question if you want details.');
-      sendBotMessage(msg, { intent: 'policy' });
+      const responses = {
+        'en': 'I opened the policy page for you. If you need details or have questions, just ask!',
+        'fr': 'J\'ai ouvert la page de politique pour vous. Si vous avez besoin de détails ou des questions, dites-le moi!',
+        'ar': 'فتحت ليك صفحة السياسة. إذا بغيتي تفاصيل أو عندك أسئلة، قول ليا!'
+      };
+      sendBotMessage(responses[currentLang] || responses['en'], { intent: 'policy' });
       return;
     }
   }
+
+  // Enhanced WhatsApp integration
   if (action === 'open_whatsapp' || action === 'order_whatsapp'){
-    // Open WhatsApp with a small prefilled message
-    const msg = t('wa_prefill') || "Hello, I'm interested in this product: {name} • Size: {size}";
-    // try to pull last suggested product name from chat logs
     const lastSuggestion = _chatLogs.slice().reverse().find(l => l && l.intent === 'recommendation');
     const productName = (lastSuggestion && lastSuggestion.bot) ? (lastSuggestion.bot.split('\n')[1] || '').replace('• ','').trim() : '';
-    const message = msg.replace('{name}', productName || '').replace('{size}', '10ml');
+    const prefillMessages = {
+      'en': productName ? `Hello! I'm interested in ${productName}. Can you help me with ordering?` : "Hello! I'm interested in your fragrances. Can you help me find the perfect scent?",
+      'fr': productName ? `Bonjour! Je suis intéressé par ${productName}. Pouvez-vous m'aider avec la commande?` : "Bonjour! Je suis intéressé par vos fragrances. Pouvez-vous m'aider à trouver le parfum idéal?",
+      'ar': productName ? `السلام عليكم! مهتم ب${productName}. تقدر تساعدني في الطلب؟` : "السلام عليكم! مهتم بعطوركم. تقدر تساعدني باش نلقى العطر المثالي؟"
+    };
+    const message = prefillMessages[currentLang] || prefillMessages['en'];
     const url = `https://wa.me/${WHATSAPP_PHONE_INTL}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
+
+    const confirmationMessages = {
+      'en': "Opening WhatsApp for you! Our fragrance experts are ready to assist.",
+      'fr': "Ouverture de WhatsApp pour vous! Nos experts en parfums sont prêts à vous aider.",
+      'ar': "كفاتح واتساب ليك! خبراؤنا في العطور جاهزين باش يساعدوك."
+    };
+    sendBotMessage(confirmationMessages[currentLang] || confirmationMessages['en'], { intent: 'whatsapp' });
     return;
   }
+
+  // Enhanced recommendations
   if (action === 'more_recommend'){
     const items = [...PRODUCTS].sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,6);
-    const text = items.map(p=>`• ${p.name}`).join('\n');
-    sendBotMessage((currentLang === 'ar' ? 'هادو اقتراحات أكثر:' : (currentLang === 'fr' ? 'Voici plus de suggestions :' : 'Here are more suggestions:')) + '\n' + text, { intent: 'recommendation' });
+    const text = items.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join('\n');
+    const responses = {
+      'en': `Here are more recommendations:\n${text}\n\nAll our fragrances are premium quality with authentic formulations.`,
+      'fr': `Voici plus de recommandations :\n${text}\n\nToutes nos fragrances sont de qualité premium avec des formulations authentiques.`,
+      'ar': `هادو اقتراحات أكثر:\n${text}\n\nكل عطورنا كيفاخرة بتركيبات أصلية.`
+    };
+    sendBotMessage(responses[currentLang] || responses['en'], { intent: 'recommendation' });
     return;
   }
+
+  // Handle note-based recommendations
+  if (action && action.startsWith('note_')){
+    const note = action.replace('note_','');
+    const noteProducts = PRODUCTS.filter(p =>
+      (p.notes || []).some(n => n.toLowerCase().includes(note))
+    ).slice(0,3);
+
+    if (noteProducts.length) {
+      const list = noteProducts.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join('\n');
+      const noteNames = {
+        'vanilla': { 'en': 'vanilla', 'fr': 'vanille', 'ar': 'فانيلا' },
+        'musk': { 'en': 'musk', 'fr': 'musc', 'ar': 'مسك' },
+        'fresh': { 'en': 'fresh', 'fr': 'frais', 'ar': 'فريش' }
+      };
+      const noteName = noteNames[note] ? noteNames[note][currentLang] || noteNames[note]['en'] : note;
+      const responses = {
+        'en': `Great choice! Here are fragrances with ${noteName} notes:\n${list}`,
+        'fr': `Excellent choix! Voici des fragrances avec des notes de ${noteName}:\n${list}`,
+        'ar': `اختيار ممتاز! هادو عطور بنوتات ${noteName}:\n${list}`
+      };
+      sendBotMessage(responses[currentLang] || responses['en'], {
+        intent: 'recommendation',
+        chips: [{ action: 'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' }]
+      });
+  }
+}
   if (action === 'note_vanilla' || action === 'note_musk' || action === 'note_fresh'){
     const mapping = { note_vanilla: (currentLang==='ar' ? 'فانيلا' : (currentLang==='fr' ? 'vanille' : 'vanilla')), note_musk: (currentLang==='ar' ? 'مسك' : (currentLang==='fr' ? 'musc' : 'musk')), note_fresh: (currentLang==='ar' ? 'فريش' : (currentLang==='fr' ? 'frais' : 'fresh')) };
     const val = mapping[action] || '';
@@ -3115,25 +3177,61 @@ function showChatLogs(){ try{ const logs = JSON.parse(localStorage.getItem('ipor
 function recommendFromText(text){
   const q = (text||"").toLowerCase();
   const wanted = [];
-  ["vanilla","musk","fresh","citrus","rose","oud","amber","woody","sweet","jasmine","sandalwood","cedar","mint","lemon","patchouli"].forEach(n=>{
-    if (q.includes(n)) wanted.push(n);
+  const noteKeywords = {
+    vanilla: ['vanilla','vanille','فانيلا','فانيليا'],
+    musk: ['musk','musc','مسك'],
+    fresh: ['fresh','frais','citrus','citron','lemon','lime','bergamot','mint','menthe','فريش','ليمون','نعناع','حامض'],
+    rose: ['rose','roses','ورد','وردي'],
+    oud: ['oud','عود','عوده'],
+    amber: ['amber','ambre','عنبر'],
+    woody: ['wood','woody','bois','cedar','sandalwood','patchouli','خشب','أرز','صندل','باتشولي'],
+    sweet: ['sweet','sucré','حلو','سكري'],
+    jasmine: ['jasmine','jasmin','ياسمين'],
+    sandalwood: ['sandalwood','santal','صندل'],
+    cedar: ['cedar','cèdre','أرز'],
+    mint: ['mint','menthe','نعناع'],
+    lemon: ['lemon','citron','ليمون'],
+    patchouli: ['patchouli','patchouli','باتشولي']
+  };
+
+  // Check for note preferences
+  Object.keys(noteKeywords).forEach(note => {
+    const keywords = noteKeywords[note];
+    if (keywords.some(keyword => q.includes(keyword))) {
+      wanted.push(note);
+    }
   });
 
   let items = [...PRODUCTS];
   if (wanted.length){
     items = items.map(p=>{
       const notes = (p.notes||[]).map(x=>String(x).toLowerCase());
-      const score = wanted.reduce((s,w)=> s + (notes.includes(w) ? 1 : 0), 0);
+      let score = wanted.reduce((s,w)=> s + (notes.includes(w) ? 2 : 0), 0);
+      // Bonus for multiple matching notes
+      if (score > 2) score += 1;
       return { p, score };
-    }).sort((a,b)=>(b.score-a.score)||((b.p.rating||0)-(a.p.rating||0))).slice(0,3).map(x=>x.p);
+    }).filter(x => x.score > 0).sort((a,b)=>(b.score-a.score)||((b.p.rating||0)-(a.p.rating||0))).slice(0,3).map(x=>x.p);
   } else {
+    // If no specific notes mentioned, return top-rated products
     items = items.sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,3);
   }
 
-  if (!items.length) return currentLang==="ar" ? "ما لقيتش اقتراحات دابا. سولني فواتساب 👍" : (currentLang==="fr" ? "Je n’ai pas de suggestion maintenant. Écrivez-nous sur WhatsApp 👍" : "I couldn't find suggestions right now. Ask us on WhatsApp 👍");
+  if (!items.length) {
+    const fallbackResponses = {
+      'en': "I couldn't find specific recommendations right now. Ask us on WhatsApp for personalized fragrance suggestions! 👍",
+      'fr': "Je n'ai pas pu trouver de recommandations spécifiques maintenant. Écrivez-nous sur WhatsApp pour des suggestions personnalisées! 👍",
+      'ar': "ما لقيتش اقتراحات محددة دابا. سولنا فواتساب باش نقترحو عليك عطور شخصية! 👍"
+    };
+    return fallbackResponses[currentLang] || fallbackResponses['en'];
+  }
 
-  const lines = items.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join("\n");
-  return (currentLang==="ar" ? "هادو اقتراحات:" : (currentLang==="fr" ? "Voici des suggestions :" : "Here are suggestions:")) + "\n" + lines;
+  const list = items.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join("\n");
+  const recommendationResponses = {
+    'en': `Based on your interest in ${wanted.length ? wanted.join(', ') : 'luxury fragrances'}, I recommend:\n${list}\n\nEach fragrance is carefully selected for its quality and unique character.`,
+    'fr': `Basé sur votre intérêt pour ${wanted.length ? wanted.join(', ') : 'les fragrances de luxe'}, je recommande :\n${list}\n\nChaque fragrance est sélectionnée avec soin pour sa qualité et son caractère unique.`,
+    'ar': `على أساس اهتمامك ب${wanted.length ? wanted.join(' و ') : 'العطور الفاخرة'}، كنقترح:\n${list}\n\nكل عطر مختار بعناية لجودته وشخصيته الفريدة.`
+  };
+  return recommendationResponses[currentLang] || recommendationResponses['en'];
 }
 
 function normalizeChatText(text){
@@ -3214,12 +3312,28 @@ function getChatResponse(userText){
   const lower = normalizeChatText(raw);
   const chips = [];
 
-  // greetings / thanks
+  // Enhanced greetings with personality
   if (includesAny(lower, ['hello','hi','hey','bonjour','salut','salam','السلام','مرحبا','اهلا','bonjour'])){
-    return { intent:'greeting', text: t('chat_generic_greeting') };
+    const responses = {
+      'en': ["Hello! Welcome to IPORDISE PARFUM. How can I help you discover your perfect scent today?", "Hi there! Ready to find your signature fragrance? I'm here to help!", "Welcome! I'm your fragrance expert. What kind of scent are you looking for?"],
+      'fr': ["Bonjour! Bienvenue chez IPORDISE PARFUM. Comment puis-je vous aider à découvrir votre parfum idéal?", "Salut! Prêt à trouver votre fragrance signature? Je suis là pour vous aider!", "Bienvenue! Je suis votre expert en parfums. Quel type de senteur recherchez-vous?"],
+      'ar': ["مرحبا! أهلا بك في آي بورديس بارفان. كيفاش نقدر نساعدك تكتشف عطرك المثالي اليوم؟", "أهلا! جاهز باش تلاقي عطرك الخاص؟ أنا هنا باش نساعدك!", "أهلا وسهلا! أنا خبير العطور ديالك. شنو نوع العطر اللي كتدور عليه؟"]
+    };
+    const langResponses = responses[currentLang] || responses['en'];
+    const randomResponse = langResponses[Math.floor(Math.random() * langResponses.length)];
+    chips.push({ action:'recommend', label: currentLang==='ar' ? 'اقتراحات' : (currentLang==='fr' ? 'Suggestions' : 'Recommendations') });
+    chips.push({ action:'best', label: currentLang==='ar' ? 'الأكثر مبيعاً' : (currentLang==='fr' ? 'Best-sellers' : 'Best sellers') });
+    return { intent:'greeting', text: randomResponse, chips };
   }
+
   if (includesAny(lower, ['thanks','thank you','merci','شكرا','chokran','thx'])){
-    return { intent:'thanks', text: t('chat_welcome') };
+    const responses = {
+      'en': ["You're welcome! Feel free to ask if you need anything else.", "My pleasure! Don't hesitate to reach out for more fragrance advice.", "Happy to help! Come back anytime for more scent recommendations."],
+      'fr': ["De rien! N'hésitez pas si vous avez besoin d'autre chose.", "Avec plaisir! Contactez-moi pour plus de conseils en parfums.", "Content de vous aider! Revenez quand vous voulez pour plus de recommandations."],
+      'ar': ["عفوا! سولنا إذا بغيتي حاجة أخرى.", "بالعافية! تواصل معانا باش نعاونك أكثر في العطور.", "فرحان باش نساعدك! عود لينا كلما بغيتي نصايح أكثر."]
+    };
+    const langResponses = responses[currentLang] || responses['en'];
+    return { intent:'thanks', text: langResponses[Math.floor(Math.random() * langResponses.length)] };
   }
 
   // policies
@@ -3248,7 +3362,12 @@ function getChatResponse(userText){
   }
   if (includesAny(lower, ['contact','email','mail','phone','whatsapp','واتساب','تواصل','رقم'])){
     chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    return { intent:'contact', text: t('chat_contact'), chips };
+    const responses = {
+      'en': "You can reach us anytime on WhatsApp for personalized fragrance advice and ordering. We're here to help!",
+      'fr': "Vous pouvez nous contacter à tout moment sur WhatsApp pour des conseils personnalisés en parfums et commander. Nous sommes là pour vous aider!",
+      'ar': "تقدر توصل لينا فأي وقت فواتساب باش نعاونك في اختيار العطور وطلب. نحن هنا باش نساعدك!"
+    };
+    return { intent:'contact', text: responses[currentLang] || responses['en'], chips };
   }
 
   // how to order
@@ -3257,31 +3376,51 @@ function getChatResponse(userText){
     return { intent:'how_to_order', text: makeOrderHowToText(), chips };
   }
 
-  // deals / discounts
+  // Enhanced deals section
   if (includesAny(lower, ['deal','discount','promo','offer','offre','sold','تخفيض','عرض','عروض'])){
     chips.push({ action:'best', label: t('chat_quick_best') || 'Best sellers' });
     chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    return { intent:'deals', text: currentLang==='ar' ? 'كاينين عروض محدودة. شوف قسم Deals فالصفحة، أو سولنا فواتساب على عرض اليوم.' : (currentLang==='fr' ? "Il y a des offres limitées. Voir la section Deals, ou demandez l’offre du jour sur WhatsApp." : 'We have limited-time offers. See the Deals section, or ask us on WhatsApp for today’s best offer.'), chips };
+    const responses = {
+      'en': "Check out our limited-time offers in the Deals section! Each offer is carefully selected for quality and value. Ask us on WhatsApp for today's special deal.",
+      'fr': "Découvrez nos offres limitées dans la section Deals! Chaque offre est sélectionnée avec soin pour sa qualité et sa valeur. Demandez-nous sur WhatsApp l'offre spéciale du jour.",
+      'ar': "شوف عروضنا المحدودة في قسم Deals! كل عرض مختار بعناية للجودة والقيمة. سولنا فواتساب على العرض الخاص اليوم."
+    };
+    return { intent:'deals', text: responses[currentLang] || responses['en'], chips };
   }
 
-  // product price / availability / search
+  // Enhanced product search and recommendations
   const isPriceQuestion = includesAny(lower, ['price','how much','cost','prix','combien','ثمن','بشحال','سعر']);
   const products = findProductsByQuery(raw, 3);
   if (isPriceQuestion && products.length){
     const p = products[0];
     const price = formatMoney(getProductPrice(p));
     chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    return { intent:'price', text: `${p.name}: ${price}`, chips };
+    const responses = {
+      'en': `${p.name} is priced at ${price}. This luxury fragrance offers exceptional value with premium ingredients and expert formulation.`,
+      'fr': `${p.name} est au prix de ${price}. Cette fragrance de luxe offre une valeur exceptionnelle avec des ingrédients premium et une formulation experte.`,
+      'ar': `${p.name} سعره ${price}. هذا العطر الفاخر يقدم قيمة استثنائية مع مكونات مميزة وتركيبة خبيرة.`
+    };
+    return { intent:'price', text: responses[currentLang] || responses['en'], chips };
   }
   if (products.length && includesAny(lower, ['have','available','stock','disponible','avez vous','كاين','موجود'])){
     const list = products.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join('\n');
     chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    return { intent:'product_search', text: (currentLang==='ar' ? 'ها شنو لقيت:' : (currentLang==='fr' ? 'Voici ce que j’ai trouvé :' : 'Here’s what I found:')) + `\n${list}`, chips };
+    const responses = {
+      'en': `Great choice! Here's what I found in stock:\n${list}\n\nAll our fragrances are authentic and ready to ship.`,
+      'fr': `Excellent choix! Voici ce que j'ai trouvé en stock:\n${list}\n\nToutes nos fragrances sont authentiques et prêtes à expédier.`,
+      'ar': `اختيار ممتاز! هادو شنو لقيت في المخزون:\n${list}\n\nكل عطورنا أصلية وجاهزة للشحن.`
+    };
+    return { intent:'product_search', text: responses[currentLang] || responses['en'], chips };
   }
   if (products.length && !isPriceQuestion && includesAny(lower, ['recommend','suggest','reco','اقترح','اقترحلي','نقترح','suggestion'])){
     const list = products.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join('\n');
     chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    return { intent:'recommendation', text: (currentLang==='ar' ? 'كنقترح عليك:' : (currentLang==='fr' ? 'Je vous recommande :' : 'I recommend:')) + `\n${list}`, chips };
+    const responses = {
+      'en': `Based on your preferences, I recommend:\n${list}\n\nEach of these fragrances has received excellent reviews for their quality and scent profile.`,
+      'fr': `Basé sur vos préférences, je recommande:\n${list}\n\nChacune de ces fragrances a reçu d'excellentes critiques pour leur qualité et leur profil olfactif.`,
+      'ar': `على أساس تفضيلاتك، كنقترح:\n${list}\n\nكل واحدة من هاد العطور تلقت تقييمات ممتازة لجودتها وبروفيل ريحتها.`
+    };
+    return { intent:'recommendation', text: responses[currentLang] || responses['en'], chips };
   }
 
   // notes-based recommendation (existing logic)
@@ -3291,11 +3430,18 @@ function getChatResponse(userText){
     return { intent:'recommendation', text: rec, chips: chips.length ? chips : undefined };
   }
 
-  // final fallback
+  // Enhanced fallback with better suggestions
   chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
   chips.push({ action:'policy_shipping', label: currentLang==='ar' ? 'التوصيل' : (currentLang==='fr' ? 'Livraison' : 'Delivery') });
   chips.push({ action:'policy_returns', label: currentLang==='ar' ? 'الإرجاع' : (currentLang==='fr' ? 'Retours' : 'Returns') });
-  return { intent:'unknown', text: makeUnknownFallback(), chips };
+  chips.push({ action:'recommend', label: currentLang==='ar' ? 'اقتراحات' : (currentLang==='fr' ? 'Suggestions' : 'Recommendations') });
+
+  const fallbackResponses = {
+    'en': "I'm here to help you find the perfect fragrance! Tell me about your preferences - do you like fresh, woody, oriental, or floral notes? Or ask me about our bestsellers, shipping, or current offers.",
+    'fr': "Je suis là pour vous aider à trouver le parfum idéal! Parlez-moi de vos préférences - aimez-vous les notes fraîches, boisées, orientales ou florales? Ou demandez-moi nos best-sellers, la livraison ou les offres actuelles.",
+    'ar': "أنا هنا باش نساعدك تلاقي العطر المثالي! قل ليا تفضيلاتك - كتحب النوتات الفريشة، الخشبية، الشرقية أو الزهرية؟ أو سولنا على الأكثر مبيعاً، التوصيل، أو العروض الحالية."
+  };
+  return { intent:'unknown', text: fallbackResponses[currentLang] || fallbackResponses['en'], chips };
 }
 
 chatbotQuick?.addEventListener("click",(e)=>{
