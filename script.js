@@ -3469,7 +3469,17 @@ function initHeroSlider(){
   // Preload images to avoid flashes during swap
   const preload = (urls) => {
     try{
-      urls.forEach(u => { const img = new Image(); img.decoding = 'async'; img.loading = 'eager'; img.src = u; });
+      urls.forEach(u => { 
+        const img = new Image(); 
+        img.decoding = 'async'; 
+        img.loading = 'eager'; 
+        img.src = u;
+        // If image fails to load, mark it as failed
+        img.onerror = () => {
+          console.warn('Failed to load hero image:', u);
+          // Could implement fallback logic here
+        };
+      });
     }catch(e){}
   };
   preload(desktopUrls);

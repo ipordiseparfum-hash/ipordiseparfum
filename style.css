@@ -1,17 +1,17 @@
 :root{
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-  --bg:#fbfaf8;
+  --bg:#fff9f9;
   --text:#111827;
   --muted:#6b7280;
-  --line:#e7e5e4;
-  --soft:#fafaf9;
-  --soft2:#fffaf3;
-  --brand:#c09a59;     /* gold */
-  --brand-2:#d4af37;
-  --brand-deep:#8a6a2f;
-  --accent:#0b6fbd;
+  --line:#eee7e7;
+  --soft:#fffdfd;
+  --soft2:#fff4f4;
+  --brand:#b1121f;     /* refined red */
+  --brand-2:#e11d48;
+  --brand-deep:#7f1d1d;
+  --accent:#7f1d1d;
   --success:#25D366;
-  --danger:#ef4444;
+  --danger:#dc2626;
   --black:#000000;
   --shadow: 0 18px 40px rgba(2, 6, 23, 0.12);
   --shadow-soft: 0 10px 24px rgba(2, 6, 23, 0.08);
@@ -26,9 +26,9 @@
   --fs-sm: 14px;
   --fs-lg: 20px;
 
-  --surface: rgba(255,255,255,.92);
-  --surface-2: rgba(255,255,255,.82);
-  --ring: 0 0 0 4px rgba(192,154,89,.22);
+  --surface: rgba(255,255,255,.94);
+  --surface-2: rgba(255,255,255,.86);
+  --ring: 0 0 0 4px rgba(177,18,31,.22);
 }
 
 *{ box-sizing:border-box; }
@@ -59,9 +59,9 @@ body::before{
   pointer-events: none;
   z-index: -1;
   background:
-    radial-gradient(900px 500px at 18% 8%, rgba(212,175,55,.10), transparent 60%),
-    radial-gradient(900px 500px at 82% 12%, rgba(255,77,125,.10), transparent 55%),
-    radial-gradient(900px 500px at 52% 90%, rgba(11,111,189,.06), transparent 60%);
+    radial-gradient(900px 500px at 18% 8%, rgba(225,29,72,.10), transparent 60%),
+    radial-gradient(900px 500px at 82% 12%, rgba(177,18,31,.08), transparent 55%),
+    radial-gradient(900px 500px at 52% 90%, rgba(17,24,39,.03), transparent 60%);
 }
 
 ::selection{ background: rgba(192,154,89,.22); }
@@ -1005,8 +1005,8 @@ html[dir="rtl"] .search__item{
 
 /* Hero */
 .hero{
-  background: radial-gradient(1200px 600px at 20% 10%, #fff1f4, transparent 60%),
-              radial-gradient(900px 500px at 80% 10%, #f1f5ff, transparent 55%);
+  background: radial-gradient(1200px 600px at 20% 10%, #fff3f3, transparent 60%),
+              radial-gradient(900px 500px at 80% 10%, #fff7f7, transparent 55%);
   border-bottom:1px solid rgba(229,231,235,.7);
 }
 .hero__inner{
@@ -3062,7 +3062,7 @@ html[dir="rtl"] .langOption{ text-align:right; }
   position: relative;
   border-radius: 0;
   overflow: hidden;
-  background: #0f0f13;
+  background: #ffffff;
   box-shadow: var(--shadow);
   aspect-ratio: 16 / 7;
   width: 100%;
@@ -3076,8 +3076,21 @@ html[dir="rtl"] .langOption{ text-align:right; }
   opacity:0;
   transition: opacity .8s ease;
   will-change: opacity;
+  z-index: 0;
+  filter: brightness(1.1) contrast(1.05) saturate(1.02);
 }
 .hero__bg.is-active{ opacity:1; }
+
+.hero__media::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(600px 320px at 12% 12%, rgba(255,232,232,.18), transparent 55%),
+    linear-gradient(180deg, rgba(16,12,12,.08), rgba(0,0,0,0) 40%, rgba(12,8,8,.10) 100%);
+}
 
 .hero__shop{
   position: absolute;
@@ -3160,7 +3173,10 @@ html[dir="rtl"] .langOption{ text-align:right; }
 
 @media (max-width: 560px){
   .hero__media{
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 3;
+  }
+  .hero__bg{
+    background-position: center top;
   }
 }
 
@@ -3193,7 +3209,8 @@ html[dir="rtl"] .langOption{ text-align:right; }
   height: 100%;
   display: block;
   border-radius: 18px;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   aspect-ratio: 16 / 7;
 }
 
@@ -3422,6 +3439,7 @@ html, body{ overflow-x: hidden; }
   background: transparent !important;
   border-bottom: 0 !important;
   padding: 0 !important;
+  margin: 0 !important;
 }
 
 /* force the hero media to bleed edge-to-edge even if a parent uses max-width */
@@ -3436,10 +3454,10 @@ html, body{ overflow-x: hidden; }
 
 /* keep subject + promo text visible by biasing the crop a little to the right on desktop */
 .hero__bg{
-  background-position: 70% center !important;
+  background-position: center !important;
 }
 
 /* Mobile: taller, and shift crop a bit so face/text stays visible */
 @media (max-width: 860px){
-  .hero__bg{ background-position: 55% 30% !important; }
+  .hero__bg{ background-position: center !important; }
 }
