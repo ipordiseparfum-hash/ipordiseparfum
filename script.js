@@ -3589,14 +3589,44 @@ function initHeroSlider(){
   // Premium Loading Screen
   const loadingScreen = document.getElementById('loadingScreen');
   if (loadingScreen) {
+    const loadingText = document.getElementById('loadingText');
+    const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+
+    const messages = isMobile ? [
+      'Crafting Luxury Experiences',
+      'Curating Premium Fragrances',
+      'Your Scent Journey Begins',
+      'Loading Signature Scents',
+      'Welcome to IPORDISE'
+    ] : [
+      'Crafting Luxury Experiences',
+      'Curating Premium Fragrances',
+      'Preparing Your Scent Journey',
+      'Loading Signature Scents',
+      'Welcome to Luxury'
+    ];
+
+    let messageIndex = 0;
+    const messageInterval = setInterval(() => {
+      messageIndex = (messageIndex + 1) % messages.length;
+      loadingText.style.opacity = '0';
+      loadingText.style.transform = 'translateY(10px)';
+      setTimeout(() => {
+        loadingText.textContent = messages[messageIndex];
+        loadingText.style.opacity = '1';
+        loadingText.style.transform = 'translateY(0)';
+      }, 300);
+    }, isMobile ? 1500 : 1200); // Slower on mobile for better readability
+
     // Hide loading screen after content loads
     window.addEventListener('load', () => {
+      clearInterval(messageInterval);
       setTimeout(() => {
         loadingScreen.classList.add('fade-out');
         setTimeout(() => {
           loadingScreen.style.display = 'none';
         }, 600);
-      }, 800); // Minimum show time for premium feel
+      }, isMobile ? 1200 : 800); // Longer show time on mobile
     });
   }
 })();
