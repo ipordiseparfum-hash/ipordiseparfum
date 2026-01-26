@@ -3732,17 +3732,15 @@ function initHeroSlider(){
     });
   }
 
-  // Premium Loading Screen
+  // Premium Loading Screen - Optimized for Mobile
   const loadingScreen = document.getElementById('loadingScreen');
   if (loadingScreen) {
     const loadingText = document.getElementById('loadingText');
     const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
 
+    // Reduced message set for mobile to improve performance
     const messages = isMobile ? [
       'Crafting Luxury Experiences',
-      'Curating Premium Fragrances',
-      'Your Scent Journey Begins',
-      'Loading Signature Scents',
       'Welcome to IPORDISE'
     ] : [
       'Crafting Luxury Experiences',
@@ -3753,26 +3751,84 @@ function initHeroSlider(){
     ];
 
     let messageIndex = 0;
-    const messageInterval = setInterval(() => {
-      messageIndex = (messageIndex + 1) % messages.length;
-      loadingText.style.opacity = '0';
-      loadingText.style.transform = 'translateY(10px)';
-      setTimeout(() => {
-        loadingText.textContent = messages[messageIndex];
-        loadingText.style.opacity = '1';
-        loadingText.style.transform = 'translateY(0)';
-      }, 300);
-    }, isMobile ? 1500 : 1200); // Slower on mobile for better readability
+    let messageInterval;
 
-    // Hide loading screen after content loads
-    window.addEventListener('load', () => {
-      clearInterval(messageInterval);
-      setTimeout(() => {
-        loadingScreen.classList.add('fade-out');
+    // Start with first message immediately
+    loadingText.textContent = messages[0];
+
+    // Slower message rotation on mobile for better UX
+    if (!isMobile) {
+      messageInterval = setInterval(() => {
+        messageIndex = (messageIndex + 1) % messages.length;
+        loadingText.style.opacity = '0';
+        loadingText.style.transform = 'translateY(10px)';
         setTimeout(() => {
-          loadingScreen.style.display = 'none';
-        }, 600);
-      }, isMobile ? 1200 : 800); // Longer show time on mobile
-    });
+          loadingText.textContent = messages[messageIndex];
+          loadingText.style.opacity = '1';
+          loadingText.style.transform = 'translateY(0)';
+        }, 200);
+      }, 1000);
+    }
+
+    // Optimized loading detection
+    const hideLoadingScreen = () => {
+      if (messageInterval) clearInterval(messageInterval);
+      loadingScreen.classList.add('fade-out');
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 400); // Faster fade on mobile
+    };
+
+    // Progressive loading approach
+    let hasStartedHiding = false;
+    const attemptHideLoading = () => {
+      if (hasStartedHiding) return;
+      hasStartedHiding = true;
+
+      // Minimum display time for UX
+      const minDisplayTime = isMobile ? 800 : 600;
+
+      setTimeout(() => {
+        // Check if critical resources are loaded
+        const criticalImages = document.querySelectorAll('img[loading="eager"], .hero img');
+        const totalCritical = criticalImages.length;
+        let loadedCritical = 0;
+
+        if (totalCritical === 0) {
+          // No critical images, hide immediately after minimum time
+          hideLoadingScreen();
+        } else {
+          // Wait for critical images or timeout
+          const checkCriticalImages = () => {
+            loadedCritical = Array.from(criticalImages).filter(img => img.complete && img.naturalHeight > 0).length;
+
+            if (loadedCritical >= Math.min(totalCritical, 3)) { // Wait for at least 3 critical images or all
+              hideLoadingScreen();
+            } else if (Date.now() - startTime > (isMobile ? 3000 : 2000)) { // Max wait time
+              hideLoadingScreen();
+            } else {
+              setTimeout(checkCriticalImages, 100);
+            }
+          };
+
+          const startTime = Date.now();
+          checkCriticalImages();
+        }
+      }, minDisplayTime);
+    };
+
+    // Use DOMContentLoaded for faster mobile loading
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', attemptHideLoading);
+    } else {
+      attemptHideLoading();
+    }
+
+    // Fallback: always hide after maximum time to prevent infinite loading
+    setTimeout(() => {
+      if (!hasStartedHiding) {
+        hideLoadingScreen();
+      }
+    }, isMobile ? 4000 : 3000);
   }
 })();

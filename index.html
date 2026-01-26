@@ -9,6 +9,11 @@
   <meta name="color-scheme" content="light" />
   <meta name="robots" content="index,follow" />
 
+  <!-- Preload critical resources for faster loading -->
+  <link rel="preload" href="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/logo.jpeg" as="image" fetchpriority="high">
+  <link rel="dns-prefetch" href="//raw.githubusercontent.com">
+  <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+
   <!-- Apply saved language early (prevents LTR/RTL flash) -->
   <script>
     (function(){
@@ -62,10 +67,16 @@
 </head>
 
 <body>
-  <!-- Premium Loading Screen -->
+  <!-- Premium Loading Screen - Optimized for Mobile -->
   <div class="loading-screen" id="loadingScreen">
     <div class="loading-logo">
-      <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/logo.jpeg" alt="IPORDISE PARFUM" />
+      <img src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/logo.jpeg"
+           alt="IPORDISE PARFUM"
+           width="50"
+           height="50"
+           loading="eager"
+           decoding="sync"
+           fetchpriority="high" />
     </div>
     <div class="loading-text" id="loadingText">Crafting Luxury Experiences</div>
     <div class="loading-bar">

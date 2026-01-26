@@ -73,7 +73,7 @@ body::before{
 
 ::selection{ background: rgba(139, 90, 60, .15); color: var(--brand-deep); }
 
-/* Premium Loading Screen */
+/* Premium Loading Screen - Optimized for Mobile */
 .loading-screen {
   position: fixed;
   inset: 0;
@@ -84,9 +84,13 @@ body::before{
   justify-content: center;
   flex-direction: column;
   gap: 24px;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease; /* Faster transition on mobile */
   padding: 20px;
   box-sizing: border-box;
+  /* Optimize for mobile rendering */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: opacity, visibility;
 }
 
 .loading-screen.fade-out {
@@ -103,6 +107,7 @@ body::before{
   align-items: center;
   justify-content: center;
   box-shadow: var(--premium-shadow);
+  /* Reduced animation complexity for mobile */
   animation: pulse 2s ease-in-out infinite;
   position: relative;
 }
@@ -128,11 +133,14 @@ body::before{
   font-weight: 600;
   color: var(--brand-deep);
   letter-spacing: 0.5px;
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 0.8s ease-in-out; /* Faster animation */
   text-align: center;
   max-width: 280px;
   line-height: 1.4;
   position: relative;
+  /* Optimize text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .loading-text::after {
@@ -145,7 +153,7 @@ body::before{
   height: 2px;
   background: var(--luxury-gradient);
   border-radius: 1px;
-  animation: slideInWidth 1.5s ease-out 0.5s both;
+  animation: slideInWidth 1.2s ease-out 0.3s both; /* Faster animation */
 }
 
 .loading-bar {
@@ -161,7 +169,7 @@ body::before{
   height: 100%;
   background: var(--luxury-gradient);
   border-radius: 2px;
-  animation: loadingProgress 2.5s ease-in-out;
+  animation: loadingProgress 2s ease-in-out; /* Shorter animation */
   position: relative;
 }
 
@@ -173,31 +181,84 @@ body::before{
   bottom: 0;
   width: 20px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  animation: shimmer 1.5s ease-in-out infinite;
+  animation: shimmer 1.2s ease-in-out infinite; /* Faster shimmer */
 }
 
-/* Mobile-specific enhancements */
+/* Mobile-specific enhancements - Optimized for Performance */
 @media (max-width: 768px) {
   .loading-screen {
-    gap: 32px;
-    padding: 40px 20px;
+    gap: 28px; /* Slightly reduced gap */
+    padding: 32px 20px; /* Optimized padding */
+    /* Force hardware acceleration */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
 
   .loading-logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 24px;
+    width: 90px; /* Slightly smaller for mobile */
+    height: 90px;
+    border-radius: 22px;
+    /* Reduce animation complexity on mobile */
+    animation: pulse 2.5s ease-in-out infinite;
   }
 
   .loading-logo img {
-    width: 60px;
-    height: 60px;
-    border-radius: 14px;
+    width: 55px;
+    height: 55px;
+    border-radius: 13px;
   }
 
   .loading-logo::after {
-    border-radius: 28px;
+    border-radius: 26px;
+    /* Reduce glow effect on mobile for better performance */
+    opacity: 0.2;
   }
+
+  .loading-text {
+    font-size: 16px; /* Slightly smaller font for mobile */
+    font-weight: 600;
+    max-width: 260px;
+    /* Disable complex animations on slower mobile devices */
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .loading-text::after {
+    /* Simplify underline animation on mobile */
+    animation: slideInWidth 0.8s ease-out 0.2s both;
+  }
+
+  .loading-bar {
+    width: 180px; /* Slightly narrower */
+    height: 3px;
+  }
+
+  .loading-progress {
+    /* Shorter animation duration on mobile */
+    animation: loadingProgress 1.5s ease-in-out;
+  }
+
+  .loading-progress::after {
+    /* Disable shimmer effect on mobile for better performance */
+    display: none;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen {
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  .loading-logo,
+  .loading-logo::after,
+  .loading-text::after,
+  .loading-progress,
+  .loading-progress::after {
+    animation: none !important;
+  }
+}
 
   .loading-text {
     font-size: 20px;
