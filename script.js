@@ -48,7 +48,7 @@ const I18N = {
     concierge_desc: "Tell us the notes you love (vanilla, musk, fresh, floral, oud…) and we’ll suggest the perfect match in minutes.",
     concierge_cta_wa: "Chat on WhatsApp",
     concierge_cta_finder: "Try the Fragrance Finder",
-    cta_shop: "Shop Now",
+    cta_shop: "GO TO ✨",
     cta_best: "View Best Sellers",
     stat_customers: "Happy Customers",
     stat_rating: "Average Rating",
@@ -218,7 +218,7 @@ const I18N = {
     concierge_desc: "Dites-nous les notes que vous aimez (vanille, musc, frais, floral, oud…) et on vous recommande le parfum idéal en quelques minutes.",
     concierge_cta_wa: "Discuter sur WhatsApp",
     concierge_cta_finder: "Essayer le Finder",
-    cta_shop: "Acheter",
+    cta_shop: "ALLER À ✨",
     cta_best: "Voir les best-sellers",
     stat_customers: "Clients satisfaits",
     stat_rating: "Note moyenne",
@@ -387,7 +387,7 @@ const I18N = {
     concierge_desc: "قول لينا النوتات اللي كتعجبك (فانيلا، مسك، فريش، زهري، عود…) وغادي نقترحو عليك الأنسب فدقايق.",
     concierge_cta_wa: "تواصل على واتساب",
     concierge_cta_finder: "جرّب Fragrance Finder",
-    cta_shop: "تسوق الآن",
+    cta_shop: "اذهب إلى ✨",
     cta_best: "شاهد الأكثر مبيعاً",
     stat_customers: "زبناء سعداء",
     stat_rating: "معدل التقييم",
@@ -3599,15 +3599,15 @@ function initHeroSlider(){
 
   // Desktop (wide) hero images
   const desktopUrls = [
-    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%201%20mens.png',
-    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%202%20women.png'
+    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Timeless%20elegance%20in%20every%20spray%20man.png',
+    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Timeless%20elegance%20with%20IPORDISE%20woman.png'
   ];
 
   // Optional: add dedicated mobile crops here (recommended for best results).
   // If you don't have mobile-specific files yet, we fallback to desktop images.
   const mobileUrls = [
-    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%201%20mens.png',
-    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/hero%20section%202%20women.png'
+    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Timeless%20elegance%20in%20every%20spray%20man.png',
+    'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Timeless%20elegance%20with%20IPORDISE%20woman.png'
   ];
 
   const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
