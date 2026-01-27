@@ -574,6 +574,22 @@ function applyI18n(lang){
   renderFlashDeals();
   renderFinder();
   if (chatHasStarted) seedChatIfEmpty();
+  
+  // Auto-trigger social proof toast occasionally
+  setTimeout(() => {
+    const names = ["Sarah K.", "Mohammed A.", "Yassine B.", "Hajar M.", "Karim T."];
+    const products = ["Oud Royal", "Vanilla Bloom", "Musk & Rose", "All Day"];
+    const cities = ["Casablanca", "Rabat", "Marrakech", "Tangier"];
+    
+    const random = arr => arr[Math.floor(Math.random() * arr.length)];
+    
+    showToast({
+      title: "Verified Purchase",
+      message: `${random(names)} from ${random(cities)} just bought ${random(products)}`,
+      actionLabel: null,
+      timeoutMs: 4000
+    });
+  }, 8000);
 } 
 
 // ---------- Utilities ----------
@@ -1351,9 +1367,12 @@ function favRowHTML(p){
         <div class="muted small">${brand}</div>
         <div class="cartItem__price"><strong>${price}</strong></div>
       </div>
-      <div class="cartItem__actions">
-        <button class="icon-btn" type="button" data-fav-remove="${escapeHtml(p.id)}" aria-label="Remove from favourites" title="Remove">
-          <span class="icon icon--close" aria-hidden="true"></span>
+      <div class="cartItem__actions" style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <button class="icon-btn" type="button" data-fav-remove="${escapeHtml(p.id)}" aria-label="Remove from favourites" title="Remove" style="width:32px; height:32px;">
+          <span class="icon icon--close" aria-hidden="true" style="font-size:16px;"></span>
+        </button>
+        <button class="btn btn--small btn--primary" type="button" onclick="addToCart(PRODUCTS.find(x=>x.id=='${escapeHtml(p.id)}'))" style="padding:6px 12px; font-size:11px;">
+          ${currentLang==='ar'?'أضف للسلة':(currentLang==='fr'?'Ajouter':'Add to Bag')}
         </button>
       </div>
     </div>`;
