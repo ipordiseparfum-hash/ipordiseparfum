@@ -23,32 +23,38 @@ const INSTAGRAM_CONFIG = {
     FALLBACK_IMAGES: [
         // Demo Video 1
         { 
-            url: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=400', 
+            url: 'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Layton%20fragrance%20set%20with%20decants.png', 
             type: 'VIDEO', 
             videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', 
             link: 'https://instagram.com',
             caption: 'Summer Campaign'
         },
-        // Demo Image 1
-        { url: 'https://images.unsplash.com/photo-1595535373192-fc0437bcce99?auto=format&fit=crop&q=80&w=400', type: 'IMAGE',  link: 'https://instagram.com' },
-        // Demo Image 2
-        { url: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=400', type: 'IMAGE',  link: 'https://instagram.com' },
-        // Demo Video 2
+        // Product 1: Gucci Intense Oud
+        { url: 'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Intense%20Oud%20perfume%20collection.png', type: 'IMAGE',  link: 'https://instagram.com' },
+        
+        // Product 2: JPG Ultra Male
+        { url: 'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Ultra%20Male%20set.png', type: 'IMAGE',  link: 'https://instagram.com' },
+        
+        // Demo Video 2 (Using Hugo Boss Image as poster)
         { 
-            url: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&q=80&w=400', 
+            url: 'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Hugo%20Boss%20The%20Scent%20Elixir%20set.png', 
             type: 'VIDEO', 
             videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', 
             link: 'https://instagram.com',
             caption: 'Behind the Scenes'
         },
-        // Demo Image 3
-        { url: 'https://images.unsplash.com/photo-1543486958-d783bfbf7f8e?auto=format&fit=crop&q=80&w=400', type: 'IMAGE',  link: 'https://instagram.com' },
-        // Demo Image 4
-        { url: 'https://images.unsplash.com/photo-1528740561666-dc2479dc08ab?auto=format&fit=crop&q=80&w=400', type: 'IMAGE',  link: 'https://instagram.com' },
-        // Demo Image 5
-        { url: 'https://images.unsplash.com/photo-1594035910387-406691aa6981?auto=format&fit=crop&q=80&w=400', type: 'IMAGE',  link: 'https://instagram.com' },
-        // Demo Image 6
-        { url: 'https://images.unsplash.com/photo-1592914610354-fd354ea45e48?auto=format&fit=crop&q=80&w=400', type: 'IMAGE',  link: 'https://instagram.com' }
+        
+        // Product 3: Montale
+        { url: 'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Montale%20Paris%20Arabians%20Tonka%20set.png', type: 'IMAGE',  link: 'https://instagram.com' },
+        
+        // Product 4: Givenchy
+        { url: 'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Givenchy%20Gentleman%20R%C3%A9serve%20Priv%C3%A9e%20set.png', type: 'IMAGE',  link: 'https://instagram.com' },
+        
+        // Product 5: Dior Homme
+        { url: 'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Dior%20Homme%20Intense%20fragrance%20set.png', type: 'IMAGE',  link: 'https://instagram.com' },
+        
+        // Product 6: Valentino
+        { url: 'https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Valentino%20Uomo%20Born%20in%20Roma%20set.png', type: 'IMAGE',  link: 'https://instagram.com' }
     ]
 };
 
