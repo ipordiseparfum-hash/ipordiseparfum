@@ -3106,6 +3106,13 @@ function handleQuickFromChat(action){
   if (!action) return;
   if (triggerChatQuick(action)) return;
 
+  // Handle external URL opening from chips
+  if (action && action.startsWith('open_url:')) {
+    const url = action.replace('open_url:', '');
+    window.open(url, '_blank');
+    return;
+  }
+
   // Enhanced policy handling
   if (action && action.startsWith('policy_')){
     const key = action.replace('policy_','');
@@ -3363,6 +3370,7 @@ function identifyIntent(text) {
   if (includesAny(t, ['thanks','merci','chokran','شكرا'])) return { intent: 'thanks' };
   if (includesAny(t, ['order','buy','commander','acheter','شري','طلب','نطلب'])) return { intent: 'how_to_order' };
   if (includesAny(t, ['contact','whatsapp','phone','tel','telephone','واتساب','هاتف'])) return { intent: 'contact' };
+  if (includesAny(t, ['social','instagram','facebook','youtube','insta','follow','resaux','انستغرام','فيسبوك','تابعونا'])) return { intent: 'social_media' };
   if (includesAny(t, ['location','address','adresse','فين','loc','موقع','عنوان'])) return { intent: 'location' };
 
   // 5. Product specific questions
@@ -3500,6 +3508,18 @@ function getChatResponse(userText){
        chips.push({ action:'open_whatsapp', label:'Open WhatsApp' });
        return { intent: 'contact', text: currentLang==='ar'?'تواصل معانا ديريكت فواتساب:':'Contactez-nous directement sur WhatsApp : ' + WHATSAPP_DISPLAY, chips };
       
+    case 'social_media':
+       chips.push({ action:'open_url:https://www.instagram.com/ipordise_parfums/', label:'Instagram' });
+       chips.push({ action:'open_url:https://www.facebook.com/profile.php?id=61563285998567', label:'Facebook' });
+       chips.push({ action:'open_url:https://www.youtube.com/@FragranceMorocco', label:'YouTube' });
+       
+       const socialText = {
+         'en': "Follow us on social media for daily tips, reviews, and exclusive offers! 📸",
+         'fr': "Suivez-nous sur les réseaux sociaux pour des conseils quotidiens, avis et offres exclusives ! 📸",
+         'ar': "تابعونا على مواقع التواصل الاجتماعي باش تشوفو الجديد ونصائح ويوميات وعروض حصرية! 📸"
+       };
+       return { intent: 'social', text: socialText[currentLang] || socialText['en'], chips };
+
     case 'location':
        return { intent: 'location', text: currentLang==='ar'?'حنا متجر إلكتروني، التوصيل لجميع مدن المغرب!':'We are an online store, shipping to all cities in Morocco!' };
 

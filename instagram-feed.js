@@ -146,17 +146,20 @@ function renderFeed(posts, track) {
                 // RENDER IFRAME DIRECTLY (Automatic load)
                 let embedUrl = post.videoUrl;
                 if (!embedUrl.endsWith('/')) embedUrl += '/';
-                embedUrl += 'embed/captioned';
+                // Using embed/ instead of embed/captioned for cleaner look
+                // adding autoplay=1 (works on some browsers/versions)
+                embedUrl += 'embed/?autoplay=1&muted=1';
                 
                 card.innerHTML = `
                    <iframe src="${embedUrl}" 
                        style="width:100%; height:100%; border:0; border-radius: 24px; background: white; pointer-events: auto;" 
                        scrolling="no" 
                        allowtransparency="true" 
-                       allowfullscreen="true">
+                       allowfullscreen="true"
+                       allow="autoplay; encrypted-media; picture-in-picture">
                    </iframe>
                `;
-               // Add playing class initially so styles adjust if needed
+               // Add playing class initially
                card.classList.add('is-playing');
             } else {
                 // Direct video fallback
@@ -186,17 +189,17 @@ function playInPlace(element, videoUrl) {
     // Check if it's an Instagram link
     if (videoUrl.includes('instagram.com')) {
         // Use Instagram Embed
-        // Ensure URL ends with /embed/ or /embed
         let embedUrl = videoUrl;
         if (!embedUrl.endsWith('/')) embedUrl += '/';
-        embedUrl += 'embed/captioned'; // 'captioned' usually looks better/more complete
+        embedUrl += 'embed/?autoplay=1&muted=1';
 
         card.innerHTML = `
             <iframe src="${embedUrl}" 
                 style="width:100%; height:100%; border:0; border-radius: 24px; background: white;" 
                 scrolling="no" 
                 allowtransparency="true" 
-                allowfullscreen="true">
+                allowfullscreen="true"
+                allow="autoplay; encrypted-media; picture-in-picture">
             </iframe>
         `;
     } else {
