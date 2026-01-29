@@ -756,10 +756,15 @@
       <div class="drawer__content cart">
         <div class="cart__items" id="favItems"></div>
 
-        <div class="cart__summary">
-          <p class="muted fav-desc" data-i18n="fav_desc">Save perfumes you love and come back anytime.</p>
-          <button class="btn btn--ghost btn--full" id="btnClearFav" type="button" data-i18n="fav_clear">Clear favourites</button>
-          <a class="btn btn--primary btn--full" href="index.html#best" data-i18n="fav_shop">Continue shopping</a>
+        <div class="fav-summary">
+          <div class="fav-info">
+             <span class="fav-info__icon">✨</span>
+             <p class="muted small" data-i18n="fav_desc">Keep track of your dream scents here.</p>
+          </div>
+          <div class="fav-actions">
+            <a class="btn btn--primary btn--full btn--pulse" href="index.html#best" data-i18n="fav_shop">Explore Collection</a>
+            <button class="btn btn--link btn--full text-center muted" id="btnClearFav" type="button" style="text-decoration: underline; font-size: 13px;" data-i18n="fav_clear">Clear List</button>
+          </div>
         </div>
       </div>
     </div>

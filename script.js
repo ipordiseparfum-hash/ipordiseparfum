@@ -1358,21 +1358,21 @@ function favRowHTML(p){
   const price = formatMoney(getProductPrice(p));
   const href = `product.html?id=${encodeURIComponent(p.id)}`;
   return `
-    <div class="cartItem favItem">
+    <div class="favItem">
       <a class="cartItem__img" href="${href}">
         <img src="${img}" alt="${name}" loading="lazy">
       </a>
       <div class="cartItem__meta">
         <div class="cartItem__name">${name}</div>
         <div class="muted small">${brand}</div>
-        <div class="cartItem__price"><strong>${price}</strong></div>
+        <div class="cartItem__price">${price}</div>
       </div>
-      <div class="cartItem__actions" style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
-        <button class="icon-btn" type="button" data-fav-remove="${escapeHtml(p.id)}" aria-label="Remove from favourites" title="Remove" style="width:32px; height:32px;">
-          <span class="icon icon--close" aria-hidden="true" style="font-size:16px;"></span>
+      <div class="cartItem__actions">
+        <button class="fav-remove-btn" type="button" data-fav-remove="${escapeHtml(p.id)}" aria-label="Remove" title="Remove">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
-        <button class="btn btn--small btn--primary" type="button" onclick="addToCart(PRODUCTS.find(x=>x.id=='${escapeHtml(p.id)}'))" style="padding:6px 12px; font-size:11px;">
-          ${currentLang==='ar'?'أضف للسلة':(currentLang==='fr'?'Ajouter':'Add to Bag')}
+        <button class="fav-add-btn" type="button" onclick="addToCart(PRODUCTS.find(x=>x.id=='${escapeHtml(p.id)}'))">
+          ${currentLang==='ar'?'أضف +':(currentLang==='fr'?'Ajouter +':'Add +')}
         </button>
       </div>
     </div>`;
@@ -1385,9 +1385,12 @@ function renderFavDrawer(){
   if (!ids.length){
     wrap.innerHTML = `
       <div class="fav-empty">
-        <div class="fav-empty__icon" aria-hidden="true">♡</div>
-        <div class="fav-empty__text">${currentLang==='ar' ? 'ما كاين حتى مفضل حالياً' : (currentLang==='fr' ? 'Aucun favori pour le moment' : 'No favourites yet')}</div>
-        <a href="index.html#best" class="btn btn--primary btn--full fav-empty__cta">${currentLang==='ar' ? 'تسوق دابا' : (currentLang==='fr' ? 'Découvrir' : 'Shop now')}</a>
+        <div class="fav-empty__icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </div>
+        <h4 class="fav-empty__title">${currentLang==='ar' ? 'القائمة فارغة' : (currentLang==='fr' ? 'Votre liste est vide' : 'Your list is empty')}</h4>
+        <div class="fav-empty__text">${currentLang==='ar' ? 'احفظ العطور التي تحبها هنا.' : (currentLang==='fr' ? 'Sauvegardez vos parfums préférés ici.' : 'Save perfumes you love here.')}</div>
+        <a href="index.html#best" class="btn fav-empty__cta">${currentLang==='ar' ? 'استكشف المجموعة' : (currentLang==='fr' ? 'Découvrir la collection' : 'Explore Collection')}</a>
       </div>`;
     return;
   }
@@ -3306,178 +3309,302 @@ function findProductsByQuery(query, limit = 3){
   return scored.slice(0, limit).map(x => x.p);
 }
 
-function makeOrderHowToText(){
-  if (currentLang === 'ar'){
-    return 'باش تطلب:\n1) اختار المنتج + الحجم\n2) زيد للسلة\n3) افتح السلة → Checkout\n4) غادي نأكدّو الطلب فواتساب.';
-  }
-  if (currentLang === 'fr'){
-    return 'Pour commander :\n1) Choisissez un produit + une taille\n2) Ajoutez au panier\n3) Ouvrez le panier → Checkout\n4) On confirme la commande sur WhatsApp.';
-  }
-  return 'How to order:\n1) Choose a product + size\n2) Add to cart\n3) Open cart → Checkout\n4) We confirm the order on WhatsApp.';
+// ---------- Intelligent Chatbot Logic ----------
+
+// Conversation state to handle multi-turn questions
+let chatContext = { step: null, data: {} };
+
+function resetChatContext(){
+  chatContext = { step: null, data: {} };
 }
 
-function makeUnknownFallback(){
-  if (currentLang === 'ar'){
-    return 'ما فهمتش السؤال مزيان. نقدر نعاونك فالعطور/الأثمنة/التوصيل/الدفع/الإرجاع. إلى بغيتي جواب دقيق، صيفط لينا السؤال فواتساب.';
+// Extended Knowledge Base
+const CHAT_KNOWLEDGE = {
+  cities: {
+    casablanca: { fee: 20, time: '24h' },
+    rabat: { fee: 25, time: '24h' },
+    marrakech: { fee: 35, time: '48h' },
+    tanger: { fee: 35, time: '48h' },
+    agadir: { fee: 40, time: '48-72h' },
+    fes: { fee: 30, time: '48h' }
+  },
+  perfume_types: {
+    fresh: ['citrus','mint','ocean','agua','lemon','bergamot','frais','citron','menthe','فريش','ليمون','نعناع'],
+    sweet: ['vanilla','honey','chocolate','caramel','sugar','sweet','sucré','gourmand','فانيلا','عسل','حلو','سويت'],
+    woody: ['wood','cedar','sandalwood','oud','vetiver','boisé','bois','خشب','عود','صندل'],
+    oriental: ['amber','musk','spice','incense','oriental','epice','ambre','musc','عنبر','مسك','شرقي','توابل'],
+    floral: ['rose','jasmine','flower','blossom','floral','fleur','jasmin','ورد','ياسمين','زهر']
   }
-  if (currentLang === 'fr'){
-    return "Je ne suis pas sûr de la réponse. Je peux aider pour parfums/prix/livraison/paiement/retours. Pour une réponse exacte, écrivez-nous sur WhatsApp.";
+};
+
+function identifyIntent(text) {
+  const t = normalizeChatText(text);
+  
+  // 1. Check for specific shipping cities
+  for (const [city, info] of Object.entries(CHAT_KNOWLEDGE.cities)) {
+    if (t.includes(city)) return { intent: 'shipping_city', city, info };
   }
-  return "I’m not sure about that. I can help with perfumes/prices/delivery/payment/returns. For an exact answer, message us on WhatsApp.";
+
+  // 2. Flow: User wants a recommendation (general)
+  if (includesAny(t, ['recommend','suggest','conseil','propose','suggestion','اقتراح','اقترح','نصح','عاوني','help me choose'])) return { intent: 'rec_start' };
+
+  // 3. Flow: User specifying preference (if context active) or just stating a note
+  // Check perfume types
+  let foundTypes = [];
+  for (const [type, keywords] of Object.entries(CHAT_KNOWLEDGE.perfume_types)) {
+    if (includesAny(t, keywords)) foundTypes.push(type);
+  }
+  if (foundTypes.length) return { intent: 'rec_preference', types: foundTypes };
+
+  // 4. Standard Intents
+  if (includesAny(t, ['price','how much','combien','prix','ثمن','بشحال','سعر'])) return { intent: 'price' };
+  if (includesAny(t, ['delivery','shipping','livraison','tawsil','توصيل','شحن'])) return { intent: 'delivery' };
+  if (includesAny(t, ['hello','hi','salam','bonjour','salut','مرحبا','سلام','hola'])) return { intent: 'greeting' };
+  if (includesAny(t, ['thanks','merci','chokran','شكرا'])) return { intent: 'thanks' };
+  if (includesAny(t, ['order','buy','commander','acheter','شري','طلب','نطلب'])) return { intent: 'how_to_order' };
+  if (includesAny(t, ['contact','whatsapp','phone','tel','telephone','واتساب','هاتف'])) return { intent: 'contact' };
+  if (includesAny(t, ['location','address','adresse','فين','loc','موقع','عنوان'])) return { intent: 'location' };
+
+  // 5. Product specific questions
+  const productMatches = findProductsByQuery(text, 1);
+  if (productMatches.length > 0 && productMatches[0].score > 3) return { intent: 'product_info', product: productMatches[0] };
+
+  return { intent: 'unknown' };
 }
 
 function getChatResponse(userText){
   const raw = String(userText || '').trim();
-  const lower = normalizeChatText(raw);
+  const intentData = identifyIntent(raw);
   const chips = [];
 
-  // Enhanced greetings with personality
-  if (includesAny(lower, ['hello','hi','hey','bonjour','salut','salam','السلام','مرحبا','اهلا','bonjour'])){
-    const responses = {
-      'en': ["Hello! Welcome to IPORDISE PARFUM. How can I help you discover your perfect scent today?", "Hi there! Ready to find your signature fragrance? I'm here to help!", "Welcome! I'm your fragrance expert. What kind of scent are you looking for?"],
-      'fr': ["Bonjour! Bienvenue chez IPORDISE PARFUM. Comment puis-je vous aider à découvrir votre parfum idéal?", "Salut! Prêt à trouver votre fragrance signature? Je suis là pour vous aider!", "Bienvenue! Je suis votre expert en parfums. Quel type de senteur recherchez-vous?"],
-      'ar': ["مرحبا! أهلا بك في آي بورديس بارفان. كيفاش نقدر نساعدك تكتشف عطرك المثالي اليوم؟", "أهلا! جاهز باش تلاقي عطرك الخاص؟ أنا هنا باش نساعدك!", "أهلا وسهلا! أنا خبير العطور ديالك. شنو نوع العطر اللي كتدور عليه؟"]
-    };
-    const langResponses = responses[currentLang] || responses['en'];
-    const randomResponse = langResponses[Math.floor(Math.random() * langResponses.length)];
-    chips.push({ action:'recommend', label: currentLang==='ar' ? 'اقتراحات' : (currentLang==='fr' ? 'Suggestions' : 'Recommendations') });
-    chips.push({ action:'best', label: currentLang==='ar' ? 'الأكثر مبيعاً' : (currentLang==='fr' ? 'Best-sellers' : 'Best sellers') });
-    return { intent:'greeting', text: randomResponse, chips };
+  // --- CONTEXT AWARE HANDLING ---
+
+  // Context: Awaiting Gender/Category
+  if (chatContext.step === 'ask_category') {
+    const t = normalizeChatText(raw);
+    let cat = null;
+    if (includesAny(t, ['men','homme','hommes','man','male','رجال','رجالي'])) cat = 'men';
+    else if (includesAny(t, ['women','femme','femmes','woman','female','نساء','نسائي','عيالات'])) cat = 'women';
+    else if (includesAny(t, ['unisex','mixte','unisexe','جوج','مخلط'])) cat = 'unisex';
+
+    if (cat) {
+      chatContext.data.category = cat;
+      chatContext.step = 'ask_notes';
+      const qText = {
+        'en': "Got it. What scents do you prefer? (Fresh, Sweet, Woody, Oriental...)",
+        'fr': "C'est noté. Quelles senteurs préférez-vous ? (Frais, Sucré, Boisé, Oriental...)",
+        'ar': "صافي. شنو الروائح اللي كتعجبك؟ (فريش، سويت، خشب، عود، شرقي...)"
+      };
+      
+      return { 
+        intent: 'flow_step', 
+        text: qText[currentLang] || qText['en'], 
+        chips: [
+          { action: 'note_fresh', label: currentLang==='ar'?'فريش':(currentLang==='fr'?'Frais':'Fresh') },
+          { action: 'note_sweet', label: currentLang==='ar'?'سويت':(currentLang==='fr'?'Sucré':'Sweet') },
+          { action: 'note_woody', label: currentLang==='ar'?'خشب':(currentLang==='fr'?'Boisé':'Woody') },
+          { action: 'note_oriental', label: currentLang==='ar'?'شرقي':(currentLang==='fr'?'Oriental':'Oriental') }
+        ] 
+      };
+    }
   }
 
-  if (includesAny(lower, ['thanks','thank you','merci','شكرا','chokran','thx'])){
-    const responses = {
-      'en': ["You're welcome! Feel free to ask if you need anything else.", "My pleasure! Don't hesitate to reach out for more fragrance advice.", "Happy to help! Come back anytime for more scent recommendations."],
-      'fr': ["De rien! N'hésitez pas si vous avez besoin d'autre chose.", "Avec plaisir! Contactez-moi pour plus de conseils en parfums.", "Content de vous aider! Revenez quand vous voulez pour plus de recommandations."],
-      'ar': ["عفوا! سولنا إذا بغيتي حاجة أخرى.", "بالعافية! تواصل معانا باش نعاونك أكثر في العطور.", "فرحان باش نساعدك! عود لينا كلما بغيتي نصايح أكثر."]
-    };
-    const langResponses = responses[currentLang] || responses['en'];
-    return { intent:'thanks', text: langResponses[Math.floor(Math.random() * langResponses.length)] };
-  }
+  // --- INTENT HANDLING ---
 
-  // policies
-  if (includesAny(lower, ['return','refund','retour','rembourse','إرجاع','استرجاع','تعويض'])){
-    chips.push({ action:'policy_returns', label: currentLang==='ar' ? 'سياسة الإرجاع' : (currentLang==='fr' ? 'Politique retours' : 'Returns policy') });
-    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    return { intent:'returns', text: currentLang==='ar' ? 'الإرجاع/الاسترجاع: تواصل معانا فواتساب خلال 24 ساعة من بعد التوصيل.' : (currentLang==='fr' ? 'Retours: contactez-nous sur WhatsApp dans les 24h après livraison.' : 'Returns: contact us on WhatsApp within 24h after delivery.'), chips };
-  }
-  if (includesAny(lower, ['delivery','shipping','livraison','expedition','توصيل','شحن'])){
-    chips.push({ action:'policy_shipping', label: currentLang==='ar' ? 'سياسة التوصيل' : (currentLang==='fr' ? 'Livraison' : 'Shipping') });
-    return { intent:'delivery', text: t('topbar_text'), chips };
-  }
-  if (includesAny(lower, ['privacy','confidential','خصوصيه','خصوصية','vie privee','privacy policy'])){
-    chips.push({ action:'policy_privacy', label: currentLang==='ar' ? 'سياسة الخصوصية' : (currentLang==='fr' ? 'Confidentialité' : 'Privacy') });
-    return { intent:'privacy', text: currentLang==='ar' ? 'كنستعملو غير المعلومات اللي كتصيفط لينا بإرادتك (واتساب أو إيميل).' : (currentLang==='fr' ? "On utilise seulement les infos que vous envoyez volontairement (WhatsApp ou email)." : 'We only use the info you send voluntarily (WhatsApp or email).'), chips };
-  }
-  if (includesAny(lower, ['terms','conditions','شروط','condition','terms of use'])){
-    chips.push({ action:'policy_terms', label: currentLang==='ar' ? 'الشروط' : (currentLang==='fr' ? 'Conditions' : 'Terms') });
-    return { intent:'terms', text: currentLang==='ar' ? 'هذا الموقع واجهة عرض: تأكيد الطلب كيتدار عبر واتساب.' : (currentLang==='fr' ? 'Le site est une vitrine: la confirmation se fait sur WhatsApp.' : 'This site is a storefront demo: orders are confirmed on WhatsApp.'), chips };
-  }
+  switch(intentData.intent) {
+    case 'rec_start':
+      resetChatContext();
+      chatContext.step = 'ask_category';
+      const opening = {
+         'en': "I'd love to help you find a scent. Is this for Men, Women, or Unisex?",
+         'fr': "Je serais ravi de vous aider. C'est pour Homme, Femme ou Unisexe ?",
+         'ar': "مرحبا، بغيت نعاونك تختار. واش بغيتي عطر رجالي، نسائي، ولا للجنسين؟"
+      };
+      return {
+        intent: 'ask_category',
+        text: opening[currentLang] || opening['en'],
+        chips: [
+          { action: 'cat_men', label: currentLang==='ar'?'رحالي':(currentLang==='fr'?'Homme':'Men') },
+          { action: 'cat_women', label: currentLang==='ar'?'نسائي':(currentLang==='fr'?'Femme':'Women') },
+          { action: 'cat_unisex', label: currentLang==='ar'?'للجنسين':(currentLang==='fr'?'Unisexe':'Unisex') }
+        ]
+      };
 
-  // payment / contact
-  if (includesAny(lower, ['payment','pay','paiement','دفع','أداء','performance'])){
-    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    return { intent:'payment', text: t('chat_payment'), chips };
-  }
-  if (includesAny(lower, ['contact','email','mail','phone','whatsapp','واتساب','تواصل','رقم'])){
-    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    const responses = {
-      'en': "You can reach us anytime on WhatsApp for personalized fragrance advice and ordering. We're here to help!",
-      'fr': "Vous pouvez nous contacter à tout moment sur WhatsApp pour des conseils personnalisés en parfums et commander. Nous sommes là pour vous aider!",
-      'ar': "تقدر توصل لينا فأي وقت فواتساب باش نعاونك في اختيار العطور وطلب. نحن هنا باش نساعدك!"
-    };
-    return { intent:'contact', text: responses[currentLang] || responses['en'], chips };
-  }
+    case 'rec_preference':
+    case 'product_info': // if vague product mention, treat as rec
+      // Logic to find products based on context + new info
+      resetChatContext(); // simple flow for now
+      const types = intentData.types || [];
+      const prod = intentData.product;
+      
+      let results = [];
+      if (prod) {
+        results = [prod];
+      } else {
+        // Filter products by detected types
+        results = PRODUCTS.filter(p => {
+          const notes = (p.notes || []).join(' ').toLowerCase();
+          const cat = (p.category || '').toLowerCase();
+          // weak filter: match at least one type
+          return types.some(t => {
+            const keywords = CHAT_KNOWLEDGE.perfume_types[t];
+            return keywords.some(k => notes.includes(k));
+          });
+        }).sort((a,b) => (b.rating||0) - (a.rating||0)).slice(0,3);
+      }
+      
+      if (!results.length) results = PRODUCTS.slice(0,3); // Fallback
 
-  // how to order
-  if (includesAny(lower, ['order','buy','how to','commander','acheter','كيفاش','كيف','طلب','نطلب'])){
-    chips.push({ action:'order_whatsapp', label: currentLang==='ar' ? 'طلب عبر واتساب' : (currentLang==='fr' ? 'Commander WhatsApp' : 'Order on WhatsApp') });
-    return { intent:'how_to_order', text: makeOrderHowToText(), chips };
-  }
+      const list = results.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join('\n');
+      chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
+      
+      const recResp = {
+          'en': `Excellent choice. Based on that, I recommend:\n${list}\n\nWould you like to order one of these?`,
+          'fr': `Excellent choix. Je vous recommande :\n${list}\n\nVoulez-vous commander l'un d'eux ?`,
+          'ar': `اختيار ممتاز. كنقترح عليك:\n${list}\n\nواش بغيتي تطلب شي واحد منهم؟`
+      };
+      return { intent: 'recommendation', text: recResp[currentLang] || recResp['en'], chips };
 
-  // Enhanced deals section
-  if (includesAny(lower, ['deal','discount','promo','offer','offre','sold','تخفيض','عرض','عروض'])){
-    chips.push({ action:'best', label: t('chat_quick_best') || 'Best sellers' });
-    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    const responses = {
-      'en': "Check out our limited-time offers in the Deals section! Each offer is carefully selected for quality and value. Ask us on WhatsApp for today's special deal.",
-      'fr': "Découvrez nos offres limitées dans la section Deals! Chaque offre est sélectionnée avec soin pour sa qualité et sa valeur. Demandez-nous sur WhatsApp l'offre spéciale du jour.",
-      'ar': "شوف عروضنا المحدودة في قسم Deals! كل عرض مختار بعناية للجودة والقيمة. سولنا فواتساب على العرض الخاص اليوم."
-    };
-    return { intent:'deals', text: responses[currentLang] || responses['en'], chips };
-  }
+    case 'shipping_city':
+      const info = intentData.info;
+      const shipText = {
+        'en': `Delivery to ${intentData.city} usually takes ${info.time} and costs about ${info.fee} MAD.`,
+        'fr': `La livraison pour ${intentData.city} prend généralement ${info.time} et coûte environ ${info.fee} MAD.`,
+        'ar': `التوصيل لـ ${intentData.city} كياخد غالبا ${info.time} والثمن تقريبا ${info.fee} درهم.`
+      };
+      return { intent: 'shipping_city', text: shipText[currentLang] || shipText['en'] };
 
-  // Enhanced product search and recommendations
-  const isPriceQuestion = includesAny(lower, ['price','how much','cost','prix','combien','ثمن','بشحال','سعر']);
-  const products = findProductsByQuery(raw, 3);
-  if (isPriceQuestion && products.length){
-    const p = products[0];
-    const price = formatMoney(getProductPrice(p));
-    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    const responses = {
-      'en': `${p.name} is priced at ${price}. This luxury fragrance offers exceptional value with premium ingredients and expert formulation.`,
-      'fr': `${p.name} est au prix de ${price}. Cette fragrance de luxe offre une valeur exceptionnelle avec des ingrédients premium et une formulation experte.`,
-      'ar': `${p.name} سعره ${price}. هذا العطر الفاخر يقدم قيمة استثنائية مع مكونات مميزة وتركيبة خبيرة.`
-    };
-    return { intent:'price', text: responses[currentLang] || responses['en'], chips };
-  }
-  if (products.length && includesAny(lower, ['have','available','stock','disponible','avez vous','كاين','موجود'])){
-    const list = products.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join('\n');
-    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    const responses = {
-      'en': `Great choice! Here's what I found in stock:\n${list}\n\nAll our fragrances are authentic and ready to ship.`,
-      'fr': `Excellent choix! Voici ce que j'ai trouvé en stock:\n${list}\n\nToutes nos fragrances sont authentiques et prêtes à expédier.`,
-      'ar': `اختيار ممتاز! هادو شنو لقيت في المخزون:\n${list}\n\nكل عطورنا أصلية وجاهزة للشحن.`
-    };
-    return { intent:'product_search', text: responses[currentLang] || responses['en'], chips };
-  }
-  if (products.length && !isPriceQuestion && includesAny(lower, ['recommend','suggest','reco','اقترح','اقترحلي','نقترح','suggestion'])){
-    const list = products.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join('\n');
-    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    const responses = {
-      'en': `Based on your preferences, I recommend:\n${list}\n\nEach of these fragrances has received excellent reviews for their quality and scent profile.`,
-      'fr': `Basé sur vos préférences, je recommande:\n${list}\n\nChacune de ces fragrances a reçu d'excellentes critiques pour leur qualité et leur profil olfactif.`,
-      'ar': `على أساس تفضيلاتك، كنقترح:\n${list}\n\nكل واحدة من هاد العطور تلقت تقييمات ممتازة لجودتها وبروفيل ريحتها.`
-    };
-    return { intent:'recommendation', text: responses[currentLang] || responses['en'], chips };
-  }
+    case 'price':
+      chips.push({ action:'best', label: t('chat_quick_best') || 'Best Sellers' });
+      return { 
+        intent: 'price_gen', 
+        text: currentLang==='ar' ? 'الأسعار ديالنا كتبدا من 199 درهم. واش بغيتي تشوف العروض؟' : (currentLang==='fr'?'Nos prix commencent à partir de 199 MAD. Voulez-vous voir les offres ?':'Our prices start from 199 MAD. Would you like to see our offers?'),
+        chips
+      };
 
-  // notes-based recommendation (existing logic)
-  const rec = recommendFromText(raw);
-  if (rec){
-    chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-    return { intent:'recommendation', text: rec, chips: chips.length ? chips : undefined };
+    case 'greeting':
+      return { 
+        intent: 'greeting', 
+        text: currentLang==='ar'?'مرحبا! أنا هو المساعد الذكي ديالك. باش نقدر نعاونك اليوم؟ (نصحك بعطر، نسولك على التوصيل...)':(currentLang==='fr'?'Bonjour! Je suis votre assistant virtuel. Comment puis-je vous aider ? (Conseil parfum, livraison...)':'Hello! I am your virtual assistant. How can I help you? (Perfume advice, delivery...)'),
+        chips: [
+           { action:'recommend', label:'✨ Suggest me a scent' },
+           { action:'delivery', label:'🚚 Delivery Info' }
+        ]
+      };
+      
+    case 'how_to_order': 
+       chips.push({ action:'open_whatsapp', label:'WhatsApp' });
+       return { intent: 'order', text: makeOrderHowToText(), chips };
+
+    case 'contact':
+       chips.push({ action:'open_whatsapp', label:'Open WhatsApp' });
+       return { intent: 'contact', text: currentLang==='ar'?'تواصل معانا ديريكت فواتساب:':'Contactez-nous directement sur WhatsApp : ' + WHATSAPP_DISPLAY, chips };
+      
+    case 'location':
+       return { intent: 'location', text: currentLang==='ar'?'حنا متجر إلكتروني، التوصيل لجميع مدن المغرب!':'We are an online store, shipping to all cities in Morocco!' };
+
+    case 'unknown':
+    default:
+      // Final attempt: fuzzy search matches?
+      const fuzzy = findProductsByQuery(raw, 3);
+      if (fuzzy.length) {
+         const flist = fuzzy.map(p=>`• ${p.name}`).join('\n');
+         return { 
+             intent: 'fuzzy_rec', 
+             text: (currentLang==='ar'?'يمكن كتقصد هادو:':'Maybe you are looking for:') + `\n${flist}`,
+             chips: [{ action:'open_whatsapp', label:'WhatsApp' }]
+         };
+      }
+      return { 
+          intent: 'unknown', 
+          text: makeUnknownFallback(),
+          chips: [
+            { action: 'recommend', label: '⭐ Recommend' },
+            { action: 'open_whatsapp', label: '💬 Talk to Human' }
+          ]
+      };
   }
-
-  // Enhanced fallback with better suggestions
-  chips.push({ action:'open_whatsapp', label: t('bn_whatsapp') || 'WhatsApp' });
-  chips.push({ action:'policy_shipping', label: currentLang==='ar' ? 'التوصيل' : (currentLang==='fr' ? 'Livraison' : 'Delivery') });
-  chips.push({ action:'policy_returns', label: currentLang==='ar' ? 'الإرجاع' : (currentLang==='fr' ? 'Retours' : 'Returns') });
-  chips.push({ action:'recommend', label: currentLang==='ar' ? 'اقتراحات' : (currentLang==='fr' ? 'Suggestions' : 'Recommendations') });
-
-  const fallbackResponses = {
-    'en': "I'm here to help you find the perfect fragrance! Tell me about your preferences - do you like fresh, woody, oriental, or floral notes? Or ask me about our bestsellers, shipping, or current offers.",
-    'fr': "Je suis là pour vous aider à trouver le parfum idéal! Parlez-moi de vos préférences - aimez-vous les notes fraîches, boisées, orientales ou florales? Ou demandez-moi nos best-sellers, la livraison ou les offres actuelles.",
-    'ar': "أنا هنا باش نساعدك تلاقي العطر المثالي! قل ليا تفضيلاتك - كتحب النوتات الفريشة، الخشبية، الشرقية أو الزهرية؟ أو سولنا على الأكثر مبيعاً، التوصيل، أو العروض الحالية."
-  };
-  return { intent:'unknown', text: fallbackResponses[currentLang] || fallbackResponses['en'], chips };
 }
 
+// Intercept quick actions for flow control
 chatbotQuick?.addEventListener("click",(e)=>{
   const b = e.target.closest("[data-quick]");
   if (!b) return;
   const q = b.dataset.quick;
-  if (q==="recommend"){
-    addMsg(currentLang==="ar" ? "بغيت اقتراح" : (currentLang==="fr" ? "Je veux une recommandation" : "I want a recommendation"), "me");
-    sendBotMessage(currentLang==="ar" ? "كتب ليا النوتات اللي كتفضل (مثلاً: فانيلا، مسك، فريش…)." : (currentLang==="fr" ? "Dites-moi vos notes préférées (vanille, musc, frais…)." : "Tell me your favorite notes (vanilla, musk, fresh…)."), {
-      intent: 'ask_notes',
-      chips: [
-        { action: 'note_vanilla', label: currentLang === 'ar' ? 'فانيلا' : (currentLang === 'fr' ? 'Vanille' : 'Vanilla') },
-        { action: 'note_musk', label: currentLang === 'ar' ? 'مسك' : (currentLang === 'fr' ? 'Musc' : 'Musk') },
-        { action: 'note_fresh', label: currentLang === 'ar' ? 'فريش' : (currentLang === 'fr' ? 'Frais' : 'Fresh') }
-      ]
-    });
+  
+  if (q.startsWith('cat_')) {
+      const cat = q.replace('cat_', '');
+      // Inject into chat as user message
+      const label = b.textContent;
+      addMsg(label, "me");
+      chatContext = { step: 'ask_category', data: {} }; // Mock state to reuse logic 
+      // Actually we should force the state machine
+      chatContext.data.category = cat;
+      chatContext.step = 'ask_notes';
+      
+      const qText = {
+        'en': "Got it. What scents do you prefer? (Fresh, Sweet, Woody, Oriental...)",
+        'fr': "C'est noté. Quelles senteurs préférez-vous ? (Frais, Sucré, Boisé, Oriental...)",
+        'ar': "صافي. شنو الروائح اللي كتعجبك؟ (فريش، سويت، خشب، عود، شرقي...)"
+      };
+      
+      sendBotMessage(qText[currentLang] || qText['en'], {
+        intent: 'flow_step',
+        chips: [
+          { action: 'note_fresh', label: currentLang==='ar'?'فريش':(currentLang==='fr'?'Frais':'Fresh') },
+          { action: 'note_sweet', label: currentLang==='ar'?'سويت':(currentLang==='fr'?'Sucré':'Sweet') },
+          { action: 'note_woody', label: currentLang==='ar'?'خشب':(currentLang==='fr'?'Boisé':'Woody') },
+          { action: 'note_oriental', label: currentLang==='ar'?'شرقي':(currentLang==='fr'?'Oriental':'Oriental') }
+        ]
+      });
+      return; 
   }
+  
+  // existing handlers fallback...
+  if (q==="recommend"){
+    // Start flow
+    addMsg(b.textContent, "me");
+    resetChatContext();
+    const opening = {
+         'en': "I'd love to help you find a scent. Is this for Men, Women, or Unisex?",
+         'fr': "Je serais ravi de vous aider. C'est pour Homme, Femme ou Unisexe ?",
+         'ar': "مرحبا، بغيت نعاونك تختار. واش بغيتي عطر رجالي، نسائي، ولا للجنسين؟"
+      };
+    sendBotMessage(opening[currentLang] || opening['en'], {
+        intent: 'ask_category',
+        chips: [
+          { action: 'cat_men', label: currentLang==='ar'?'رحالي':(currentLang==='fr'?'Homme':'Men') },
+          { action: 'cat_women', label: currentLang==='ar'?'نسائي':(currentLang==='fr'?'Femme':'Women') },
+          { action: 'cat_unisex', label: currentLang==='ar'?'للجنسين':(currentLang==='fr'?'Unisexe':'Unisex') }
+        ]
+    });
+    return;
+  }
+  
+  if (q.startsWith('note_')) {
+     const note = q.replace('note_', '');
+     addMsg(b.textContent, "me");
+     // Execute search
+     const results = PRODUCTS.filter(p => {
+       const notes = (p.notes || []).join(' ').toLowerCase();
+       return notes.includes(note) && (!chatContext.data.category || (p.category||'').toLowerCase() === chatContext.data.category);
+     }).slice(0, 3);
+     
+     const list = results.map(p=>`• ${p.name} (${formatMoney(getProductPrice(p))})`).join('\n');
+     const finishText = {
+         'en': `Here are the best matches for you:\n${list}`,
+         'fr': `Voici les meilleures correspondances pour vous :\n${list}`,
+         'ar': `هادو هوما احسن الاختيارات ليك:\n${list}`
+     };
+     sendBotMessage(finishText[currentLang] || finishText['en'], {
+         intent: 'rec_done',
+         chips: [{ action:'open_whatsapp', label:'WhatsApp' }]
+     });
+     resetChatContext();
+     return;
+  }
+
+  // Fallback to previous logic for other buttons
   if (q==="best"){
     addMsg(currentLang==="ar" ? "الأكثر مبيعاً" : (currentLang==="fr" ? "Best-sellers" : "Best sellers"), "me");
     const items = [...PRODUCTS].sort((a,b)=>(b.rating||0)-(a.rating||0)).slice(0,3);
@@ -3492,8 +3619,8 @@ chatbotQuick?.addEventListener("click",(e)=>{
     addMsg(currentLang==="ar" ? "الدفع" : (currentLang==="fr" ? "Paiement" : "Payment"), "me");
     sendBotMessage(t("chat_payment"), { intent: 'payment' });
   }
-  if (q==="whatsapp"){
-    addMsg(currentLang==="ar" ? "بغيت نطلب فواتساب" : (currentLang==="fr" ? "Je veux commander sur WhatsApp" : "I want to order on WhatsApp"), "me");
+  if (q==="whatsapp" || q==="open_whatsapp"){
+    addMsg("WhatsApp", "me");
     sendBotMessage(`WhatsApp: ${WHATSAPP_DISPLAY}`, { intent: 'whatsapp', onShown: ()=> window.open(`https://wa.me/${WHATSAPP_PHONE_INTL}`, "_blank") });
   }
 });
