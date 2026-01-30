@@ -1,291 +1,271 @@
-(function(){
-  function q(name){ return new URLSearchParams(location.search).get(name); }
-  function escapeHtml(str){
-    return String(str||"").replace(/[&<>'"]/g, function(s){
-      return ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#039;","\"":"&quot;"}[s]);
-    });
-  }
-  function formatMoney(amount){
-    const lang = window.currentLang || "en";
-    try{
-      return new Intl.NumberFormat(
-        lang === "ar" ? "ar-MA" : (lang === "fr" ? "fr-MA" : "en-US"),
-        { style:"currency", currency:"MAD", maximumFractionDigits: 0 }
-      ).format(amount);
-    }catch(e){
-      return `${amount} MAD`;
-    }
-  }
-  function formatParagraphs(text){
-    return (text||"").split("\n").filter(Boolean).map(t=>`<p>${escapeHtml(t)}</p>`).join("");
+/* Product Detail Page Logic (clean JS)
+   Fixes: previous file was corrupted by pasted CSS (causing JS syntax errors).
+   Features: size selection, correct price, quantity controls, add-to-cart integration.
+*/
+
+(() => {
+  'use strict';
+
+  const readParams = () => new URLSearchParams(window.location.search);
+  const getParam = (k) => readParams().get(k);
+
+  const setParam = (k, v) => {
+    const p = readParams();
+    const hasValue = v !== null && v !== undefined && String(v).trim() !== '';
+    if (!hasValue) p.delete(k);
+    else p.set(k, String(v));
+    const q = p.toString();
+    const url = q ? `${window.location.pathname}?${q}` : window.location.pathname;
+    window.history.replaceState(null, '', url);
+  };
+
+  const escapeHtml = (str) => {
+    if (typeof window.escapeHtml === 'function') return window.escapeHtml(str);
+    return String(str ?? '').replace(/[&<>"']/g, s => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[s]));
+  };
+
+  const formatMoney = (n) => {
+    if (typeof window.formatMoney === 'function') return window.formatMoney(n);
+    const num = Number(n);
+    if (!Number.isFinite(num)) return '—';
+    return `${num} MAD`;
+  };
+
+  const getPrice = (product, size) => {
+    if (typeof window.getProductPrice === 'function') return window.getProductPrice(product, size || null);
+    const variants = Array.isArray(product?.variants) ? product.variants : [];
+    const v = variants.find(x => String(x?.size || '').trim() === String(size || '').trim()) || variants[0];
+    return v ? Number(v.price) : NaN;
+  };
+
+  async function loadProductsFallback() {
+    const res = await fetch('products.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error(`Failed to load products.json (${res.status})`);
+    return await res.json();
   }
 
-  const id = q("id");
-  const target = document.getElementById("productDetail");
-  if (!target) return;
+  function pickDefaultSize(product, requestedSize) {
+    const variants = Array.isArray(product?.variants) ? product.variants : [];
+    const sizes = variants.map(v => String(v?.size || '')).filter(Boolean);
+    if (!sizes.length) return null;
 
-  if (!id){
-    target.innerHTML = `<div class="muted" style="padding:40px 0; text-align:center;">
-      Product not specified. <a href="index.html">Back to shop</a>
-    </div>`;
-    return;
+    const req = String(requestedSize || '').trim();
+    if (req && sizes.includes(req)) return req;
+
+    if (sizes.includes('10ml')) return '10ml';
+    return sizes[0];
   }
 
-  let productData = null;
-  let selectedSize = null;
-
-  // Favourites (shared with homepage)
-  const WISH_KEY = 'ipordise_wishlist';
-  function getWishSet(){
-    try{ return new Set(JSON.parse(localStorage.getItem(WISH_KEY)||'[]')); }catch(e){ return new Set(); }
-  }
-  function saveWishSet(set){
-    try{ localStorage.setItem(WISH_KEY, JSON.stringify([...set])); }catch(e){}
-    const badge = document.getElementById('favCount');
-    if (badge){
-      const n = set.size||0;
-      badge.textContent = String(n);
-      badge.style.display = n ? 'inline-flex' : 'none';
-    }
-    const favBtn = document.getElementById('btnFav');
-    if (favBtn) favBtn.classList.toggle('has-items', (set.size||0) > 0);
-  }
-  function isWished(pid){
-    return getWishSet().has(String(pid));
+  function resolveDescription(product) {
+    const lang = (document.documentElement.lang || 'en').toLowerCase();
+    const key = `description_${lang}`;
+    return product?.[key] || product?.description || '';
   }
 
-  function getLocalized(field){
-    const lang = window.currentLang || "en";
-    if (!productData) return "";
-    if (lang === "fr" && productData[`${field}_fr`]) return productData[`${field}_fr`];
-    if (lang === "ar" && productData[`${field}_ar`]) return productData[`${field}_ar`];
-    return productData[field] || "";
+  function renderNotFound() {
+    const el = document.getElementById('productDetail');
+    if (!el) return;
+    el.innerHTML = `
+      <div class="text-center" style="padding: 40px 0;">
+        <p style="margin: 0 0 10px;">Product not found.</p>
+        <a class="btn btn--ghost" href="index.html">Back to home</a>
+      </div>
+    `;
+    document.title = 'Product Not Found - IPORDISE PARFUM';
   }
 
-  function getVariantPrice(size){
-    if (!productData) return 0;
-    const vars = productData.variants || [];
-    const v = vars.find(x => x.size === size);
-    return v ? (v.price || 0) : (productData.price || 0);
-  }
+  function renderProduct(product) {
+    const container = document.getElementById('productDetail');
+    if (!container) return;
 
-  function defaultSize(){
-    const vars = productData?.variants || [];
-    if (!vars.length) return null;
-    // Prefer 20ml if exists (best choice), else first variant
-    const best = vars.find(v => v.size === "20ml");
-    return (best ? best.size : vars[0].size);
-  }
+    const variants = Array.isArray(product?.variants) ? product.variants : [];
+    const sizes = variants.map(v => String(v?.size || '')).filter(Boolean);
+    const selectedSize = pickDefaultSize(product, getParam('size'));
+    const price = sizes.length ? getPrice(product, selectedSize) : NaN;
 
-  function buildWhatsAppHref(){
-    const phone = (typeof WHATSAPP_PHONE_INTL !== "undefined") ? WHATSAPP_PHONE_INTL : "";
-    const size = selectedSize || "";
-    const name = getLocalized("name") || productData?.name || "";
-    const template = (typeof t === "function" && t("wa_prefill")) ? t("wa_prefill") : "Hello, I'm interested in this product: {name} • Size: {size}";
-    const message = template.replace("{name}", name).replace("{size}", size);
-    return phone ? `https://wa.me/${phone}?text=${encodeURIComponent(message)}` : `https://wa.me/?text=${encodeURIComponent(message)}`;
-  }
+    const desc = resolveDescription(product);
+    const safeDesc = escapeHtml(desc).replace(/\n/g, '<br>');
 
-  function render(){
-    const p = productData;
-    if (!p) return;
+    document.title = `${product?.name || 'Product'} - IPORDISE PARFUM`;
 
-    const lang = window.currentLang || "en";
-    const name = escapeHtml(getLocalized("name") || p.name);
-    const brand = escapeHtml(p.brand || "");
-    const img = escapeHtml(p.image || "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/logo.jpeg");
-    const descHtml = formatParagraphs(getLocalized("description") || p.description || "");
-    const notes = Array.isArray(p?.notes) ? p.notes : [];
-    const chunk = Math.ceil(notes.length / 3) || 0;
-    const topNotes = notes.slice(0, chunk);
-    const heartNotes = notes.slice(chunk, chunk * 2);
-    const baseNotes = notes.slice(chunk * 2);
-    const notesHtml = notes.length ? `
-      <div class="notesPyramid">
-        <div class="notesPyramid__col">
-          <div class="notesPyramid__title">${escapeHtml((typeof t === "function" && t("notes_top")) ? t("notes_top") : "Top notes")}</div>
-          <div class="notesPyramid__items">${topNotes.map(n=>`<span class="notePill">${escapeHtml(n)}</span>`).join("") || "—"}</div>
-        </div>
-        <div class="notesPyramid__col">
-          <div class="notesPyramid__title">${escapeHtml((typeof t === "function" && t("notes_heart")) ? t("notes_heart") : "Heart notes")}</div>
-          <div class="notesPyramid__items">${heartNotes.map(n=>`<span class="notePill">${escapeHtml(n)}</span>`).join("") || "—"}</div>
-        </div>
-        <div class="notesPyramid__col">
-          <div class="notesPyramid__title">${escapeHtml((typeof t === "function" && t("notes_base")) ? t("notes_base") : "Base notes")}</div>
-          <div class="notesPyramid__items">${baseNotes.map(n=>`<span class="notePill">${escapeHtml(n)}</span>`).join("") || "—"}</div>
+    const sizeButtons = sizes.length ? `
+      <div style="margin: 14px 0 6px;">
+        <div class="muted small" style="margin-bottom: 10px;">${escapeHtml(document.documentElement.lang === 'ar' ? 'الحجم' : (document.documentElement.lang === 'fr' ? 'Taille' : 'Size'))}</div>
+        <div class="flashCard__sizes" role="radiogroup" aria-label="Choose size" id="pdSizes">
+          ${sizes.map(s => {
+            const active = (s === selectedSize) ? 'active' : '';
+            const checked = (s === selectedSize) ? 'true' : 'false';
+            return `<button class="flashSize ${active}" type="button" data-pd-size="${escapeHtml(s)}" role="radio" aria-checked="${checked}">${escapeHtml(s)}</button>`;
+          }).join('')}
         </div>
       </div>
-    ` : "";
+    ` : '';
 
-    const vars = p.variants || [];
-    if (!selectedSize) selectedSize = defaultSize();
-
-    const chips = vars.length ? `
-      <div class="product__vars">
-        <div class="muted small" style="font-weight:800; margin-bottom:6px;">${escapeHtml((typeof t === "function" && t("choose_size")) ? t("choose_size") : "Choose size")}</div>
-        <div class="size-chips" role="radiogroup" aria-label="Choose size">
-          ${vars.map(v=>{
-            const active = (v.size === selectedSize) ? "active" : "";
-            const badge = (v.size === "20ml") ? `<span style="margin-left:8px; font-weight:900; color:var(--brand);">★</span>` : "";
-            return `<button class="size-chip ${active}" type="button" data-size="${escapeHtml(v.size)}" role="radio" aria-checked="${v.size===selectedSize}">
-              ${escapeHtml(v.size)}${badge}
-            </button>`;
-          }).join("")}
-        </div>
-        <div class="product__price" id="productPrice" style="margin-top:12px; font-size:22px; font-weight:900;">
-          ${formatMoney(getVariantPrice(selectedSize))}
-        </div>
-        <div class="muted small" style="margin-top:6px;">
-          ${lang === "ar" ? "عطر أصلي • تقسيم احترافي ونظيف" : (lang === "fr" ? "Parfum original • Décant professionnel" : "Original fragrance • Professional decanting")}
-        </div>
-      </div>
-    ` : `<div class="product__price" id="productPrice" style="font-size:22px; font-weight:900;">${formatMoney(p.price||0)}</div>`;
-
-    const backLabel = (lang === "ar") ? "الرجوع للرئيسية" : (lang === "fr" ? "Retour à l'accueil" : "Back to home");
-
-    target.innerHTML = `
-      <div class="productDetail__wrap" dir="${lang === "ar" ? "rtl" : "ltr"}">
-        <div class="breadcrumb">
-          <a href="index.html">← ${escapeHtml(backLabel)}</a>
+    container.innerHTML = `
+      <div class="product-detail-layout">
+        <div class="product-detail__image-container">
+          <img src="${escapeHtml(product?.image || '')}" alt="${escapeHtml(product?.name || '')}" class="product-detail__image">
         </div>
 
-        <div class="productDetail__left">
-          <img src="${img}" alt="${name}" class="productDetail__img" loading="lazy">
-        </div>
+        <div class="product-detail__info">
+          <p class="product-detail__brand">${escapeHtml(product?.brand || '')}</p>
+          <h1 class="product-detail__name">${escapeHtml(product?.name || '')}</h1>
 
-        <div class="productDetail__right">
-          <div class="product__brand">${brand}</div>
-          <h1 class="product__name">${name}</h1>
-          <div class="product__meta">
-            <span class="stars">${"★★★★★".slice(0, Math.round(p.rating||4.5))}</span>
-            <span class="muted small">(${p.reviews||0})</span>
+          <p class="product-detail__price" id="pdPrice">
+            ${Number.isFinite(price) ? formatMoney(price) : (variants.length ? formatMoney(variants[0].price) : 'Price not available')}
+            ${selectedSize ? `<span class="product-detail__size">/ ${escapeHtml(selectedSize)}</span>` : ''}
+          </p>
+
+          ${sizeButtons}
+
+          <div class="product-detail__description">
+            ${safeDesc}
           </div>
 
-          <div class="product__desc">${descHtml}</div>
-
-          ${notesHtml}
-
-          <div class="reassurance">
-            <div class="reassurance__item">✓ ${(lang === "ar") ? "100% أصلي" : (lang === "fr" ? "100% Authentique" : "100% Authentic")}</div>
-            <div class="reassurance__item">🚚 ${(lang === "ar") ? "توصيل سريع" : (lang === "fr" ? "Livraison rapide" : "Fast delivery")}</div>
-            <div class="reassurance__item">↩️ ${(lang === "ar") ? "إرجاع سهل" : (lang === "fr" ? "Retours faciles" : "Easy returns")}</div>
-          </div>
-
-          ${chips}
-
-          <div class="product__actions" style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-            <button id="btnAddDetail" class="btn btn--primary">+ ${(typeof t==="function" && t("bn_cart")) ? t("bn_cart") : "Add to cart"}</button>
-            <button id="btnWishDetail" class="icon-btn" type="button" aria-label="Add to favourites" title="Favourites">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <div class="product-detail__actions">
+            <div class="product-detail__quantity">
+              <label for="pdQuantity" class="visually-hidden">Quantity</label>
+              <button class="quantity-btn" id="pdDec" type="button" aria-label="Decrease quantity">-</button>
+              <input type="number" id="pdQuantity" value="1" min="1" class="quantity-input" inputmode="numeric">
+              <button class="quantity-btn" id="pdInc" type="button" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="btn btn--primary btn--full add-to-cart-btn" id="pdAdd" type="button">
+              ${escapeHtml((window.t && typeof window.t === 'function' && window.t('add_to_cart')) ? window.t('add_to_cart') : (document.documentElement.lang === 'fr' ? 'Ajouter au panier' : (document.documentElement.lang === 'ar' ? 'زيد للسلة' : 'Add to cart')))}
             </button>
-            <a id="btnWhatsApp" class="btn btn--wa" target="_blank" rel="noopener">${(typeof t==="function" && t("bn_whatsapp")) ? t("bn_whatsapp") : "WhatsApp"}</a>
           </div>
 
-          <div class="muted small" style="margin-top:10px;">
-            ${lang === "ar" ? "معلومة: اختيار الحجم يغيّر السعر تلقائياً." : (lang === "fr" ? "Info : le prix change selon la taille." : "Tip: price updates based on the size you select.")}
+          <div class="product-detail__meta">
+            ${product?.category ? `<p><strong>Category:</strong> ${escapeHtml(product.category)}</p>` : ''}
+            ${product?.tag ? `<p><strong>Tag:</strong> ${escapeHtml(product.tag)}</p>` : ''}
           </div>
         </div>
       </div>
     `;
 
-    // Wire chips
-    target.querySelectorAll(".size-chip").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        selectedSize = btn.dataset.size;
-        // update UI states
-        target.querySelectorAll(".size-chip").forEach(b=>{
-          const on = (b.dataset.size === selectedSize);
-          b.classList.toggle("active", on);
-          b.setAttribute("aria-checked", on ? "true" : "false");
-        });
-        const priceEl = document.getElementById("productPrice");
-        if (priceEl) priceEl.textContent = formatMoney(getVariantPrice(selectedSize));
-        const wa = document.getElementById("btnWhatsApp");
-        if (wa) wa.href = buildWhatsAppHref();
-      });
+    bindInteractions(product, selectedSize, sizes);
+  }
+
+  function bindInteractions(product, initialSize, sizes) {
+    let selectedSize = initialSize;
+
+    const qtyInput = document.getElementById('pdQuantity');
+    const inc = document.getElementById('pdInc');
+    const dec = document.getElementById('pdDec');
+    const addBtn = document.getElementById('pdAdd');
+    const priceEl = document.getElementById('pdPrice');
+    const sizesWrap = document.getElementById('pdSizes');
+
+    const clampQty = () => {
+      if (!qtyInput) return 1;
+      let q = parseInt(qtyInput.value, 10);
+      if (!Number.isFinite(q) || q < 1) q = 1;
+      qtyInput.value = String(q);
+      return q;
+    };
+
+    inc?.addEventListener('click', () => {
+      if (!qtyInput) return;
+      const q = clampQty();
+      qtyInput.value = String(q + 1);
     });
 
-    // WhatsApp href
-    const wa = document.getElementById("btnWhatsApp");
-    if (wa) wa.href = buildWhatsAppHref();
+    dec?.addEventListener('click', () => {
+      if (!qtyInput) return;
+      const q = clampQty();
+      qtyInput.value = String(Math.max(1, q - 1));
+    });
 
-    // Favourites toggle
-    const wishBtn = document.getElementById('btnWishDetail');
-    if (wishBtn){
-      const setState = (on)=>{
-        wishBtn.classList.toggle('active', !!on);
-        wishBtn.setAttribute('aria-label', on ? (lang==='fr' ? 'Retirer des favoris' : (lang==='ar' ? 'حيد من المفضلة' : 'Remove from favourites')) : (lang==='fr' ? 'Ajouter aux favoris' : (lang==='ar' ? 'زيد للمفضلة' : 'Add to favourites')));
-      };
-      setState(isWished(p.id));
-      wishBtn.addEventListener('click', ()=>{
-        const s = getWishSet();
-        const pid = String(p.id);
-        if (s.has(pid)) s.delete(pid); else s.add(pid);
-        saveWishSet(s);
-        setState(s.has(pid));
+    qtyInput?.addEventListener('change', clampQty);
+    qtyInput?.addEventListener('input', () => {
+      if (qtyInput.value.trim() === '') return;
+      clampQty();
+    });
+
+    if (sizesWrap && sizes.length) {
+      sizesWrap.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-pd-size]');
+        if (!btn) return;
+        const size = btn.getAttribute('data-pd-size');
+        if (!size) return;
+        selectedSize = size;
+
+        sizesWrap.querySelectorAll('.flashSize').forEach(b => {
+          const isOn = b.getAttribute('data-pd-size') === size;
+          b.classList.toggle('active', isOn);
+          b.setAttribute('aria-checked', isOn ? 'true' : 'false');
+        });
+
+        const newPrice = getPrice(product, selectedSize);
+        if (priceEl) {
+          priceEl.innerHTML = `
+            ${Number.isFinite(newPrice) ? formatMoney(newPrice) : 'Price not available'}
+            <span class="product-detail__size">/ ${escapeHtml(selectedSize)}</span>
+          `;
+        }
+
+        setParam('size', selectedSize);
       });
     }
 
-    // Add to cart
-    const btnAdd = document.getElementById("btnAddDetail");
-    if (btnAdd){
-      const originalText = btnAdd.innerHTML;
-      btnAdd.addEventListener("click", ()=>{
-        if (typeof addToCart === "function") {
-          addToCart(p, selectedSize || null);
-          
-          // Open cart drawer to show the item was added
-          if (typeof openDrawer === "function" && typeof cartDrawer !== "undefined") {
-            openDrawer(cartDrawer);
-          }
+    addBtn?.addEventListener('click', () => {
+      const qty = clampQty();
 
-          // Provide visual feedback on the button
-          btnAdd.textContent = 'Added ✓';
-          setTimeout(() => { btnAdd.innerHTML = originalText; }, 1500);
+      if (Array.isArray(product?.variants) && product.variants.length && !selectedSize) {
+        selectedSize = String(product.variants[0]?.size || '');
+      }
 
-        } else { console.warn("addToCart is not available"); }
-      });
-    }
-  }
-
-  // React to language changes from global script (dispatches 'languagechange')
-  document.addEventListener("languagechange", ()=>{ render(); });
-
-  // Keep certain product prices in sync (even if products.json is outdated somewhere)
-  const PRICE_OVERRIDES = {
-    p16: { '10ml': 110, '20ml': 200, '30ml': 290 },
-    p21: { '10ml': 110, '20ml': 190, '30ml': 275 }
-  };
-  function applyOverrides(p){
-    if (!p || !p.id) return;
-    const ov = PRICE_OVERRIDES[String(p.id)];
-    if (!ov) return;
-    const order = ['10ml','20ml','30ml'];
-    const updated = order.filter(s => ov[s] != null).map(s => ({ size: s, price: ov[s] }));
-    const existing = Array.isArray(p.variants) ? p.variants : [];
-    const extras = existing.filter(v => v && v.size && ov[String(v.size)] == null);
-    p.variants = [...updated, ...extras];
-    if (ov['10ml'] != null) p.price = ov['10ml'];
-  }
-
-  fetch("products.json", { cache:"no-store" })
-    .then(r=>r.json())
-    .then(list=>{
-      productData = (list||[]).find(x=>String(x.id)===String(id));
-      if (!productData){
-        target.innerHTML = `<div class="muted" style="padding:40px 0; text-align:center;">
-          Product not found. <a href="index.html">Back to shop</a>
-        </div>`;
+      if (typeof window.addToCart !== 'function') {
+        alert('Cart is not ready. Please refresh the page.');
         return;
       }
-      applyOverrides(productData);
-      try{ window.addRecentlyViewed?.(productData.id); }catch{}
-      render();
-    })
-    .catch(err=>{
-      console.error(err);
-      target.innerHTML = `<div class="muted" style="padding:40px 0; text-align:center;">
-        Failed to load product. <a href="index.html">Back</a>
-      </div>`;
+
+      for (let i = 0; i < qty; i += 1) {
+        window.addToCart(product, selectedSize || null);
+      }
+
+      if (qtyInput) qtyInput.value = '1';
     });
+  }
+
+  async function init() {
+    const productId = getParam('id');
+    if (!productId) {
+      renderNotFound();
+      return;
+    }
+
+    try {
+      let products = Array.isArray(window.PRODUCTS) && window.PRODUCTS.length ? window.PRODUCTS : null;
+
+      if (!products) {
+        for (let i = 0; i < 30; i += 1) {
+          await new Promise(r => setTimeout(r, 50));
+          if (Array.isArray(window.PRODUCTS) && window.PRODUCTS.length) {
+            products = window.PRODUCTS;
+            break;
+          }
+        }
+      }
+
+      if (!products) products = await loadProductsFallback();
+
+      const product = products.find(p => String(p?.id) === String(productId));
+      if (!product) {
+        renderNotFound();
+        return;
+      }
+
+      const picked = pickDefaultSize(product, getParam('size'));
+      if (picked && getParam('size') !== picked) setParam('size', picked);
+
+      renderProduct(product);
+    } catch (err) {
+      console.error('Product detail error:', err);
+      renderNotFound();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
 })();

@@ -659,9 +659,9 @@ function getProductPrice(p, variantSize = null) {
 // Price overrides (ensures critical prices stay correct even if products.json loads from an older online copy)
 const PRODUCT_VARIANT_PRICE_OVERRIDES = {
   // Jean Paul Gaultier Le Male Elixir
-  p16: { '10ml': 110, '20ml': 200, '30ml': 290 },
+  p16: { '10ml': 90, '20ml': 180, '30ml': 270 },
   // Jean Paul Gaultier – Le Male Le Parfum
-  p21: { '10ml': 110, '20ml': 190, '30ml': 275 }
+  p21: { '10ml': 90, '20ml': 170, '30ml': 255 }
 };
 
 // Ensure featured/custom products exist even if products.json comes from an older copy
@@ -2247,7 +2247,8 @@ function productCard(p){
 
 function renderNewArrivals(){
   if (!elNewArrivalsGrid) return;
-  const newItems = PRODUCTS.filter(p => p.isNew);
+  // Get ONLY the last 5 added items that are marked new, reversed (newest first)
+  const newItems = PRODUCTS.filter(p => p.isNew).slice(-5).reverse();
   
   if (!newItems.length){
     // Optional: hide section or show message
@@ -2255,7 +2256,8 @@ function renderNewArrivals(){
     return;
   }
   
-  elNewArrivalsGrid.innerHTML = newItems.map(productCard).join("");
+  // Use flashCard--product class for styling coherence in carousel
+  elNewArrivalsGrid.innerHTML = newItems.map(p => productCard(p)).join("");
   bindProductCardDelegation(elNewArrivalsGrid);
 }
 
