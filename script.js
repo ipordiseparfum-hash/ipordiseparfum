@@ -789,6 +789,7 @@ function saveCart(){
 
 // ---------- DOM ----------
 const elGrid = document.getElementById("productGrid");
+const elNewArrivalsGrid = document.getElementById("newArrivalsGrid");
 const elSearch = document.getElementById("searchInput");
 const elClear = document.getElementById("clearSearch");
 const elSort = document.getElementById("sortSelect");
@@ -1107,6 +1108,78 @@ function updateBestArrows(){
   const atEnd = x >= (maxScroll - 2);
   bestPrevBtn.disabled = atStart;
   bestNextBtn.disabled = atEnd;
+}
+
+function initNewArrivalsCarousel(){
+  const viewport = document.getElementById("newViewport");
+  const prevBtn = document.querySelector("[data-new-prev]");
+  const nextBtn = document.querySelector("[data-new-next]");
+  
+  if (!viewport) return;
+
+  function updateArrows(){
+    if (!prevBtn || !nextBtn) return;
+    prevBtn.disabled = viewport.scrollLeft <= 0;
+    nextBtn.disabled = viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - 1;
+  }
+
+  updateArrows();
+  viewport.addEventListener("scroll", throttle(updateArrows, 120));
+  window.addEventListener("resize", throttle(updateArrows, 150));
+
+  prevBtn?.addEventListener("click", ()=>{
+    const delta = Math.round(viewport.clientWidth * 0.85);
+    viewport.scrollBy({ left: -delta, behavior: "smooth" });
+  });
+  nextBtn?.addEventListener("click", ()=>{
+    const delta = Math.round(viewport.clientWidth * 0.85);
+    viewport.scrollBy({ left: delta, behavior: "smooth" });
+  });
+
+  // Reusing the drag scrolling logic if applicable
+  const enableDrag = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (enableDrag){
+    let isPointerDown = false;
+    let didDrag = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    viewport.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0) return;
+      if (e.target.closest('button, a, input, select, textarea, [role="button"]')) return;
+      isPointerDown = true;
+      didDrag = false;
+      startX = e.clientX;
+      startScrollLeft = viewport.scrollLeft;
+      viewport.setPointerCapture?.(e.pointerId);
+      viewport.style.cursor = 'grabbing';
+    });
+    
+    viewport.addEventListener('pointermove', (e) => {
+      if (!isPointerDown) return;
+      if (Math.abs(e.clientX - startX) > 5) didDrag = true;
+      const x = e.clientX;
+      const walk = (x - startX) * 1.5;
+      viewport.scrollLeft = startScrollLeft - walk;
+    });
+
+    const stop = (e) => {
+      isPointerDown = false;
+      viewport.style.cursor = '';
+      if (e && e.pointerId) viewport.releasePointerCapture?.(e.pointerId);
+    };
+
+    viewport.addEventListener('pointerup', stop);
+    viewport.addEventListener('pointercancel', stop);
+    viewport.addEventListener('pointerleave', stop);
+
+    // Prevent clicks if dragged
+    viewport.querySelectorAll('a').forEach(l => {
+        l.addEventListener('click', e => {
+            if (didDrag) { e.preventDefault(); e.stopPropagation(); }
+        }, {capture: true});
+    });
+  }
 }
 
 function initBestSellersCarousel(){
@@ -2170,6 +2243,20 @@ function productCard(p){
       </div>
     </article>
   `;
+}
+
+function renderNewArrivals(){
+  if (!elNewArrivalsGrid) return;
+  const newItems = PRODUCTS.filter(p => p.isNew);
+  
+  if (!newItems.length){
+    // Optional: hide section or show message
+    elNewArrivalsGrid.innerHTML = '<div class="muted">Coming soon...</div>';
+    return;
+  }
+  
+  elNewArrivalsGrid.innerHTML = newItems.map(productCard).join("");
+  bindProductCardDelegation(elNewArrivalsGrid);
 }
 
 function renderProducts(){
@@ -3838,6 +3925,8 @@ function initHeroSlider(){
   // Perceived performance: show skeletons immediately
   renderProductSkeletons(8);
   await loadProducts();
+  renderNewArrivals();
+  initNewArrivalsCarousel();
   // default: highlight filter all
   setFilter("all");
   initBestSellersCarousel();
