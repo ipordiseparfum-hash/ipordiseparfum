@@ -11,14 +11,42 @@
     "description_ar": "لايتون أو دو بارفان من بارفان دو مارلي هو عطر رجالي متطور يجسد الأناقة الراقية والثقة الهادئة. يفتح هذا العطر بانفجار منعش وحيوي من البرغموت واليوسفي والتفاح واللافندر، مما يخلق مقدمة عطرية وحمضية مفعمة بالحيوية والأناقة.\n\nيكشف القلب عن مزيج حار وأنيق من الهيل والجيرانيوم والياسمين، مما يضيف عمقًا وكاريزما للتكوين. مع تطوره، تبرز الفانيليا الغنية والفلفل وخشب الجواياك والباتشولي في القاعدة، مما يوفر أثراً دافئاً وكريمياً طويل الأمد فاخراً ومسبباً للإدمان.\n\nلايتون متعدد الاستخدامات بشكل لا يصدق - مثالي للثقة النهارية، الأناقة المسائية، أو المناسبات الخاصة. إسقاطه الممتاز وثباته الاستثنائي (حتى 12 ساعة) يجعله عطر توقيع مثالي للرجال الحديثين الذين يقدرون الفخامة الأبدية والقوة الخفية.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Layton%20fragrance%20set%20with%20decants.png",
     "variants": [
-      { "size": "10ml", "price": 210 },
-      { "size": "20ml", "price": 410 },
-      { "size": "30ml", "price": 610 }
+      {
+        "size": "10ml",
+        "price": 210
+      },
+      {
+        "size": "20ml",
+        "price": 410
+      },
+      {
+        "size": "30ml",
+        "price": 610
+      }
     ],
     "rating": 4.9,
     "reviews": 28,
     "tag": "Sophisticated",
-    "notes": ["bergamot","apple","lavender","mandarin","cardamom","geranium","jasmine","vanilla","pepper","patchouli","guaiac wood"]
+    "notes": [
+      "bergamot",
+      "apple",
+      "lavender",
+      "mandarin",
+      "cardamom",
+      "geranium",
+      "jasmine",
+      "vanilla",
+      "pepper",
+      "patchouli",
+      "guaiac wood"
+    ],
+    "main_accords": {
+      "Vanilla": 100,
+      "Spicy": 90,
+      "Fruity": 80,
+      "Woody": 70,
+      "Aromatic": 60
+    }
   },
   {
     "id": "p13",
@@ -30,14 +58,35 @@
     "description_ar": "غوتشي إنتنس عود هو تحفة شرقية فاخرة مصممة حصريًا لعشاق العود الحقيقيين. يقدم هذا العطر الفاخر تجربة عميقة وغامضة وحسية بشكل عميق تتجاوز عالم العطور العادي.\n\nيركز التكوين على خشب العود الثمين، المثرى بأوتار الجلد الغنية، والبخور المقدس، والنغمات الخشبية المتطورة. النتيجة هي رائحة دافئة ومدخنة وراتنجية تتطور بشكل جميل طوال اليوم، مما يكشف عن طبقات من التعقيد والعمق.\n\nإنتنس عود مثالي للارتداء المسائي والمناسبات الرسمية والمواسم الباردة. ثباته الاستثنائي (حتى 14 ساعة) وسيلانه القوي يجعله مثاليًا للرجال الذين يجذبون الانتباه ويقدرون الفروق الدقيقة في العطور الشرقية. عطر تصريح حقيقي للرجل المميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Intense%20Oud%20perfume%20collection.png",
     "variants": [
-      { "size": "10ml", "price": 180 },
-      { "size": "20ml", "price": 320 },
-      { "size": "30ml", "price": 450 }
-     ],
+      {
+        "size": "10ml",
+        "price": 180
+      },
+      {
+        "size": "20ml",
+        "price": 320
+      },
+      {
+        "size": "30ml",
+        "price": 450
+      }
+    ],
     "rating": 4.8,
     "reviews": 24,
     "tag": "Oriental",
-    "notes": ["oud","leather","incense","woody"]
+    "notes": [
+      "oud",
+      "leather",
+      "incense",
+      "woody"
+    ],
+    "main_accords": {
+      "Oud": 100,
+      "Woody": 90,
+      "Smoky": 80,
+      "Leather": 70,
+      "Amber": 60
+    }
   },
   {
     "id": "p14",
@@ -49,14 +98,35 @@
     "description_ar": "جان بول غوتييه ألترا ميل هو عطر مغري وحيوي يجسد جوهر الرجولة الحديثة بسحر لا يقاوم. يجمع هذا العطر الجريء بين إغراء الحلاوة وقوة الرجولة، مما يخلق هالة مغناطيسية تجذب الأنظار أينما تذهب.\n\nيتميز التكوين بمزيج شهي من الكمثرى للانتعاش العصير، الفانيليا الغنية للحلاوة الكريمية، القرفة الدافئة للعمق الحار، واللافندر العطري للأناقة العشبية. النتيجة هي عطر غورماند حلو ورجولي في آن واحد، مع إسقاط وثبات ممتازين.\n\nألترا ميل مثالي للخروج المسائي، اللقاءات الرومانسية، وحياة الليل. شخصيته القوية والجذابة تجعله مثاليًا للرجال الذين يريدون ترك انطباع دائم. تنوع العطر يسمح له بالانتقال بسلاسة من المناسبات العادية إلى الرسمية، مع الحفاظ دائمًا على حافة الإغراء.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Ultra%20Male%20set.png",
     "variants": [
-      { "size": "10ml", "price": 75 },
-      { "size": "20ml", "price": 150 },
-      { "size": "30ml", "price": 225 }
+      {
+        "size": "10ml",
+        "price": 75
+      },
+      {
+        "size": "20ml",
+        "price": 150
+      },
+      {
+        "size": "30ml",
+        "price": 225
+      }
     ],
     "rating": 4.6,
     "reviews": 18,
     "tag": "Seductive",
-    "notes": ["pear","vanilla","cinnamon","lavender"]
+    "notes": [
+      "pear",
+      "vanilla",
+      "cinnamon",
+      "lavender"
+    ],
+    "main_accords": {
+      "Vanilla": 100,
+      "Fruity": 95,
+      "Sweet": 90,
+      "Aromatic": 70,
+      "Spicy": 60
+    }
   },
   {
     "id": "p15",
@@ -68,14 +138,33 @@
     "description_ar": "هوغو بوس ذا سينت إليكسير هو عطر قوي ومتطور يشع ثقة لا تتزعزع وأناقة حديثة. تضخم هذه النسخة الإليكسير الحمض النووي المميز لبوس، مما يوفر تجربة أعمق وأكثر فخامة تلهم الاحترام والإعجاب.\n\nيفتح التكوين بنغمات الفلفل الجريئة التي تضيف دفءًا حارًا وكثافة، متوازنة بلافندر أنيق للانتعاش العطري. يتطور القلب بأوتار خشبية غنية توفر العمق والشخصية، بينما تتميز القاعدة بعنبر دافئ ونغمات توابل خفيفة لنهاية ناعمة وطويلة الأمد.\n\nتم تصميم ذا سينت إليكسير للرجال الطموحين الذين يقودون بالسلطة والأسلوب. إسقاطه القوي وثباته الاستثنائي (حتى 10 ساعات) يجعله مثاليًا للاجتماعات المهمة والفعاليات المسائية والمواقف التي تحتاج فيها إلى ترك انطباع قوي ودائم. عطر للقائد الحديث الذي يفهم قوة العطر.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Hugo%20Boss%20The%20Scent%20Elixir%20set.png",
     "variants": [
-      { "size": "10ml", "price": 170 },
-      { "size": "20ml", "price": 300 },
-      { "size": "30ml", "price": 420 }
+      {
+        "size": "10ml",
+        "price": 170
+      },
+      {
+        "size": "20ml",
+        "price": 300
+      },
+      {
+        "size": "30ml",
+        "price": 420
+      }
     ],
     "rating": 4.5,
     "reviews": 16,
     "tag": "Refined",
-    "notes": ["pepper","lavender","woody"]
+    "notes": [
+      "pepper",
+      "lavender",
+      "woody"
+    ],
+    "main_accords": {
+      "Spicy": 100,
+      "Lavender": 90,
+      "Woody": 80,
+      "Aromatic": 70
+    }
   },
   {
     "id": "p16",
@@ -88,14 +177,34 @@
     "description_ar": "جان بول غوتييه لو مال إليكسير هو عطر رجالي جريء وكثيف ومغري بشدة يعزز جوهر عائلة لو مال الاستفزازي. يوفر هذا الإصدار الإليكسير تجربة أعمق وأكثر نشوة تجسد الرجولة الحديثة بثقة لا تُعتذر عنها.\n\nيتميز التكوين بمزيج جريء من الفانيليا للحلاوة الكريمية، العسل للدفء الذهبي، العنبر للعمق الحسي، والنغمات الحارة للكثافة الاستفزازية. النتيجة هي عطر حلو وقوي في آن واحد، مع ثبات استثنائي وأثر مغناطيسي يجذب الانتباه.\n\nلو مال إليكسير مثالي للرجال الواثقين الذين يعانقون جانبهم الجريء. إسقاطه القوي وقوته الدائمة يجعله مثاليًا للمغامرات المسائية واللقاءات الرومانسية والمواقف التي تريد فيها ترك انطباع لا يُنسى. عطر لأولئك الذين يجرؤون على أن يكونوا مختلفين ومغرين دون اعتذار.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20fragrance%20set.png",
     "variants": [
-      { "size": "10ml", "price": 90 },
-      { "size": "20ml", "price": 180 },
-      { "size": "30ml", "price": 270 }
+      {
+        "size": "10ml",
+        "price": 90
+      },
+      {
+        "size": "20ml",
+        "price": 180
+      },
+      {
+        "size": "30ml",
+        "price": 270
+      }
     ],
     "rating": 4.7,
     "reviews": 22,
     "tag": "Best Seller",
-    "notes": ["vanilla","honey","amber","spices"]
+    "notes": [
+      "vanilla",
+      "honey",
+      "amber",
+      "spices"
+    ],
+    "main_accords": {
+      "Vanilla": 100,
+      "Sweet": 95,
+      "Amber": 90,
+      "Spicy": 80
+    }
   },
   {
     "id": "p17",
@@ -107,14 +216,33 @@
     "description_ar": "غوتشي غيلتي إليكسير بور هوم هو عطر رجالي مغري وكثيف يعزز جوهر عائلة غيلتي الاستفزازي. يرتقي هذا الإصدار الإليكسير بالعطر المميز إلى مستويات جديدة من الحساسية والرقي، مثالي للرجل الحديث الذي يعانق جانبه الأكثر ظلامًا وشغفًا.\n\nيتميز التكوين بمزيج مغناطيسي من الفلفل الوردي للدفء الحار، الياسمين للأناقة الزهرية، والباتشولي للعمق الأرضي. يوفر العنبر الغني وحبة التونكا حلاوة ناعمة ومسببة للإدمان تستمر بشكل جميل طوال اليوم.\n\nتم تصميم غيلتي إليكسير للرجال الواثقين الذين يريدون إصدار بيان. إسقاطه القوي وثباته الاستثنائي (حتى 12 ساعة) يجعله مثاليًا للمواعيد المسائية وحياة الليل واللقاءات الرومانسية. عطر يجسد الإغراء الممنوع والسحر الذي لا يقاوم.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Guilty%20Elixir%20fragrance%20set.png",
     "variants": [
-      { "size": "10ml", "price": 185 },
-      { "size": "20ml", "price": 330 },
-      { "size": "30ml", "price": 460 }
+      {
+        "size": "10ml",
+        "price": 185
+      },
+      {
+        "size": "20ml",
+        "price": 330
+      },
+      {
+        "size": "30ml",
+        "price": 460
+      }
     ],
     "rating": 4.6,
     "reviews": 19,
     "tag": "Elegant",
-    "notes": ["lavender","vanilla","aromatic"]
+    "notes": [
+      "lavender",
+      "vanilla",
+      "aromatic"
+    ],
+    "main_accords": {
+      "Floral": 100,
+      "Spicy": 90,
+      "Aromatic": 80,
+      "Vanilla": 70
+    }
   },
   {
     "id": "p18",
@@ -126,14 +254,35 @@
     "description_ar": "مونتال أرابيانز تونكا هو تحفة شرقية فاخرة تجسد سحر العطور العربية في أفضل حالاتها. ينسج هذا العطر الفاخر خشب العود الثمين مع حلاوة حبة التونكا الكريمية، مما يخلق رائحة غامضة ومسببة للإدمان بشكل لا يقاوم.\n\nيركز التكوين على العود الغني والمدخن الذي يوفر أساسًا عميقًا وراتنجيًا، مكملًا بشكل جميل بدفء حبة التونكا الحلو والمشابه لللوز. تضيف الفانيليا نعومة كريمية، بينما يخلق العنبر والمسك أثراً حسيًا وطويل الأمد يتطور طوال اليوم.\n\nأرابيانز تونكا مثالي للارتداء المسائي والمناسبات الرسمية والمواسم الباردة. ثباته الاستثنائي (حتى 14 ساعة) وسيلانه القوي والأنيق يجعله مثاليًا للرجال الذين يقدرون عمق وتعقيد العطور الشرقية. عطر فاخر حقيقي للرجل المميز الذي يسعى للرقي الشمي.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Montale%20Paris%20Arabians%20Tonka%20set.png",
     "variants": [
-      { "size": "10ml", "price": 200 },
-      { "size": "20ml", "price": 360 },
-      { "size": "30ml", "price": 500 }
+      {
+        "size": "10ml",
+        "price": 200
+      },
+      {
+        "size": "20ml",
+        "price": 360
+      },
+      {
+        "size": "30ml",
+        "price": 500
+      }
     ],
     "rating": 4.9,
     "reviews": 12,
     "tag": "Oriental",
-    "notes": ["oud","tonka bean","vanilla","amber","musk"]
+    "notes": [
+      "oud",
+      "tonka bean",
+      "vanilla",
+      "amber",
+      "musk"
+    ],
+    "main_accords": {
+      "Oud": 100,
+      "Sweet": 90,
+      "Vanilla": 85,
+      "Amber": 80
+    }
   },
   {
     "id": "p19",
@@ -145,14 +294,33 @@
     "description_ar": "جيفنشي جينتلمان ريزيرف بريفيه هو عطر رجالي متطور وأبدي يجسد الأناقة الكلاسيكية مع لمسة حديثة. يجسد هذا العطر الراقي جوهر الرجل الحقيقي - واثق، مثقف، ومرتدي بأناقة لا تشوبها شائبة.\n\nيتميز التكوين بمزيج متناغم من الهيل الحار للدفء العطري، الجلد الأنيق للعمق المتطور، والتبغ الناعم للطابع الراقي والرجولي. يوفر العنبر الغني والنغمات الخشبية الخفيفة أساسًا فاخرًا يتطور بشكل جميل طوال اليوم.\n\nجينتلمان مثالي للاجتماعات التجارية والمناسبات الرسمية والرقي المسائي. إسقاطه المتوازن وثباته الممتاز (حتى 10 ساعات) يجعله مثاليًا للرجال الذين يقدرون الفخامة الخفية والأسلوب الأبدي. عطر يتحدث عن النجاح والرقي والثقة الهادئة.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Givenchy%20Gentleman%20R%C3%A9serve%20Priv%C3%A9e%20set.png",
     "variants": [
-      { "size": "10ml", "price": 170 },
-      { "size": "20ml", "price": 300 },
-      { "size": "30ml", "price": 420 }
+      {
+        "size": "10ml",
+        "price": 170
+      },
+      {
+        "size": "20ml",
+        "price": 300
+      },
+      {
+        "size": "30ml",
+        "price": 420
+      }
     ],
     "rating": 4.6,
     "reviews": 20,
     "tag": "Elegant",
-    "notes": ["woody","spicy","sensual"]
+    "notes": [
+      "woody",
+      "spicy",
+      "sensual"
+    ],
+    "main_accords": {
+      "Woody": 100,
+      "Iris": 95,
+      "Whiskey": 90,
+      "Amber": 80
+    }
   },
   {
     "id": "p20",
@@ -164,14 +332,34 @@
     "description_ar": "جان بول غوتييه سكاندال إليكسير هو عطر رجالي استفزازي ومغري بشدة يدفع الحدود ويجذب الانتباه. يعزز هذا الإصدار الإليكسير الطابع الفضائحي للأصلي، مما يوفر تجربة أعمق وأكثر نشوة تجسد الرغبة الممنوعة والجاذبية المغناطيسية.\n\nيتميز التكوين بمزيج جريء من العسل للحلاوة الذهبية، الفانيليا للدلال الكريمي، العنبر للحساسية الدافئة، والأوتار الخشبية للعمق المتطور. النتيجة هي عطر حلو وقوي في آن واحد، مع ثبات استثنائي وأثر يستمر بشكل لا يُنسى.\n\nسكاندال إليكسير مثالي للرجال الواثقين الذين يعانقون جانبهم الجريء. إسقاطه القوي وقوته الدائمة يجعله مثاليًا للمغامرات المسائية واللقاءات الرومانسية والمواقف التي تريد فيها ترك انطباع لا يُنسى. عطر لأولئك الذين يجرؤون على أن يكونوا مختلفين ومغرين دون اعتذار.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Scandal%20Elixir%20set.png",
     "variants": [
-      { "size": "10ml", "price": 120 },
-      { "size": "20ml", "price": 240 },
-      { "size": "30ml", "price": 320 }
+      {
+        "size": "10ml",
+        "price": 120
+      },
+      {
+        "size": "20ml",
+        "price": 240
+      },
+      {
+        "size": "30ml",
+        "price": 320
+      }
     ],
     "rating": 4.6,
     "reviews": 14,
     "tag": "Seductive",
-    "notes": ["honey","vanilla","amber","woody"]
+    "notes": [
+      "honey",
+      "vanilla",
+      "amber",
+      "woody"
+    ],
+    "main_accords": {
+      "Sweet": 100,
+      "Honey": 95,
+      "Woody": 80,
+      "Amber": 70
+    }
   },
   {
     "id": "p21",
@@ -183,14 +371,34 @@
     "description_ar": "جان بول غوتييه لو مال لو بارفان هو نسخة متطورة ومعززة من عطر لو مال الأسطوري، مصمم للرجل الحديث الذي يطالب بالتميز في كل جانب من جوانب حياته. يرتقي هذا البارفان المركز بالعطر المميز إلى مستويات جديدة من الفخامة والرقي.\n\nيتميز التكوين بمقدمة كريمية بالهيل توفر دفءًا حارًا، متوازنًا بفانيليا غنية للحلاوة التي لا تقاوم. توفر الأخشاب الشرقية العمق والأناقة، بينما يخلق العنبر الدافئ أساسًا ناعمًا وطويل الأمد يتطور بشكل جميل طوال اليوم.\n\nلو مال لو بارفان مثالي للرجل المميز الذي يقدر التفاصيل الدقيقة. ثباته الاستثنائي (حتى 12 ساعة) وسيلانه المتطور يجعله مثاليًا للاجتماعات التجارية المهمة والفعاليات الرسمية والمساءات الحميمة. عطر يجسد الأناقة الأبدية والرقي الحديث.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Le%20Male%20set.png",
     "variants": [
-      { "size": "10ml", "price": 90 },
-      { "size": "20ml", "price": 170 },
-      { "size": "30ml", "price": 255 }
+      {
+        "size": "10ml",
+        "price": 90
+      },
+      {
+        "size": "20ml",
+        "price": 170
+      },
+      {
+        "size": "30ml",
+        "price": 255
+      }
     ],
     "rating": 4.7,
     "reviews": 23,
     "tag": "Elegant",
-    "notes": ["cardamom","vanilla","woods","amber"]
+    "notes": [
+      "cardamom",
+      "vanilla",
+      "woods",
+      "amber"
+    ],
+    "main_accords": {
+      "Vanilla": 100,
+      "Aromatic": 90,
+      "Spicy": 85,
+      "Amber": 80
+    }
   },
   {
     "id": "p22",
@@ -202,14 +410,34 @@
     "description_ar": "غوتشي غيلتي أبسولو دو بارفان بور هوم هو عطر رجالي جريء وغير تقليدي يتحدى العطور التقليدية بطابعه الجريء والاستفزازي. يعزز هذا الإصدار الأبسولو الحمض النووي المميز لغيلتي، مما يوفر تجربة أعمق وأكثر كثافة تجسد الرجولة الخام والإغراء الممنوع.\n\nيتميز التكوين بمزيج قوي من الجلد للرقي الخشن، الباتشولي للعمق الأرضي، الأوتار الخشبية للتعقيد الطبيعي، والعنبر الدافئ للدفء الحسي. النتيجة هي عطر كثيف ومتطور في آن واحد، مع ثبات استثنائي وأثر مميز يميزك.\n\nتم تصميم غيلتي أبسولو للرجال الشجعان الذين يعانقون فرديتهم. إسقاطه القوي وقوته الدائمة يجعله مثاليًا للارتداء المسائي والمناسبات الرسمية والمواقف التي تريد فيها إصدار بيان جريء ولا يُنسى. عطر لأولئك الذين يعيشون بقواعدهم الخاصة ويجذبون الانتباه.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Guilty%20Absolu%20de%20Parfum%20collection.png",
     "variants": [
-      { "size": "10ml", "price": 190 },
-      { "size": "20ml", "price": 340 },
-      { "size": "30ml", "price": 480 }
+      {
+        "size": "10ml",
+        "price": 190
+      },
+      {
+        "size": "20ml",
+        "price": 340
+      },
+      {
+        "size": "30ml",
+        "price": 480
+      }
     ],
     "rating": 4.6,
     "reviews": 17,
     "tag": "Bold",
-    "notes": ["leather","patchouli","woody","amber"]
+    "notes": [
+      "leather",
+      "patchouli",
+      "woody",
+      "amber"
+    ],
+    "main_accords": {
+      "Leather": 100,
+      "Woody": 95,
+      "Aromatic": 80,
+      "Patchouli": 75
+    }
   },
   {
     "id": "p23",
@@ -221,14 +449,34 @@
     "description_ar": "هوغو بوس بوس بوتلد أبسولو هو تفسير معزز لعطر بوس بوتلد الأيقوني، مصمم للرجال الطموحين الذين يقودون بالسلطة والأسلوب. يوفر هذا الإصدار الأبسولو تجربة أعمق وأكثر فخامة تعزز الحمض النووي المميز لبوس مع تركيز وثبات محسنين.\n\nيتميز التكوين بمزيج متطور من التفاح للانتعاش الحاد، الجيرانيوم للأناقة العشبية، القرفة للدفء الحار، والعنبر الغني للعمق الحسي. توفر الأوتار الخشبية واللفتات الجلدية الخفيفة أساسًا متطورًا ورجوليًا يتطور بشكل جميل طوال اليوم.\n\nبوس بوتلد أبسولو مثالي لقادة الأعمال والمناسبات الرسمية والرقي المسائي. إسقاطه القوي وثباته الاستثنائي (حتى 12 ساعات) يجعله مثاليًا للرجال الذين يريدون إسقاط الثقة والنجاح. عطر يجسد القيادة الحديثة والأناقة الأبدية.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Luxury%20Hugo%20Boss%20perfume%20set.png",
     "variants": [
-      { "size": "10ml", "price": 165 },
-      { "size": "20ml", "price": 290 },
-      { "size": "30ml", "price": 410 }
+      {
+        "size": "10ml",
+        "price": 165
+      },
+      {
+        "size": "20ml",
+        "price": 290
+      },
+      {
+        "size": "30ml",
+        "price": 410
+      }
     ],
     "rating": 4.6,
     "reviews": 21,
     "tag": "Refined",
-    "notes": ["woody","amber","leather","spices"]
+    "notes": [
+      "woody",
+      "amber",
+      "leather",
+      "spices"
+    ],
+    "main_accords": {
+      "Woody": 100,
+      "Fruity": 90,
+      "Spicy": 80,
+      "Amber": 70
+    }
   },
   {
     "id": "p24",
@@ -240,14 +488,34 @@
     "description_ar": "ديور هوم إنتنس هو عطر رجالي متطور وحسي بعمق يرفع فن العطور إلى مستويات جديدة. يعزز هذا الإصدار الكثيف الحمض النووي المميز لديور هوم، مما يوفر تجربة أكثر ثراءً وفخامة تجسد الأناقة الحديثة والقوة الهادئة.\n\nيتميز التكوين بمزيج مخملي من الآيريس للرقي المسحوقي، العنبر الغني للدفء الحسي، الفانيليا الكريمية للحلاوة التي لا تقاوم، والأوتار الخشبية للعمق الطبيعي. النتيجة هي عطر كثيف ومتطور في آن واحد، مع ثبات استثنائي وأثر متطور.\n\nهوم إنتنس مثالي للرجل المميز الذي يقدر الأشياء الجميلة. إسقاطه المتوازن وقوته الدائمة يجعله مثاليًا للارتداء المسائي والمناسبات الرسمية واللحظات الحميمة. عطر يتحدث عن النجاح والرقي والجاذبية الأبدية.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Dior%20Homme%20Intense%20fragrance%20set.png",
     "variants": [
-      { "size": "10ml", "price": 110 },
-      { "size": "20ml", "price": 220 },
-      { "size": "30ml", "price": 330 }
+      {
+        "size": "10ml",
+        "price": 110
+      },
+      {
+        "size": "20ml",
+        "price": 220
+      },
+      {
+        "size": "30ml",
+        "price": 330
+      }
     ],
     "rating": 4.8,
     "reviews": 26,
     "tag": "Elegant",
-    "notes": ["iris","amber","vanilla","woody"]
+    "notes": [
+      "iris",
+      "amber",
+      "vanilla",
+      "woody"
+    ],
+    "main_accords": {
+      "Iris": 100,
+      "Powdery": 95,
+      "Woody": 90,
+      "Amber": 80
+    }
   },
   {
     "id": "p25",
@@ -259,14 +527,33 @@
     "description_ar": "فالنتينو أومو بورن إن روما إكسترا دوس هو احتفال معزز بأناقة روما والرجولة الحديثة، مصمم للرجال الذين يعانقون الرقي الحضري بثقة لا تُعتذر عنها. يعزز هذا الإصدار الإكسترا دوس طابع بورن إن روما المميز، مما يوفر إسقاطًا أقوى وثباتًا محسنًا للتأثير الأقصى.\n\nيتميز التكوين بمزيج جريء من الفلفل الأسود الحار للدفء المفعم بالحيوية، الفانيليا الغنية للدلال الكريمي، الأوتار الخشبية للعمق الطبيعي، والعنبر الدافئ للرقي الحسي. النتيجة هي عطر قوي ومتطور في آن واحد، مع قوة بقاء استثنائية وأثر مغناطيسي.\n\nبورن إن روما إكسترا دوس مثالي للرجل الحضري الحديث. حضوره القوي وانطباعه الدائم يجعله مثاليًا للخروج المسائي والاجتماعات التجارية واللقاءات الرومانسية في المدينة. عطر يجسد روح روما النابضة بالحياة مع جذب الانتباه في أي منظر حضري.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Valentino%20Uomo%20Born%20in%20Roma%20set.png",
     "variants": [
-      { "size": "10ml", "price": 130 },
-      { "size": "20ml", "price": 260 },
-      { "size": "30ml", "price": 380 }
+      {
+        "size": "10ml",
+        "price": 130
+      },
+      {
+        "size": "20ml",
+        "price": 260
+      },
+      {
+        "size": "30ml",
+        "price": 380
+      }
     ],
     "rating": 4.6,
     "reviews": 13,
     "tag": "Bold",
-    "notes": ["spicy","vanilla","woody","amber"]
+    "notes": [
+      "spicy",
+      "vanilla",
+      "woody",
+      "amber"
+    ],
+    "main_accords": {
+      "Vanilla": 100,
+      "Woody": 90,
+      "Spicy": 80
+    }
   },
   {
     "id": "p26",
@@ -278,14 +565,36 @@
     "description_ar": "باكو رابان 1 ميليون إليكسير هو تفسير فاخر ومعزز لعطر 1 ميليون الأيقوني، مصمم للرجال الذين يجسدون النجاح والقوة والثقة التي لا تُعتذر عنها. يرتقي هذا الإصدار الإليكسير بالعطر المميز إلى مستويات جديدة من الفخامة والحساسية، مما يوفر تجربة أكثر ثراءً وفخامة.\n\nيتميز التكوين بمزيج ذهبي من الفانيليا للحلاوة الكريمية، التفاح المنعش للحيوية العصيرية، وردة الداماسك للأناقة الزهرية، والعنبر الغني للرقي الدافئ. تضيف حبة التونكا والأرز العمق والتعقيد، مما يخلق عطرًا جريئًا ومتطورًا في آن واحد.\n\n1 ميليون إليكسير مثالي للمحقق الحديث. ثباته الاستثنائي (حتى 12 ساعة) وإسقاطه القوي يجعله مثاليًا للأحداث ذات المستوى العالي والمساءات الرومانسية والمواقف التي تريد فيها ترك انطباع فاخر ودائم. عطر يرمز إلى الثروة والنجاح والسحر الذي لا يقاوم.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gold%20elegance%20in%201%20Million%20Elixir.png",
     "variants": [
-      { "size": "10ml", "price": 180 },
-      { "size": "20ml", "price": 320 },
-      { "size": "30ml", "price": 450 }
+      {
+        "size": "10ml",
+        "price": 180
+      },
+      {
+        "size": "20ml",
+        "price": 320
+      },
+      {
+        "size": "30ml",
+        "price": 450
+      }
     ],
     "rating": 4.7,
     "reviews": 30,
     "tag": "Bold",
-    "notes": ["vanilla","apple","damask rose","amber","tonka bean","cedar"]
+    "notes": [
+      "vanilla",
+      "apple",
+      "damask rose",
+      "amber",
+      "tonka bean",
+      "cedar"
+    ],
+    "main_accords": {
+      "Vanilla": 100,
+      "Fruity": 90,
+      "Sweet": 85,
+      "Rose": 70
+    }
   },
   {
     "id": "p27",
@@ -297,14 +606,35 @@
     "description_ar": "زيرجوف إربا بورا هو عطر يونيسكس لامع ومسبب للإدمان يجسد جوهر الأناقة الإيطالية والرقي الفرح. هذه التحفة من مجموعة زيرجوف الشهيرة هي احتفال بالانتعاش المرتفع إلى مستوى فني، مثالي لأولئك الذين يقدرون الفخامة الراقية.\n\nيفتح التكوين بفواكه استوائية غريبة ترقص مع الحمضيات الصقلية، مما يخلق مقدمة حيوية ومفعمة بالحيوية. يضيف المسك الأبيض لمسة نظيفة وحديثة، بينما يوفر العنبر والفانيليا عمقًا دافئًا وحسيًا يتطور بشكل جميل طوال اليوم.\n\nإربا بورا متعدد الاستخدامات بشكل لا يصدق - مذهل بنفس القدر للثقة النهارية أو الجاذبية المسائية. ثباته الاستثنائي وسيلانه المشع يجعله مثاليًا لأي شخص يبحث عن عطر توقيع منعش ولا يُنسى. عطر فاخر حقيقي يتجاوز الجنس ويحتفل بالمتعة الشمية النقية.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Xerjoff%20Erba%20Pura%20fragrance%20collection.png",
     "variants": [
-      { "size": "10ml", "price": 220 },
-      { "size": "20ml", "price": 400 },
-      { "size": "30ml", "price": 550 }
+      {
+        "size": "10ml",
+        "price": 220
+      },
+      {
+        "size": "20ml",
+        "price": 400
+      },
+      {
+        "size": "30ml",
+        "price": 550
+      }
     ],
     "rating": 4.8,
     "reviews": 25,
     "tag": "Fresh",
-    "notes": ["exotic fruits","Sicilian citrus","white musk","amber","vanilla"]
+    "notes": [
+      "exotic fruits",
+      "Sicilian citrus",
+      "white musk",
+      "amber",
+      "vanilla"
+    ],
+    "main_accords": {
+      "Fruity": 100,
+      "Sweet": 95,
+      "Musk": 80,
+      "Citrus": 75
+    }
   },
   {
     "id": "p28",
@@ -316,14 +646,35 @@
     "description_ar": "زيرجوف ناكسوس هو عطر يونيسكس رائع يجسد جوهر الأناقة الإيطالية والفخامة الأبدية، مستوحى من جزيرة ناكسوس اليونانية المشمسة. هذا العطر المتطور من مجموعة زيرجوف الشهيرة هو احتفال بالتراث المتوسطي، يمزج العناصر المنعشة والحلوة والدافئة في تناغم مثالي.\n\nيفتح التكوين باللافندر العطري للانتعاش العشبي، مكملًا بالعسل للحلاوة الذهبية والتبغ للعمق المتطور. تخلق الفانيليا الغنية والتوابل الدافئة قاعدة ناعمة ومسببة للإدمان تتطور بشكل جميل طوال اليوم، مع ثبات وإسقاط استثنائيين.\n\nناكسوس متعدد الاستخدامات بشكل لا يصدق - مذهل بنفس القدر للثقة النهارية أو الجاذبية المسائية. طابعه الراقي وأثره الفاخر يجعله مثاليًا لأولئك الذين يقدرون الفروق الدقيقة في العطور. تحفة حقيقية تتجاوز الجنس وتحتفل بالرقي الشمي.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Luxurious%20Xerjoff%20Naxos%20perfume%20collection.png",
     "variants": [
-      { "size": "10ml", "price": 250 },
-      { "size": "20ml", "price": 450 },
-      { "size": "30ml", "price": 620 }
+      {
+        "size": "10ml",
+        "price": 250
+      },
+      {
+        "size": "20ml",
+        "price": 450
+      },
+      {
+        "size": "30ml",
+        "price": 620
+      }
     ],
     "rating": 4.9,
     "reviews": 29,
     "tag": "Elegant",
-    "notes": ["lavender","honey","tobacco","vanilla","spices"]
+    "notes": [
+      "lavender",
+      "honey",
+      "tobacco",
+      "vanilla",
+      "spices"
+    ],
+    "main_accords": {
+      "Honey": 100,
+      "Tobacco": 95,
+      "Citrus": 90,
+      "Lavender": 85
+    }
   },
   {
     "id": "p29",
@@ -337,14 +688,36 @@
     "description_ar": "توم فورد أومبري ليذر هو تحفة في عالم العطور الحديثة التي تجسد الأناقة الخام للجلد في أكثر أشكاله تطورًا. يجسد هذا العطر الجريء والحسي الجانب المظلم من الفخامة، حيث تلتقي القوة بالرقي في تناغم مثالي.\n\nيفتح التكوين بالهيل الحار الذي يجذب الانتباه فورًا، مما يضع نغمة دافئة وجذابة. في قلبه، يحتل الجلد الأسود الغني مركز الصدارة، مخففًا بياسمين السامباك الرقيق للتباين الزهري والعمق. القاعدة مزيج رائع من العنبر للدفء، الباتشولي للأرضية، والطحلب لتعقيد طبيعي خفيف.\n\nتم تصميم أومبري ليذر للمتطور الحديث الذي يعانق جانبه الأكثر ظلامًا وكثافة. مثالي للارتداء المسائي والمناسبات الرسمية والمواسم الباردة، يترك هذا العطر انطباعًا لا يُنسى - مدخن وحسي ومميز تمامًا. قطعة تصريح حقيقية لأولئك الذين يفهمون قوة العطر كامتداد للشخصية.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Tom%20Ford%20Ombr%C3%A9%20Leather%20set.png",
     "variants": [
-      { "size": "10ml", "price": 200 },
-      { "size": "20ml", "price": 380 },
-      { "size": "30ml", "price": 480 }
+      {
+        "size": "10ml",
+        "price": 200
+      },
+      {
+        "size": "20ml",
+        "price": 380
+      },
+      {
+        "size": "30ml",
+        "price": 480
+      }
     ],
     "rating": 4.9,
     "reviews": 27,
     "tag": "Bold",
-    "notes": ["cardamom", "black leather", "jasmine sambac", "amber", "patchouli", "moss"]
+    "notes": [
+      "cardamom",
+      "black leather",
+      "jasmine sambac",
+      "amber",
+      "patchouli",
+      "moss"
+    ],
+    "main_accords": {
+      "Leather": 100,
+      "Animalic": 90,
+      "Floral": 70,
+      "Spicy": 60
+    }
   },
   {
     "id": "p30",
@@ -357,14 +730,34 @@
     "description_ar": "عزارو ذا موست وانتد هو عطر رجالي جريء وكاريزمي يجسد جوهر الرجل الذي يعيش حياته بموجب شروطه الخاصة. يجسد هذا العطر سحر ما لا يمكن الوصول إليه، مصمم للأفراد الواثقين الذين يجذبون الانتباه والإعجاب أينما ذهبوا.\n\nيتميز التكوين بطابع دافئ وحار مع عنبر غني للعمق الحسي، أوتار خشبية للرقي الطبيعي، ولفتات جلدية خفيفة للأناقة الخشنة. النتيجة هي عطر قوي ومتطور في آن واحد، مع ثبات ممتاز وأثر مغناطيسي يستمر بشكل لا يُنسى.\n\nذا موست وانتد مثالي للرجل الألفا الحديث. حضوره القوي وانطباعه الدائم يجعله مثاليًا للمغامرات المسائية والفتوحات التجارية والمطاردات الرومانسية. عطر لأولئك الذين يُطلبون ويُعجبون ولا يُنسى.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Azzaro%20The%20Most%20Wanted%20fragrance%20set.png",
     "variants": [
-      { "size": "10ml", "price": 100 },
-      { "size": "20ml", "price": 200 },
-      { "size": "30ml", "price": 300 }
+      {
+        "size": "10ml",
+        "price": 100
+      },
+      {
+        "size": "20ml",
+        "price": 200
+      },
+      {
+        "size": "30ml",
+        "price": 300
+      }
     ],
     "rating": 4.9,
     "reviews": 18,
     "tag": "Bold",
-    "notes": ["warm", "spicy", "woody", "amber"]
+    "notes": [
+      "warm",
+      "spicy",
+      "woody",
+      "amber"
+    ],
+    "main_accords": {
+      "Sweet": 100,
+      "Spicy": 95,
+      "Amber": 90,
+      "Woody": 80
+    }
   },
   {
     "id": "p31",
@@ -377,14 +770,37 @@
     "description_ar": "Stronger With You Powerfully هو عطر رجالي جريء ودافئ ومغناطيسي، صُمم للرجل الواثق الذي يدرك قيمته ويترك انطباعاً يدوم أينما ذهب. هذا التفسير القوي لمجموعة Stronger With You يقدم عمقاً، وكثافة، ورجولة لا تقاوم.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/stronger%20with%20you%20powerfully.jpeg",
     "variants": [
-      { "size": "10ml", "price": 130 },
-      { "size": "20ml", "price": 260 },
-      { "size": "30ml", "price": 390 }
+      {
+        "size": "10ml",
+        "price": 130
+      },
+      {
+        "size": "20ml",
+        "price": 260
+      },
+      {
+        "size": "30ml",
+        "price": 390
+      }
     ],
     "rating": 5.0,
     "reviews": 1,
     "tag": "Oriental Vanilla",
-    "notes": ["pink pepper", "chestnut", "vanilla", "lavender", "amber", "woods", "musk"]
+    "notes": [
+      "pink pepper",
+      "chestnut",
+      "vanilla",
+      "lavender",
+      "amber",
+      "woods",
+      "musk"
+    ],
+    "main_accords": {
+      "Vanilla": 100,
+      "Sweet": 95,
+      "Nutty": 90,
+      "Spicy": 80
+    }
   },
   {
     "id": "p32",
@@ -397,14 +813,36 @@
     "description_ar": "لو بو بارادايس جاردن هو عطر رجالي منعش ومغري وغريب يجسد شعور الهروب الاستوائي. مستوحى من جنة غناء، يمزج هذا العطر النضارة الخضراء مع الحلاوة الكريمية والدفء الحسي، مما يخلق هالة ذكورية لا تقاوم وعصرية.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/jean%20paul%20gaultier%20%20le%20beau%20.jpeg",
     "variants": [
-      { "size": "10ml", "price": 90 },
-      { "size": "20ml", "price": 180 },
-      { "size": "30ml", "price": 270 }
+      {
+        "size": "10ml",
+        "price": 90
+      },
+      {
+        "size": "20ml",
+        "price": 180
+      },
+      {
+        "size": "30ml",
+        "price": 270
+      }
     ],
     "rating": 4.8,
     "reviews": 3,
     "tag": "Woody Aromatic",
-    "notes": ["green notes", "bergamot", "coconut", "fig", "tonka bean", "sandalwood"]
+    "notes": [
+      "green notes",
+      "bergamot",
+      "coconut",
+      "fig",
+      "tonka bean",
+      "sandalwood"
+    ],
+    "main_accords": {
+      "Coconut": 100,
+      "Green": 95,
+      "Sweet": 90,
+      "Aquatic": 80
+    }
   },
   {
     "id": "p33",
@@ -417,14 +855,37 @@
     "description_ar": "روسيندو ماتيو رقم 5 هو عطر للجنسين غريب وأنيق ولا يُنسى من دار العطور المتخصصة Rosendo Mateu Olfactive Expressions. يمزج هذا العطر بين السطوع الزهري والعنبر الحسي والمسك الدافئ، مما يخلق تجربة عطرية غنية تبدو فاخرة ومغرية في آن واحد.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/rosendo%20mateu%205.jpeg",
     "variants": [
-      { "size": "10ml", "price": 180 },
-      { "size": "20ml", "price": 360 },
-      { "size": "30ml", "price": 540 }
+      {
+        "size": "10ml",
+        "price": 180
+      },
+      {
+        "size": "20ml",
+        "price": 360
+      },
+      {
+        "size": "30ml",
+        "price": 540
+      }
     ],
     "rating": 4.9,
     "reviews": 5,
     "tag": "Oriental Floral",
-    "notes": ["spices", "exotic floral", "carnation", "lily-of-the-valley", "amber", "vanilla", "musk"]
+    "notes": [
+      "spices",
+      "exotic floral",
+      "carnation",
+      "lily-of-the-valley",
+      "amber",
+      "vanilla",
+      "musk"
+    ],
+    "main_accords": {
+      "Amber": 100,
+      "Musk": 95,
+      "Floral": 90,
+      "Spicy": 80
+    }
   },
   {
     "id": "p34",
@@ -437,14 +898,38 @@
     "description_ar": "عزارو وانتد او دو بارفان هو عطر رجالي جريء وكاريزمي ولا يقاوم، صُمم للرجل الجريء الذي يعيش بطاقة وثقة. تضخّم نسخة ماء العطر هذه توقيع وانتد الأصلي بدفء أعمق، وتوابل أغنى، وقاعدة ناعمة ومتطورة.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/azzaro%20wanted%20edp.jpeg",
     "variants": [
-      { "size": "10ml", "price": 100 },
-      { "size": "20ml", "price": 200 },
-      { "size": "30ml", "price": 300 }
+      {
+        "size": "10ml",
+        "price": 100
+      },
+      {
+        "size": "20ml",
+        "price": 200
+      },
+      {
+        "size": "30ml",
+        "price": 300
+      }
     ],
     "rating": 4.8,
     "reviews": 8,
     "tag": "Woody Spicy",
-    "notes": ["ginger", "lemon", "lavender", "cardamom", "cinnamon", "sandalwood", "amberwood", "vanilla"]
+    "notes": [
+      "ginger",
+      "lemon",
+      "lavender",
+      "cardamom",
+      "cinnamon",
+      "sandalwood",
+      "amberwood",
+      "vanilla"
+    ],
+    "main_accords": {
+      "Woody": 100,
+      "Spicy": 90,
+      "Aromatic": 80,
+      "Citrus": 70
+    }
   },
   {
     "id": "p35",
@@ -457,14 +942,37 @@
     "description_ar": "كارولينا هيريرا باد بوي أو دو تواليت هو عطر رجالي جريء وعصري وكاريزمي صُمم للرجل الواثق الذي يزدهر بالتناقضات — جريء ولكنه أنيق، ومتمرد ولكنه راقٍ. يمزج ماء التواليت النابض بالحياة هذا بين الأوتار المنعشة والتوابل والخشبية في تكوين نشط لا يُنسى.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/bad%20boy%20carolina%20herrara.jpeg",
     "variants": [
-      { "size": "10ml", "price": 100 },
-      { "size": "20ml", "price": 180 },
-      { "size": "30ml", "price": 270 }
+      {
+        "size": "10ml",
+        "price": 100
+      },
+      {
+        "size": "20ml",
+        "price": 180
+      },
+      {
+        "size": "30ml",
+        "price": 270
+      }
     ],
     "rating": 4.7,
     "reviews": 12,
     "tag": "Woody Spicy",
-    "notes": ["bergamot", "pepper", "cedarwood", "sage", "tonka bean", "amberwood", "vetiver"]
+    "notes": [
+      "bergamot",
+      "pepper",
+      "cedarwood",
+      "sage",
+      "tonka bean",
+      "amberwood",
+      "vetiver"
+    ],
+    "main_accords": {
+      "Spicy": 100,
+      "Cacao": 90,
+      "Woody": 85,
+      "Sweet": 80
+    }
   },
   {
     "id": "p36",
@@ -477,14 +985,38 @@
     "description_ar": "جيرلان لوم إيديال لانتنس هو عطر رجالي قوي وراق وجذاب مصمم للرجل العصري الذي يتمتع بالثقة والغموض والأناقة. هذا التفسير المكثف للعطر الأيقوني لوم إيديال يدفع الرجولة إلى مستوى أعمق وأكثر ثراءً.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/l'homme%20ideal%20l'intense.jpeg",
     "variants": [
-      { "size": "10ml", "price": 150 },
-      { "size": "20ml", "price": 280 },
-      { "size": "30ml", "price": 400 }
+      {
+        "size": "10ml",
+        "price": 150
+      },
+      {
+        "size": "20ml",
+        "price": 280
+      },
+      {
+        "size": "30ml",
+        "price": 400
+      }
     ],
     "rating": 4.9,
     "reviews": 10,
     "tag": "Oriental Woody",
-    "notes": ["chili pepper", "almond", "smoke", "leather", "tonka bean", "vanilla", "sandalwood", "patchouli"]
+    "notes": [
+      "chili pepper",
+      "almond",
+      "smoke",
+      "leather",
+      "tonka bean",
+      "vanilla",
+      "sandalwood",
+      "patchouli"
+    ],
+    "main_accords": {
+      "Almond": 100,
+      "Smoky": 95,
+      "Leather": 90,
+      "Spicy": 80
+    }
   },
   {
     "id": "p37",
@@ -497,13 +1029,37 @@
     "description_ar": "جيفنشي جنتلمان سوسايتي هو عطر رجالي عصري وأنيق وكاريزمي يحتفي بالرجولة الراقية مع ملف عطري جريء ومتطور. صُمم للرجل المعاصر الذي يقدر القوة والدقة على حد سواء، يمزج ماء العطر هذا بين النضارة العطرية والدفء الخشبي العميق وقاعدة حسية.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/gentleman%20society.jpeg",
     "variants": [
-      { "size": "10ml", "price": 100 },
-      { "size": "20ml", "price": 180 },
-      { "size": "30ml", "price": 270 }
+      {
+        "size": "10ml",
+        "price": 100
+      },
+      {
+        "size": "20ml",
+        "price": 180
+      },
+      {
+        "size": "30ml",
+        "price": 270
+      }
     ],
     "rating": 4.8,
     "reviews": 6,
     "tag": "Woody Aromatic",
-    "notes": ["sage", "cardamom", "narcissus", "vetiver", "cedarwood", "sandalwood", "vanilla", "palo santo"]
+    "notes": [
+      "sage",
+      "cardamom",
+      "narcissus",
+      "vetiver",
+      "cedarwood",
+      "sandalwood",
+      "vanilla",
+      "palo santo"
+    ],
+    "main_accords": {
+      "Woody": 100,
+      "Aromatic": 90,
+      "Vanilla": 80,
+      "Floral": 70
+    }
   }
 ]
