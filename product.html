@@ -99,63 +99,87 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer__inner">
-      <div class="footer__brand">
+      <!-- Brand Column -->
+      <div class="footer__brand-col">
         <a href="index.html" class="footer-logo">
-          <img class="footer-logo__img" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/logo.jpeg" alt="IPORDISE PARFUM Logo" width="40" height="40">
-          <span class="footer-logo__name">IPORDISE PARFUM</span>
+          <img class="footer-logo__img" src="https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/main/logo.jpeg" alt="IPORDISE PARFUM Logo" width="56" height="56">
+          <div class="footer-logo__text">
+             <span class="footer-logo__name">IPORDISE</span>
+             <span class="footer-logo__sub">PARFUM</span>
+          </div>
         </a>
-        <p class="muted small footer__tagline" data-i18n="footer_tagline">Luxury fragrances inspired by Morocco's heritage</p>
+        <p class="muted footer__desc" data-i18n="footer_tagline">The essence of luxury. Discover our exclusive collection of premium fragrances crafted for distinction.</p>
+        
+        <div class="footer__socials">
+            <a href="https://www.instagram.com/ipordise_parfums/" target="_blank" rel="noopener" class="social-icon social-icon--insta" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61563285998567" target="_blank" rel="noopener" class="social-icon social-icon--fb" aria-label="Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://www.youtube.com/@FragranceMorocco" target="_blank" rel="noopener" class="social-icon social-icon--yt" aria-label="YouTube">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+        </div>
       </div>
 
-      <div class="footer__cols">
-        <div class="footer__col">
-          <div class="footer__title" data-i18n="footer_shop">Shop</div>
-          <a href="index.html#categories">Categories</a>
-          <a href="index.html#best" data-i18n="sec_best_title">Best sellers</a>
-          <a href="index.html#deals" data-i18n="nav_deals">Deals</a>
-        </div>
-        <div class="footer__col">
-          <div class="footer__title" data-i18n="footer_support">Support</div>
-          <a href="https://wa.me/212663750210" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="mailto:Ipordise@gmail.com">Email</a>
-        </div>
+      <!-- Links Grid -->
+      <div class="footer__links-group">
+         <div class="footer__col">
+            <div class="footer__title" data-i18n="footer_shop">Shop</div>
+            <ul class="footer__list">
+                <li><a href="index.html#categories" class="footer__link">Categories</a></li>
+                <li><a href="index.html#best" class="footer__link" data-i18n="sec_best_title">Best sellers</a></li>
+                <li><a href="index.html#deals" class="footer__link" data-i18n="nav_deals">Deals</a></li>
+            </ul>
+         </div>
+         
+         <div class="footer__col">
+            <div class="footer__title" data-i18n="footer_support">Support</div>
+             <ul class="footer__list">
+                <li><a href="https://wa.me/212663750210" target="_blank" class="footer__link">WhatsApp Support</a></li>
+                <li><a href="mailto:Ipordise@gmail.com" class="footer__link">Email Us</a></li>
+            </ul>
+         </div>
 
-        <div class="footer__col">
-          <div class="footer__title">Social</div>
-          <a href="https://www.instagram.com/ipordise_parfums/" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://www.facebook.com/profile.php?id=61563285998567" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://www.youtube.com/@FragranceMorocco" target="_blank" rel="noopener">YouTube</a>
-        </div>
-        
-        <div class="footer__col">
-          <div class="footer__title" data-i18n="footer_payments">Payments</div>
-          <div class="paymentIcons" aria-label="Payment methods">
+         <div class="footer__col">
+            <div class="footer__title" data-i18n="footer_legal">Legal</div>
+            <ul class="footer__list">
+                <li><a href="#" class="footer__link" data-open-policy="terms" data-i18n="pol_terms">Terms of Use</a></li>
+                <li><a href="#" class="footer__link" data-open-policy="privacy" data-i18n="pol_privacy">Privacy Policy</a></li>
+                <li><a href="#" class="footer__link" data-open-policy="shipping" data-i18n="pol_shipping">Shipping Policy</a></li>
+                <li><a href="#" class="footer__link" data-open-policy="returns" data-i18n="pol_returns">Returns</a></li>
+            </ul>
+         </div>
+      </div>
+      
+      <!-- Newsletter & Payments -->
+      <div class="footer__newsletter-col">
+          <div class="footer__title" data-i18n="footer_newsletter">Newsletter</div>
+          <p class="muted small footer__desc" data-i18n="newsletter_desc">Subscribe to receive updates, access to exclusive deals, and more.</p>
+          <form class="newsletter-form">
+            <div class="footer__input-group">
+                <input type="email" class="footer__input" data-i18n-placeholder="newsletter_ph" placeholder="Enter your email" required="">
+                <button type="submit" class="footer__btn" aria-label="Subscribe">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+          </form>
+          
+          <div class="paymentIcons">
             <span class="paymentIcon">VISA</span>
             <span class="paymentIcon">Mastercard</span>
             <span class="paymentIcon" data-i18n="payment_cod">Cash on Delivery</span>
           </div>
-        </div>
-        
-        <div class="footer__col">
-          <div class="footer__title" data-i18n="footer_newsletter">Newsletter</div>
-          <p class="muted small" data-i18n="newsletter_desc">Get exclusive deals and new arrivals.</p>
-          <form class="newsletter-form">
-            <input type="email" data-i18n-placeholder="newsletter_ph" placeholder="Your email address" required="">
-            <button type="submit" class="btn btn--small btn--primary" data-i18n="newsletter_subscribe">Subscribe</button>
-          </form>
-        </div>
-        
-        <div class="footer__col">
-          <div class="footer__title" data-i18n="footer_legal">Legal</div>
-          <a href="#" class="footer__link" data-open-policy="terms" data-i18n="pol_terms">Terms of Use</a>
-          <a href="#" class="footer__link" data-open-policy="privacy" data-i18n="pol_privacy">Privacy Policy</a>
-          <a href="#" class="footer__link" data-open-policy="shipping" data-i18n="pol_shipping">Shipping & Delivery</a>
-          <a href="#" class="footer__link" data-open-policy="returns" data-i18n="pol_returns">Returns & Refunds</a>
-          <a href="#" class="footer__link" data-open-policy="cookies" data-i18n="pol_cookies">Cookies</a>
-          <span class="muted small">© <span id="year"></span> IPORDISE PARFUM</span>
-          <span class="muted small" data-i18n="footer_rights">All rights reserved.</span>
-        </div>
       </div>
+    </div>
+    
+    <div class="footer__bottom">
+        <div class="container">
+             <div class="footer__copyright">
+                <span class="muted small">© <span id="year"></span> IPORDISE PARFUM. <span data-i18n="footer_rights">All rights reserved.</span></span>
+             </div>
+        </div>
     </div>
   </footer>
 
