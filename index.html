@@ -431,6 +431,34 @@
       </div>
     </section>
 
+    <!-- Products: New Arrivals -->
+    <section class="section" id="new" aria-label="New Arrivals" style="position: relative;">
+      <div class="container">
+        <div class="flashSection__head animate-on-scroll">
+          <div>
+            <h2 data-i18n="nav_new">New Arrivals</h2>
+            <p class="muted" data-i18n="sec_new_desc">Freshly curated scents, just for you.</p>
+          </div>
+          <div class="carouselArrows">
+             <button class="flashArrow" data-new-prev aria-label="Previous" type="button" disabled>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+             </button>
+             <button class="flashArrow" data-new-next aria-label="Next" type="button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+             </button>
+          </div>
+        </div>
+
+        <div class="productCarousel" style="margin:0 -12px;">
+           <div class="productCarousel__viewport" id="newViewport">
+              <div class="flashCarousel__track" id="newArrivalsGrid">
+                 <!-- JS renders new products here -->
+              </div>
+           </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Recently viewed (shows only after a user opens products) -->
     <section class="section" id="recent" hidden>
       <div class="container">
@@ -457,34 +485,6 @@
               <!-- JS renders cards -->
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Products: New Arrivals -->
-    <section class="section" id="new" aria-label="New Arrivals" style="position: relative;">
-      <div class="container">
-        <div class="flashSection__head animate-on-scroll">
-          <div>
-            <h2 data-i18n="nav_new">New Arrivals</h2>
-            <p class="muted" data-i18n="sec_new_desc">Freshly curated scents, just for you.</p>
-          </div>
-          <div class="carouselArrows">
-             <button class="flashArrow" data-new-prev aria-label="Previous" type="button" disabled>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-             </button>
-             <button class="flashArrow" data-new-next aria-label="Next" type="button">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-             </button>
-          </div>
-        </div>
-
-        <div class="productCarousel" style="margin:0 -12px;">
-           <div class="productCarousel__viewport" id="newViewport">
-              <div class="flashCarousel__track" id="newArrivalsGrid">
-                 <!-- JS renders new products here -->
-              </div>
-           </div>
         </div>
       </div>
     </section>

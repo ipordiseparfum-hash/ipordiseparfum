@@ -6,9 +6,9 @@
     "category": "men",
     "isNew": true,
     "isBestseller": true,
-    "description": "Layton Eau de Parfum by Parfums de Marly is a sophisticated masculine fragrance that embodies refined elegance and quiet confidence. This scent opens with a fresh, vibrant burst of bergamot, mandarin, apple, and lavender, creating an aromatic and citrusy introduction that's both energizing and sophisticated.\n\nThe heart reveals a spicy, elegant blend of cardamom, geranium, and jasmine, adding depth and charisma to the composition. As it evolves, rich vanilla, pepper, guaiac wood, and patchouli emerge in the base, delivering a warm, creamy, and long-lasting trail that's both luxurious and addictive.\n\nLayton is incredibly versatile - perfect for daytime confidence, evening sophistication, or special occasions. Its excellent projection and exceptional longevity (up to 12 hours) make it an ideal signature scent for modern men who appreciate timeless luxury and understated power.",
-    "description_fr": "Layton Eau de Parfum de Parfums de Marly est un parfum masculin sophistiqué qui incarne l'élégance raffinée et la confiance discrète. Ce parfum s'ouvre sur une explosion fraîche et vibrante de bergamote, mandarine, pomme et lavande, créant une introduction aromatique et citronnée à la fois énergisante et sophistiquée.\n\nLe cœur révèle un mélange épicé et élégant de cardamome, géranium et jasmin, ajoutant profondeur et charisme à la composition. Au fil de l'évolution, la vanille riche, le poivre, le bois de gaïac et le patchouli émergent dans la base, offrant un sillage chaud, crémeux et durable à la fois luxueux et addictif.\n\nLayton est incroyablement polyvalent - parfait pour la confiance diurne, la sophistication nocturne ou les occasions spéciales. Sa projection excellente et sa longévité exceptionnelle (jusqu'à 12 heures) en font un parfum signature idéal pour les hommes modernes qui apprécient le luxe intemporel et le pouvoir subtil.",
-    "description_ar": "لايتون أو دو بارفان من بارفان دو مارلي هو عطر رجالي متطور يجسد الأناقة الراقية والثقة الهادئة. يفتح هذا العطر بانفجار منعش وحيوي من البرغموت واليوسفي والتفاح واللافندر، مما يخلق مقدمة عطرية وحمضية مفعمة بالحيوية والأناقة.\n\nيكشف القلب عن مزيج حار وأنيق من الهيل والجيرانيوم والياسمين، مما يضيف عمقًا وكاريزما للتكوين. مع تطوره، تبرز الفانيليا الغنية والفلفل وخشب الجواياك والباتشولي في القاعدة، مما يوفر أثراً دافئاً وكريمياً طويل الأمد فاخراً ومسبباً للإدمان.\n\nلايتون متعدد الاستخدامات بشكل لا يصدق - مثالي للثقة النهارية، الأناقة المسائية، أو المناسبات الخاصة. إسقاطه الممتاز وثباته الاستثنائي (حتى 12 ساعة) يجعله عطر توقيع مثالي للرجال الحديثين الذين يقدرون الفخامة الأبدية والقوة الخفية.",
+    "description": "Layton Eau de Parfum is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of bergamot, apple, lavender, mandarin, cardamom, geranium creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Layton Eau de Parfum est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de bergamot, apple, lavender, mandarin, cardamom, geranium offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Layton Eau de Parfum عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل bergamot, apple, lavender, mandarin, cardamom, geranium لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Layton%20fragrance%20set%20with%20decants.png",
     "variants": [
       {
@@ -39,23 +39,16 @@
       "pepper",
       "patchouli",
       "guaiac wood"
-    ],
-    "main_accords": {
-      "Vanilla": 100,
-      "Spicy": 90,
-      "Fruity": 80,
-      "Woody": 70,
-      "Aromatic": 60
-    }
+    ]
   },
   {
     "id": "p13",
     "brand": "Gucci",
     "name": "Gucci Intense Oud",
     "category": "men",
-    "description": "Gucci Intense Oud is a luxurious oriental masterpiece crafted exclusively for true oud enthusiasts. This opulent fragrance delivers a deep, mysterious, and profoundly sensual experience that transcends ordinary perfumery.\n\nThe composition centers around precious oud wood, enriched with rich leather accords, sacred incense, and sophisticated woody notes. The result is a warm, smoky, and resinous aroma that evolves beautifully throughout the day, revealing layers of complexity and depth.\n\nIntense Oud is perfect for evening wear, formal occasions, and cooler seasons. Its exceptional longevity (up to 14 hours) and strong sillage make it ideal for men who command attention and appreciate the finer nuances of oriental perfumery. A true statement fragrance for the discerning gentleman.",
-    "description_fr": "Gucci Intense Oud est un chef-d'œuvre oriental luxueux créé exclusivement pour les vrais amateurs d'oud. Ce parfum opulent offre une expérience profonde, mystérieuse et profondément sensuelle qui transcende la parfumerie ordinaire.\n\nLa composition se concentre autour du bois d'oud précieux, enrichi d'accords de cuir riches, d'encens sacré et de notes boisées sophistiquées. Le résultat est un arôme chaud, fumé et résineux qui évolue magnifiquement tout au long de la journée, révélant des couches de complexité et de profondeur.\n\nIntense Oud est parfait pour le port du soir, les occasions formelles et les saisons plus fraîches. Sa longévité exceptionnelle (jusqu'à 14 heures) et son sillage puissant en font l'idéal pour les hommes qui attirent l'attention et apprécient les nuances subtiles de la parfumerie orientale. Un vrai parfum déclaration pour le gentleman exigeant.",
-    "description_ar": "غوتشي إنتنس عود هو تحفة شرقية فاخرة مصممة حصريًا لعشاق العود الحقيقيين. يقدم هذا العطر الفاخر تجربة عميقة وغامضة وحسية بشكل عميق تتجاوز عالم العطور العادي.\n\nيركز التكوين على خشب العود الثمين، المثرى بأوتار الجلد الغنية، والبخور المقدس، والنغمات الخشبية المتطورة. النتيجة هي رائحة دافئة ومدخنة وراتنجية تتطور بشكل جميل طوال اليوم، مما يكشف عن طبقات من التعقيد والعمق.\n\nإنتنس عود مثالي للارتداء المسائي والمناسبات الرسمية والمواسم الباردة. ثباته الاستثنائي (حتى 14 ساعة) وسيلانه القوي يجعله مثاليًا للرجال الذين يجذبون الانتباه ويقدرون الفروق الدقيقة في العطور الشرقية. عطر تصريح حقيقي للرجل المميز.",
+    "description": "Gucci Intense Oud is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of oud, leather, incense, woody creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Gucci Intense Oud est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de oud, leather, incense, woody offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Gucci Intense Oud عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل oud, leather, incense, woody لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Intense%20Oud%20perfume%20collection.png",
     "variants": [
       {
@@ -79,23 +72,16 @@
       "leather",
       "incense",
       "woody"
-    ],
-    "main_accords": {
-      "Oud": 100,
-      "Woody": 90,
-      "Smoky": 80,
-      "Leather": 70,
-      "Amber": 60
-    }
+    ]
   },
   {
     "id": "p14",
     "brand": "Jean Paul Gaultier",
     "name": "Jean Paul Gaultier Ultra Male",
     "category": "men",
-    "description": "Jean Paul Gaultier Ultra Male is a seductive and energetic fragrance that captures the essence of modern masculinity with irresistible charm. This bold scent combines sweet temptation with masculine power, creating a magnetic aura that turns heads wherever you go.\n\nThe composition features a delicious fusion of pear for juicy freshness, rich vanilla for creamy sweetness, warm cinnamon for spicy depth, and aromatic lavender for herbal sophistication. The result is a gourmand fragrance that's both sweet and masculine, with excellent projection and longevity.\n\nUltra Male is perfect for evening outings, romantic encounters, and nightlife. Its strong, attractive character makes it ideal for men who want to make a lasting impression. The fragrance's versatility allows it to transition seamlessly from casual to formal occasions, always maintaining its seductive edge.",
-    "description_fr": "Jean Paul Gaultier Ultra Male est un parfum séduisant et énergique qui capture l'essence de la masculinité moderne avec un charme irrésistible. Ce parfum audacieux combine la tentation sucrée avec la puissance masculine, créant une aura magnétique qui attire les regards où que vous alliez.\n\nLa composition présente une fusion délicieuse de poire pour la fraîcheur juteuse, de vanille riche pour la douceur crémeuse, de cannelle chaude pour la profondeur épicée et de lavande aromatique pour la sophistication herbacée. Le résultat est un parfum gourmand à la fois sucré et masculin, avec une projection et une longévité excellentes.\n\nUltra Male est parfait pour les sorties nocturnes, les rencontres romantiques et la vie nocturne. Son caractère fort et attrayant en fait l'idéal pour les hommes qui veulent faire une impression durable. La polyvalence du parfum lui permet de passer sans effort du casual au formel, tout en conservant son côté séduisant.",
-    "description_ar": "جان بول غوتييه ألترا ميل هو عطر مغري وحيوي يجسد جوهر الرجولة الحديثة بسحر لا يقاوم. يجمع هذا العطر الجريء بين إغراء الحلاوة وقوة الرجولة، مما يخلق هالة مغناطيسية تجذب الأنظار أينما تذهب.\n\nيتميز التكوين بمزيج شهي من الكمثرى للانتعاش العصير، الفانيليا الغنية للحلاوة الكريمية، القرفة الدافئة للعمق الحار، واللافندر العطري للأناقة العشبية. النتيجة هي عطر غورماند حلو ورجولي في آن واحد، مع إسقاط وثبات ممتازين.\n\nألترا ميل مثالي للخروج المسائي، اللقاءات الرومانسية، وحياة الليل. شخصيته القوية والجذابة تجعله مثاليًا للرجال الذين يريدون ترك انطباع دائم. تنوع العطر يسمح له بالانتقال بسلاسة من المناسبات العادية إلى الرسمية، مع الحفاظ دائمًا على حافة الإغراء.",
+    "description": "Jean Paul Gaultier Ultra Male is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of pear, vanilla, cinnamon, lavender creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Jean Paul Gaultier Ultra Male est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de pear, vanilla, cinnamon, lavender offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Jean Paul Gaultier Ultra Male عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل pear, vanilla, cinnamon, lavender لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Ultra%20Male%20set.png",
     "variants": [
       {
@@ -119,23 +105,16 @@
       "vanilla",
       "cinnamon",
       "lavender"
-    ],
-    "main_accords": {
-      "Vanilla": 100,
-      "Fruity": 95,
-      "Sweet": 90,
-      "Aromatic": 70,
-      "Spicy": 60
-    }
+    ]
   },
   {
     "id": "p15",
     "brand": "Hugo Boss",
     "name": "Hugo Boss The Scent Elixir",
     "category": "men",
-    "description": "Hugo Boss The Scent Elixir is an intense and refined fragrance that radiates unshakeable confidence and modern sophistication. This elixir version amplifies the signature Boss DNA, delivering a deeper, more luxurious experience that commands respect and admiration.\n\nThe composition opens with bold pepper notes that add spicy warmth and intensity, balanced by elegant lavender for aromatic freshness. The heart develops with rich, woody accords that provide depth and character, while the base features warm amber and subtle spice notes for a smooth, long-lasting finish.\n\nThe Scent Elixir is designed for ambitious men who lead with authority and style. Its powerful projection and exceptional longevity (up to 10 hours) make it perfect for important meetings, evening events, and situations where you need to make a strong, lasting impression. A fragrance for the modern leader who understands the power of scent.",
-    "description_fr": "Hugo Boss The Scent Elixir est un parfum intense et raffiné qui dégage une confiance inébranlable et une sophistication moderne. Cette version élixir amplifie l'ADN signature de Boss, offrant une expérience plus profonde et plus luxueuse qui inspire le respect et l'admiration.\n\nLa composition s'ouvre sur des notes audacieuses de poivre qui ajoutent chaleur épicée et intensité, équilibrées par une lavande élégante pour la fraîcheur aromatique. Le cœur se développe avec des accords boisés riches qui apportent profondeur et caractère, tandis que la base présente de l'ambre chaud et des notes d'épices subtiles pour une finition lisse et durable.\n\nThe Scent Elixir est conçu pour les hommes ambitieux qui dirigent avec autorité et style. Sa projection puissante et sa longévité exceptionnelle (jusqu'à 10 heures) en font l'idéal pour les réunions importantes, les événements du soir et les situations où vous devez faire une forte impression durable. Un parfum pour le leader moderne qui comprend le pouvoir du parfum.",
-    "description_ar": "هوغو بوس ذا سينت إليكسير هو عطر قوي ومتطور يشع ثقة لا تتزعزع وأناقة حديثة. تضخم هذه النسخة الإليكسير الحمض النووي المميز لبوس، مما يوفر تجربة أعمق وأكثر فخامة تلهم الاحترام والإعجاب.\n\nيفتح التكوين بنغمات الفلفل الجريئة التي تضيف دفءًا حارًا وكثافة، متوازنة بلافندر أنيق للانتعاش العطري. يتطور القلب بأوتار خشبية غنية توفر العمق والشخصية، بينما تتميز القاعدة بعنبر دافئ ونغمات توابل خفيفة لنهاية ناعمة وطويلة الأمد.\n\nتم تصميم ذا سينت إليكسير للرجال الطموحين الذين يقودون بالسلطة والأسلوب. إسقاطه القوي وثباته الاستثنائي (حتى 10 ساعات) يجعله مثاليًا للاجتماعات المهمة والفعاليات المسائية والمواقف التي تحتاج فيها إلى ترك انطباع قوي ودائم. عطر للقائد الحديث الذي يفهم قوة العطر.",
+    "description": "Hugo Boss The Scent Elixir is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of pepper, lavender, woody creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Hugo Boss The Scent Elixir est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de pepper, lavender, woody offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Hugo Boss The Scent Elixir عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل pepper, lavender, woody لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Hugo%20Boss%20The%20Scent%20Elixir%20set.png",
     "variants": [
       {
@@ -158,13 +137,7 @@
       "pepper",
       "lavender",
       "woody"
-    ],
-    "main_accords": {
-      "Spicy": 100,
-      "Lavender": 90,
-      "Woody": 80,
-      "Aromatic": 70
-    }
+    ]
   },
   {
     "id": "p16",
@@ -172,9 +145,9 @@
     "name": "Jean Paul Gaultier Le Male Elixir",
     "category": "men",
     "isBestseller": true,
-    "description": "Jean Paul Gaultier Le Male Elixir is a bold, intense, and highly seductive masculine fragrance that amplifies the provocative essence of the Le Male family. This elixir version delivers a deeper, more intoxicating experience that embodies modern masculinity with unapologetic confidence.\n\nThe composition features a daring fusion of vanilla for creamy sweetness, honey for golden warmth, amber for sensual depth, and spicy notes for provocative intensity. The result is a fragrance that's both sweet and powerful, with exceptional longevity and a magnetic trail that commands attention.\n\nLe Male Elixir is perfect for confident men who embrace their bold side. Its strong projection and lasting power make it ideal for evening adventures, romantic encounters, and situations where you want to leave an unforgettable impression. A fragrance for those who dare to be different and irresistibly seductive.",
-    "description_fr": "Jean Paul Gaultier Le Male Elixir est un parfum masculin audacieux, intense et hautement séduisant qui amplifie l'essence provocante de la famille Le Male. Cette version élixir offre une expérience plus profonde et plus enivrante qui incarne la masculinité moderne avec une confiance sans excuses.\n\nLa composition présente une fusion audacieuse de vanille pour la douceur crémeuse, de miel pour la chaleur dorée, d'ambre pour la profondeur sensuelle et de notes épicées pour l'intensité provocante. Le résultat est un parfum à la fois sucré et puissant, avec une longévité exceptionnelle et un sillage magnétique qui attire l'attention.\n\nLe Male Elixir est parfait pour les hommes confiants qui embrassent leur côté audacieux. Sa projection forte et sa puissance durable en font l'idéal pour les aventures nocturnes, les rencontres romantiques et les situations où vous voulez laisser une impression inoubliable. Un parfum pour ceux qui osent être différents et irrésistiblement séduisants.",
-    "description_ar": "جان بول غوتييه لو مال إليكسير هو عطر رجالي جريء وكثيف ومغري بشدة يعزز جوهر عائلة لو مال الاستفزازي. يوفر هذا الإصدار الإليكسير تجربة أعمق وأكثر نشوة تجسد الرجولة الحديثة بثقة لا تُعتذر عنها.\n\nيتميز التكوين بمزيج جريء من الفانيليا للحلاوة الكريمية، العسل للدفء الذهبي، العنبر للعمق الحسي، والنغمات الحارة للكثافة الاستفزازية. النتيجة هي عطر حلو وقوي في آن واحد، مع ثبات استثنائي وأثر مغناطيسي يجذب الانتباه.\n\nلو مال إليكسير مثالي للرجال الواثقين الذين يعانقون جانبهم الجريء. إسقاطه القوي وقوته الدائمة يجعله مثاليًا للمغامرات المسائية واللقاءات الرومانسية والمواقف التي تريد فيها ترك انطباع لا يُنسى. عطر لأولئك الذين يجرؤون على أن يكونوا مختلفين ومغرين دون اعتذار.",
+    "description": "Jean Paul Gaultier Le Male Elixir is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of vanilla, honey, amber, spices creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Jean Paul Gaultier Le Male Elixir est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de vanilla, honey, amber, spices offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Jean Paul Gaultier Le Male Elixir عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل vanilla, honey, amber, spices لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20fragrance%20set.png",
     "variants": [
       {
@@ -198,22 +171,16 @@
       "honey",
       "amber",
       "spices"
-    ],
-    "main_accords": {
-      "Vanilla": 100,
-      "Sweet": 95,
-      "Amber": 90,
-      "Spicy": 80
-    }
+    ]
   },
   {
     "id": "p17",
     "brand": "Gucci",
     "name": "Gucci Guilty Elixir Pour Homme",
     "category": "men",
-    "description": "Gucci Guilty Elixir Pour Homme is a seductive and intense masculine fragrance that amplifies the provocative essence of the Guilty family. This elixir version elevates the signature scent to new heights of sensuality and sophistication, perfect for the modern man who embraces his darker, more passionate side.\n\nThe composition features a magnetic blend of pink pepper for spicy warmth, lilac for floral elegance, and patchouli for earthy depth. Rich amber and tonka bean provide a smooth, addictive sweetness that lingers beautifully throughout the day.\n\nGuilty Elixir is designed for confident men who want to make a statement. Its powerful projection and exceptional longevity (up to 12 hours) make it ideal for evening dates, nightlife, and romantic encounters. A fragrance that embodies forbidden temptation and irresistible charm.",
-    "description_fr": "Gucci Guilty Elixir Pour Homme est un parfum masculin séduisant et intense qui amplifie l'essence provocante de la famille Guilty. Cette version élixir élève le parfum signature à de nouveaux sommets de sensualité et de sophistication, parfaite pour l'homme moderne qui embrasse son côté plus sombre et plus passionné.\n\nLa composition présente un mélange magnétique de poivre rose pour la chaleur épicée, de lilas pour l'élégance florale et de patchouli pour la profondeur terreuse. L'ambre riche et la fève tonka apportent une douceur lisse et addictive qui persiste magnifiquement tout au long de la journée.\n\nGuilty Elixir est conçu pour les hommes confiants qui veulent faire une déclaration. Sa projection puissante et sa longévité exceptionnelle (jusqu'à 12 heures) en font l'idéal pour les rendez-vous du soir, la vie nocturne et les rencontres romantiques. Un parfum qui incarne la tentation interdite et le charme irrésistible.",
-    "description_ar": "غوتشي غيلتي إليكسير بور هوم هو عطر رجالي مغري وكثيف يعزز جوهر عائلة غيلتي الاستفزازي. يرتقي هذا الإصدار الإليكسير بالعطر المميز إلى مستويات جديدة من الحساسية والرقي، مثالي للرجل الحديث الذي يعانق جانبه الأكثر ظلامًا وشغفًا.\n\nيتميز التكوين بمزيج مغناطيسي من الفلفل الوردي للدفء الحار، الياسمين للأناقة الزهرية، والباتشولي للعمق الأرضي. يوفر العنبر الغني وحبة التونكا حلاوة ناعمة ومسببة للإدمان تستمر بشكل جميل طوال اليوم.\n\nتم تصميم غيلتي إليكسير للرجال الواثقين الذين يريدون إصدار بيان. إسقاطه القوي وثباته الاستثنائي (حتى 12 ساعة) يجعله مثاليًا للمواعيد المسائية وحياة الليل واللقاءات الرومانسية. عطر يجسد الإغراء الممنوع والسحر الذي لا يقاوم.",
+    "description": "Gucci Guilty Elixir Pour Homme is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of lavender, vanilla, aromatic creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Gucci Guilty Elixir Pour Homme est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de lavender, vanilla, aromatic offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Gucci Guilty Elixir Pour Homme عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل lavender, vanilla, aromatic لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Guilty%20Elixir%20fragrance%20set.png",
     "variants": [
       {
@@ -236,22 +203,16 @@
       "lavender",
       "vanilla",
       "aromatic"
-    ],
-    "main_accords": {
-      "Floral": 100,
-      "Spicy": 90,
-      "Aromatic": 80,
-      "Vanilla": 70
-    }
+    ]
   },
   {
     "id": "p18",
     "brand": "Montale Paris",
     "name": "Arabians Tonka",
     "category": "men",
-    "description": "Montale Arabians Tonka is a luxurious oriental masterpiece that captures the exotic allure of Arabian perfumery at its finest. This opulent fragrance weaves together precious oud wood with the creamy sweetness of tonka bean, creating a scent that's both mysterious and irresistibly addictive.\n\nThe composition centers around rich, smoky oud that provides a deep, resinous foundation, beautifully complemented by the sweet, almond-like warmth of tonka bean. Vanilla adds creamy smoothness, while amber and musk create a sensual, long-lasting trail that evolves throughout the day.\n\nArabians Tonka is perfect for evening wear, formal occasions, and cooler seasons. Its exceptional longevity (up to 14 hours) and strong, elegant sillage make it ideal for men who appreciate the depth and complexity of oriental fragrances. A true luxury scent for the discerning gentleman who seeks olfactory sophistication.",
-    "description_fr": "Montale Arabians Tonka est un chef-d'œuvre oriental luxueux qui capture l'allure exotique de la parfumerie arabe à son meilleur. Ce parfum opulent tisse ensemble le bois d'oud précieux avec la douceur crémeuse de la fève tonka, créant un parfum à la fois mystérieux et irrésistiblement addictif.\n\nLa composition se concentre sur l'oud riche et fumé qui fournit une base profonde et résineuse, magnifiquement complétée par la chaleur douce et amande de la fève tonka. La vanille ajoute une douceur crémeuse, tandis que l'ambre et le musc créent un sillage sensuel et durable qui évolue tout au long de la journée.\n\nArabians Tonka est parfait pour le port du soir, les occasions formelles et les saisons plus fraîches. Sa longévité exceptionnelle (jusqu'à 14 heures) et son sillage fort et élégant en font l'idéal pour les hommes qui apprécient la profondeur et la complexité des parfums orientaux. Un vrai parfum de luxe pour le gentleman exigeant qui recherche la sophistication olfactive.",
-    "description_ar": "مونتال أرابيانز تونكا هو تحفة شرقية فاخرة تجسد سحر العطور العربية في أفضل حالاتها. ينسج هذا العطر الفاخر خشب العود الثمين مع حلاوة حبة التونكا الكريمية، مما يخلق رائحة غامضة ومسببة للإدمان بشكل لا يقاوم.\n\nيركز التكوين على العود الغني والمدخن الذي يوفر أساسًا عميقًا وراتنجيًا، مكملًا بشكل جميل بدفء حبة التونكا الحلو والمشابه لللوز. تضيف الفانيليا نعومة كريمية، بينما يخلق العنبر والمسك أثراً حسيًا وطويل الأمد يتطور طوال اليوم.\n\nأرابيانز تونكا مثالي للارتداء المسائي والمناسبات الرسمية والمواسم الباردة. ثباته الاستثنائي (حتى 14 ساعة) وسيلانه القوي والأنيق يجعله مثاليًا للرجال الذين يقدرون عمق وتعقيد العطور الشرقية. عطر فاخر حقيقي للرجل المميز الذي يسعى للرقي الشمي.",
+    "description": "Arabians Tonka is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of oud, tonka bean, vanilla, amber, musk creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Arabians Tonka est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de oud, tonka bean, vanilla, amber, musk offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Arabians Tonka عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل oud, tonka bean, vanilla, amber, musk لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Montale%20Paris%20Arabians%20Tonka%20set.png",
     "variants": [
       {
@@ -276,22 +237,16 @@
       "vanilla",
       "amber",
       "musk"
-    ],
-    "main_accords": {
-      "Oud": 100,
-      "Sweet": 90,
-      "Vanilla": 85,
-      "Amber": 80
-    }
+    ]
   },
   {
     "id": "p19",
     "brand": "Givenchy",
     "name": "Givenchy – Gentleman",
     "category": "men",
-    "description": "Givenchy Gentleman Réserve Privée is a sophisticated and timeless masculine fragrance that embodies classic elegance with a modern edge. This refined scent captures the essence of a true gentleman - confident, cultured, and impeccably dressed.\n\nThe composition features a harmonious blend of spicy cardamom for aromatic warmth, elegant leather for sophisticated depth, and smooth tobacco for a refined, masculine character. Rich amber and subtle woody notes provide a luxurious foundation that evolves beautifully throughout the day.\n\nGentleman is perfect for business meetings, formal occasions, and evening sophistication. Its balanced projection and excellent longevity (up to 10 hours) make it ideal for men who appreciate understated luxury and timeless style. A fragrance that speaks of success, refinement, and quiet confidence.",
-    "description_fr": "Givenchy Gentleman Réserve Privée est un parfum masculin sophistiqué et intemporel qui incarne l'élégance classique avec une touche moderne. Ce parfum raffiné capture l'essence d'un vrai gentleman - confiant, cultivé et impeccablement habillé.\n\nLa composition présente un mélange harmonieux de cardamome épicée pour la chaleur aromatique, de cuir élégant pour la profondeur sophistiquée et de tabac lisse pour un caractère raffiné et masculin. L'ambre riche et les notes boisées subtiles offrent une base luxueuse qui évolue magnifiquement tout au long de la journée.\n\nGentleman est parfait pour les réunions d'affaires, les occasions formelles et la sophistication nocturne. Sa projection équilibrée et sa longévité excellente (jusqu'à 10 heures) en font l'idéal pour les hommes qui apprécient le luxe discret et le style intemporel. Un parfum qui parle de succès, de raffinement et de confiance discrète.",
-    "description_ar": "جيفنشي جينتلمان ريزيرف بريفيه هو عطر رجالي متطور وأبدي يجسد الأناقة الكلاسيكية مع لمسة حديثة. يجسد هذا العطر الراقي جوهر الرجل الحقيقي - واثق، مثقف، ومرتدي بأناقة لا تشوبها شائبة.\n\nيتميز التكوين بمزيج متناغم من الهيل الحار للدفء العطري، الجلد الأنيق للعمق المتطور، والتبغ الناعم للطابع الراقي والرجولي. يوفر العنبر الغني والنغمات الخشبية الخفيفة أساسًا فاخرًا يتطور بشكل جميل طوال اليوم.\n\nجينتلمان مثالي للاجتماعات التجارية والمناسبات الرسمية والرقي المسائي. إسقاطه المتوازن وثباته الممتاز (حتى 10 ساعات) يجعله مثاليًا للرجال الذين يقدرون الفخامة الخفية والأسلوب الأبدي. عطر يتحدث عن النجاح والرقي والثقة الهادئة.",
+    "description": "Givenchy – Gentleman is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of woody, spicy, sensual creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Givenchy – Gentleman est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de woody, spicy, sensual offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Givenchy – Gentleman عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل woody, spicy, sensual لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Givenchy%20Gentleman%20R%C3%A9serve%20Priv%C3%A9e%20set.png",
     "variants": [
       {
@@ -314,22 +269,16 @@
       "woody",
       "spicy",
       "sensual"
-    ],
-    "main_accords": {
-      "Woody": 100,
-      "Iris": 95,
-      "Whiskey": 90,
-      "Amber": 80
-    }
+    ]
   },
   {
     "id": "p20",
     "brand": "Jean Paul Gaultier",
     "name": "Jean Paul Gaultier – Scandal Elixir",
     "category": "men",
-    "description": "Jean Paul Gaultier Scandal Elixir is a provocative and intensely seductive masculine fragrance that pushes boundaries and commands attention. This elixir version amplifies the scandalous character of the original, delivering a deeper, more intoxicating experience that embodies forbidden desire and magnetic allure.\n\nThe composition features a daring fusion of honey for golden sweetness, vanilla for creamy indulgence, amber for warm sensuality, and woody accords for sophisticated depth. The result is a fragrance that's both sweet and powerful, with exceptional longevity and a trail that lingers memorably.\n\nScandal Elixir is perfect for confident men who embrace their bold side. Its strong projection and lasting power make it ideal for evening adventures, romantic encounters, and situations where you want to leave an unforgettable impression. A fragrance for those who dare to be different and unapologetically seductive.",
-    "description_fr": "Jean Paul Gaultier Scandal Elixir est un parfum masculin provocant et intensément séduisant qui repousse les limites et attire l'attention. Cette version élixir amplifie le caractère scandaleux de l'original, offrant une expérience plus profonde et plus enivrante qui incarne le désir interdit et l'allure magnétique.\n\nLa composition présente une fusion audacieuse de miel pour la douceur dorée, de vanille pour l'indulgence crémeuse, d'ambre pour la sensualité chaude et d'accords boisés pour la profondeur sophistiquée. Le résultat est un parfum à la fois sucré et puissant, avec une longévité exceptionnelle et un sillage qui persiste de manière mémorable.\n\nScandal Elixir est parfait pour les hommes confiants qui embrassent leur côté audacieux. Sa projection forte et sa puissance durable en font l'idéal pour les aventures nocturnes, les rencontres romantiques et les situations où vous voulez laisser une impression inoubliable. Un parfum pour ceux qui osent être différents et irrésistiblement séduisants.",
-    "description_ar": "جان بول غوتييه سكاندال إليكسير هو عطر رجالي استفزازي ومغري بشدة يدفع الحدود ويجذب الانتباه. يعزز هذا الإصدار الإليكسير الطابع الفضائحي للأصلي، مما يوفر تجربة أعمق وأكثر نشوة تجسد الرغبة الممنوعة والجاذبية المغناطيسية.\n\nيتميز التكوين بمزيج جريء من العسل للحلاوة الذهبية، الفانيليا للدلال الكريمي، العنبر للحساسية الدافئة، والأوتار الخشبية للعمق المتطور. النتيجة هي عطر حلو وقوي في آن واحد، مع ثبات استثنائي وأثر يستمر بشكل لا يُنسى.\n\nسكاندال إليكسير مثالي للرجال الواثقين الذين يعانقون جانبهم الجريء. إسقاطه القوي وقوته الدائمة يجعله مثاليًا للمغامرات المسائية واللقاءات الرومانسية والمواقف التي تريد فيها ترك انطباع لا يُنسى. عطر لأولئك الذين يجرؤون على أن يكونوا مختلفين ومغرين دون اعتذار.",
+    "description": "Jean Paul Gaultier – Scandal Elixir is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of honey, vanilla, amber, woody creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Jean Paul Gaultier – Scandal Elixir est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de honey, vanilla, amber, woody offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Jean Paul Gaultier – Scandal Elixir عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل honey, vanilla, amber, woody لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Scandal%20Elixir%20set.png",
     "variants": [
       {
@@ -353,22 +302,16 @@
       "vanilla",
       "amber",
       "woody"
-    ],
-    "main_accords": {
-      "Sweet": 100,
-      "Honey": 95,
-      "Woody": 80,
-      "Amber": 70
-    }
+    ]
   },
   {
     "id": "p21",
     "brand": "Jean Paul Gaultier",
     "name": "Jean Paul Gaultier – Le Male Le Parfum",
     "category": "men",
-    "description": "Jean Paul Gaultier Le Male Le Parfum is a sophisticated and intensified version of the legendary Le Male fragrance, crafted for the modern gentleman who demands excellence in every aspect of his life. This concentrated parfum elevates the signature scent to new levels of luxury and refinement.\n\nThe composition features a creamy cardamom opening that provides spicy warmth, balanced by rich vanilla for irresistible sweetness. Oriental woods deliver depth and elegance, while warm amber creates a smooth, long-lasting foundation that evolves beautifully throughout the day.\n\nLe Male Le Parfum is perfect for the discerning man who appreciates the finer details. Its exceptional longevity (up to 12 hours) and sophisticated sillage make it ideal for important business meetings, formal events, and intimate evenings. A fragrance that embodies timeless elegance and modern sophistication.",
-    "description_fr": "Jean Paul Gaultier Le Male Le Parfum est une version sophistiquée et intensifiée du légendaire parfum Le Male, conçue pour le gentleman moderne qui exige l'excellence dans tous les aspects de sa vie. Ce parfum concentré élève le parfum signature à de nouveaux niveaux de luxe et de raffinement.\n\nLa composition présente une ouverture crémeuse à la cardamome qui apporte chaleur épicée, équilibrée par une vanille riche pour une douceur irrésistible. Les bois orientaux apportent profondeur et élégance, tandis que l'ambre chaud crée une base lisse et durable qui évolue magnifiquement tout au long de la journée.\n\nLe Male Le Parfum est parfait pour l'homme exigeant qui apprécie les détails subtils. Sa longévité exceptionnelle (jusqu'à 12 heures) et son sillage sophistiqué en font l'idéal pour les réunions d'affaires importantes, les événements formels et les soirées intimes. Un parfum qui incarne l'élégance intemporelle et la sophistication moderne.",
-    "description_ar": "جان بول غوتييه لو مال لو بارفان هو نسخة متطورة ومعززة من عطر لو مال الأسطوري، مصمم للرجل الحديث الذي يطالب بالتميز في كل جانب من جوانب حياته. يرتقي هذا البارفان المركز بالعطر المميز إلى مستويات جديدة من الفخامة والرقي.\n\nيتميز التكوين بمقدمة كريمية بالهيل توفر دفءًا حارًا، متوازنًا بفانيليا غنية للحلاوة التي لا تقاوم. توفر الأخشاب الشرقية العمق والأناقة، بينما يخلق العنبر الدافئ أساسًا ناعمًا وطويل الأمد يتطور بشكل جميل طوال اليوم.\n\nلو مال لو بارفان مثالي للرجل المميز الذي يقدر التفاصيل الدقيقة. ثباته الاستثنائي (حتى 12 ساعة) وسيلانه المتطور يجعله مثاليًا للاجتماعات التجارية المهمة والفعاليات الرسمية والمساءات الحميمة. عطر يجسد الأناقة الأبدية والرقي الحديث.",
+    "description": "Jean Paul Gaultier – Le Male Le Parfum is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of cardamom, vanilla, woods, amber creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Jean Paul Gaultier – Le Male Le Parfum est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de cardamom, vanilla, woods, amber offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Jean Paul Gaultier – Le Male Le Parfum عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل cardamom, vanilla, woods, amber لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Jean%20Paul%20Gaultier%20Le%20Male%20set.png",
     "variants": [
       {
@@ -392,22 +335,16 @@
       "vanilla",
       "woods",
       "amber"
-    ],
-    "main_accords": {
-      "Vanilla": 100,
-      "Aromatic": 90,
-      "Spicy": 85,
-      "Amber": 80
-    }
+    ]
   },
   {
     "id": "p22",
     "brand": "Gucci",
     "name": "Gucci – Gucci Guilty Absolu de Parfum Pour Homme",
     "category": "men",
-    "description": "Gucci Guilty Absolu de Parfum Pour Homme is a bold and unconventional masculine fragrance that challenges traditional perfumery with its daring, provocative character. This absolu version intensifies the signature Guilty DNA, delivering a deeper, more intense experience that embodies raw masculinity and forbidden temptation.\n\nThe composition features a powerful blend of leather for rugged sophistication, patchouli for earthy depth, woody accords for natural complexity, and warm amber for sensual warmth. The result is a fragrance that's both intense and refined, with exceptional longevity and a distinctive trail that sets you apart.\n\nGuilty Absolu is designed for fearless men who embrace their individuality. Its strong projection and lasting power make it perfect for evening wear, formal occasions, and situations where you want to make a bold, unforgettable statement. A fragrance for those who live by their own rules and command attention.",
-    "description_fr": "Gucci Guilty Absolu de Parfum Pour Homme est un parfum masculin audacieux et non conventionnel qui défie la parfumerie traditionnelle avec son caractère osé et provocant. Cette version absolu intensifie l'ADN signature de Guilty, offrant une expérience plus profonde et plus intense qui incarne la masculinité brute et la tentation interdite.\n\nLa composition présente un mélange puissant de cuir pour la sophistication robuste, de patchouli pour la profondeur terreuse, d'accords boisés pour la complexité naturelle et d'ambre chaud pour la chaleur sensuelle. Le résultat est un parfum à la fois intense et raffiné, avec une longévité exceptionnelle et un sillage distinctif qui vous distingue.\n\nGuilty Absolu est conçu pour les hommes intrépides qui embrassent leur individualité. Sa projection forte et sa puissance durable en font l'idéal pour le port du soir, les occasions formelles et les situations où vous voulez faire une déclaration audacieuse et inoubliable. Un parfum pour ceux qui vivent selon leurs propres règles et attirent l'attention.",
-    "description_ar": "غوتشي غيلتي أبسولو دو بارفان بور هوم هو عطر رجالي جريء وغير تقليدي يتحدى العطور التقليدية بطابعه الجريء والاستفزازي. يعزز هذا الإصدار الأبسولو الحمض النووي المميز لغيلتي، مما يوفر تجربة أعمق وأكثر كثافة تجسد الرجولة الخام والإغراء الممنوع.\n\nيتميز التكوين بمزيج قوي من الجلد للرقي الخشن، الباتشولي للعمق الأرضي، الأوتار الخشبية للتعقيد الطبيعي، والعنبر الدافئ للدفء الحسي. النتيجة هي عطر كثيف ومتطور في آن واحد، مع ثبات استثنائي وأثر مميز يميزك.\n\nتم تصميم غيلتي أبسولو للرجال الشجعان الذين يعانقون فرديتهم. إسقاطه القوي وقوته الدائمة يجعله مثاليًا للارتداء المسائي والمناسبات الرسمية والمواقف التي تريد فيها إصدار بيان جريء ولا يُنسى. عطر لأولئك الذين يعيشون بقواعدهم الخاصة ويجذبون الانتباه.",
+    "description": "Gucci – Gucci Guilty Absolu de Parfum Pour Homme is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of leather, patchouli, woody, amber creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Gucci – Gucci Guilty Absolu de Parfum Pour Homme est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de leather, patchouli, woody, amber offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Gucci – Gucci Guilty Absolu de Parfum Pour Homme عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل leather, patchouli, woody, amber لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gucci%20Guilty%20Absolu%20de%20Parfum%20collection.png",
     "variants": [
       {
@@ -431,22 +368,16 @@
       "patchouli",
       "woody",
       "amber"
-    ],
-    "main_accords": {
-      "Leather": 100,
-      "Woody": 95,
-      "Aromatic": 80,
-      "Patchouli": 75
-    }
+    ]
   },
   {
     "id": "p23",
     "brand": "Hugo Boss",
     "name": "Hugo Boss – Boss Bottled Absolu",
     "category": "men",
-    "description": "Hugo Boss Boss Bottled Absolu is an intensified interpretation of the iconic Boss Bottled fragrance, designed for ambitious men who lead with authority and style. This absolu version delivers a deeper, more luxurious experience that amplifies the signature Boss DNA with enhanced concentration and longevity.\n\nThe composition features a sophisticated blend of apple for crisp freshness, geranium for herbal elegance, cinnamon for spicy warmth, and rich amber for sensual depth. Woody accords and subtle leather nuances provide a refined, masculine foundation that evolves beautifully throughout the day.\n\nBoss Bottled Absolu is perfect for business leaders, formal occasions, and evening sophistication. Its powerful projection and exceptional longevity (up to 12 hours) make it ideal for men who want to project confidence and success. A fragrance that embodies modern leadership and timeless elegance.",
-    "description_fr": "Hugo Boss Boss Bottled Absolu est une interprétation intensifiée du parfum iconique Boss Bottled, conçue pour les hommes ambitieux qui dirigent avec autorité et style. Cette version absolu offre une expérience plus profonde et plus luxueuse qui amplifie l'ADN signature de Boss avec une concentration et une longévité améliorées.\n\nLa composition présente un mélange sophistiqué de pomme pour la fraîcheur croquante, de géranium pour l'élégance herbacée, de cannelle pour la chaleur épicée et d'ambre riche pour la profondeur sensuelle. Les accords boisés et les nuances subtiles de cuir offrent une base raffinée et masculine qui évolue magnifiquement tout au long de la journée.\n\nBoss Bottled Absolu est parfait pour les dirigeants d'entreprise, les occasions formelles et la sophistication nocturne. Sa projection puissante et sa longévité exceptionnelle (jusqu'à 12 heures) en font l'idéal pour les hommes qui veulent projeter confiance et succès. Un parfum qui incarne le leadership moderne et l'élégance intemporelle.",
-    "description_ar": "هوغو بوس بوس بوتلد أبسولو هو تفسير معزز لعطر بوس بوتلد الأيقوني، مصمم للرجال الطموحين الذين يقودون بالسلطة والأسلوب. يوفر هذا الإصدار الأبسولو تجربة أعمق وأكثر فخامة تعزز الحمض النووي المميز لبوس مع تركيز وثبات محسنين.\n\nيتميز التكوين بمزيج متطور من التفاح للانتعاش الحاد، الجيرانيوم للأناقة العشبية، القرفة للدفء الحار، والعنبر الغني للعمق الحسي. توفر الأوتار الخشبية واللفتات الجلدية الخفيفة أساسًا متطورًا ورجوليًا يتطور بشكل جميل طوال اليوم.\n\nبوس بوتلد أبسولو مثالي لقادة الأعمال والمناسبات الرسمية والرقي المسائي. إسقاطه القوي وثباته الاستثنائي (حتى 12 ساعات) يجعله مثاليًا للرجال الذين يريدون إسقاط الثقة والنجاح. عطر يجسد القيادة الحديثة والأناقة الأبدية.",
+    "description": "Hugo Boss – Boss Bottled Absolu is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of woody, amber, leather, spices creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Hugo Boss – Boss Bottled Absolu est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de woody, amber, leather, spices offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Hugo Boss – Boss Bottled Absolu عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل woody, amber, leather, spices لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Luxury%20Hugo%20Boss%20perfume%20set.png",
     "variants": [
       {
@@ -470,22 +401,16 @@
       "amber",
       "leather",
       "spices"
-    ],
-    "main_accords": {
-      "Woody": 100,
-      "Fruity": 90,
-      "Spicy": 80,
-      "Amber": 70
-    }
+    ]
   },
   {
     "id": "p24",
     "brand": "Dior",
     "name": "Dior – Dior Homme Intense",
     "category": "men",
-    "description": "Dior Homme Intense is a sophisticated and deeply sensual masculine fragrance that elevates the art of perfumery to new heights. This intense version amplifies the signature Dior Homme DNA, delivering a richer, more luxurious experience that embodies modern elegance and quiet power.\n\nThe composition features a velvety blend of iris for powdery sophistication, rich amber for warm sensuality, creamy vanilla for irresistible sweetness, and woody accords for natural depth. The result is a fragrance that's both intense and refined, with exceptional longevity and a sophisticated trail.\n\nHomme Intense is perfect for the discerning gentleman who appreciates the finer things. Its balanced projection and lasting power make it ideal for evening wear, formal occasions, and intimate moments. A fragrance that speaks of success, refinement, and timeless allure.",
-    "description_fr": "Dior Homme Intense est un parfum masculin sophistiqué et profondément sensuel qui élève l'art de la parfumerie à de nouveaux sommets. Cette version intense amplifie l'ADN signature de Dior Homme, offrant une expérience plus riche et plus luxueuse qui incarne l'élégance moderne et le pouvoir discret.\n\nLa composition présente un mélange velouté d'iris pour la sophistication poudreuse, d'ambre riche pour la sensualité chaude, de vanille crémeuse pour la douceur irrésistible et d'accords boisés pour la profondeur naturelle. Le résultat est un parfum à la fois intense et raffiné, avec une longévité exceptionnelle et un sillage sophistiqué.\n\nHomme Intense est parfait pour le gentleman exigeant qui apprécie les belles choses. Sa projection équilibrée et sa puissance durable en font l'idéal pour le port du soir, les occasions formelles et les moments intimes. Un parfum qui parle de succès, de raffinement et d'allure intemporelle.",
-    "description_ar": "ديور هوم إنتنس هو عطر رجالي متطور وحسي بعمق يرفع فن العطور إلى مستويات جديدة. يعزز هذا الإصدار الكثيف الحمض النووي المميز لديور هوم، مما يوفر تجربة أكثر ثراءً وفخامة تجسد الأناقة الحديثة والقوة الهادئة.\n\nيتميز التكوين بمزيج مخملي من الآيريس للرقي المسحوقي، العنبر الغني للدفء الحسي، الفانيليا الكريمية للحلاوة التي لا تقاوم، والأوتار الخشبية للعمق الطبيعي. النتيجة هي عطر كثيف ومتطور في آن واحد، مع ثبات استثنائي وأثر متطور.\n\nهوم إنتنس مثالي للرجل المميز الذي يقدر الأشياء الجميلة. إسقاطه المتوازن وقوته الدائمة يجعله مثاليًا للارتداء المسائي والمناسبات الرسمية واللحظات الحميمة. عطر يتحدث عن النجاح والرقي والجاذبية الأبدية.",
+    "description": "Dior – Dior Homme Intense is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of iris, amber, vanilla, woody creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Dior – Dior Homme Intense est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de iris, amber, vanilla, woody offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Dior – Dior Homme Intense عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل iris, amber, vanilla, woody لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Dior%20Homme%20Intense%20fragrance%20set.png",
     "variants": [
       {
@@ -509,22 +434,16 @@
       "amber",
       "vanilla",
       "woody"
-    ],
-    "main_accords": {
-      "Iris": 100,
-      "Powdery": 95,
-      "Woody": 90,
-      "Amber": 80
-    }
+    ]
   },
   {
     "id": "p25",
     "brand": "Valentino",
     "name": "Valentino – Valentino Uomo Born in Roma Extradose",
     "category": "men",
-    "description": "Valentino Uomo Born in Roma Extradose is an amplified celebration of Roman elegance and modern masculinity, designed for men who embrace urban sophistication with unapologetic confidence. This extradose version intensifies the signature Born in Roma character, delivering stronger projection and enhanced longevity for maximum impact.\n\nThe composition features a bold fusion of spicy black pepper for energizing warmth, rich vanilla for creamy indulgence, woody accords for natural depth, and warm amber for sensual sophistication. The result is a fragrance that's both powerful and refined, with exceptional staying power and a magnetic trail.\n\nBorn in Roma Extradose is perfect for the modern metropolitan man. Its strong presence and lasting impression make it ideal for evening outings, business meetings, and romantic encounters in the city. A fragrance that captures the vibrant spirit of Rome while commanding attention in any urban landscape.",
-    "description_fr": "Valentino Uomo Born in Roma Extradose est une célébration amplifiée de l'élégance romaine et de la masculinité moderne, conçue pour les hommes qui embrassent la sophistication urbaine avec une confiance sans excuses. Cette version extradose intensifie le caractère signature de Born in Roma, offrant une projection plus forte et une longévité améliorée pour un impact maximum.\n\nLa composition présente une fusion audacieuse de poivre noir épicé pour la chaleur énergisante, de vanille riche pour l'indulgence crémeuse, d'accords boisés pour la profondeur naturelle et d'ambre chaud pour la sophistication sensuelle. Le résultat est un parfum à la fois puissant et raffiné, avec une puissance de maintien exceptionnelle et un sillage magnétique.\n\nBorn in Roma Extradose est parfait pour l'homme métropolitain moderne. Sa présence forte et son impression durable en font l'idéal pour les sorties nocturnes, les réunions d'affaires et les rencontres romantiques en ville. Un parfum qui capture l'esprit vibrant de Rome tout en attirant l'attention dans n'importe quel paysage urbain.",
-    "description_ar": "فالنتينو أومو بورن إن روما إكسترا دوس هو احتفال معزز بأناقة روما والرجولة الحديثة، مصمم للرجال الذين يعانقون الرقي الحضري بثقة لا تُعتذر عنها. يعزز هذا الإصدار الإكسترا دوس طابع بورن إن روما المميز، مما يوفر إسقاطًا أقوى وثباتًا محسنًا للتأثير الأقصى.\n\nيتميز التكوين بمزيج جريء من الفلفل الأسود الحار للدفء المفعم بالحيوية، الفانيليا الغنية للدلال الكريمي، الأوتار الخشبية للعمق الطبيعي، والعنبر الدافئ للرقي الحسي. النتيجة هي عطر قوي ومتطور في آن واحد، مع قوة بقاء استثنائية وأثر مغناطيسي.\n\nبورن إن روما إكسترا دوس مثالي للرجل الحضري الحديث. حضوره القوي وانطباعه الدائم يجعله مثاليًا للخروج المسائي والاجتماعات التجارية واللقاءات الرومانسية في المدينة. عطر يجسد روح روما النابضة بالحياة مع جذب الانتباه في أي منظر حضري.",
+    "description": "Valentino – Valentino Uomo Born in Roma Extradose is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of spicy, vanilla, woody, amber creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Valentino – Valentino Uomo Born in Roma Extradose est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de spicy, vanilla, woody, amber offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Valentino – Valentino Uomo Born in Roma Extradose عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل spicy, vanilla, woody, amber لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Valentino%20Uomo%20Born%20in%20Roma%20set.png",
     "variants": [
       {
@@ -548,21 +467,16 @@
       "vanilla",
       "woody",
       "amber"
-    ],
-    "main_accords": {
-      "Vanilla": 100,
-      "Woody": 90,
-      "Spicy": 80
-    }
+    ]
   },
   {
     "id": "p26",
     "brand": "Paco Rabanne",
     "name": "1 Million Elixir",
     "category": "men",
-    "description": "Paco Rabanne 1 Million Elixir is a luxurious and intensified interpretation of the iconic 1 Million fragrance, designed for men who embody success, power, and unapologetic confidence. This elixir version elevates the signature scent to new heights of luxury and sensuality, delivering a richer, more opulent experience.\n\nThe composition features a golden fusion of vanilla for creamy sweetness, fresh apple for juicy vitality, damask rose for floral elegance, and rich amber for warm sophistication. Tonka bean and cedar add depth and complexity, creating a fragrance that's both bold and refined.\n\n1 Million Elixir is perfect for the modern achiever. Its exceptional longevity (up to 12 hours) and strong projection make it ideal for high-profile events, romantic evenings, and situations where you want to leave a lasting, luxurious impression. A fragrance that symbolizes wealth, success, and irresistible charm.",
-    "description_fr": "Paco Rabanne 1 Million Elixir est une interprétation luxueuse et intensifiée du parfum iconique 1 Million, conçue pour les hommes qui incarnent le succès, le pouvoir et la confiance sans excuses. Cette version élixir élève le parfum signature à de nouveaux sommets de luxe et de sensualité, offrant une expérience plus riche et plus opulente.\n\nLa composition présente une fusion dorée de vanille pour la douceur crémeuse, de pomme fraîche pour la vitalité juteuse, de rose de Damas pour l'élégance florale et d'ambre riche pour la sophistication chaude. La fève tonka et le cèdre ajoutent profondeur et complexité, créant un parfum à la fois audacieux et raffiné.\n\n1 Million Elixir est parfait pour l'achiever moderne. Sa longévité exceptionnelle (jusqu'à 12 heures) et sa projection forte en font l'idéal pour les événements de haut profil, les soirées romantiques et les situations où vous voulez laisser une impression durable et luxueuse. Un parfum qui symbolise la richesse, le succès et le charme irrésistible.",
-    "description_ar": "باكو رابان 1 ميليون إليكسير هو تفسير فاخر ومعزز لعطر 1 ميليون الأيقوني، مصمم للرجال الذين يجسدون النجاح والقوة والثقة التي لا تُعتذر عنها. يرتقي هذا الإصدار الإليكسير بالعطر المميز إلى مستويات جديدة من الفخامة والحساسية، مما يوفر تجربة أكثر ثراءً وفخامة.\n\nيتميز التكوين بمزيج ذهبي من الفانيليا للحلاوة الكريمية، التفاح المنعش للحيوية العصيرية، وردة الداماسك للأناقة الزهرية، والعنبر الغني للرقي الدافئ. تضيف حبة التونكا والأرز العمق والتعقيد، مما يخلق عطرًا جريئًا ومتطورًا في آن واحد.\n\n1 ميليون إليكسير مثالي للمحقق الحديث. ثباته الاستثنائي (حتى 12 ساعة) وإسقاطه القوي يجعله مثاليًا للأحداث ذات المستوى العالي والمساءات الرومانسية والمواقف التي تريد فيها ترك انطباع فاخر ودائم. عطر يرمز إلى الثروة والنجاح والسحر الذي لا يقاوم.",
+    "description": "1 Million Elixir is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of vanilla, apple, damask rose, amber, tonka bean, cedar creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "1 Million Elixir est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de vanilla, apple, damask rose, amber, tonka bean, cedar offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد 1 Million Elixir عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل vanilla, apple, damask rose, amber, tonka bean, cedar لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Gold%20elegance%20in%201%20Million%20Elixir.png",
     "variants": [
       {
@@ -588,22 +502,16 @@
       "amber",
       "tonka bean",
       "cedar"
-    ],
-    "main_accords": {
-      "Vanilla": 100,
-      "Fruity": 90,
-      "Sweet": 85,
-      "Rose": 70
-    }
+    ]
   },
   {
     "id": "p27",
     "brand": "Xerjoff",
     "name": "Xerjoff – Erba Pura",
     "category": "unisex",
-    "description": "Xerjoff Erba Pura is a luminous, addictive unisex fragrance that captures the essence of Italian elegance and joyful sophistication. This masterpiece from the renowned Xerjoff collection is a celebration of freshness elevated to an art form, perfect for those who appreciate refined luxury.\n\nThe composition opens with exotic tropical fruits that dance with Sicilian citrus, creating a vibrant and energizing introduction. White musk adds a clean, modern edge, while amber and vanilla provide a warm, sensual depth that evolves beautifully throughout the day.\n\nErba Pura is incredibly versatile - equally stunning for daytime confidence or evening glamour. Its exceptional longevity and radiant sillage make it perfect for anyone seeking a signature scent that's both fresh and unforgettable. A true luxury fragrance that transcends gender and celebrates pure olfactory pleasure.",
-    "description_fr": "Xerjoff Erba Pura est un parfum unisexe lumineux et addictif qui capture l'essence de l'élégance italienne et de la sophistication joyeuse. Ce chef-d'œuvre de la collection renommée Xerjoff est une célébration de la fraîcheur élevée à l'art, parfaite pour ceux qui apprécient le luxe raffiné.\n\nLa composition s'ouvre sur des fruits tropicaux exotiques qui dansent avec les agrumes siciliens, créant une introduction vibrante et énergisante. Le musc blanc ajoute une touche propre et moderne, tandis que l'ambre et la vanille apportent une profondeur chaude et sensuelle qui évolue magnifiquement tout au long de la journée.\n\nErba Pura est incroyablement polyvalent - tout aussi époustouflant pour la confiance diurne ou le glamour nocturne. Sa longévité exceptionnelle et son sillage rayonnant en font l'idéal pour quiconque recherche un parfum signature à la fois frais et inoubliable. Un vrai parfum de luxe qui transcende le genre et célèbre le plaisir olfactif pur.",
-    "description_ar": "زيرجوف إربا بورا هو عطر يونيسكس لامع ومسبب للإدمان يجسد جوهر الأناقة الإيطالية والرقي الفرح. هذه التحفة من مجموعة زيرجوف الشهيرة هي احتفال بالانتعاش المرتفع إلى مستوى فني، مثالي لأولئك الذين يقدرون الفخامة الراقية.\n\nيفتح التكوين بفواكه استوائية غريبة ترقص مع الحمضيات الصقلية، مما يخلق مقدمة حيوية ومفعمة بالحيوية. يضيف المسك الأبيض لمسة نظيفة وحديثة، بينما يوفر العنبر والفانيليا عمقًا دافئًا وحسيًا يتطور بشكل جميل طوال اليوم.\n\nإربا بورا متعدد الاستخدامات بشكل لا يصدق - مذهل بنفس القدر للثقة النهارية أو الجاذبية المسائية. ثباته الاستثنائي وسيلانه المشع يجعله مثاليًا لأي شخص يبحث عن عطر توقيع منعش ولا يُنسى. عطر فاخر حقيقي يتجاوز الجنس ويحتفل بالمتعة الشمية النقية.",
+    "description": "Xerjoff – Erba Pura is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of exotic fruits, Sicilian citrus, white musk, amber, vanilla creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Xerjoff – Erba Pura est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de exotic fruits, Sicilian citrus, white musk, amber, vanilla offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Xerjoff – Erba Pura عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل exotic fruits, Sicilian citrus, white musk, amber, vanilla لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Xerjoff%20Erba%20Pura%20fragrance%20collection.png",
     "variants": [
       {
@@ -628,22 +536,16 @@
       "white musk",
       "amber",
       "vanilla"
-    ],
-    "main_accords": {
-      "Fruity": 100,
-      "Sweet": 95,
-      "Musk": 80,
-      "Citrus": 75
-    }
+    ]
   },
   {
     "id": "p28",
     "brand": "Xerjoff",
     "name": "Xerjoff – Naxos",
     "category": "unisex",
-    "description": "Xerjoff Naxos is a masterful unisex fragrance that captures the essence of Italian elegance and timeless luxury, inspired by the sun-drenched Greek island of Naxos. This sophisticated scent from the renowned Xerjoff collection is a celebration of Mediterranean heritage, blending fresh, sweet, and warm elements in perfect harmony.\n\nThe composition opens with aromatic lavender for herbal freshness, complemented by honey for golden sweetness and tobacco for sophisticated depth. Rich vanilla and warm spices create a smooth, addictive base that evolves beautifully throughout the day, offering outstanding longevity and projection.\n\nNaxos is incredibly versatile - equally stunning for daytime confidence or evening glamour. Its refined character and luxurious trail make it perfect for those who appreciate the finer nuances of perfumery. A true masterpiece that transcends gender and celebrates olfactory sophistication.",
-    "description_fr": "Xerjoff Naxos est un parfum unisexe magistral qui capture l'essence de l'élégance italienne et du luxe intemporel, inspiré par l'île grecque ensoleillée de Naxos. Ce parfum sophistiqué de la collection renommée Xerjoff est une célébration de l'héritage méditerranéen, mélangeant des éléments frais, sucrés et chauds en parfaite harmonie.\n\nLa composition s'ouvre sur une lavande aromatique pour la fraîcheur herbacée, complétée par du miel pour la douceur dorée et du tabac pour la profondeur sophistiquée. La vanille riche et les épices chaudes créent une base lisse et addictive qui évolue magnifiquement tout au long de la journée, offrant une longévité et une projection exceptionnelles.\n\nNaxos est incroyablement polyvalent - tout aussi époustouflant pour la confiance diurne ou le glamour nocturne. Son caractère raffiné et son sillage luxueux en font l'idéal pour ceux qui apprécient les nuances subtiles de la parfumerie. Un vrai chef-d'œuvre qui transcende le genre et célèbre la sophistication olfactive.",
-    "description_ar": "زيرجوف ناكسوس هو عطر يونيسكس رائع يجسد جوهر الأناقة الإيطالية والفخامة الأبدية، مستوحى من جزيرة ناكسوس اليونانية المشمسة. هذا العطر المتطور من مجموعة زيرجوف الشهيرة هو احتفال بالتراث المتوسطي، يمزج العناصر المنعشة والحلوة والدافئة في تناغم مثالي.\n\nيفتح التكوين باللافندر العطري للانتعاش العشبي، مكملًا بالعسل للحلاوة الذهبية والتبغ للعمق المتطور. تخلق الفانيليا الغنية والتوابل الدافئة قاعدة ناعمة ومسببة للإدمان تتطور بشكل جميل طوال اليوم، مع ثبات وإسقاط استثنائيين.\n\nناكسوس متعدد الاستخدامات بشكل لا يصدق - مذهل بنفس القدر للثقة النهارية أو الجاذبية المسائية. طابعه الراقي وأثره الفاخر يجعله مثاليًا لأولئك الذين يقدرون الفروق الدقيقة في العطور. تحفة حقيقية تتجاوز الجنس وتحتفل بالرقي الشمي.",
+    "description": "Xerjoff – Naxos is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of lavender, honey, tobacco, vanilla, spices creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Xerjoff – Naxos est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de lavender, honey, tobacco, vanilla, spices offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Xerjoff – Naxos عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل lavender, honey, tobacco, vanilla, spices لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Luxurious%20Xerjoff%20Naxos%20perfume%20collection.png",
     "variants": [
       {
@@ -668,13 +570,7 @@
       "tobacco",
       "vanilla",
       "spices"
-    ],
-    "main_accords": {
-      "Honey": 100,
-      "Tobacco": 95,
-      "Citrus": 90,
-      "Lavender": 85
-    }
+    ]
   },
   {
     "id": "p29",
@@ -683,9 +579,9 @@
     "category": "men",
     "isNew": true,
     "isBestseller": true,
-    "description": "Tom Ford Ombré Leather is a masterpiece of modern perfumery that captures the raw elegance of leather in its most sophisticated form. This bold, sensual fragrance embodies the darker side of luxury, where power meets refinement in perfect harmony.\n\nThe composition opens with spicy cardamom that immediately commands attention, setting a warm and captivating tone. At its heart, rich black leather takes center stage, softened by delicate jasmine sambac for floral contrast and depth. The base is a masterful blend of amber for warmth, patchouli for earthiness, and moss for a subtle, natural complexity.\n\nOmbré Leather is designed for the modern sophisticate who embraces their darker, more intense side. Perfect for evening wear, formal occasions, and cooler seasons, this fragrance leaves an unforgettable impression - smoky, sensual, and utterly distinctive. A true statement piece for those who understand the power of scent as an extension of personality.",
-    "description_fr": "Tom Ford Ombré Leather est un chef-d'œuvre de la parfumerie moderne qui capture l'élégance brute du cuir dans sa forme la plus sophistiquée. Ce parfum audacieux et sensuel incarne le côté sombre du luxe, où puissance et raffinement se rencontrent en parfaite harmonie.\n\nLa composition s'ouvre sur une cardamome épicée qui attire immédiatement l'attention, créant un ton chaud et captivant. En son cœur, le cuir noir riche occupe le devant de la scène, adouci par un jasmin sambac délicat pour le contraste floral et la profondeur. La base est un mélange magistral d'ambre pour la chaleur, de patchouli pour l'earthy et de mousse pour une complexité naturelle subtile.\n\nOmbré Leather est conçu pour le sophisticate moderne qui embrasse son côté plus sombre et plus intense. Parfait pour le port du soir, les occasions formelles et les saisons plus fraîches, ce parfum laisse une impression inoubliable - fumé, sensuel et totalement distinctif. Une vraie pièce maîtresse pour ceux qui comprennent le pouvoir du parfum comme extension de la personnalité.",
-    "description_ar": "توم فورد أومبري ليذر هو تحفة في عالم العطور الحديثة التي تجسد الأناقة الخام للجلد في أكثر أشكاله تطورًا. يجسد هذا العطر الجريء والحسي الجانب المظلم من الفخامة، حيث تلتقي القوة بالرقي في تناغم مثالي.\n\nيفتح التكوين بالهيل الحار الذي يجذب الانتباه فورًا، مما يضع نغمة دافئة وجذابة. في قلبه، يحتل الجلد الأسود الغني مركز الصدارة، مخففًا بياسمين السامباك الرقيق للتباين الزهري والعمق. القاعدة مزيج رائع من العنبر للدفء، الباتشولي للأرضية، والطحلب لتعقيد طبيعي خفيف.\n\nتم تصميم أومبري ليذر للمتطور الحديث الذي يعانق جانبه الأكثر ظلامًا وكثافة. مثالي للارتداء المسائي والمناسبات الرسمية والمواسم الباردة، يترك هذا العطر انطباعًا لا يُنسى - مدخن وحسي ومميز تمامًا. قطعة تصريح حقيقية لأولئك الذين يفهمون قوة العطر كامتداد للشخصية.",
+    "description": "Ombré Leather – Eau de Parfum is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of cardamom, black leather, jasmine sambac, amber, patchouli, moss creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Ombré Leather – Eau de Parfum est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de cardamom, black leather, jasmine sambac, amber, patchouli, moss offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Ombré Leather – Eau de Parfum عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل cardamom, black leather, jasmine sambac, amber, patchouli, moss لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Tom%20Ford%20Ombr%C3%A9%20Leather%20set.png",
     "variants": [
       {
@@ -711,13 +607,7 @@
       "amber",
       "patchouli",
       "moss"
-    ],
-    "main_accords": {
-      "Leather": 100,
-      "Animalic": 90,
-      "Floral": 70,
-      "Spicy": 60
-    }
+    ]
   },
   {
     "id": "p30",
@@ -725,9 +615,9 @@
     "name": "Azzaro – The Most Wanted",
     "category": "men",
     "isNew": true,
-    "description": "Azzaro The Most Wanted is a bold and charismatic masculine fragrance that embodies the essence of a man who lives life on his own terms. This scent captures the allure of the unattainable, designed for confident individuals who command attention and admiration wherever they go.\n\nThe composition features a warm and spicy character with rich amber for sensual depth, woody accords for natural sophistication, and subtle leather nuances for rugged elegance. The result is a fragrance that's both powerful and refined, with excellent longevity and a magnetic trail that lingers memorably.\n\nThe Most Wanted is perfect for the modern alpha male. Its strong presence and lasting impression make it ideal for evening adventures, business conquests, and romantic pursuits. A fragrance for those who are sought after, admired, and unforgettable.",
-    "description_fr": "Azzaro The Most Wanted est un parfum masculin audacieux et charismatique qui incarne l'essence d'un homme qui vit sa vie selon ses propres termes. Ce parfum capture l'allure de l'inaccessible, conçu pour les individus confiants qui attirent l'attention et l'admiration où qu'ils aillent.\n\nLa composition présente un caractère chaud et épicé avec de l'ambre riche pour la profondeur sensuelle, des accords boisés pour la sophistication naturelle et des nuances subtiles de cuir pour l'élégance robuste. Le résultat est un parfum à la fois puissant et raffiné, avec une longévité excellente et un sillage magnétique qui persiste de manière mémorable.\n\nThe Most Wanted est parfait pour l'alpha mâle moderne. Sa présence forte et son impression durable en font l'idéal pour les aventures nocturnes, les conquêtes professionnelles et les poursuites romantiques. Un parfum pour ceux qui sont recherchés, admirés et inoubliables.",
-    "description_ar": "عزارو ذا موست وانتد هو عطر رجالي جريء وكاريزمي يجسد جوهر الرجل الذي يعيش حياته بموجب شروطه الخاصة. يجسد هذا العطر سحر ما لا يمكن الوصول إليه، مصمم للأفراد الواثقين الذين يجذبون الانتباه والإعجاب أينما ذهبوا.\n\nيتميز التكوين بطابع دافئ وحار مع عنبر غني للعمق الحسي، أوتار خشبية للرقي الطبيعي، ولفتات جلدية خفيفة للأناقة الخشنة. النتيجة هي عطر قوي ومتطور في آن واحد، مع ثبات ممتاز وأثر مغناطيسي يستمر بشكل لا يُنسى.\n\nذا موست وانتد مثالي للرجل الألفا الحديث. حضوره القوي وانطباعه الدائم يجعله مثاليًا للمغامرات المسائية والفتوحات التجارية والمطاردات الرومانسية. عطر لأولئك الذين يُطلبون ويُعجبون ولا يُنسى.",
+    "description": "Azzaro – The Most Wanted is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of warm, spicy, woody, amber creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Azzaro – The Most Wanted est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de warm, spicy, woody, amber offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Azzaro – The Most Wanted عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل warm, spicy, woody, amber لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Azzaro%20The%20Most%20Wanted%20fragrance%20set.png",
     "variants": [
       {
@@ -751,13 +641,7 @@
       "spicy",
       "woody",
       "amber"
-    ],
-    "main_accords": {
-      "Sweet": 100,
-      "Spicy": 95,
-      "Amber": 90,
-      "Woody": 80
-    }
+    ]
   },
   {
     "id": "p31",
@@ -765,9 +649,9 @@
     "name": "Stronger With You Powerfully",
     "category": "men",
     "isNew": true,
-    "description": "Stronger With You Powerfully is a bold, warm, and magnetic men’s fragrance, created for the confident man who knows his value and leaves a lasting impression wherever he goes. This powerful interpretation of the Stronger With You line delivers depth, intensity, and irresistible masculinity.\\n\\n🌿 Fragrance Notes\\n🔹 Top Notes: Pink Pepper, Chestnut Accord\\n🔹 Heart Notes: Rich Vanilla, Aromatic Lavender\\n🔹 Base Notes: Amber, Warm Woods, Musk\\n\\nThis composition blends sweet warmth with oriental depth, creating a strong yet elegant scent that stands out without being overwhelming.\\n\\n🔥 Performance\\nLongevity: Very strong (8–10 hours)\\nProjection: Strong at first, then smooth and balanced\\nLeaves a powerful and attractive trail\\n\\n💎 Why Choose It from IPORDISE?\\nBecause it is:\\nLuxurious and modern\\nDeeply masculine\\nLong-lasting and powerful\\nPerfect for 10ml, 20ml, and 30ml decants",
-    "description_fr": "Stronger With You Powerfully est un parfum masculin audacieux, chaleureux et magnétique, créé pour l'homme confiant qui connaît sa valeur et laisse une impression durable partout où il passe. Cette interprétation puissante de la ligne Stronger With You offre profondeur, intensité et une masculinité irrésistible.",
-    "description_ar": "Stronger With You Powerfully هو عطر رجالي جريء ودافئ ومغناطيسي، صُمم للرجل الواثق الذي يدرك قيمته ويترك انطباعاً يدوم أينما ذهب. هذا التفسير القوي لمجموعة Stronger With You يقدم عمقاً، وكثافة، ورجولة لا تقاوم.",
+    "description": "Stronger With You Powerfully is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of pink pepper, chestnut, vanilla, lavender, amber, woods creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Stronger With You Powerfully est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de pink pepper, chestnut, vanilla, lavender, amber, woods offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Stronger With You Powerfully عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل pink pepper, chestnut, vanilla, lavender, amber, woods لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/stronger%20with%20you%20powerfully.jpeg",
     "variants": [
       {
@@ -794,13 +678,7 @@
       "amber",
       "woods",
       "musk"
-    ],
-    "main_accords": {
-      "Vanilla": 100,
-      "Sweet": 95,
-      "Nutty": 90,
-      "Spicy": 80
-    }
+    ]
   },
   {
     "id": "p32",
@@ -808,9 +686,9 @@
     "name": "Le Beau Paradise Garden",
     "category": "men",
     "isNew": true,
-    "description": "Le Beau Paradise Garden is a fresh, seductive, and exotic men’s fragrance that captures the feeling of a tropical escape. Inspired by a lush paradise, this scent blends green freshness with creamy sweetness and sensual warmth, creating an irresistible and modern masculine aura.\\n\\nDesigned for the confident man who enjoys elegance with a touch of wild freedom, this fragrance is both refreshing and deeply addictive.\\n\\n🌸 Fragrance Notes\\n🔹 Top Notes: Green Notes, Fresh Bergamot\\n🔹 Heart Notes: Coconut Accord, Fig Notes\\n🔹 Base Notes: Tonka Bean, Sandalwood, Warm Woods\\n\\nThe result is a smooth tropical composition where freshness meets sweetness, balanced by a warm, creamy woody base.\\n\\n🔥 Performance\\nLongevity: Very good (7–9 hours)\\nProjection: Moderate to strong\\nSmooth, attractive scent trail\\n\\n💎 Why Choose It from IPORDISE?\\nExotic and modern scent\\nFresh yet sensual\\nEasy to wear and versatile\\nPerfect for 10ml, 20ml, and 30ml decants",
-    "description_fr": "Le Beau Paradise Garden est un parfum pour homme frais, séduisant et exotique qui capture la sensation d'une évasion tropicale. Inspiré par un paradis luxuriant, ce parfum mêle fraîcheur verte, douceur crémeuse et chaleur sensuelle, créant une aura masculine irrésistible et moderne.",
-    "description_ar": "لو بو بارادايس جاردن هو عطر رجالي منعش ومغري وغريب يجسد شعور الهروب الاستوائي. مستوحى من جنة غناء، يمزج هذا العطر النضارة الخضراء مع الحلاوة الكريمية والدفء الحسي، مما يخلق هالة ذكورية لا تقاوم وعصرية.",
+    "description": "Le Beau Paradise Garden is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of green notes, bergamot, coconut, fig, tonka bean, sandalwood creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Le Beau Paradise Garden est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de green notes, bergamot, coconut, fig, tonka bean, sandalwood offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Le Beau Paradise Garden عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل green notes, bergamot, coconut, fig, tonka bean, sandalwood لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/jean%20paul%20gaultier%20%20le%20beau%20.jpeg",
     "variants": [
       {
@@ -836,13 +714,7 @@
       "fig",
       "tonka bean",
       "sandalwood"
-    ],
-    "main_accords": {
-      "Coconut": 100,
-      "Green": 95,
-      "Sweet": 90,
-      "Aquatic": 80
-    }
+    ]
   },
   {
     "id": "p33",
@@ -850,9 +722,9 @@
     "name": "Rosendo Mateu Nº 5",
     "category": "unisex",
     "isNew": true,
-    "description": "Rosendo Mateu Nº 5 is an exotic, elegant, and unforgettable unisex fragrance from the niche house Rosendo Mateu Olfactive Expressions, crafted by master perfumer Rosendo Mateu. This scent blends floral brightness with sensual amber and warm musk, creating a rich aromatic experience that feels both luxurious and seductive. It’s a versatile fragrance that can be worn by men or women who appreciate a bold yet refined olfactory profile.\\n\\n🌿 Fragrance Notes\\n🔹 Top Notes: Spices, Exotic Floral Notes\\n🔹 Heart Notes: Carnation, Lily-of-the-Valley\\n🔹 Base Notes: Amber, Vanilla, Musk\\n\\nThe composition opens with a warm, spicy kick and subtle exotic blossoms, evolves into a floral heart with spicy nuances, and finally settles into a rich, sensual amber-vanilla-musk base that lingers with warmth and depth.\\n\\n🔥 Performance\\nLongevity: Good to long-lasting (often 6–10+ hours on skin)\\nProjection: Moderate to strong sillage\\nWarm and enveloping trail that stays noticeable\\n\\n💎 Why Choose It from IPORDISE?\\nSophisticated and distinctive scent profile\\nRich floral and amber warmth with sensual musk depth\\nGreat for both men and women who want something bold yet elegant\\nPerfect choice for decants in 10ml, 20ml, or 30ml",
-    "description_fr": "Rosendo Mateu Nº 5 est un parfum unisexe exotique, élégant et inoubliable de la maison de niche Rosendo Mateu Olfactive Expressions. Ce parfum mêle la luminosité florale à l'ambre sensuel et au musc chaud, créant une expérience aromatique riche à la fois luxueuse et séduisante.",
-    "description_ar": "روسيندو ماتيو رقم 5 هو عطر للجنسين غريب وأنيق ولا يُنسى من دار العطور المتخصصة Rosendo Mateu Olfactive Expressions. يمزج هذا العطر بين السطوع الزهري والعنبر الحسي والمسك الدافئ، مما يخلق تجربة عطرية غنية تبدو فاخرة ومغرية في آن واحد.",
+    "description": "Rosendo Mateu Nº 5 is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of spices, exotic floral, carnation, lily-of-the-valley, amber, vanilla creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Rosendo Mateu Nº 5 est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de spices, exotic floral, carnation, lily-of-the-valley, amber, vanilla offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Rosendo Mateu Nº 5 عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل spices, exotic floral, carnation, lily-of-the-valley, amber, vanilla لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/rosendo%20mateu%205.jpeg",
     "variants": [
       {
@@ -879,13 +751,7 @@
       "amber",
       "vanilla",
       "musk"
-    ],
-    "main_accords": {
-      "Amber": 100,
-      "Musk": 95,
-      "Floral": 90,
-      "Spicy": 80
-    }
+    ]
   },
   {
     "id": "p34",
@@ -893,9 +759,9 @@
     "name": "Azzaro Wanted Eau de Parfum",
     "category": "men",
     "isNew": true,
-    "description": "Azzaro Wanted EDP is a bold, charismatic, and irresistible men’s fragrance crafted for the daring man who lives with energy and confidence. This Eau de Parfum version amplifies the original Wanted’s signature with deeper warmth, richer spices, and a smoother refined base, creating a powerful scent that commands attention without overpowering. Designed for the man who wants to be noticed, it delivers a perfect balance of freshness, spice, and sensual depth.\\n\\n🌿 Fragrance Notes\\n🔹 Top Notes: Ginger, Lemon, Lavender\\n🔹 Heart Notes: Cardamom, Orange Blossom, Cinnamon\\n🔹 Base Notes: Sandalwood, Amberwood, Vanilla\\n\\nThe result is a vibrant opening with spicy-fresh energy, a warm and aromatic heart, and a rich, smooth base that gives the fragrance depth and sensuality.\\n\\n🔥 Performance\\nLongevity: Excellent (8–12 hours)\\nProjection: Strong and confident\\nLeaves a bold, masculine trail\\n\\n💎 Why Choose It from IPORDISE?\\nDeep, warm, and luxurious scent\\nStrong performance and presence\\nElegant and masculine character\\nIdeal for 10ml, 20ml, and 30ml decants",
-    "description_fr": "Azzaro Wanted EDP est un parfum pour homme audacieux, charismatique et irrésistible conçu pour l'homme audacieux qui vit avec énergie et confiance. Cette version Eau de Parfum amplifie la signature originale de Wanted avec une chaleur plus profonde, des épices plus riches et une base raffinée plus douce.",
-    "description_ar": "عزارو وانتد او دو بارفان هو عطر رجالي جريء وكاريزمي ولا يقاوم، صُمم للرجل الجريء الذي يعيش بطاقة وثقة. تضخّم نسخة ماء العطر هذه توقيع وانتد الأصلي بدفء أعمق، وتوابل أغنى، وقاعدة ناعمة ومتطورة.",
+    "description": "Azzaro Wanted Eau de Parfum is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of ginger, lemon, lavender, cardamom, cinnamon, sandalwood creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Azzaro Wanted Eau de Parfum est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de ginger, lemon, lavender, cardamom, cinnamon, sandalwood offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Azzaro Wanted Eau de Parfum عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل ginger, lemon, lavender, cardamom, cinnamon, sandalwood لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/azzaro%20wanted%20edp.jpeg",
     "variants": [
       {
@@ -923,13 +789,7 @@
       "sandalwood",
       "amberwood",
       "vanilla"
-    ],
-    "main_accords": {
-      "Woody": 100,
-      "Spicy": 90,
-      "Aromatic": 80,
-      "Citrus": 70
-    }
+    ]
   },
   {
     "id": "p35",
@@ -937,9 +797,9 @@
     "name": "Bad Boy Eau de Toilette",
     "category": "men",
     "isNew": true,
-    "description": "Carolina Herrera Bad Boy EDT is a bold, modern, and charismatic men’s fragrance crafted for the confident man who thrives on contrasts — daring yet elegant, rebellious yet refined. This vibrant EDT blends fresh, spicy, and woody accords into an energetic and memorable composition that makes a statement with style and attitude. Designed for today’s urban man, it’s a scent that balances strength with sophistication.\\n\\n🌿 Fragrance Notes\\n🔹 Top Notes: Bergamot, Black & White Pepper\\n🔹 Heart Notes: Cedarwood, Sage\\n🔹 Base Notes: Tonka Bean, Amberwood, Vetiver\\n\\nThe result is a dynamic scent with a spicy-fresh opening, a textured aromatic heart, and a warm, sensual base that lingers with masculine depth.\\n\\n🔥 Performance\\nLongevity: Good (6–8 hours)\\nProjection: Moderate to strong\\nClean but noticeable sillage\\n\\n💎 Why Choose It from IPORDISE?\\nStylish, youthful, and charismatic\\nFresh yet spicy character\\nGreat everyday signature\\nIdeal for 10ml, 20ml, and 30ml decants",
-    "description_fr": "Carolina Herrera Bad Boy EDT est un parfum pour homme audacieux, moderne et charismatique conçu pour l'homme confiant qui se nourrit de contrastes — audacieux mais élégant, rebelle mais raffiné. Cette EDT vibrante mélange des accords frais, épicés et boisés dans une composition énergique et mémorable.",
-    "description_ar": "كارولينا هيريرا باد بوي أو دو تواليت هو عطر رجالي جريء وعصري وكاريزمي صُمم للرجل الواثق الذي يزدهر بالتناقضات — جريء ولكنه أنيق، ومتمرد ولكنه راقٍ. يمزج ماء التواليت النابض بالحياة هذا بين الأوتار المنعشة والتوابل والخشبية في تكوين نشط لا يُنسى.",
+    "description": "Bad Boy Eau de Toilette is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of bergamot, pepper, cedarwood, sage, tonka bean, amberwood creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Bad Boy Eau de Toilette est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de bergamot, pepper, cedarwood, sage, tonka bean, amberwood offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Bad Boy Eau de Toilette عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل bergamot, pepper, cedarwood, sage, tonka bean, amberwood لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/bad%20boy%20carolina%20herrara.jpeg",
     "variants": [
       {
@@ -966,13 +826,7 @@
       "tonka bean",
       "amberwood",
       "vetiver"
-    ],
-    "main_accords": {
-      "Spicy": 100,
-      "Cacao": 90,
-      "Woody": 85,
-      "Sweet": 80
-    }
+    ]
   },
   {
     "id": "p36",
@@ -980,9 +834,9 @@
     "name": "L'Homme Idéal L'Intense",
     "category": "men",
     "isNew": true,
-    "description": "Guerlain L’Homme Idéal L’Intense is a powerful, refined, and seductive men’s fragrance designed for the modern gentleman who embraces confidence, mystery, and elegance. This intense interpretation of the iconic L’Homme Idéal pushes masculinity to a deeper and richer level, offering a bold scent with remarkable depth and sophistication.\\n\\nCrafted for men who want to leave a lasting impression, this fragrance perfectly balances warmth, spice, and sensual intensity in a luxurious composition.\\n\\n🌿 Fragrance Notes\\n🔹 Top Notes: Chili Pepper, Bergamot, Almond\\n🔹 Heart Notes: Smoke Accord, Leather, Spicy Notes\\n🔹 Base Notes: Tonka Bean, Vanilla, Sandalwood, Patchouli\\n\\nThe result is a dark, warm, and captivating fragrance with a smoky-spicy opening, a creamy almond heart, and a smooth, sensual woody-leather base.\\n\\n🔥 Performance\\nLongevity: Excellent (9–12 hours)\\nProjection: Strong and noticeable\\nLeaves a warm, masculine, and elegant trail\\n\\n💎 Why Choose It from IPORDISE?\\nRich and long-lasting scent\\nMasculine, elegant, and seductive\\nPremium quality inspired by Guerlain\\nPerfect for 10ml, 20ml, and 30ml decants",
-    "description_fr": "Guerlain L’Homme Idéal L’Intense est un parfum masculin puissant, raffiné et séduisant conçu pour le gentleman moderne qui embrasse confiance, mystère et élégance. Cette interprétation intense de l'emblématique L’Homme Idéal offre un parfum audacieux avec une profondeur et une sophistication remarquables.",
-    "description_ar": "جيرلان لوم إيديال لانتنس هو عطر رجالي قوي وراق وجذاب مصمم للرجل العصري الذي يتمتع بالثقة والغموض والأناقة. هذا التفسير المكثف للعطر الأيقوني لوم إيديال يدفع الرجولة إلى مستوى أعمق وأكثر ثراءً.",
+    "description": "L'Homme Idéal L'Intense is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of chili pepper, almond, smoke, leather, tonka bean, vanilla creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "L'Homme Idéal L'Intense est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de chili pepper, almond, smoke, leather, tonka bean, vanilla offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد L'Homme Idéal L'Intense عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل chili pepper, almond, smoke, leather, tonka bean, vanilla لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/l'homme%20ideal%20l'intense.jpeg",
     "variants": [
       {
@@ -1010,13 +864,7 @@
       "vanilla",
       "sandalwood",
       "patchouli"
-    ],
-    "main_accords": {
-      "Almond": 100,
-      "Smoky": 95,
-      "Leather": 90,
-      "Spicy": 80
-    }
+    ]
   },
   {
     "id": "p37",
@@ -1024,9 +872,9 @@
     "name": "Gentleman Society Eau de Parfum",
     "category": "men",
     "isNew": true,
-    "description": "Givenchy Gentleman Society is a modern, elegant, and charismatic men’s fragrance that celebrates refined masculinity with a bold yet sophisticated olfactory profile. Crafted for the contemporary gentleman who appreciates both strength and subtlety, this Eau de Parfum blends aromatic freshness with deep woody warmth and a sensual base. The result is a memorable, classy scent that can be worn with confidence in various settings.\\n\\n🌿 Fragrance Notes\\n🔹 Top Notes: Sage, Cardamom\\n🔹 Heart Notes: Wild Narcissus, Vetiver (from Haiti, Madagascar & Uruguay)\\n🔹 Base Notes: Cedarwood, Sandalwood, Vanilla, Palo Santo\\n\\nThis composition opens with aromatic and spicy freshness, flows into a floral-woody heart, and settles into a warm, woody, and slightly creamy base that lingers elegantly.\\n\\n🔥 Performance\\nLongevity: Good to long-lasting (often 8–10+ hours on skin)\\nProjection: Moderate (pleasant but not overwhelming)\\nLeaves a classy, warm trail that’s inviting and refined.\\n\\n💎 Why Choose It from IPORDISE?\\nSophisticated and contemporary scent\\nBalanced aromatic and woody composition\\nGreat daily scent with classy character\\nPerfect for 10ml, 20ml, and 30ml decants",
-    "description_fr": "Givenchy Gentleman Society est un parfum masculin moderne, élégant et charismatique qui célèbre la masculinité raffinée avec un profil olfactif audacieux mais sophistiqué. Conçu pour le gentleman contemporain qui apprécie à la fois la force et la subtilité, cette Eau de Parfum mélange fraîcheur aromatique avec chaleur boisée profonde de la chaleur et une base sensuelle.",
-    "description_ar": "جيفنشي جنتلمان سوسايتي هو عطر رجالي عصري وأنيق وكاريزمي يحتفي بالرجولة الراقية مع ملف عطري جريء ومتطور. صُمم للرجل المعاصر الذي يقدر القوة والدقة على حد سواء، يمزج ماء العطر هذا بين النضارة العطرية والدفء الخشبي العميق وقاعدة حسية.",
+    "description": "Gentleman Society Eau de Parfum is a premium fragrance crafted for those who appreciate elegance, balance, and lasting performance. Built around  accords, it opens smoothly and develops with refined confidence.\n\nThe blend of sage, cardamom, narcissus, vetiver, cedarwood, sandalwood creates a rich and harmonious scent profile that feels modern yet timeless. As it settles on the skin, it reveals depth and warmth, leaving a clean and luxurious trail.\n\nSuitable for daily wear, evenings, and special occasions, this fragrance adapts effortlessly to different seasons and styles. An excellent choice for anyone seeking authenticity, character, and sophistication.",
+    "description_fr": "Gentleman Society Eau de Parfum est un parfum premium conçu pour ceux qui recherchent élégance, équilibre et excellente tenue. Structuré autour d’accords , il s’ouvre avec douceur et évolue avec assurance.\n\nLes notes de sage, cardamom, narcissus, vetiver, cedarwood, sandalwood offrent une signature olfactive riche et harmonieuse, à la fois moderne et intemporelle. En se développant sur la peau, le parfum révèle profondeur et chaleur avec un sillage raffiné.\n\nIdéal pour le quotidien, les soirées et les occasions spéciales, ce parfum s’adapte à toutes les saisons. Un choix sûr pour les amateurs de parfums distingués.",
+    "description_ar": "يُعد Gentleman Society Eau de Parfum عطراً فاخراً صُمم لمن يقدّرون الأناقة والتوازن والثبات. يعتمد على نغمات ، ويمنح بداية ناعمة تتطور بثبات وأناقة.\n\nتمتزج مكوناته مثل sage, cardamom, narcissus, vetiver, cedarwood, sandalwood لتقديم تركيبة عطرية غنية ومتناسقة تجمع بين الحداثة والطابع الكلاسيكي. مع الوقت، يترك العطر أثراً نظيفاً وفاخراً يدوم.\n\nمناسب للاستعمال اليومي، السهرات والمناسبات الخاصة، ويتكيف مع مختلف الفصول. خيار مثالي لمن يبحث عن عطر أصلي بحضور مميز.",
     "image": "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/gentleman%20society.jpeg",
     "variants": [
       {
@@ -1054,12 +902,6 @@
       "sandalwood",
       "vanilla",
       "palo santo"
-    ],
-    "main_accords": {
-      "Woody": 100,
-      "Aromatic": 90,
-      "Vanilla": 80,
-      "Floral": 70
-    }
+    ]
   }
 ]
