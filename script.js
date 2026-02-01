@@ -686,11 +686,39 @@ const ALL_DAY_PRODUCT = {
   notes: ["fresh", "clean", "musk", "amber"]
 };
 
+const AZZARO_FOREVER_PRODUCT = {
+  id: "p38",
+  brand: "Azzaro",
+  name: "Azzaro Forever Wanted",
+  category: "men",
+  isNew: true,
+  description: "Experience the bold luxury of Azzaro Forever Wanted, now available in elegant perfume decants.\nThis fragrance delivers a powerful, addictive character that blends sophistication with confidence, making it a perfect choice for those who appreciate strong and refined scents.\nThe original bottle and packaging guarantee authenticity, while the carefully prepared decants allow you to enjoy this iconic fragrance in a practical and stylish format.\nEach decant is filled with precision and presented in a clean, minimalist bottle that reflects a high-end aesthetic.",
+  description_fr: "Découvrez le luxe audacieux d'Azzaro Forever Wanted, désormais disponible en décants de parfum élégants. Ce parfum offre un caractère puissant et addictif qui mêle sophistication et confiance, idéal pour ceux qui apprécient les parfums forts et raffinés. Le flacon d'origine garantit l'authenticité, tandis que les décants soigneusement préparés vous permettent de profiter de cette fragrance emblématique dans un format pratique. Chaque décant est rempli avec précision et présenté dans un flacon minimaliste qui reflète une esthétique haut de gamme.",
+  description_ar: "استمتع بالفخامة الجريئة لعطر Azzaro Forever Wanted، المتوفر الآن في عبوات تقسيم عطور أنيقة. يقدم هذا العطر طابعًا قويًا ومثيرًا للإدمان يمزج بين الرقي والثقة، مما يجعله خيارًا مثاليًا لمن يقدرون الروائح القوية والراقية. تضمن الزجاجة الأصلية الأصالة، بينما تسمح لك عبوات التقسيم المُعدة بعناية بالاستمتاع بهذا العطر الأيقوني بتنسيق عملي وأنيق. يتم ملء كل عبوة بدقة وتقديمها في زجاجة نظيفة وبسيطة تعكس جمالية راقية.",
+  image: "https://raw.githubusercontent.com/ipordiseparfum-hash/ipordiseparfum/refs/heads/main/Azzaro%20Forever%20Wanted.png",
+  variants: [
+    { size: "10ml", price: 130 },
+    { size: "20ml", price: 260 },
+    { size: "30ml", price: 390 }
+  ],
+  rating: 5.0,
+  reviews: 0,
+  tag: "Bold Luxury",
+  notes: ["wood", "spices", "amber"]
+};
+
 function ensureAllDayProduct(){
   try{
     if (!Array.isArray(PRODUCTS)) return;
-    if (PRODUCTS.some(p => String(p?.id) === "p30")) return;
-    PRODUCTS.push({ ...ALL_DAY_PRODUCT });
+    
+    if (!PRODUCTS.some(p => String(p?.id) === "p30")) {
+      PRODUCTS.push({ ...ALL_DAY_PRODUCT });
+    }
+    
+    if (!PRODUCTS.some(p => String(p?.id) === "p38")) {
+      PRODUCTS.push({ ...AZZARO_FOREVER_PRODUCT });
+    }
+
   }catch{/* noop */}
 }
 
