@@ -18,9 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fallback MAD formatting
     try{
       const n = Number(amount || 0);
-      return new Intl.NumberFormat('fr-MA', { style:'currency', currency:'MAD' }).format(n);
+      const lang = (window.currentLang || 'en').toLowerCase();
+      if(lang === 'ar') return new Intl.NumberFormat('ar-MA', { style:'currency', currency:'MAD' }).format(n);
+      return new Intl.NumberFormat('fr-MA').format(n) + " DH";
     }catch(e){
-      return `${amount} MAD`;
+      return `${amount} DH`;
     }
   };
 
@@ -39,16 +41,20 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const makeWhatsAppLink = (product, variant) => {
-    const phone = window.WHATSAPP_PHONE_INTL || '';
+    // Ensure we have a phone number, fallback if needed
+    const phone = window.WHATSAPP_PHONE_INTL || '212663750210';
     const size = variant?.size ? ` (${variant.size})` : '';
     const price = variant?.price != null ? ` - ${money(variant.price)}` : '';
     const url = window.location.href;
+    
+    // Improved message format with clear product details
     const msg = t(
-      `Hello! I want to order: ${product.name}${size}${price}. Link: ${url}`,
-      `Bonjour ! Je veux commander : ${product.name}${size}${price}. Lien : ${url}`,
-      `سلام! بغيت نطلب: ${product.name}${size}${price}. الرابط: ${url}`
+      `Hello IPORDISE PARFUM 👋\n\nI am interested in this product and would like to order:\n\n✨ ${product.name}\n📏 Size: ${variant?.size || 'Standard'}\n💰 Price: ${money(variant?.price || product.price)}\n\nLink: ${url}\n\nPlease confirm availability.`,
+      `Bonjour IPORDISE PARFUM 👋\n\nJe suis intéressé par ce produit et je souhaite commander :\n\n✨ ${product.name}\n📏 Taille : ${variant?.size || 'Standard'}\n💰 Prix : ${money(variant?.price || product.price)}\n\nLien : ${url}\n\nMerci de confirmer la disponibilité.`,
+      `السلام عليكم IPORDISE PARFUM 👋\n\nمهتم بهذا المنتج وبغيت نطلب:\n\n✨ ${product.name}\n📏 الحجم: ${variant?.size || 'عادي'}\n💰 الثمن: ${money(variant?.price || product.price)}\n\nالرابط: ${url}\n\nواش متوفر؟`
     );
-    return `https://wa.me/${encodeURIComponent(phone)}?text=${encodeURIComponent(msg)}`;
+    
+    return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
   };
 
   const render = (product) => {
