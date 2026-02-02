@@ -119,15 +119,15 @@
     "variants": [
       {
         "size": "10ml",
-        "price": 170
+        "price": 130
       },
       {
         "size": "20ml",
-        "price": 300
+        "price": 260
       },
       {
         "size": "30ml",
-        "price": 420
+        "price": 390
       }
     ],
     "rating": 4.5,
@@ -217,15 +217,15 @@
     "variants": [
       {
         "size": "10ml",
-        "price": 200
+        "price": 120
       },
       {
         "size": "20ml",
-        "price": 360
+        "price": 240
       },
       {
         "size": "30ml",
-        "price": 500
+        "price": 360
       }
     ],
     "rating": 4.9,
@@ -251,15 +251,15 @@
     "variants": [
       {
         "size": "10ml",
-        "price": 170
+        "price": 100
       },
       {
         "size": "20ml",
-        "price": 300
+        "price": 200
       },
       {
         "size": "30ml",
-        "price": 420
+        "price": 300
       }
     ],
     "rating": 4.6,
@@ -382,15 +382,15 @@
     "variants": [
       {
         "size": "10ml",
-        "price": 165
+        "price": 130
       },
       {
         "size": "20ml",
-        "price": 290
+        "price": 260
       },
       {
         "size": "30ml",
-        "price": 410
+        "price": 390
       }
     ],
     "rating": 4.6,
@@ -550,15 +550,15 @@
     "variants": [
       {
         "size": "10ml",
-        "price": 250
+        "price": 279
       },
       {
         "size": "20ml",
-        "price": 450
+        "price": 558
       },
       {
         "size": "30ml",
-        "price": 620
+        "price": 837
       }
     ],
     "rating": 4.9,

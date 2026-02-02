@@ -3,6 +3,9 @@
 // + Language (EN/FR/AR), Fragrance Finder, Policies modal, Mobile bottom nav (Android/iOS), Chatbot UI
 
 const WHATSAPP_PHONE_INTL = "212663750210"; // Morocco format for wa.me (remove 0)
+// Expose for other scripts (like product-detail.js)
+window.WHATSAPP_PHONE_INTL = WHATSAPP_PHONE_INTL;
+
 const WHATSAPP_DISPLAY = "0663750210";
 const STORE_EMAIL = "Ipordise@gmail.com";
 const STORE_CURRENCY = "MAD";
@@ -606,14 +609,15 @@ function throttle(func, limit) {
   };
 }
 function formatMoney(amount){
+  // Moroccan Dirham formatting
   try{
-    return new Intl.NumberFormat(currentLang === "ar" ? "ar-MA" : (currentLang === "fr" ? "fr-MA" : "en-US"), {
-      style: "currency",
-      currency: STORE_CURRENCY,
-      maximumFractionDigits: 0
-    }).format(amount);
+    if (currentLang === "ar") {
+       return new Intl.NumberFormat("ar-MA", { style: "currency", currency: "MAD", maximumFractionDigits: 0 }).format(amount);
+    }
+    // For EN/FR use "DH" which is common in Morocco
+    return new Intl.NumberFormat("fr-MA", { maximumFractionDigits: 0 }).format(amount) + " DH";
   }catch{
-    return `${amount} ${STORE_CURRENCY}`;
+    return `${amount} DH`;
   }
 }
 

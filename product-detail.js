@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     detailEl.innerHTML = `
       <nav class="breadcrumb">
-        <a href="index.html#best" aria-label="Back">
+        <a href="javascript:history.back()" aria-label="Back">
           <span>←</span>
           <span>${escapeHtml(t('Shop','Boutique','المتجر'))}</span>
         </a>

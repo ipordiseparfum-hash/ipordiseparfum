@@ -3644,6 +3644,8 @@ body.chatbot-open{
 }
 .chatbot__attention {
   position: absolute;
+  left: 50%;
+  bottom: 75px;
   background: white;
   color: var(--text);
   padding: 14px 20px;
@@ -3657,14 +3659,14 @@ body.chatbot-open{
   font-size: 14px;
   cursor: pointer;
   opacity: 0;
-  transform: translateY(10px) scale(0.95);
+  transform: translate(-50%, 10px) scale(0.95);
   transition: all 0.4s cubic-bezier(0.3, 1.2, 0.2, 1);
   pointer-events: none;
   font-family: var(--font-sans);
 }
 .chatbot__attention.visible {
   opacity: 1;
-  transform: translateY(-8px) scale(1);
+  transform: translate(-50%, -8px) scale(1);
   pointer-events: auto;
 }
 .chatbot__attention-close {
